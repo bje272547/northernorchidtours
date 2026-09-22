@@ -1,0 +1,2125 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Northern Orchid Tours — Lanna Luxury Journeys</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141F19;
+    --forest:#26392E;
+    --paper:#EFE6D4;
+    --gold:#C6A15B;
+    --gold-soft:#DBBD86;
+    --jade:#33513E;
+    --line: rgba(198,161,91,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond', serif; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  .cloudline{ width:100%; height:22px; display:block; }
+  .cloudline path{ fill:none; stroke:var(--gold); stroke-width:1.4; }
+
+  /* Header & Quiet Luxury Navigation */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 48px;
+    background:linear-gradient(to bottom, rgba(20,31,25,0.95), rgba(20,31,25,0.72) 75%, transparent);
+    color:var(--paper);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:background 0.3s ease, padding 0.3s ease;
+  }
+  .nav .brand{
+    display:flex; align-items:center; gap:14px;
+    font-family:'Cormorant Garamond', serif; font-size:23px; letter-spacing:0.8px; font-weight:600;
+    color:var(--paper); text-decoration:none;
+    min-height:44px;
+  }
+  .nav .brand img{
+    width:44px; height:44px; border-radius:50%; object-fit:cover;
+    border:1px solid var(--gold-soft); background:transparent;
+    box-shadow:0 2px 12px rgba(0,0,0,0.35); flex-shrink:0;
+  }
+  .nav .brand span{ color:var(--gold-soft); font-weight:400; font-style:italic; }
+
+  /* Desktop Navigation & Dropdowns */
+  .nav-center{ display:flex; align-items:center; }
+  .nav-menu{
+    display:flex; align-items:center; gap:34px; list-style:none;
+    font-size:14.5px; letter-spacing:0.8px;
+  }
+  .nav-item{ position:relative; }
+  .nav-link{
+    color:var(--paper); opacity:0.9; transition:color 0.25s, opacity 0.25s;
+    background:none; border:none; font-family:'Jost', sans-serif; font-size:14px;
+    font-weight:400; letter-spacing:1px; cursor:pointer; display:inline-flex;
+    align-items:center; gap:7px; padding:12px 2px; text-decoration:none;
+    min-height:44px;
+  }
+  .nav-link:hover, .nav-item.active > .nav-link, .nav-item:hover > .nav-link{
+    opacity:1; color:var(--gold-soft);
+  }
+  .nav-link svg.chevron{
+    width:10px; height:6px; transition:transform 0.25s ease; stroke:currentColor;
+  }
+  .nav-item:hover svg.chevron, .nav-item.active svg.chevron{ transform:rotate(180deg); }
+
+  /* Elegant Quiet Luxury Dropdown Menus */
+  .dropdown-menu{
+    position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(6px);
+    width:280px; background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(198, 161, 91, 0.35); border-radius:2px;
+    box-shadow:0 16px 36px rgba(8, 14, 10, 0.45); padding:8px 0; list-style:none;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+    z-index:120;
+  }
+  .dropdown-menu::before{
+    content:''; position:absolute; top:-5px; left:50%; transform:translateX(-50%) rotate(45deg);
+    width:9px; height:9px; background:rgba(20, 31, 25, 0.98);
+    border-top:1px solid rgba(198, 161, 91, 0.35); border-left:1px solid rgba(198, 161, 91, 0.35);
+  }
+  .nav-item:hover .dropdown-menu,
+  .nav-item.active .dropdown-menu{
+    opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0);
+  }
+  .dropdown-menu li{
+    border-bottom:1px solid rgba(198, 161, 91, 0.12);
+  }
+  .dropdown-menu li:last-child{
+    border-bottom:none;
+  }
+  .dropdown-menu li a{
+    display:flex; flex-direction:column; padding:12px 22px;
+    color:rgba(239, 230, 212, 0.9); text-decoration:none;
+    transition:background 0.22s ease, padding-left 0.22s ease;
+    min-height:44px; justify-content:center;
+  }
+  .dropdown-menu li a:hover{
+    background:rgba(198, 161, 91, 0.08); padding-left:26px;
+  }
+  .dropdown-menu li a .drop-title{
+    font-family:'Cormorant Garamond', serif; font-size:17px; font-weight:500;
+    color:var(--paper); transition:color 0.22s ease; line-height:1.3;
+  }
+  .dropdown-menu li a:hover .drop-title{
+    color:var(--gold-soft);
+  }
+
+  /* Far-right CTA button: 'Booking Now' */
+  .nav .nav-cta-booking{
+    border:1px solid #C6A15B; padding:10px 24px; font-size:12.5px;
+    border-radius:2px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500;
+    transition:all .3s ease; color:var(--paper); display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Jost', sans-serif; text-decoration:none; background:transparent;
+    min-height:44px;
+  }
+  .nav .nav-cta-booking:hover{
+    background:var(--gold-soft); color:var(--ink);
+  }
+
+  /* Mobile Hamburger Toggle */
+  .mobile-toggle{
+    display:none; background:transparent; border:none; cursor:pointer;
+    padding:9px; z-index:110; color:var(--gold-soft);
+    width:44px; height:44px; align-items:center; justify-content:center;
+    border-radius:2px; transition:color 0.25s, background 0.25s;
+  }
+  .mobile-toggle:hover{
+    color:var(--paper); background:rgba(198,161,91,0.12);
+  }
+  .mobile-toggle svg{ width:26px; height:26px; display:block; }
+
+  /* Mobile Drawer */
+  .mobile-drawer-overlay{
+    position:fixed; inset:0; background:rgba(10,16,13,0.75); backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    z-index:200; opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+  }
+  .mobile-drawer-overlay.open{ opacity:1; pointer-events:auto; }
+  .mobile-drawer{
+    position:fixed; top:0; right:0; bottom:0; width:100%; max-width:360px;
+    background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-left:1px solid rgba(198,161,91,0.3); z-index:210;
+    padding:24px 22px 36px; display:flex; flex-direction:column;
+    transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y:auto;
+  }
+  .mobile-drawer.open{ transform:translateX(0); }
+  .drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:18px; border-bottom:1px solid rgba(198,161,91,0.22); margin-bottom:18px;
+  }
+  .drawer-head .brand{
+    font-family:'Cormorant Garamond', serif; font-size:20px; color:var(--paper);
+    display:flex; align-items:center; gap:12px;
+  }
+  .drawer-head .brand img{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--gold-soft);
+  }
+  .drawer-close{
+    background:transparent; border:none; color:var(--gold-soft); cursor:pointer;
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    border-radius:2px; transition:color 0.2s, background 0.2s;
+  }
+  .drawer-close:hover{
+    color:var(--paper); background:rgba(198,161,91,0.12);
+  }
+  .drawer-close svg{ width:22px; height:22px; }
+
+  .mobile-nav-list{ list-style:none; display:flex; flex-direction:column; gap:0; flex:1; }
+  .mobile-nav-list a.mobile-link,
+  .mobile-nav-list button.mobile-accordion-btn{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:12px 6px; min-height:44px; font-family:'Jost', sans-serif; font-size:15px; color:var(--paper);
+    background:none; border:none; text-align:left; cursor:pointer;
+    border-bottom:1px solid rgba(198,161,91,0.14); letter-spacing:1px;
+    transition:color 0.2s ease, background 0.2s ease;
+  }
+  .mobile-nav-list a.mobile-link:hover,
+  .mobile-nav-list button.mobile-accordion-btn:hover{ color:var(--gold-soft); }
+  .mobile-accordion-btn svg{ width:12px; height:12px; transition:transform 0.25s ease; stroke:currentColor; }
+  .mobile-accordion.open .mobile-accordion-btn svg{ transform:rotate(180deg); }
+  .mobile-accordion-content{
+    display:none; padding:6px 0 10px 14px; list-style:none;
+  }
+  .mobile-accordion.open .mobile-accordion-content{ display:block; }
+  .mobile-accordion-content li{ margin-bottom:2px; }
+  .mobile-accordion-content li a{
+    display:flex; align-items:center; padding:10px 8px; text-decoration:none;
+    min-height:44px;
+  }
+  .mobile-accordion-content li a .m-title{
+    font-family:'Cormorant Garamond', serif; font-size:17px; color:rgba(239,230,212,0.92);
+    display:block; line-height:1.3;
+  }
+  .mobile-accordion-content li a:hover .m-title{ color:var(--gold-soft); }
+
+  .drawer-foot{ margin-top:24px; padding-top:20px; border-top:1px solid rgba(198,161,91,0.22); }
+  .drawer-foot .nav-cta-booking{
+    width:100%; text-align:center; padding:13px; font-size:13px; display:inline-flex;
+    justify-content:center; align-items:center; min-height:44px;
+  }
+
+  /* Hero Section */
+  .hero{
+    min-height:100vh;
+    background-image:
+      linear-gradient(180deg, rgba(20,31,25,0.82) 0%, rgba(20,31,25,0.72) 40%, rgba(14,22,18,0.95) 100%),
+      url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPQ5GcQhxvf5RynBuh52NdSUi9yC9YMQhuZShHpK1QBwAfiCcvLq25-O60dswEirJ3SxQXl9qUVLvPnmLCHIa9hmTN2zGVutDB27NvNhMV-zIGR65yhe_SAHAy3Za_EmBeq6hZNbOZGGrSVUuXWjCplzGdIKgglrkSGcXXSFhqmiYXIjMo-cnutqUZdyxd7Rg92fsnA5rnEuItiH4ZFmEeunM8wIPbDzbirRUvmVqvut0EoNIZwZ7FTgYvJg_eK7SrPQ');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    color:var(--paper);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; position:relative;
+    padding:140px 24px 90px;
+    overflow:hidden;
+  }
+  .hero-mist{
+    position:absolute; inset:0; pointer-events:none; opacity:0.18;
+    background:radial-gradient(circle at 50% 60%, #DBBD86 0%, transparent 70%);
+  }
+  .hero .kicker{
+    font-family:'Jost', sans-serif; font-weight:400; font-size:clamp(11px, 2.5vw, 13px);
+    letter-spacing:clamp(3px, 1vw, 6px);
+    color:var(--gold-soft); margin-bottom:24px; text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:clamp(32px, 5.8vw, 76px);
+    font-weight:400; line-height:1.2;
+    max-width:860px;
+    letter-spacing:-0.5px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold-soft); font-weight:400; font-family:'Cormorant Garamond', serif; }
+  .hero p.lede{
+    margin-top:24px; max-width:560px; font-size:clamp(15px, 2.2vw, 17.5px); color:rgba(239,230,212,0.85);
+    font-weight:300; line-height:1.8; text-shadow:0 1px 4px rgba(0,0,0,0.4);
+  }
+  .hero .actions{ margin-top:42px; display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
+  .btn{
+    padding:15px 34px; font-size:14.5px; font-family:'Jost', sans-serif; border-radius:2px;
+    transition:all .3s ease; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
+    min-height:44px; min-width:180px;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
+  .btn-line{ border:1px solid rgba(239,230,212,0.6); color:var(--paper); background:rgba(20,31,25,0.35); }
+  .btn-line:hover{ border-color:var(--gold-soft); color:var(--gold-soft); background:rgba(20,31,25,0.6); }
+
+  .hero-ornament{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    width:140px; opacity:0.75;
+  }
+
+  .intro{ padding:120px 0 100px; background:var(--paper); }
+  .intro .grid{
+    display:grid; grid-template-columns:0.95fr 1.05fr; gap:80px; align-items:start;
+  }
+  .intro .eyebrow{ color:var(--jade); font-size:14px; font-weight:600; margin-bottom:18px; letter-spacing:1.5px; text-transform:uppercase; }
+  .intro h2{ font-size:clamp(28px, 4vw, 38px); font-weight:400; line-height:1.35; color:var(--forest); }
+  .intro .side{ padding-top:20px; }
+  .intro .side p{ font-size:16.5px; color:#4a4a3c; line-height:1.85; }
+  .intro .side .stats{ display:flex; gap:50px; margin-top:42px; border-top:1px solid rgba(198,161,91,0.3); padding-top:32px; flex-wrap:wrap; }
+  .intro .side .stat b{ display:block; font-family:'Cormorant Garamond', serif; font-size:36px; color:var(--jade); font-weight:600; line-height:1.1; }
+  .intro .side .stat span{ font-size:13.5px; color:#6b6b57; letter-spacing:0.3px; }
+
+  .tours{ background:var(--ink); color:var(--paper); padding:120px 0; }
+  .tours .head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:60px; gap:40px; }
+  .tours .head h2{ font-size:clamp(28px, 4vw, 38px); font-weight:400; max-width:480px; color:var(--paper); }
+  .tours .head p{ max-width:320px; font-size:15px; color:rgba(239,230,212,0.7); line-height:1.7; }
+
+  .tour-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:2px; background:rgba(198,161,91,0.25); border:1px solid rgba(198,161,91,0.25); }
+  .tour-card{
+    background:var(--ink); padding:0; display:flex; flex-direction:column; position:relative;
+    transition:background 0.3s ease;
+  }
+  .tour-card:hover{ background:#192720; }
+  .tour-card .art{
+    height:260px; position:relative; overflow:hidden;
+  }
+  .tour-card:first-child .art{ height:380px; }
+  .tour-card .art svg{ width:100%; height:100%; object-fit:cover; }
+  .tour-card .body{ padding:28px 28px 34px; flex:1; display:flex; flex-direction:column; }
+  .tour-card .place{ font-size:12.5px; letter-spacing:2px; color:var(--gold-soft); margin-bottom:12px; text-transform:uppercase; font-weight:500; }
+  .tour-card h3{ font-size:24px; font-weight:400; margin-bottom:12px; line-height:1.3; }
+  .tour-card p{ font-size:14.5px; color:rgba(239,230,212,0.68); flex:1; line-height:1.75; }
+  .tour-card .foot{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; border-top:1px solid rgba(198,161,91,0.25); padding-top:18px; font-size:13.5px; }
+  .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Cormorant Garamond', serif; font-size:22px; font-weight:600; margin-left:4px; }
+
+  .signature{ padding:120px 0; background:var(--paper); }
+  .signature .head{ text-align:center; max-width:640px; margin:0 auto 70px; }
+  .signature .head .eyebrow{ color:var(--jade); font-weight:600; font-size:14px; margin-bottom:16px; letter-spacing:1.5px; text-transform:uppercase; }
+  .signature .head h2{ font-size:clamp(28px, 4vw, 38px); color:var(--forest); font-weight:400; }
+  .exp-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .exp{ padding:44px 34px; border-right:1px solid var(--line); transition:background 0.3s ease; }
+  .exp:hover{ background:rgba(198,161,91,0.06); }
+  .exp:last-child{ border-right:none; }
+  .exp .mark{ width:38px; height:38px; margin-bottom:22px; }
+  .exp h3{ font-size:21px; font-weight:500; color:var(--forest); margin-bottom:12px; }
+  .exp p{ font-size:15px; color:#6b6b57; line-height:1.8; }
+
+  /* Authentic Experiences & Interactive Carousel */
+  .quote-sec{
+    background:var(--jade); color:var(--paper); padding:120px 0; text-align:center;
+    position:relative; overflow:hidden; width:100%;
+  }
+
+  .carousel-wrapper{
+    position:relative; max-width:880px; margin:0 auto;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .carousel-track-container{
+    width:100%; max-width:780px; overflow:hidden; position:relative;
+    cursor:grab; user-select:none;
+  }
+  .carousel-track-container:active{
+    cursor:grabbing;
+  }
+  .carousel-slides{
+    display:flex; width:100%; transition:transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .carousel-slide{
+    flex:0 0 100%; width:100%; display:flex; flex-direction:column; align-items:center;
+    box-sizing:border-box; padding:0 4px;
+  }
+  .review-card-frame{
+    width:100%; border:1px solid rgba(198, 161, 91, 0.5);
+    background:rgba(20, 31, 25, 0.72); padding:18px; border-radius:3px;
+    box-shadow:0 20px 48px rgba(10, 18, 13, 0.45);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    transition:border-color 0.3s ease, box-shadow 0.3s ease;
+    position:relative;
+  }
+  .review-card-frame:hover{
+    border-color:rgba(198, 161, 91, 0.85);
+    box-shadow:0 24px 54px rgba(10, 18, 13, 0.6);
+  }
+  .review-interactive-box{
+    position:relative;
+    width:100%;
+    cursor:pointer;
+    border-radius:2px;
+    overflow:hidden;
+    background:#121212;
+    border:1px solid rgba(198, 161, 91, 0.25);
+    display:flex; justify-content:center; align-items:center;
+    transition:border-color 0.25s ease;
+  }
+  .review-interactive-box:hover{
+    border-color:var(--gold-soft);
+  }
+  .review-img{
+    max-width:100%; width:auto; height:auto; display:block;
+    max-height:480px;
+    object-fit:contain; flex-shrink:0; pointer-events:none;
+  }
+
+  /* Quiet Luxury Zoom Hint Badge */
+  .review-zoom-badge{
+    position:absolute; bottom:14px; right:14px;
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(20, 31, 25, 0.88);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(198, 161, 91, 0.55);
+    color:var(--gold-soft);
+    padding:7px 14px; border-radius:30px;
+    font-size:12px; letter-spacing:0.8px; font-weight:500;
+    pointer-events:none;
+    box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    transition:transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+  .review-interactive-box:hover .review-zoom-badge{
+    background:rgba(198, 161, 91, 0.95);
+    color:var(--ink);
+    transform:translateY(-2px);
+    border-color:var(--gold);
+  }
+  .review-zoom-badge svg{ width:14px; height:14px; stroke:currentColor; }
+
+  /* Carousel Navigation Buttons */
+  .carousel-btn{
+    width:46px; height:46px; border-radius:50%;
+    border:1px solid rgba(198, 161, 91, 0.55);
+    background:rgba(20, 31, 25, 0.7);
+    color:var(--gold-soft); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:all 0.25s ease; position:absolute; top:calc(50% - 23px); z-index:10;
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  }
+  .carousel-btn:hover{
+    border-color:var(--gold); background:rgba(20, 31, 25, 0.95);
+    color:var(--paper); transform:scale(1.06);
+    box-shadow:0 4px 16px rgba(0,0,0,0.35);
+  }
+  .carousel-btn:active{ transform:scale(0.96); }
+  .carousel-btn.prev{ left:-64px; }
+  .carousel-btn.next{ right:-64px; }
+  .carousel-btn svg{ width:18px; height:18px; stroke:currentColor; }
+
+  /* Carousel Indicators & Dots */
+  .carousel-dots{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    margin-top:28px; list-style:none; padding:0;
+  }
+  .carousel-dot{
+    width:9px; height:9px; border-radius:50%;
+    border:1px solid var(--gold); background:transparent;
+    cursor:pointer; padding:0; transition:all 0.3s ease;
+    opacity:0.5;
+  }
+  .carousel-dot:hover{ opacity:0.85; transform:scale(1.2); }
+  .carousel-dot.active{
+    background:var(--gold); opacity:1; width:22px; border-radius:10px;
+    box-shadow:0 0 8px rgba(198, 161, 91, 0.6);
+  }
+
+  /* FULL-SCREEN / LIGHTBOX REVIEW VIEWER MODAL */
+  .lightbox-modal{
+    position:fixed; inset:0; z-index:9999;
+    background:rgba(12, 22, 17, 0.97);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    display:flex; flex-direction:column;
+    opacity:0; pointer-events:none; visibility:hidden;
+    transition:opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    user-select:none;
+  }
+  .lightbox-modal.open{
+    opacity:1; pointer-events:auto; visibility:visible;
+  }
+
+  .lightbox-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    background:linear-gradient(to bottom, rgba(14,24,19,0.95), rgba(14,24,19,0.7));
+    border-bottom:1px solid rgba(198, 161, 91, 0.28);
+    flex-shrink:0; z-index:20;
+  }
+  .lightbox-header-left{
+    display:flex; align-items:center; gap:14px;
+  }
+  .lightbox-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:500; color:var(--paper); letter-spacing:0.5px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .lightbox-title span.count{
+    color:var(--gold-soft); font-family:'Jost', sans-serif; font-size:12.5px;
+    letter-spacing:1.8px; text-transform:uppercase; font-weight:500;
+    border:1px solid rgba(198, 161, 91, 0.4); padding:3px 10px; border-radius:12px;
+  }
+  .lightbox-header-actions{
+    display:flex; align-items:center; gap:8px;
+  }
+  .lb-btn{
+    min-width:44px; min-height:44px; width:44px; height:44px;
+    display:inline-flex; align-items:center; justify-content:center;
+    background:rgba(20, 31, 25, 0.7);
+    border:1px solid rgba(198, 161, 91, 0.35);
+    color:var(--paper); border-radius:3px; cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .lb-btn:hover{
+    border-color:var(--gold); color:var(--gold-soft);
+    background:rgba(198, 161, 91, 0.12);
+  }
+  .lb-btn svg{ width:18px; height:18px; stroke:currentColor; }
+  .lb-btn-reset{
+    width:auto; padding:0 14px; font-family:'Jost', sans-serif; font-size:12px;
+    letter-spacing:1px; text-transform:uppercase;
+  }
+  .lb-btn-close{
+    border-color:rgba(198, 161, 91, 0.5);
+    color:var(--gold-soft); margin-left:8px;
+  }
+  .lb-btn-close:hover{
+    background:#c6a15b; color:var(--ink);
+  }
+
+  .lightbox-viewport{
+    flex:1; width:100%; height:100%; position:relative;
+    overflow:hidden; display:flex; align-items:center; justify-content:center;
+    cursor:grab; touch-action:none;
+  }
+  .lightbox-viewport.grabbing{
+    cursor:grabbing;
+  }
+  .lightbox-canvas{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    transform-origin:center center;
+    transition:transform 0.08s linear;
+    will-change:transform;
+  }
+  .lightbox-image{
+    max-width:90vw; max-height:76vh;
+    object-fit:contain; display:block;
+    border-radius:2px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(198, 161, 91, 0.35);
+    pointer-events:none;
+  }
+
+  /* Lightbox Navigation Chevrons */
+  .lb-nav-arrow{
+    position:absolute; top:calc(50% - 25px); z-index:15;
+    width:50px; height:50px; border-radius:50%;
+    background:rgba(20, 31, 25, 0.82);
+    border:1px solid rgba(198, 161, 91, 0.45);
+    color:var(--paper); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:all 0.25s ease;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  }
+  .lb-nav-arrow:hover{
+    background:rgba(198, 161, 91, 0.95);
+    border-color:var(--gold); color:var(--ink);
+    transform:scale(1.08);
+  }
+  .lb-nav-arrow.prev{ left:24px; }
+  .lb-nav-arrow.next{ right:24px; }
+  .lb-nav-arrow svg{ width:20px; height:20px; stroke:currentColor; }
+
+  /* Lightbox Footer Bar */
+  .lightbox-footer{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 28px 16px;
+    background:linear-gradient(to top, rgba(14,24,19,0.98), rgba(14,24,19,0.7));
+    border-top:1px solid rgba(198, 161, 91, 0.28);
+    flex-shrink:0; z-index:20;
+    gap:16px; flex-wrap:wrap;
+  }
+  .lightbox-nav-btns{
+    display:flex; align-items:center; gap:10px;
+  }
+  .lb-footer-nav-btn{
+    min-height:44px; padding:8px 18px; border-radius:2px;
+    border:1px solid rgba(198, 161, 91, 0.4);
+    background:rgba(20, 31, 25, 0.7);
+    color:var(--paper); font-family:'Jost', sans-serif;
+    font-size:13px; letter-spacing:1px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all 0.25s ease;
+  }
+  .lb-footer-nav-btn:hover{
+    background:rgba(198, 161, 91, 0.15);
+    border-color:var(--gold-soft); color:var(--gold-soft);
+  }
+  .lb-footer-nav-btn svg{ width:14px; height:14px; stroke:currentColor; }
+
+  .lightbox-dots{
+    display:flex; align-items:center; gap:10px; list-style:none; margin:0; padding:0;
+  }
+  .lb-dot{
+    width:8px; height:8px; border-radius:50%;
+    border:1px solid var(--gold); background:transparent;
+    cursor:pointer; padding:0; transition:all 0.25s; opacity:0.5;
+  }
+  .lb-dot.active{
+    background:var(--gold); opacity:1; width:20px; border-radius:10px;
+  }
+
+  .lightbox-hint-mobile{
+    font-size:12px; color:rgba(239, 230, 212, 0.65);
+    font-family:'Jost', sans-serif; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .lightbox-hint-mobile svg{ width:14px; height:14px; stroke:var(--gold-soft); }
+
+  .gallery{ padding:120px 0; background:var(--paper); }
+  .gallery .head{ margin-bottom:50px; display:flex; justify-content:space-between; align-items:baseline; }
+  .gallery .head h2{ font-size:clamp(28px, 4vw, 36px); color:var(--forest); font-weight:400; }
+  .gallery .head span{ font-size:14px; color:#787864; font-style:italic; }
+  .g-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:120px; gap:16px;
+  }
+  .g-grid div{ border-radius:2px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(20,31,25,0.08); }
+  .g-grid div .g-caption{
+    position:absolute; bottom:0; left:0; right:0; padding:16px; font-size:13px; color:var(--paper);
+    background:linear-gradient(to top, rgba(20,31,25,0.85), transparent);
+  }
+  .g1{ grid-column:span 3; grid-row:span 3; }
+  .g2{ grid-column:span 2; grid-row:span 2; }
+  .g3{ grid-column:span 1; grid-row:span 2; }
+  .g4{ grid-column:span 3; grid-row:span 2; }
+  .g5{ grid-column:span 3; grid-row:span 3; }
+
+  .cta-sec{
+    background:var(--forest); color:var(--paper); padding:110px 0; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta-sec h2{ font-size:clamp(28px, 4vw, 36px); font-weight:400; max-width:540px; margin:0 auto 16px; }
+  .cta-sec p{ color:rgba(239,230,212,0.78); max-width:480px; margin:0 auto 42px; font-size:16px; line-height:1.75; }
+  .cta-sec form{ display:flex; justify-content:center; gap:12px; max-width:480px; margin:0 auto; }
+  .cta-sec input{
+    flex:1; padding:16px 20px; border:1px solid rgba(239,230,212,0.35);
+    background:rgba(20,31,25,0.4); color:var(--paper); font-family:'Jost', sans-serif; border-radius:2px; font-size:14.5px;
+    outline:none; min-height:44px;
+  }
+  .cta-sec input::placeholder{ color:rgba(239,230,212,0.5); }
+  .cta-sec input:focus{ border-color:var(--gold-soft); }
+  .cta-sec button{ min-height:44px; }
+
+  footer{ background:var(--ink); color:rgba(239,230,212,0.65); padding:90px 0 36px; border-top:1px solid rgba(198,161,91,0.2); }
+  .f-grid{ display:grid; grid-template-columns:1.5fr 1.2fr 1.3fr; gap:48px; padding-bottom:60px; }
+  .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
+
+  /* Responsive Breakpoints */
+  @media(max-width:960px){
+    .carousel-btn.prev{ left:8px; }
+    .carousel-btn.next{ right:8px; }
+    .carousel-btn{ background:rgba(20, 31, 25, 0.88); }
+    .lb-nav-arrow.prev{ left:12px; }
+    .lb-nav-arrow.next{ right:12px; }
+  }
+
+  @media(max-width:860px){
+    header.nav{ padding:14px 20px; }
+    .nav-center, .nav .nav-cta-booking{ display:none; }
+    .mobile-toggle{ display:inline-flex; }
+
+    .wrap{ padding:0 20px; }
+    .intro{ padding:90px 0 70px; }
+    .intro .grid{ grid-template-columns:1fr; gap:32px; }
+    .intro .side{ padding-top:0; }
+    .intro .side .stats{ gap:32px; justify-content:flex-start; margin-top:32px; padding-top:24px; }
+
+    .tours{ padding:90px 0; }
+    .tours .head{ flex-direction:column; align-items:flex-start; gap:16px; margin-bottom:36px; }
+    .tour-grid{ grid-template-columns:1fr; }
+    .tour-card:first-child .art{ height:260px; }
+
+    .signature{ padding:90px 0; }
+    .signature .head{ margin-bottom:44px; }
+    .exp-list{ grid-template-columns:1fr; }
+    .exp{ border-right:none; border-bottom:1px solid var(--line); padding:32px 16px; }
+    .exp:last-child{ border-bottom:none; }
+
+    .quote-sec{ padding:90px 0; }
+
+    .gallery{ padding:90px 0; }
+    .gallery .head{ flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:32px; }
+    .g-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:140px; }
+    .g1{ grid-column:span 2; grid-row:span 2; }
+    .g2{ grid-column:span 1; grid-row:span 1; }
+    .g3{ grid-column:span 1; grid-row:span 1; }
+    .g4{ grid-column:span 2; grid-row:span 2; }
+    .g5{ grid-column:span 2; grid-row:span 2; }
+
+    .cta-sec{ padding:80px 0; }
+    .f-grid{ grid-template-columns:1fr; gap:40px; padding-bottom:44px; }
+
+    .lightbox-header{ padding:12px 16px; }
+    .lightbox-footer{ padding:12px 16px; }
+    .lightbox-title{ font-size:18px; }
+    .lb-btn-reset{ display:none; }
+  }
+
+  @media(max-width:480px){
+    header.nav{ padding:12px 16px; }
+    .hero{ padding:120px 16px 70px; }
+    .hero .actions{ flex-direction:column; width:100%; gap:12px; }
+    .hero .actions .btn{ width:100%; min-width:unset; }
+
+    .intro .side .stats{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+    .intro .side .stats .stat:last-child{ grid-column:span 2; }
+
+    .tour-card .body{ padding:22px 18px 26px; }
+
+    .review-card-frame{ padding:12px 8px; }
+    .carousel-btn{ width:40px; height:40px; }
+    .carousel-btn.prev{ left:4px; }
+    .carousel-btn.next{ right:4px; }
+    .review-zoom-badge{ bottom:8px; right:8px; font-size:11px; padding:5px 10px; }
+
+    .lb-nav-arrow{ display:none; }
+    .lightbox-footer{ justify-content:center; }
+    .lightbox-hint-mobile{ width:100%; justify-content:center; order:3; }
+
+    .g-grid{ grid-template-columns:1fr; grid-auto-rows:180px; }
+    .g1, .g2, .g3, .g4, .g5{ grid-column:span 1; grid-row:span 1; }
+
+    .cta-sec form{ flex-direction:column; width:100%; }
+    .cta-sec form .btn{ width:100%; }
+
+    .f-bottom{ flex-direction:column; gap:18px; align-items:flex-start; }
+    .f-bottom div{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .f-bottom span[style*="opacity: 0.35"]{ display:none; }
+  }
+</style>
+</head>
+<body>
+<svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<!-- Header & Interactive Quiet Luxury Navigation -->
+<header class="nav">
+<!-- Left Side: Circular Logo Badge & Brand Name -->
+<a class="brand" href="#">
+<img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz1L3YuPunMP5QTjAEtaIDb7Kuj4zERdEKtbTvV_ObTEtBZQu36Rgx6FKybCtlcFEPqdKBXiCUbeULKdwSPwVw1boSWrrnouHMhQMb2L_PEx0mOSXNoJQ-00Ge20lFzD0n4oRvCil8L_2ch9HvAoEDUX0xkGexfgjah9ju58gmoOgH49ubrfBJIGjw6ZQdfjYTN2MYdSyGvszwEgWdVOCq0p-lHqPG3H6yXGHMc9mlMTwuvd533_M2a_z_A5Jys-EpuA">
+    Northern Orchid <span class="">Tours</span>
+</a>
+<!-- Center / Right Main Menu -->
+<nav aria-label="Main Navigation" class="nav-center">
+<ul class="nav-menu">
+<!-- Destination Dropdown -->
+<li class="nav-item has-dropdown" data-dropdown="destination">
+<button aria-expanded="false" aria-haspopup="true" class="nav-link" type="button" data-i18n="nav_destination" data-i18n-chevron="true">Destination<svg class="chevron" fill="none" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path>
+</svg></button>
+<ul class="dropdown-menu">
+<li>
+  <a href="chiangmai01.html">
+    <span class="drop-title" data-i18n="chiang_mai">
+      Chiang Mai
+    </span>
+  </a>
+</li>
+<li>
+  <a href="chiangrai.html">
+    <span class="drop-title" data-i18n="chiang_rai">
+      Chiang Rai
+    </span>
+  </a>
+</li>
+
+</ul>
+</li>
+<!-- Transport -->
+<li class="nav-item">
+  <a href="transport.html" class="nav-link">
+    <span class="drop-title" data-i18n="nav_transport">Transport</span>
+  </a>
+</li>
+<!-- Activities Dropdown -->
+<li class="nav-item">
+<a class="nav-link" href="#signature" data-i18n="nav_activities">Activities</a>
+</li>
+<!-- Gallery Link -->
+<li class="nav-item">
+<a class="nav-link" href="#gallery" data-i18n="nav_gallery">Gallery</a>
+</li>
+<!-- Contact Link -->
+<li class="nav-item">
+<a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a>
+</li>
+</ul>
+</nav>
+<!-- Far Right: 'Booking Now' CTA -->
+<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Book now</a>
+<!-- Mobile Hamburger Button (44x44 min tap target) -->
+<button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
+</header>
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+<aside aria-label="Mobile Navigation" class="mobile-drawer" id="mobileDrawer">
+<div class="drawer-head">
+<div class="brand">
+<img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKksZ1iSFnDSJDzUkHwRDkAyxpSl8ZiLIJ6zsk1peraOp1bTUFWWrsaBof--lPoZfjEZSAUpMbiOJ53YecAJu0CbJi2wtiUsl7xgXmB8lCtgQ1xAjkw0Lo8SISV11lWZHgDcTWkKQ2sGmVx6r14D_nob4rUfCD5P7i49yH7wQetdlvszRgOiPUXcYz5Xe8JaXZ6Eg3li9-LvarWeauX1K9bEomgTEw0b90vSjqsSqwqE6OEuboY-LfMCj_O_pyv_Y8Mg">
+      Northern Orchid <span class="" style="color:var(--gold-soft); font-style:italic;">Tours</span>
+</div>
+<button aria-label="Close navigation menu" class="drawer-close" id="mobileMenuClose">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewBox="0 0 24 24">
+<line x1="6" x2="18" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="18" y2="6"></line>
+</svg>
+</button>
+</div>
+<ul class="mobile-nav-list">
+<!-- Destination Accordion -->
+<!-- Destination Accordion -->
+<li class="mobile-accordion">
+  <button
+    class="mobile-accordion-btn"
+    type="button"
+    data-i18n="nav_destination"
+    data-i18n-chevron="true"
+  >
+    Destination
+    <svg fill="none" viewBox="0 0 10 6">
+      <path d="M1 1L5 5L9 1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.4">
+      </path>
+    </svg>
+  </button>
+
+  <ul class="mobile-accordion-content">
+    <li>
+      <a class="mobile-drawer-link" href="#chiangmai.html">
+        <span class="m-title" data-i18n="dest_chiang_mai">
+          Chiang Mai
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a class="mobile-drawer-link" href="#chiangrai.html">
+        <span class="m-title" data-i18n="dest_chiang_rai">
+          Chiang Rai
+        </span>
+      </a>
+    </li>
+  </ul>
+</li>
+
+<!-- Transport Accordion -->
+<!-- Transport Accordion -->
+<ul class="mobile-accordion-content">
+  <li>
+    <a class="mobile-drawer-link" href="#transport.html">
+      <span class="m-title" data-i18n="dest_chiang_mai">Chiang Mai</span>
+    </a>
+  </li>
+
+</ul>
+<!-- Activities Accordion -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="#signature" data-i18n="nav_activities">Activities</a>
+</li>
+<!-- Gallery Accordion -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="#gallery" data-i18n="nav_gallery">Gallery</a>
+</li>
+<!-- Contact Link -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="#contact" data-i18n="nav_contact">Contact</a>
+</li>
+</ul>
+<div class="drawer-foot">
+<a class="nav-cta-booking mobile-drawer-link" href="#contact" data-i18n="nav_booking_now">Booking Now</a>
+</div>
+</aside>
+<!-- Hero Section with Doi Suthep Background -->
+<section class="hero">
+<div class="hero-mist"></div>
+<div class="kicker" data-i18n="hero_kicker">L A N N A &amp;nbsp; L U X U R Y &amp;nbsp; J O U R N E Y S</div>
+<h1 class="" data-i18n="hero_h1">Every step through Lanna<br><em>is an unfinished poem</em></h1>
+<p class="lede" data-i18n="hero_lede">Travel gracefully through the sacred mountains, golden chedis, and living heritage of Northern Thailand — guided by local custodians and welcomed into private teak sanctuaries.</p>
+<div class="actions">
+<a class="btn btn-gold" href="#tours" data-i18n="hero_btn_explore">Explore Journeys</a>
+<a class="btn btn-line" href="#contact" data-i18n="hero_btn_consult">Private Consultation</a>
+</div>
+<svg class="hero-ornament" viewBox="0 0 140 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 12 Q17.5 2 35 12 T70 12 T105 12 T140 12" fill="none" stroke="#C6A15B" stroke-width="1.2"></path>
+<circle cx="70" cy="12" fill="#C6A15B" r="3.5"></circle>
+</svg>
+</section>
+<svg class="cloudline" preserveAspectRatio="none" viewBox="0 0 1180 22">
+<path d="M0 11 Q30 0 60 11 T120 11 T180 11 T240 11 T300 11 T360 11 T420 11 T480 11 T540 11 T600 11 T660 11 T720 11 T780 11 T840 11 T900 11 T960 11 T1020 11 T1080 11 T1180 11"></path>
+</svg>
+<!-- Story / Intro Section -->
+<section class="intro">
+<div class="wrap grid">
+<div>
+<div class="eyebrow" data-i18n="story_eyebrow">Our Story</div>
+<h2 class="" data-i18n="story_h2">We don't just show you Lanna —<br>we invite you to live in its rhythm.</h2>
+</div>
+<div class="side">
+<p class="" data-i18n="story_desc">We are a Chiang Mai based team passionate about showing you Northern Thailand the way we experience it ourselves.</p>
+<div class="stats">
+<div class="stat"><b data-i18n="stat_1_num">18</b><span class="" data-i18n="stat_1_label">Years on Lanna's paths</span></div>
+<div class="stat"><b data-i18n="stat_2_num">42</b><span class="" data-i18n="stat_2_label">Curated heritage stays</span></div>
+<div class="stat"><b data-i18n="stat_3_num">7</b><span class="" data-i18n="stat_3_label">Provinces under our care</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Curated Journeys -->
+<section class="tours" id="tours">
+<div class="wrap">
+<div class="head">
+<div>
+<div class="" style="color:var(--gold-soft); font-size:13.5px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px;" data-i18n="tours_kicker">Curated Journeys</div>
+<h2 class="" data-i18n="tours_h2">Immersive Northern Itineraries</h2>
+</div>
+<p class="" data-i18n="tours_desc">Small-group and private journeys designed for an intimate, unhurried experience of the North.</p>
+</div>
+<div class="tour-grid">
+<div class="tour-card" id="destination-chiang-mai">
+<div class="art">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 380">
+<defs>
+<linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2D4638"></stop>
+<stop offset="100%" stop-color="#141F19"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g1)" height="380" width="400"></rect>
+<path d="M0 260 L90 180 L160 230 L250 140 L340 210 L400 160 L400 380 L0 380 Z" fill="#203227"></path>
+<circle cx="320" cy="80" fill="#C6A15B" opacity="0.8" r="32"></circle>
+<path d="M120 280 L160 200 L200 280 Z" fill="#33513E" opacity="0.9"></path>
+<path d="M0 320 Q120 290 220 330 T400 300 L400 380 L0 380 Z" fill="#141F19"></path>
+</svg>
+</div>
+<div class="body"><div class="place" data-i18n="tour1_place">Chiang Mai , Thailand</div>
+<h3 data-i18n="tour1_title" class="">Legends of Chiang Mai: 3-Day Highlights</h3>
+<p data-i18n="tour1_desc" class="">Doi Inthanon with Pha Dok Siew trail, Sightseeing Doi Suthep and Thai cooking class, and Ethical Elephant Sanctuary with Bamboo Rafting.</p>
+<div class="foot"><span data-i18n="tour1_guests" class="">maximum 2 guests</span><span class="price"><b data-i18n="tour1_price">$1,000</b> /person</span></div></div>
+</div>
+<div class="tour-card" id="destination-chiang-rai">
+<div class="art">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260">
+<defs>
+<linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#26392E"></stop>
+<stop offset="100%" stop-color="#141F19"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g2)" height="260" width="300"></rect>
+<path d="M0 190 L60 130 L120 170 L180 110 L250 160 L300 130 L300 260 L0 260 Z" fill="#1E2E25"></path>
+<circle cx="80" cy="70" fill="#DBBD86" opacity="0.6" r="22"></circle>
+</svg>
+</div>
+<div class="body">
+<div class="place" data-i18n="tour_2_place">Chiang Rai , Thailand</div>
+<h3 class="" data-i18n="tour_2_title">Explore Chiang Rai &amp; Golden Triangle</h3>
+<p class="" data-i18n="tour_2_desc">Sea-of-fog mornings and hill-tribe villages, travelled at an unhurried, private pace.</p>
+<div class="foot"><span class="" data-i18n="tour_2_pax">3 days, 2 nights</span><span class="price"><b data-i18n="tour_2_price">$740</b> /person</span></div>
+</div>
+</div>
+<div class="tour-card" id="destination-pai">
+<div class="art">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260">
+<defs>
+<linearGradient id="g3" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#23352B"></stop>
+<stop offset="100%" stop-color="#121C16"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g3)" height="260" width="300"></rect>
+<circle cx="210" cy="70" fill="#33513E" opacity="0.85" r="28"></circle>
+<path d="M0 190 L100 140 L200 190 L300 150 L300 260 L0 260 Z" fill="#1B2B21"></path>
+</svg>
+</div>
+<div class="body">
+<div class="place" data-i18n="tour_3_place">Mae Hong Son , Thailand</div>
+<h3 class="" data-i18n="tour_3_title">Misty Ridges &amp; The Mountain Valleys</h3>
+<p class="" data-i18n="tour_3_desc">The whispered-love serenity of Pai and the quiet misty temples hidden along Mae Hong Son's ancient pine ridges.</p>
+<div class="foot"><span class="" data-i18n="tour_3_pax">3 days, 2 nights</span><span class="price"><b data-i18n="tour_3_price">$680</b> /person</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- What Sets Us Apart -->
+<section class="signature" id="signature" style="background: rgb(51, 81, 62); color: var(--paper);">
+<div class="wrap">
+<div class="head">
+<div class="eyebrow" data-i18n="sets_apart_eyebrow" style="color: var(--gold-soft); letter-spacing: 1.5px; text-transform: uppercase;">What Sets Us Apart</div>
+<h2 class="" data-i18n="sets_apart_h2" style="color: var(--paper);">Small details that become lasting memories</h2>
+</div>
+<div class="exp-list">
+<div class="exp">
+<svg class="mark" viewBox="0 0 34 34"><circle cx="17" cy="17" fill="none" r="15" stroke="#C6A15B" stroke-width="1.4"></circle><path d="M9 17 Q17 8 25 17 Q17 26 9 17 Z" fill="none" stroke="#C6A15B" stroke-width="1.2"></path></svg>
+<h3 class="" data-i18n="exp_1_title" style="color: var(--paper);">Morning Alms Ceremony</h3>
+<p class="" data-i18n="exp_1_desc" style="color: rgba(239, 230, 212, 0.82);">Join monks in a quiet lane of the old town, offering alms before the city wakes.</p>
+</div>
+<div class="exp">
+<svg class="mark" viewBox="0 0 34 34"><rect fill="none" height="18" stroke="#C6A15B" stroke-width="1.4" transform="rotate(45 17 17)" width="18" x="8" y="8"></rect></svg>
+<h3 class="" data-i18n="exp_2_title" style="color: var(--paper);">Private Khantoke Dinner</h3>
+<p class="" data-i18n="exp_2_desc" style="color: rgba(239, 230, 212, 0.82);">An authentic Lanna feast inside a private teak house, with a fingernail dance performed by local artists.</p>
+</div>
+<div class="exp">
+<svg class="mark" viewBox="0 0 34 34"><path d="M17 5 L27 29 L7 29 Z" fill="none" stroke="#C6A15B" stroke-width="1.4"></path></svg>
+<h3 class="" data-i18n="exp_3_title" style="color: var(--paper);">Northern Herbal Spa</h3>
+<p class="" data-i18n="exp_3_desc" style="color: rgba(239, 230, 212, 0.82);">Traditional compress and massage rituals passed down through generations of local healers.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Authentic Experiences & Guest Dispatches Interactive Carousel -->
+<style class="">
+  #reviews.quote-sec {
+    overflow: visible;
+  }
+  @media (max-width: 860px) {
+    .review-grid-container {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+  }
+</style>
+<!-- FULL-SCREEN / LIGHTBOX REVIEW VIEWER MODAL -->
+
+<!-- Gallery Section -->
+<section class="gallery" id="gallery">
+<div class="wrap">
+<div class="head">
+<h2 class="" data-i18n="gallery_title">Gallery</h2>
+<span class="" data-i18n="gallery_subtitle">Captured across Northern Thailand</span>
+</div>
+<div class="g-grid">
+<div class="g1" style="background:radial-gradient(circle at 30% 30%, #3a5444 0%, #1c2c22 100%);">
+<div class="g-caption" data-i18n="gallery_caption_1">Pha Dok Siew Trail</div>
+</div>
+<div class="g2" style="background:radial-gradient(circle at 40% 40%, #466752 0%, #223428 100%);">
+<div class="g-caption" data-i18n="gallery_caption_2">Wat Pha Lat</div>
+</div>
+<div class="g3" style="background:radial-gradient(circle at 50% 50%, #C6A15B 0%, #26392E 100%);">
+<div class="g-caption" data-i18n="gallery_caption_3">Lanna teak craft</div>
+</div>
+<div class="g4" style="background:radial-gradient(circle at 70% 30%, #30473a 0%, #16221b 100%);">
+<div class="g-caption" data-i18n="gallery_caption_4">Wat Rong Suea Ten</div>
+</div>
+<div class="g5" style="background:radial-gradient(circle at 40% 60%, #33513E 0%, #C6A15B 100%);">
+<div class="g-caption" data-i18n="gallery_caption_5">Bamboo Rafting along the river</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form / CTA -->
+<section class="cta-sec" id="contact">
+<div class="wrap">
+<h2 class="" data-i18n="contact_h2">Let Us Design Your Lanna Journey</h2>
+<p class="" data-i18n="contact_subtitle">Leave your email and our travel specialists will reach out within 24 hours to craft your tailored itinerary.</p>
+<form onsubmit="return false;">
+<input aria-label="Your email address" placeholder="Your email address" type="email" data-i18n-placeholder="contact_email_placeholder">
+<button class="btn btn-gold" type="submit" data-i18n="contact_btn_submit">Get in Touch</button>
+</form>
+</div>
+</section>
+<!-- Dark Responsive Footer -->
+<footer style="background: rgb(20, 31, 25); color: rgba(239, 230, 212, 0.75); padding: 90px 0px 42px; border-top: 1px solid rgba(198, 161, 91, 0.3); font-family: 'Jost', sans-serif;">
+<div class="wrap">
+<div class="f-grid">
+<!-- Column 1: Brand & Quiet Luxury Invitation -->
+<div>
+<div class="brand" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+<img alt="Northern Orchid Tours insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaT_m19uLfrX0cLKSmUcobPMsBREy2dwF_uvgtMa_uAaTqyQom-euhyJPC5VDvMnLGg_mrsDbRUtQMtagnpkmbvyqBrSpxsfpPooGE6DJ2466kA3I6DhK8PNhS4y3XcFphKVQc2FypAMjmjrKN--BCi3EoBKMGjOqHMAdo0O_qHTycIlzidpcshrimr4szpDMJdMPvdJ0GPXbwcmNELCYipJKZLmVE7dSapcSu5BKn9V7a3iN24CeylIwu0t1Gt8gpVA" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-soft); box-shadow: 0 2px 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+<span class="" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; letter-spacing: 0.6px; color: rgb(239, 230, 212);">Northern Orchid Tours</span>
+</div>
+<p class="" style="font-size: 13.5px; line-height: 1.85; color: rgba(239, 230, 212, 0.72); max-width: 320px; margin-bottom: 20px; font-weight: 300;" data-i18n="footer_motto">We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.</p>
+<div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1.2px; color: var(--gold-soft); text-transform: uppercase; font-weight: 500;">
+<span style="display: inline-block; width: 24px; height: 1px; background: rgba(198, 161, 91, 0.5);"></span>
+<span class="" data-i18n="footer_brand_tag">Lanna Heritage Sanctuaries</span>
+</div>
+</div>
+<!-- Column 2: Contact Information -->
+<div><h4 style="font-family: &quot;Cormorant Garamond&quot;, serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" class="" data-i18n="footer_contact_header">Contact</h4>
+<div style="display: flex; flex-direction: column; gap: 16px;" class="">
+  <!-- 1st: Location & Hours -->
+  
+
+  <!-- 2nd: WhatsApp with two phone numbers -->
+  <div style="display: flex; align-items: flex-start; gap: 12px;">
+    <a href="https://wa.me/66988198385" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp chat" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: rgba(239, 230, 212, 0.85); transition: all 0.25s; text-decoration: none; margin-top: 2px;" onmouseover="this.style.borderColor='#C6A15B'; this.style.color='#DBBD86'; this.style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.borderColor='rgba(198, 161, 91, 0.35)'; this.style.color='rgba(239, 230, 212, 0.85)'; this.style.background='transparent'">
+      <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="16"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 3px;">
+      <span style="color: var(--gold-soft); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;" class="" data-i18n="footer_whatsapp_label">WhatsApp</span>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <a href="tel:+66988198385" style="color: rgb(239, 230, 212); text-decoration: none; font-size: 13.5px; transition: color 0.25s;" onmouseover="this.style.color='#DBBD86'" onmouseout="this.style.color='#EFE6D4'" class="">+6698-8198385</a>
+        <a href="tel:+66613490982" style="color: rgb(239, 230, 212); text-decoration: none; font-size: 13.5px; transition: color 0.25s;" onmouseover="this.style.color='#DBBD86'" onmouseout="this.style.color='#EFE6D4'" class="">+6661-349-0982</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3rd: Phone icon & Call line -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="tel:+66988198385" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="color: var(--gold-soft); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;" class="" data-i18n="footer_call_label">Direct Call</span>
+        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_whatsapp_label">WhatsApp</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- 4th: Facebook -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="https://www.facebook.com/profile.php?id=61571111382735" target="_blank" rel="noopener noreferrer" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      </div>
+      <span style="color: #EFE6D4; font-size: 13.5px;" class="">Northern Orchid Tours</span>
+    </a>
+  </div>
+
+  <!-- 5th: Email -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="mailto:northernorchidtours@gmail.com" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="color: var(--gold-soft); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;" class="" data-i18n="footer_email_label">Email Us</span>
+        <span style="color: #EFE6D4; font-size: 13.5px; word-break: break-all;" class="">northernorchidtours@gmail.com</span>
+      </div>
+    </a>
+  </div>
+</div></div>
+<!-- Column 3: Preferences & Policies -->
+<div>
+<h4 class="" style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" data-i18n="footer_pref_header">Preferences &amp; Policies</h4>
+<!-- Switchers Container -->
+<div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+<!-- Language Switcher -->
+<div style="position: relative;">
+<label class="" style="display: block; font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 6px; font-weight: 500;" data-i18n="footer_lang_label">Language</label>
+<button id="footerLangBtn" onclick="(function(){const d=document.getElementById('footerLangMenu'); const c=document.getElementById('footerCurrMenu'); if(c) c.style.display='none'; d.style.display = d.style.display==='block'?'none':'block';})()" style="min-height: 44px; width: 100%; display: flex; align-items: center; justify-content: space-between; background: rgba(20, 31, 25, 0.7); border: 1px solid rgba(198, 161, 91, 0.35); padding: 8px 12px; border-radius: 2px; color: #EFE6D4; font-family: 'Jost', sans-serif; font-size: 13px; cursor: pointer; transition: border-color 0.25s;" type="button">
+<span class="" id="footerSelectedLang" style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--gold);">✦</span> English</span>
+<svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></li><li class=""><button onclick="window.changeLanguage('fr')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Français (France)</button></li></ul>
+</div>
+<!-- Currency Switcher -->
+<div style="position: relative;">
+<label class="" style="display: block; font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 6px; font-weight: 500;" data-i18n="footer_lang_label">Language</label>
+<button id="footerCurrBtn" onclick="(function(){const d=document.getElementById('footerCurrMenu'); const l=document.getElementById('footerLangMenu'); if(l) l.style.display='none'; d.style.display = d.style.display==='block'?'none':'block';})()" style="min-height: 44px; width: 100%; display: flex; align-items: center; justify-content: space-between; background: rgba(20, 31, 25, 0.7); border: 1px solid rgba(198, 161, 91, 0.35); padding: 8px 12px; border-radius: 2px; color: #EFE6D4; font-family: 'Jost', sans-serif; font-size: 13px; cursor: pointer; transition: border-color 0.25s;" type="button">
+<span class="" id="footerSelectedCurr" style="display: flex; align-items: center; gap: 8px;"><span class="" style="color: var(--gold);">฿</span> THB — Thai Baht</span>
+<svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<ul id="footerCurrMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;">
+<li class=""><button class="" onclick="(function(){document.getElementById('footerSelectedCurr').innerHTML='&lt;span style=\'color: var(--gold);\'&gt;฿&lt;/span&gt; THB — Thai Baht'; document.getElementById('footerCurrMenu').style.display='none';})()" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button">THB — Thai Baht</button></li>
+<li class=""><button class="" onclick="(function(){document.getElementById('footerSelectedCurr').innerHTML='&lt;span style=\'color: var(--gold);\'&gt;$&lt;/span&gt; USD — US Dollar'; document.getElementById('footerCurrMenu').style.display='none';})()" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button">USD — US Dollar</button></li>
+<li class=""><button class="" onclick="(function(){document.getElementById('footerSelectedCurr').innerHTML='&lt;span style=\'color: var(--gold);\'&gt;€&lt;/span&gt; EUR — Euro'; document.getElementById('footerCurrMenu').style.display='none';})()" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button">EUR — Euro</button></li>
+</ul>
+</div>
+</div>
+<!-- Legal & Policy Links -->
+<div>
+<div class="" style="font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 10px; font-weight: 500;" data-i18n="footer_legal_header">Legal &amp; Policy</div>
+<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li><li class=""><a href="#terms-modal" id="termsLink" class="legal-link" data-i18n="legal_link_terms" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'">Terms &amp; Guest Conditions</a></li><li class=""><a href="#privacy-modal" id="privacyLink" class="legal-link" data-i18n="legal_link_privacy" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'">Privacy &amp; Data Sanctuary</a></li></ul>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="f-bottom">
+<span class="" data-i18n="footer_copyright">© 2026 Northern Orchid Tours. All rights reserved.</span>
+
+<span class="" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14.5px; color: var(--gold-soft);">Designed with quiet care in Chiang Mai · Lanna Heritage Sanctuary</span>
+</div>
+</div>
+</footer><div id="policyModalOverlay" style="position: fixed; inset: 0px; background: rgba(10, 18, 14, 0.85); backdrop-filter: blur(10px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 24px;"><div id="policyModalCard" style="background: rgb(25, 39, 32); border: 1px solid rgba(198, 161, 91, 0.4); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.6) 0px 25px 60px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.96) translateY(12px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);"><div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(198, 161, 91, 0.25); background: rgba(20, 31, 25, 0.95);"><h3 id="policyModalTitle" style="font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: #DBBD86; margin: 0;" class="">Privacy &amp; Data Sanctuary</h3><button id="closePolicyModal" aria-label="Close policy dialog" type="button" style="background: none; border: 1px solid rgba(198, 161, 91, 0.35); color: #EFE6D4; width: 38px; height: 38px; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div id="policyModalBody" style="padding: 28px; overflow-y: auto; color: rgba(239, 230, 212, 0.85); font-size: 14.5px; line-height: 1.8; font-family: 'Jost', sans-serif;"><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;" class="">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;" class="">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">3. Right to Erasure</h4><p class="">At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p></div><div style="padding: 16px 28px; border-top: 1px solid rgba(198, 161, 91, 0.2); background: rgba(20, 31, 25, 0.9); display: flex; justify-content: flex-end;"><button id="policyModalCloseBtn" type="button" class="btn btn-gold" style="padding: 8px 24px; font-size: 13px; min-height: 38px; min-width: 100px; cursor: pointer;">Close</button></div></div></div><script>(function(){const overlay = document.getElementById('policyModalOverlay'); const card = document.getElementById('policyModalCard'); const title = document.getElementById('policyModalTitle'); const body = document.getElementById('policyModalBody'); const closeBtn = document.getElementById('closePolicyModal'); const closeBtnBottom = document.getElementById('policyModalCloseBtn'); const policies = { booking: { title: 'Booking & Cancellation Policy', content: '<h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">1. Reservation & Deposit</h4><p style="margin-bottom: 16px;">To confirm your private expedition across Northern Thailand, a 30% sanctuary reservation deposit is requested upon confirmation of the tailored itinerary.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">2. Flexible Cancellation & Date Changes</h4><p style="margin-bottom: 16px;">Cancellations made 14 or more days prior to departure receive a full refund minus minimal banking fees. Date adjustments within 12 months are welcomed without penalty subject to boutique lodge availability.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">3. Inclement Weather & Safety</h4><p>Mountain trails and river journeys are curated with highest safety standards. In the rare event of severe mountain weather, alternate cultural sanctuaries and private workshops are seamlessly arranged.</p>' }, terms: { title: 'Terms & Guest Conditions', content: '<h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">1. Cultural Respect & Sanctuary Etiquette</h4><p style="margin-bottom: 16px;">Guests travelling to sacred Lanna temples, hill-tribe villages, and royal conservation sanctuaries are invited to dress with modest consideration (covered shoulders and knees) in alignment with ancient Lanna customs.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">2. Vehicle Care & Private Chauffeurs</h4><p style="margin-bottom: 16px;">All luxury transports (private sedans, premium SUVs, and executive VIP vans) are operated by certified, insured custodians with intimate knowledge of mountain terrain.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">3. Health & Well-being</h4><p>Please notify our concierge of any mobility preferences, dietary wishes, or medical considerations so customized provisions and restorative botanical refreshments can be tailored ahead.</p>' }, privacy: { title: 'Privacy & Data Sanctuary', content: '<h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: Cormorant Garamond, serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;">3. Right to Erasure</h4><p>At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p>' } }; function openPolicy(key) { const p = policies[key]; if (!p || !overlay || !card) return; title.textContent = p.title; body.innerHTML = p.content; overlay.style.opacity = '1'; overlay.style.pointerEvents = 'auto'; card.style.transform = 'scale(1) translateY(0)'; document.body.style.overflow = 'hidden'; } function hidePolicy() { if (!overlay || !card) return; overlay.style.opacity = '0'; overlay.style.pointerEvents = 'none'; card.style.transform = 'scale(0.96) translateY(12px)'; document.body.style.overflow = ''; } if (closeBtn) closeBtn.addEventListener('click', hidePolicy); if (closeBtnBottom) closeBtnBottom.addEventListener('click', hidePolicy); if (overlay) overlay.addEventListener('click', function(e){ if (e.target === overlay) hidePolicy(); }); document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hidePolicy(); }); const bookLink = document.getElementById('bookingPolicyLink') || document.querySelector('a[href="#booking-policy"]'); if (bookLink) { bookLink.addEventListener('click', function(e){ e.preventDefault(); openPolicy('booking'); }); } const termsLnk = document.getElementById('termsLink'); if (termsLnk) { termsLnk.addEventListener('click', function(e){ e.preventDefault(); openPolicy('terms'); }); } const privLnk = document.getElementById('privacyLink'); if (privLnk) { privLnk.addEventListener('click', function(e){ e.preventDefault(); openPolicy('privacy'); }); } })();</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ---------------------------------------------
+    // Desktop Dropdowns
+    // ---------------------------------------------
+    const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+    dropdownItems.forEach(item => {
+      const button = item.querySelector('.nav-link');
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = item.classList.contains('active');
+        dropdownItems.forEach(d => {
+          d.classList.remove('active');
+          const btn = d.querySelector('.nav-link');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('active');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item.has-dropdown')) {
+        dropdownItems.forEach(d => {
+          d.classList.remove('active');
+          const btn = d.querySelector('.nav-link');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // ---------------------------------------------
+    // Mobile Drawer
+    // ---------------------------------------------
+    const mobileMenuOpen = document.getElementById('mobileMenuOpen');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileOverlay = document.getElementById('mobileDrawerOverlay');
+    const mobileDrawerLinks = document.querySelectorAll('.mobile-drawer-link');
+
+    function openMobileMenu() {
+      if (!mobileDrawer || !mobileOverlay) return;
+      mobileDrawer.classList.add('open');
+      mobileOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      if (!mobileDrawer || !mobileOverlay) return;
+      mobileDrawer.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileMenuOpen) mobileMenuOpen.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+
+    mobileDrawerLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
+    accordionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('.mobile-accordion');
+        parent.classList.toggle('open');
+      });
+    });
+
+    // ---------------------------------------------
+    // Review Carousel Setup
+    // ---------------------------------------------
+    const reviewData = [
+      {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBS8540Lw2i8eNwiMbiC9xigdSyN3oq3UFv-Le8G_RFZgxsGDrkiHqaSYZHKblvVTRTI8-VsAxoAZ8lBpcdWK_XcTBum9IDZ3aLP4p6bxrP6Nk3Y4NV2hO0XUB1K2J9lLQk9KNaHSfsRiF3vI99H8C4zgUDeDIhkjN_mtLomtd0azqhQ4RU4-iZtVMPHtgucIVJz7oaeddmCkkw2TfO3EYGAn9qkI2y6EtJTcf6T9EiEF6ee4nObryXvNF4vTfKWnrTkw',
+        title: 'Anna Andresen — Verified Review',
+        dispatch: '1 of 3 — Verified Expedition Feedback',
+        caption: 'Chiang Mai Private Family Expedition'
+      },
+      {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTh_mKIBnJ79ErEp5-ObgZVBEWQjShykPMe_zb5awdyLIGHCzxJLdHuLUFZujRTlwp1KfENuY2v_3t0Ky1jgQy9gncB174MrLBTrTZ8dhf2EwQOxwXzgHrFt5Yvx33eeId7XJeElv_H5BXbteFNpQr7-BL3s-aDnzykdklqpEcsk9iQ1ak6E3tock0sVDUTYLAf0ABztqv-8UgvcWymp0u_AzPTdI2fLcNvC0gYjNciBapMh0PHqZldxZs8phpiKRiFw',
+        title: 'Tessa Stein — Verified Review',
+        dispatch: '2 of 3 — Verified Expedition Feedback',
+        caption: 'Doi Inthanon Private Sanctuary Journey'
+      },
+      {
+        src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFAeNIIIHnwKXcv1bHxPKwYJFxTAi3ZT6caB-QTJdTE-PjtKd9Gvhc3vodLUKtJsI4uzpdNBZB87h_QLNta0yblovIROoG7imBAggK-WbcZtz7Ed3ZJsUbA6JC2IO4Q3YGiMknn1if5zH-Re9P79MbAiT08VnxhKyQUoqM0UXlfU3ekdyaHkVSVmfKPEvta2_xWUTMA7f0p7r_HAZMLMRnremgkizUV5WmJWbYsicvwjuWMdvluCT8CSfGsFULup4mFQ',
+        title: 'Marta Ergo Love — Verified Review',
+        dispatch: '3 of 3 — Verified Expedition Feedback',
+        caption: 'Chiang Rai & Doi Inthanon Expedition'
+      }
+    ];
+
+    const slidesContainer = document.getElementById('carouselSlides');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('carouselPrevBtn');
+    const nextBtn = document.getElementById('carouselNextBtn');
+    const dispatchLabel = document.getElementById('carouselDispatchLabel');
+    const captionLabel = document.getElementById('carouselCaptionLabel');
+    const carouselWrapper = document.getElementById('reviewCarousel');
+    const trackContainer = document.getElementById('carouselTrackContainer');
+
+    let currentSlide = 0;
+    const totalSlides = reviewData.length;
+
+    function updateCarouselSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentSlide = index;
+
+      if (slidesContainer) {
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+
+      const currentItem = reviewData[currentSlide];
+      if (currentItem) {
+        if (dispatchLabel) dispatchLabel.textContent = `AUTHENTIC CLIENT DISPATCH · ${currentItem.dispatch}`;
+        if (captionLabel) captionLabel.textContent = currentItem.caption;
+      }
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => updateCarouselSlide(currentSlide - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => updateCarouselSlide(currentSlide + 1));
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => updateCarouselSlide(index));
+    });
+
+    // Touch & Drag Swipe for Carousel
+    let startX = 0;
+    let isDragging = false;
+
+    if (trackContainer) {
+      // Touch events
+      trackContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      trackContainer.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0) updateCarouselSlide(currentSlide + 1);
+          else updateCarouselSlide(currentSlide - 1);
+        }
+      }, { passive: true });
+
+      // Mouse drag events
+      trackContainer.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = e.clientX - startX;
+        if (Math.abs(diff) > 50) {
+          if (diff < 0) updateCarouselSlide(currentSlide + 1);
+          else updateCarouselSlide(currentSlide - 1);
+        }
+      });
+    }
+
+    // ---------------------------------------------
+    // FULL-SCREEN / LIGHTBOX VIEWER IMPLEMENTATION
+    // ---------------------------------------------
+    const lightbox = document.getElementById('reviewLightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbCanvas = document.getElementById('lbCanvas');
+    const lbViewport = document.getElementById('lbViewport');
+    const lbTitleText = document.getElementById('lbTitleText');
+    const lbCounterBadge = document.getElementById('lbCounterBadge');
+    const lbCloseBtn = document.getElementById('lbCloseBtn');
+    const lbZoomInBtn = document.getElementById('lbZoomInBtn');
+    const lbZoomOutBtn = document.getElementById('lbZoomOutBtn');
+    const lbResetBtn = document.getElementById('lbResetBtn');
+    const lbPrevArrow = document.getElementById('lbPrevArrow');
+    const lbNextArrow = document.getElementById('lbNextArrow');
+    const lbFooterPrevBtn = document.getElementById('lbFooterPrevBtn');
+    const lbFooterNextBtn = document.getElementById('lbFooterNextBtn');
+    const lbDots = document.querySelectorAll('.lb-dot');
+
+    let currentLbIndex = 0;
+    let scale = 1;
+    let panX = 0;
+    let panY = 0;
+    let isPanning = false;
+    let panStartX = 0;
+    let panStartY = 0;
+    let initialPinchDistance = 0;
+    let startScale = 1;
+    let lastTapTime = 0;
+
+    function applyTransform(smooth = false) {
+      if (!lbCanvas) return;
+      lbCanvas.style.transition = smooth ? 'transform 0.25s cubic-bezier(0.2, 0.8, 0.4, 1)' : 'none';
+      lbCanvas.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+      if (lbViewport) {
+        if (scale > 1.05) {
+          lbViewport.classList.add('grabbing');
+        } else {
+          lbViewport.classList.remove('grabbing');
+        }
+      }
+    }
+
+    function resetZoomPan(smooth = true) {
+      scale = 1;
+      panX = 0;
+      panY = 0;
+      applyTransform(smooth);
+    }
+
+    function constrainPan() {
+      if (!lbViewport || !lbImage) return;
+      const vRect = lbViewport.getBoundingClientRect();
+      const scaledW = (lbImage.offsetWidth || vRect.width * 0.85) * scale;
+      const scaledH = (lbImage.offsetHeight || vRect.height * 0.75) * scale;
+
+      const maxPanX = Math.max(0, (scaledW - vRect.width) / 2 + 50);
+      const maxPanY = Math.max(0, (scaledH - vRect.height) / 2 + 50);
+
+      if (scale <= 1) {
+        panX = 0;
+        panY = 0;
+      } else {
+        panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
+        panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
+      }
+    }
+
+    function setZoom(newScale, smooth = true) {
+      scale = Math.min(4.0, Math.max(1.0, newScale));
+      constrainPan();
+      applyTransform(smooth);
+    }
+
+    function setLightboxImage(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentLbIndex = index;
+
+      const item = reviewData[currentLbIndex];
+      if (!item) return;
+
+      if (lbImage) lbImage.src = item.src;
+      if (lbTitleText) lbTitleText.textContent = item.title;
+      if (lbCounterBadge) lbCounterBadge.textContent = `${currentLbIndex + 1} of ${totalSlides}`;
+
+      lbDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentLbIndex);
+      });
+
+      resetZoomPan(false);
+    }
+
+    function openLightbox(index = 0) {
+      setLightboxImage(index);
+      if (lightbox) {
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (lightbox) {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+      }
+      resetZoomPan(false);
+      document.body.style.overflow = '';
+    }
+
+    // Hook carousel slides click to open lightbox
+    const triggerBoxes = document.querySelectorAll('.open-lightbox-trigger');
+    triggerBoxes.forEach((box) => {
+      box.addEventListener('click', (e) => {
+        const slide = box.closest('.carousel-slide');
+        const index = slide ? parseInt(slide.getAttribute('data-index') || '0', 10) : currentSlide;
+        openLightbox(index);
+      });
+    });
+
+    // Close buttons
+    if (lbCloseBtn) lbCloseBtn.addEventListener('click', closeLightbox);
+    if (lbResetBtn) lbResetBtn.addEventListener('click', () => resetZoomPan(true));
+
+    // Next / Prev within Lightbox
+    function nextLbReview() {
+      setLightboxImage(currentLbIndex + 1);
+      updateCarouselSlide(currentLbIndex);
+    }
+    function prevLbReview() {
+      setLightboxImage(currentLbIndex - 1);
+      updateCarouselSlide(currentLbIndex);
+    }
+
+    if (lbPrevArrow) lbPrevArrow.addEventListener('click', prevLbReview);
+    if (lbNextArrow) lbNextArrow.addEventListener('click', nextLbReview);
+    if (lbFooterPrevBtn) lbFooterPrevBtn.addEventListener('click', prevLbReview);
+    if (lbFooterNextBtn) lbFooterNextBtn.addEventListener('click', nextLbReview);
+
+    lbDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
+        setLightboxImage(idx);
+        updateCarouselSlide(idx);
+      });
+    });
+
+    // Zoom Buttons
+    if (lbZoomInBtn) {
+      lbZoomInBtn.addEventListener('click', () => {
+        setZoom(scale + 0.45, true);
+      });
+    }
+    if (lbZoomOutBtn) {
+      lbZoomOutBtn.addEventListener('click', () => {
+        setZoom(scale - 0.45, true);
+      });
+    }
+
+    // Mouse Wheel Zoom
+    if (lbViewport) {
+      lbViewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY * -0.0018;
+        setZoom(scale + delta * 2.2, false);
+      }, { passive: false });
+
+      // Mouse Drag / Pan
+      lbViewport.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.lb-nav-arrow') || e.target.closest('button')) return;
+        isPanning = true;
+        panStartX = e.clientX - panX;
+        panStartY = e.clientY - panY;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isPanning) return;
+        e.preventDefault();
+        panX = e.clientX - panStartX;
+        panY = e.clientY - panStartY;
+        constrainPan();
+        applyTransform(false);
+      });
+
+      window.addEventListener('mouseup', () => {
+        isPanning = false;
+      });
+
+      // Touch events (Pinch-to-zoom + Pan + Double-tap)
+      function getTouchDistance(t1, t2) {
+        const dx = t1.clientX - t2.clientX;
+        const dy = t1.clientY - t2.clientY;
+        return Math.hypot(dx, dy);
+      }
+
+      lbViewport.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+          initialPinchDistance = getTouchDistance(e.touches[0], e.touches[1]);
+          startScale = scale;
+        } else if (e.touches.length === 1) {
+          // Check double tap
+          const now = Date.now();
+          if (now - lastTapTime < 300) {
+            // Double tap toggle
+            if (scale > 1.2) {
+              resetZoomPan(true);
+            } else {
+              setZoom(2.2, true);
+            }
+            lastTapTime = 0;
+            return;
+          }
+          lastTapTime = now;
+
+          isPanning = true;
+          panStartX = e.touches[0].clientX - panX;
+          panStartY = e.touches[0].clientY - panY;
+        }
+      }, { passive: false });
+
+      lbViewport.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const dist = getTouchDistance(e.touches[0], e.touches[1]);
+          if (initialPinchDistance > 0) {
+            const factor = dist / initialPinchDistance;
+            setZoom(startScale * factor, false);
+          }
+        } else if (e.touches.length === 1 && isPanning && scale > 1) {
+          e.preventDefault();
+          panX = e.touches[0].clientX - panStartX;
+          panY = e.touches[0].clientY - panStartY;
+          constrainPan();
+          applyTransform(false);
+        }
+      }, { passive: false });
+
+      lbViewport.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+          isPanning = false;
+          initialPinchDistance = 0;
+        }
+      });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const isLbOpen = lightbox && lightbox.classList.contains('open');
+
+      if (isLbOpen) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+          nextLbReview();
+        } else if (e.key === 'ArrowLeft') {
+          prevLbReview();
+        } else if (e.key === '+' || e.key === '=') {
+          setZoom(scale + 0.35, true);
+        } else if (e.key === '-' || e.key === '_') {
+          setZoom(scale - 0.35, true);
+        }
+        return;
+      }
+
+      // If lightbox is not open, allow carousel arrow keys
+      const rect = carouselWrapper ? carouselWrapper.getBoundingClientRect() : null;
+      if (!rect) return;
+      const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (isInView) {
+        if (e.key === 'ArrowLeft') {
+          updateCarouselSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+          updateCarouselSlide(currentSlide + 1);
+        }
+      }
+    });
+  });
+</script>
+
+
+<script id="i18n-script">
+(function() {
+  const translations = {
+    en: {
+      nav_destination: "Destination",
+      nav_transport: "Transport",
+      nav_activities: "Activities",
+      nav_gallery: "Gallery",
+      nav_contact: "Contact",
+      nav_booking_now: "Booking Now",
+      dest_chiang_mai: "Chiang Mai",
+      dest_chiang_rai: "Chiang Rai",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      trans_sedan: "Sedan",
+      trans_suv: "SUV",
+      trans_van: "Van (Toyota Commuter)",
+      trans_airport: "Airport Transfer",
+      hero_kicker: "L A N N A &nbsp; L U X U R Y &nbsp; J O U R N E Y S",
+      hero_h1: "Every step through Lanna<br><em>is an unfinished poem</em>",
+      hero_lede: "Travel gracefully through the sacred mountains, golden chedis, and living heritage of Northern Thailand — guided by local custodians and welcomed into private teak sanctuaries.",
+      hero_btn_explore: "Explore Journeys",
+      hero_btn_consult: "Private Consultation",
+      story_eyebrow: "Our Story",
+      story_h2: "We don't just show you Lanna —<br>we invite you to live in its rhythm.",
+      story_desc: "We are a Chiang Mai based team passionate about showing you Northern Thailand the way we experience it ourselves.",
+      stat_1_num: "18",
+      stat_1_label: "Years on Lanna's paths",
+      stat_2_num: "42",
+      stat_2_label: "Curated heritage stays",
+      stat_3_num: "7",
+      stat_3_label: "Provinces under our care",
+      tours_kicker: "Curated Journeys",
+      tours_h2: "Immersive Northern Itineraries",
+      tours_desc: "Small-group and private journeys designed for an intimate, unhurried experience of the North.",
+      tour_1_place: "Chiang Mai , Thailand",
+      tour_1_title: "Legends of Lanna — 3 Day Highlights",
+      tour_1_desc: "Sunrise at Doi Suthep, a quiet boat along the Kok River, and a private khantoke dinner inside a heritage teak house.",
+      tour_1_pax: "2–6 guests",
+      tour_1_price: "$1,340",
+      per_person: "/person",
+      tour_2_place: "Chiang Rai , Thailand",
+      tour_2_title: "Explore Chiang Rai & Golden Triangle",
+      tour_2_desc: "Sea-of-fog mornings and hill-tribe villages, travelled at an unhurried, private pace.",
+      tour_2_pax: "3 days, 2 nights",
+      tour_2_price: "$740",
+      tour_3_place: "Mae Hong Son , Thailand",
+      tour_3_title: "Misty Ridges & The Mountain Valleys",
+      tour_3_desc: "The whispered-love serenity of Pai and the quiet misty temples hidden along Mae Hong Son's ancient pine ridges.",
+      tour_3_pax: "3 days, 2 nights",
+      tour_3_price: "$680",
+      sets_apart_eyebrow: "What Sets Us Apart",
+      sets_apart_h2: "Small details that become lasting memories",
+      exp_1_title: "Morning Alms Ceremony",
+      exp_1_desc: "Join monks in a quiet lane of the old town, offering alms before the city wakes.",
+      exp_2_title: "Private Khantoke Dinner",
+      exp_2_desc: "An authentic Lanna feast inside a private teak house, with a fingernail dance performed by local artists.",
+      exp_3_title: "Northern Herbal Spa",
+      exp_3_desc: "Traditional compress and massage rituals passed down through generations of local healers.",
+      exp_kicker: "AUTHENTIC EXPERIENCES",
+      exp_h2: "Quiet Moments & Enduring Memories",
+      review_zoom_badge: "Tap to view full resolution & zoom ⤢",
+      reviews_archived_tag: "Archived guest dispatches from private expeditions",
+      lb_reset_btn: "100% Reset",
+      lb_prev_review: "Previous Review",
+      lb_next_review: "Next Review",
+      lb_hint_mobile: "Pinch or double tap to zoom • Drag to pan",
+      gallery_title: "Gallery",
+      gallery_subtitle: "Captured across Northern Thailand",
+      gallery_caption_1: "Pha Dok Siew Trail",
+      gallery_caption_2: "Wat Pha Lat",
+      gallery_caption_3: "Lanna teak craft",
+      gallery_caption_4: "Wat Rong Suea Ten",
+      gallery_caption_5: "Bamboo Rafting along the river",
+      contact_h2: "Let Us Design Your Lanna Journey",
+      contact_subtitle: "Leave your email and our travel specialists will reach out within 24 hours to craft your tailored itinerary.",
+      contact_email_placeholder: "Your email address",
+      contact_btn_submit: "Get in Touch",
+      footer_brand_tag: "Lanna Heritage Sanctuaries",
+      footer_motto: "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
+      footer_contact_header: "Contact",
+      footer_loc_label: "Location",
+      footer_loc_val: "Chiang Mai, Thailand",
+      footer_hours_val: "Daily 08:00 – 09:00 PM",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "Direct Call",
+      footer_email_label: "Email Us",
+      footer_pref_header: "Preferences & Policies",
+      footer_lang_label: "Language",
+      footer_curr_label: "Currency",
+      footer_legal_header: "Legal & Policy",
+      legal_link_booking: "Booking & Cancellation Policy",
+      legal_link_terms: "Terms & Guest Conditions",
+      legal_link_privacy: "Privacy & Data Sanctuary",
+      footer_copyright: "© 2026 Northern Orchid Tours. All rights reserved."
+    },
+    th: {
+      nav_destination: "จุดหมายปลายทาง",
+      nav_transport: "ยานพาหนะ",
+      nav_activities: "กิจกรรมพิเศษ",
+      nav_gallery: "แกลเลอรี",
+      nav_contact: "ติดต่อเรา",
+      nav_booking_now: "จองตอนนี้",
+      dest_chiang_mai: "เชียงใหม่",
+      dest_chiang_rai: "เชียงราย",
+      dest_pai: "แม่ฮ่องสอน & ปาย",
+      dest_nan: "น่าน",
+      dest_sukhothai: "สุโขทัย",
+      trans_sedan: "รถเก๋งซีดาน",
+      trans_suv: "รถยนต์ SUV",
+      trans_van: "รถตู้พรีเมียม (Toyota Commuter)",
+      trans_airport: "บริการรับ-ส่งสนามบิน",
+      hero_kicker: "ก า ร เ ดิ น ท า ง แ ส น ป ร ะ ณี ต แ ห่ ง ล้ า น น า",
+      hero_h1: "ทุกย่างก้าวผ่านดินแดนล้านนา<br><em>ดั่งบทกวีอันงดงามมิรู้จบ</em>",
+      hero_lede: "สัมผัสเทือกเขาศักดิ์สิทธิ์ เจดีย์ทองอร่าม และมรดกชีวิตแห่งแดนเหนือของไทย — ดูแลนำทางอย่างใกล้ชิดโดยผู้คนท้องถิ่นและพักผ่อนในเรือนไม้สักส่วนตัว",
+      hero_btn_explore: "ค้นหาโปรแกรมท่องเที่ยว",
+      hero_btn_consult: "ปรึกษาการเดินทางส่วนตัว",
+      story_eyebrow: "เรื่องราวของเรา",
+      story_h2: "เรามิได้เพียงพาคุณชมล้านนา —<br>แต่เราชวนคุณมาใช้ชีวิตในจังหวะแห่งล้านนา",
+      story_desc: "เราคือทีมงานท้องถิ่นเชียงใหม่ที่มุ่งมั่นส่งต่อมนต์เสน่ห์แห่งภาคเหนือในแบบที่เราผูกพันและสัมผัสอย่างแท้จริง",
+      stat_1_num: "18",
+      stat_1_label: "ปีบนเส้นทางล้านนา",
+      stat_2_num: "42",
+      stat_2_label: "ที่พักทรงคุณค่าที่คัดสรร",
+      stat_3_num: "7",
+      stat_3_label: "จังหวัดในการดูแลของเรา",
+      tours_kicker: "การเดินทางที่คัดสรร",
+      tours_h2: "กำหนดการท่องเที่ยวล้านนาอันดื่มด่ำ",
+      tours_desc: "การเดินทางกลุ่มเล็กและส่วนตัว เพื่อให้คุณสัมผัสภาคเหนืออย่างใกล้ชิดและไม่เร่งรีบ",
+      tour_1_place: "เชียงใหม่ , ประเทศไทย",
+      tour_1_title: "ตำนานล้านนา — ไฮไลต์ 3 วัน 2 คืน",
+      tour_1_desc: "รับแสงอรุณที่ดอยสุเทพ ล่องเรืออันเงียบสงบตามลำน้ำกก และดินเนอร์ขันโตกส่วนตัวในเรือนไม้สักโบราณ",
+      tour_1_pax: "2–6 ท่าน",
+      tour_1_price: "$1,340",
+      per_person: "/ท่าน",
+      tour_2_place: "เชียงราย , ประเทศไทย",
+      tour_2_title: "มนต์เสน่ห์เชียงราย & สามเหลี่ยมทองคำ",
+      tour_2_desc: "อรุณรุ่งแห่งทะเลหมอกและหมู่บ้านชนเผ่า เดินทางอย่างผ่อนคลายและเป็นส่วนตัว",
+      tour_2_pax: "3 วัน 2 คืน",
+      tour_2_price: "$740",
+      tour_3_place: "แม่ฮ่องสอน , ประเทศไทย",
+      tour_3_title: "ทิวหมอกและหุบเขาแห่งปาย",
+      tour_3_desc: "ความสงบเงียบแสนโรแมนติกของเมืองปาย และวัดในม่านหมอกโบราณท่ามกลางทิวสนแม่ฮ่องสอน",
+      tour_3_pax: "3 วัน 2 คืน",
+      tour_3_price: "$680",
+      sets_apart_eyebrow: "สิ่งที่ทำให้เราแตกต่าง",
+      sets_apart_h2: "รายละเอียดเล็กๆ ที่กลายเป็นความทรงจำตลอดกาล",
+      exp_1_title: "พิธีตักบาตรยามเช้า",
+      exp_1_desc: "ร่วมตักบาตรยามเช้าตรู่ในตรอกอันสงบของเมืองเก่า ก่อนที่เมืองจะตื่นจากการหลับใหล",
+      exp_2_title: "ดินเนอร์ขันโตกส่วนตัว",
+      exp_2_desc: "ลิ้มรสอาหารล้านนาแท้ในเรือนไม้สักส่วนตัว พร้อมชมการแสดงฟ้อนเล็บโดยศิลปินท้องถิ่น",
+      exp_3_title: "สปาสมุนไพรล้านนา",
+      exp_3_desc: "ศาสตร์แห่งการประคบสมุนไพรและการนวดบำบัดที่ส่งต่อจากรุ่นสู่รุ่นโดยหมอพื้นบ้าน",
+      exp_kicker: "ประสบการณ์จริงจากผู้เดินทาง",
+      exp_h2: "ช่วงเวลาอันเงียบสงบและความทรงจำที่ยืนยาว",
+      review_zoom_badge: "แตะเพื่อดูภาพขนาดเต็มและซูม ⤢",
+      reviews_archived_tag: "บันทึกความประทับใจจากผู้ร่วมทริปส่วนตัวของเรา",
+      lb_reset_btn: "รีเซ็ต 100%",
+      lb_prev_review: "รีวิวก่อนหน้า",
+      lb_next_review: "รีวิวถัดไป",
+      lb_hint_mobile: "จีบนิ้วหรือแตะสองครั้งเพื่อซูม • ลากเพื่อเลื่อนดู",
+      gallery_title: "แกลเลอรีภาพถ่าย",
+      gallery_subtitle: "บันทึกภาพทั่วดินแดนภาคเหนือของไทย",
+      gallery_caption_1: "เส้นทางศึกษาธรรมชาติผาดอกเสี้ยว",
+      gallery_caption_2: "วัดผาลาด (สกทาคามี)",
+      gallery_caption_3: "งานหัตถศิลป์ไม้สักล้านนา",
+      gallery_caption_4: "วัดร่องเสือเต้น เชียงราย",
+      gallery_caption_5: "ล่องแพไม้ไผ่ริมสายน้ำ",
+      contact_h2: "ให้เราช่วยออกแบบการเดินทางล้านนาของคุณ",
+      contact_subtitle: "กรอกอีเมลของคุณ แล้วผู้เชี่ยวชาญด้านการเดินทางของเราจะติดต่อกลับภายใน 24 ชั่วโมงเพื่อจัดโปรแกรมเฉพาะสำหรับคุณ",
+      contact_email_placeholder: "อีเมลของคุณ",
+      contact_btn_submit: "ติดต่อสอบถาม",
+      footer_brand_tag: "มรดกแห่งล้านนาที่แท้จริง",
+      footer_motto: "เราหวังว่า นอร์ทเทิร์น ออร์คิด ทัวร์ จะเป็นชื่อแรกที่คุณนึกถึงเมื่อวางแผนท่องเที่ยวภาคเหนือ เดินทางอย่างสง่างามผ่านขุนเขา เจดีย์ทอง และมรดกวัฒนธรรมอันมีชีวิต",
+      footer_contact_header: "ข้อมูลติดต่อ",
+      footer_loc_label: "ที่ตั้ง",
+      footer_loc_val: "เชียงใหม่, ประเทศไทย",
+      footer_hours_val: "เปิดทุกวัน 08:00 – 21:00 น.",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "โทรติดต่อโดยตรง",
+      footer_email_label: "ส่งอีเมลถึงเรา",
+      footer_pref_header: "การตั้งค่าและนโยบาย",
+      footer_lang_label: "ภาษา",
+      footer_curr_label: "สกุลเงิน",
+      footer_legal_header: "ข้อกำหนดทางกฎหมาย",
+      legal_link_booking: "นโยบายการจองและยกเลิก",
+      legal_link_terms: "ข้อตกลงและเงื่อนไขสำหรับผู้เดินทาง",
+      legal_link_privacy: "นโยบายความเป็นส่วนตัวและการคุ้มครองข้อมูล",
+      footer_copyright: "© 2026 Northern Orchid Tours. สงวนลิขสิทธิ์ทุกประการ"
+    },
+    fr: {
+      nav_destination: "Destinations",
+      nav_transport: "Transports",
+      nav_activities: "Expériences",
+      nav_gallery: "Galerie",
+      nav_contact: "Contact",
+      nav_booking_now: "Réserver",
+      dest_chiang_mai: "Chiang Mai",
+      dest_chiang_rai: "Chiang Rai",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      trans_sedan: "Berline privée",
+      trans_suv: "SUV",
+      trans_van: "Minibus de luxe (Toyota Commuter)",
+      trans_airport: "Transfert aéroport",
+      hero_kicker: "V O Y A G E S &nbsp; D E &nbsp; L U X E &nbsp; L A N N A",
+      hero_h1: "Chaque pas à travers le Lanna<br><em>est un poème inachevé</em>",
+      hero_lede: "Voyagez avec élégance à travers les montagnes sacrées, les chedis dorés et le patrimoine vivant du nord de la Thaïlande — guidé par des gardiens locaux et accueilli dans des demeures de teck privées.",
+      hero_btn_explore: "Découvrir les voyages",
+      hero_btn_consult: "Consultation privée",
+      story_eyebrow: "Notre Histoire",
+      story_h2: "Nous ne vous montrons pas seulement le Lanna —<br>nous vous invitons à vivre à son rythme.",
+      story_desc: "Nous sommes une équipe basée à Chiang Mai, passionnée par l'art de partager le nord de la Thaïlande tel que nous le vivons nous-mêmes.",
+      stat_1_num: "18",
+      stat_1_label: "Années sur les sentiers du Lanna",
+      stat_2_num: "42",
+      stat_2_label: "Demeures d'exception sélectionnées",
+      stat_3_num: "7",
+      stat_3_label: "Provinces sous notre égide",
+      tours_kicker: "Itinéraires Choisis",
+      tours_h2: "Voyages immersifs dans le Nord",
+      tours_desc: "Voyages en petits groupes et privés conçus pour une découverte intime et sereine du Nord.",
+      tour_1_place: "Chiang Mai , Thaïlande",
+      tour_1_title: "Légendes du Lanna — 3 Jours Inoubliables",
+      tour_1_desc: "Lever du soleil à Doi Suthep, navigation paisible sur la rivière Kok, et dîner khantoke privé dans une maison en teck historique.",
+      tour_1_pax: "2–6 personnes",
+      tour_1_price: "1 340 $",
+      per_person: "/personne",
+      tour_2_place: "Chiang Rai , Thaïlande",
+      tour_2_title: "Chiang Rai & Le Triangle d'Or",
+      tour_2_desc: "Matins dans une mer de brume et villages traditionnels des collines, explorés à un rythme doux et privé.",
+      tour_2_pax: "3 jours, 2 nuits",
+      tour_2_price: "740 $",
+      tour_3_place: "Mae Hong Son , Thaïlande",
+      tour_3_title: "Crêtes Brumeuses & Vallées Secrètes",
+      tour_3_desc: "La sérénité poétique de Pai et les sanctuaires de brume lovés le long des crêtes de pins centenaires de Mae Hong Son.",
+      tour_3_pax: "3 jours, 2 nuits",
+      tour_3_price: "680 $",
+      sets_apart_eyebrow: "Notre Signature",
+      sets_apart_h2: "Des détails subtils qui forgent des souvenirs éternels",
+      exp_1_title: "Offrande matinale des aumônes",
+      exp_1_desc: "Rejoignez les moines dans une ruelle paisible de la vieille ville au point du jour, avant que la cité ne s'éveille.",
+      exp_2_title: "Dîner Khantoke Privé",
+      exp_2_desc: "Festin traditionnel lanna dans une résidence en teck, accompagné de la danse des ongles exécutée par des artistes locaux.",
+      exp_3_title: "Rituel Spa aux Herbes du Nord",
+      exp_3_desc: "Compresses chaudes et massages ancestraux transmis à travers les générations de guérisseurs traditionnels.",
+      exp_kicker: "EXPÉRIENCES AUTHENTIQUES",
+      exp_h2: "Moments de quiétude & Souvenirs précieux",
+      review_zoom_badge: "Agrandir et zoomer en haute résolution ⤢",
+      reviews_archived_tag: "Témoignages authentiques de nos voyageurs privés",
+      lb_reset_btn: "Réinitialiser 100%",
+      lb_prev_review: "Avis Précédent",
+      lb_next_review: "Avis Suivant",
+      lb_hint_mobile: "Pincez ou touchez deux fois pour zoomer • Glissez pour naviguer",
+      gallery_title: "Galerie",
+      gallery_subtitle: "Capturée à travers le nord de la Thaïlande",
+      gallery_caption_1: "Sentier de Pha Dok Siew",
+      gallery_caption_2: "Temple Wat Pha Lat",
+      gallery_caption_3: "Artisanat d'art en teck Lanna",
+      gallery_caption_4: "Temple Bleu Wat Rong Suea Ten",
+      gallery_caption_5: "Radeau de bambou au fil de l'eau",
+      contact_h2: "Laissez-nous concevoir votre voyage au Lanna",
+      contact_subtitle: "Laissez votre adresse e-mail et nos conseillers de voyage vous contacteront sous 24 heures pour composer votre itinéraire sur-mesure.",
+      contact_email_placeholder: "Votre adresse e-mail",
+      contact_btn_submit: "Nous contacter",
+      footer_brand_tag: "Sanctuaires du Patrimoine Lanna",
+      footer_motto: "Nous espérons que Northern Orchid Tours sera le premier nom qui vous viendra à l'esprit pour vos voyages dans le nord de la Thaïlande. Voyagez avec grâce parmi les monts sacrés, les chedis d'or et les traditions vivantes.",
+      footer_contact_header: "Contact",
+      footer_loc_label: "Localisation",
+      footer_loc_val: "Chiang Mai, Thaïlande",
+      footer_hours_val: "Tous les jours 08h00 – 21h00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "Appel Direct",
+      footer_email_label: "Écrivez-nous",
+      footer_pref_header: "Préférences & Politiques",
+      footer_lang_label: "Langue",
+      footer_curr_label: "Devise",
+      footer_legal_header: "Mentions Légales",
+      legal_link_booking: "Politique de réservation et d'annulation",
+      legal_link_terms: "Conditions générales de voyage",
+      legal_link_privacy: "Sanctuaire de confidentialité et données",
+      footer_copyright: "© 2026 Northern Orchid Tours. Tous droits réservés."
+    }
+  };
+
+  function setupI18nAttributes() {
+    const mapping = [
+      // Nav links (desktop & mobile)
+      { sel: '.nav-center .nav-item[data-dropdown="destination"] > button', key: 'nav_destination', hasChevron: true },
+      { sel: '.nav-center .nav-item[data-dropdown="transport"] > button', key: 'nav_transport', hasChevron: true },
+      { sel: '.nav-center a[href="#signature"]', key: 'nav_activities' },
+      { sel: '.nav-center a[href="#gallery"]', key: 'nav_gallery' },
+      { sel: '.nav-center a[href="#contact"]', key: 'nav_contact' },
+      { sel: 'header.nav a.nav-cta-booking', key: 'nav_booking_now' },
+      { sel: '.mobile-accordion:nth-child(1) .mobile-accordion-btn', key: 'nav_destination', hasChevron: true },
+      { sel: '.mobile-accordion:nth-child(2) .mobile-accordion-btn', key: 'nav_transport', hasChevron: true },
+      { sel: '.mobile-nav-list a[href="#signature"]', key: 'nav_activities' },
+      { sel: '.mobile-nav-list a[href="#gallery"]', key: 'nav_gallery' },
+      { sel: '.mobile-nav-list a[href="#contact"]', key: 'nav_contact' },
+      { sel: '.drawer-foot a.nav-cta-booking', key: 'nav_booking_now' },
+
+      // Destination dropdown links
+      { sel: 'a[href="#destination-chiang-mai"] .drop-title, a[href="#destination-chiang-mai"] .m-title', key: 'dest_chiang_mai' },
+      { sel: 'a[href="#destination-chiang-rai"] .drop-title, a[href="#destination-chiang-rai"] .m-title', key: 'dest_chiang_rai' },
+      { sel: 'a[href="#destination-pai"] .drop-title, a[href="#destination-pai"] .m-title', key: 'dest_pai' },
+      { sel: 'a[href="#tours"] .drop-title, a[href="#tours"] .m-title', key: 'dest_nan' },
+      { sel: 'a[href="#destination-sukhothai"] .drop-title, a[href="#destination-sukhothai"] .m-title', key: 'dest_sukhothai' },
+
+      // Transport dropdown links
+      { sel: 'a[href="#transport-sedan"] .drop-title, a[href="#transport-sedan"] .m-title', key: 'trans_sedan' },
+      { sel: 'a[href="#transport-suv"] .drop-title, a[href="#transport-suv"] .m-title', key: 'trans_suv' },
+      { sel: 'a[href="#transport-van"] .drop-title, a[href="#transport-van"] .m-title', key: 'trans_van' },
+      { sel: 'a[href="#transport-airport-transfer"] .drop-title, a[href="#transport-airport-transfer"] .m-title', key: 'trans_airport' },
+
+      // Hero
+      { sel: '.hero .kicker', key: 'hero_kicker' },
+      { sel: '.hero h1', key: 'hero_h1' },
+      { sel: '.hero p.lede', key: 'hero_lede' },
+      { sel: '.hero .actions a.btn-gold', key: 'hero_btn_explore' },
+      { sel: '.hero .actions a.btn-line', key: 'hero_btn_consult' },
+
+      // Story
+      { sel: '.intro .eyebrow', key: 'story_eyebrow' },
+      { sel: '.intro h2', key: 'story_h2' },
+      { sel: '.intro .side > p', key: 'story_desc' },
+      { sel: '.intro .stat:nth-child(1) b', key: 'stat_1_num' },
+      { sel: '.intro .stat:nth-child(1) span', key: 'stat_1_label' },
+      { sel: '.intro .stat:nth-child(2) b', key: 'stat_2_num' },
+      { sel: '.intro .stat:nth-child(2) span', key: 'stat_2_label' },
+      { sel: '.intro .stat:nth-child(3) b', key: 'stat_3_num' },
+      { sel: '.intro .stat:nth-child(3) span', key: 'stat_3_label' },
+
+      // Tours
+      { sel: '.tours .head div > div', key: 'tours_kicker' },
+      { sel: '.tours .head h2', key: 'tours_h2' },
+      { sel: '.tours .head p', key: 'tours_desc' },
+      { sel: '#destination-chiang-mai .place', key: 'tour_1_place' },
+      { sel: '#destination-chiang-mai h3', key: 'tour_1_title' },
+      { sel: '#destination-chiang-mai p', key: 'tour_1_desc' },
+      { sel: '#destination-chiang-mai .foot > span:first-child', key: 'tour_1_pax' },
+      { sel: '#destination-chiang-mai .foot .price b', key: 'tour_1_price' },
+      { sel: '#destination-chiang-rai .place', key: 'tour_2_place' },
+      { sel: '#destination-chiang-rai h3', key: 'tour_2_title' },
+      { sel: '#destination-chiang-rai p', key: 'tour_2_desc' },
+      { sel: '#destination-chiang-rai .foot > span:first-child', key: 'tour_2_pax' },
+      { sel: '#destination-chiang-rai .foot .price b', key: 'tour_2_price' },
+      { sel: '#destination-pai .place', key: 'tour_3_place' },
+      { sel: '#destination-pai h3', key: 'tour_3_title' },
+      { sel: '#destination-pai p', key: 'tour_3_desc' },
+      { sel: '#destination-pai .foot > span:first-child', key: 'tour_3_pax' },
+      { sel: '#destination-pai .foot .price b', key: 'tour_3_price' },
+
+      // Signature / What sets us apart
+      { sel: '.signature .head .eyebrow', key: 'sets_apart_eyebrow' },
+      { sel: '.signature .head h2', key: 'sets_apart_h2' },
+      { sel: '.exp:nth-child(1) h3', key: 'exp_1_title' },
+      { sel: '.exp:nth-child(1) p', key: 'exp_1_desc' },
+      { sel: '.exp:nth-child(2) h3', key: 'exp_2_title' },
+      { sel: '.exp:nth-child(2) p', key: 'exp_2_desc' },
+      { sel: '.exp:nth-child(3) h3', key: 'exp_3_title' },
+      { sel: '.exp:nth-child(3) p', key: 'exp_3_desc' },
+
+      // Reviews
+      { sel: '.quote-sec .wrap > div:first-child > div:first-child', key: 'exp_kicker' },
+      { sel: '.quote-sec .wrap > div:first-child h2', key: 'exp_h2' },
+      { sel: '.review-zoom-badge span', key: 'review_zoom_badge' },
+      { sel: '.quote-sec .wrap > div:last-child span:nth-child(2)', key: 'reviews_archived_tag' },
+      { sel: '#lbResetBtn', key: 'lb_reset_btn' },
+      { sel: '#lbFooterPrevBtn', key: 'lb_prev_review', hasSvg: true },
+      { sel: '#lbFooterNextBtn', key: 'lb_next_review', hasSvg: true, svgEnd: true },
+      { sel: '.lightbox-hint-mobile span', key: 'lb_hint_mobile' },
+
+      // Gallery
+      { sel: '.gallery .head h2', key: 'gallery_title' },
+      { sel: '.gallery .head span', key: 'gallery_subtitle' },
+      { sel: '.g-grid .g1 .g-caption', key: 'gallery_caption_1' },
+      { sel: '.g-grid .g2 .g-caption', key: 'gallery_caption_2' },
+      { sel: '.g-grid .g3 .g-caption', key: 'gallery_caption_3' },
+      { sel: '.g-grid .g4 .g-caption', key: 'gallery_caption_4' },
+      { sel: '.g-grid .g5 .g-caption', key: 'gallery_caption_5' },
+
+      // Contact
+      { sel: '.cta-sec h2', key: 'contact_h2' },
+      { sel: '.cta-sec p', key: 'contact_subtitle' },
+      { sel: '.cta-sec button[type="submit"]', key: 'contact_btn_submit' },
+
+      // Footer
+      { sel: 'footer .brand + p', key: 'footer_motto' },
+      { sel: 'footer .brand ~ div span:last-child', key: 'footer_brand_tag' },
+      { sel: 'footer .f-grid > div:nth-child(2) > h4', key: 'footer_contact_header' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:first-child', key: 'footer_loc_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:nth-child(2)', key: 'footer_loc_val' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:nth-child(3)', key: 'footer_hours_val' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(2) span', key: 'footer_whatsapp_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(3) span:first-child', key: 'footer_call_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(5) span:first-child', key: 'footer_email_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > h4', key: 'footer_pref_header' },
+      { sel: 'footer .f-grid > div:nth-child(3) label:nth-of-type(1)', key: 'footer_lang_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) label', key: 'footer_curr_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > div:nth-child(3) > div', key: 'footer_legal_header' },
+      { sel: 'a[href="#booking-policy"]', key: 'legal_link_booking' },
+      { sel: 'a[href="#terms"]', key: 'legal_link_terms' },
+      { sel: 'a[href="#privacy"]', key: 'legal_link_privacy' },
+      { sel: '.f-bottom > span:first-child', key: 'footer_copyright' }
+    ];
+
+    mapping.forEach(m => {
+      document.querySelectorAll(m.sel).forEach(el => {
+        if (!el.getAttribute('data-i18n')) {
+          el.setAttribute('data-i18n', m.key);
+        }
+        if (m.hasChevron) el.setAttribute('data-i18n-chevron', 'true');
+        if (m.hasSvg) el.setAttribute('data-i18n-svg', m.svgEnd ? 'end' : 'start');
+      });
+    });
+
+    const contactInput = document.querySelector('.cta-sec input[type="email"]');
+    if (contactInput && !contactInput.getAttribute('data-i18n-placeholder')) {
+      contactInput.setAttribute('data-i18n-placeholder', 'contact_email_placeholder');
+    }
+  }
+
+  window.changeLanguage = function(lang) {
+    if (!translations[lang]) lang = 'en';
+    document.documentElement.lang = lang;
+    setupI18nAttributes();
+
+    const t = translations[lang];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = t[key];
+      if (!val) return;
+
+      const hasChevron = el.getAttribute('data-i18n-chevron');
+      const hasSvg = el.getAttribute('data-i18n-svg');
+
+      if (hasChevron) {
+        const chevron = el.querySelector('svg');
+        el.innerHTML = val + (chevron ? chevron.outerHTML : '');
+      } else if (hasSvg === 'start') {
+        const svg = el.querySelector('svg');
+        el.innerHTML = (svg ? svg.outerHTML + ' ' : '') + val;
+      } else if (hasSvg === 'end') {
+        const svg = el.querySelector('svg');
+        el.innerHTML = val + (svg ? ' ' + svg.outerHTML : '');
+      } else {
+        if (val.includes('<') && val.includes('>')) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key]) el.setAttribute('placeholder', t[key]);
+    });
+
+    const selectedLangEl = document.getElementById('footerSelectedLang');
+    if (selectedLangEl) {
+      if (lang === 'th') {
+        selectedLangEl.innerHTML = '<span style="color: var(--gold);">✦</span> ภาษาไทย (Thai)';
+      } else if (lang === 'fr') {
+        selectedLangEl.innerHTML = '<span style="color: var(--gold);">✦</span> Français (France)';
+      } else {
+        selectedLangEl.innerHTML = '<span style="color: var(--gold);">✦</span> English';
+      }
+    }
+
+    const menu = document.getElementById('footerLangMenu');
+    if (menu) menu.style.display = 'none';
+
+    try {
+      localStorage.setItem('northern_orchid_lang', lang);
+    } catch (e) {}
+  };
+
+  function initLang() {
+    setupI18nAttributes();
+    let saved = 'en';
+    try {
+      saved = localStorage.getItem('northern_orchid_lang') || 'en';
+    } catch (e) {}
+    window.changeLanguage(saved);
+
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('footerLangMenu');
+      const btn = document.getElementById('footerLangBtn');
+      if (menu && menu.style.display === 'block') {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          menu.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLang);
+  } else {
+    initLang();
+  }
+})();
+</script>
+
+
+
+
+
+
+
+
+</body></html>
