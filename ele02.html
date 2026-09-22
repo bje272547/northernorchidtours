@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Elephant Sanctuary, Sticky Waterfall &amp; Bamboo Rafting - Northern Orchid Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141F19;
+    --forest:#26392E;
+    --paper:#EFE6D4;
+    --gold:#C6A15B;
+    --gold-soft:#DBBD86;
+    --jade:#33513E;
+    --line: rgba(198,161,91,0.35);
+  }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--forest);
+    color:var(--paper);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.7;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .btn{
+    padding:15px 34px; font-size:14.5px; font-family:'Jost', sans-serif; border-radius:2px;
+    transition:all .3s ease; display:inline-flex; align-items:center; justify-content:center;
+    min-height:44px;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
+
+  /* ===== Mobile-ready header / nav ===== */
+  .site-header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(20,31,25,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top, 0px);
+  }
+  .site-header .bar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Cormorant Garamond', serif; font-size:20px; letter-spacing:0.5px; font-weight:600;
+    color:var(--paper);
+  }
+  .logo span{ color:var(--gold-soft); }
+  .desktop-nav{ display:flex; gap:30px; font-size:13.5px; letter-spacing:0.5px; }
+  .desktop-nav a{ color:rgba(239,230,212,0.8); }
+  .desktop-nav a:hover{ color:var(--gold-soft); }
+
+  .menu-toggle{
+    display:none; width:44px; height:44px; border:1px solid var(--line);
+    background:transparent; border-radius:2px; cursor:pointer;
+    align-items:center; justify-content:center; position:relative;
+  }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after{
+    content:""; display:block; width:20px; height:1.5px; background:var(--paper);
+    position:relative; transition:all .25s ease;
+  }
+  .menu-toggle span::before{ position:absolute; top:-6px; }
+  .menu-toggle span::after{ position:absolute; top:6px; }
+  .menu-toggle.open span{ background:transparent; }
+  .menu-toggle.open span::before{ top:0; transform:rotate(45deg); background:var(--gold-soft); }
+  .menu-toggle.open span::after{ top:0; transform:rotate(-45deg); background:var(--gold-soft); }
+
+  .mobile-nav{
+    display:none; flex-direction:column; gap:2px; background:var(--forest);
+    border-bottom:1px solid var(--line); overflow:hidden;
+    max-height:0; transition:max-height .3s ease;
+  }
+  .mobile-nav.open{ max-height:400px; }
+  .mobile-nav a{
+    padding:16px 32px; font-size:14.5px; border-top:1px solid var(--line);
+    min-height:44px; display:flex; align-items:center;
+  }
+  .mobile-nav a:active{ background:var(--jade); }
+
+  @media(max-width:860px){
+    .desktop-nav{ display:none; }
+    .menu-toggle{ display:flex; }
+    .mobile-nav{ display:flex; }
+  }
+
+  /* Tour detail — gallery (real images, scrollable) */
+  .tour-gallery{ padding:24px 0 0; }
+  .g-wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  .g-main-wrap{ position:relative; margin-bottom:10px; }
+  .g-main-scroll{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    border-radius:2px; scrollbar-width:none;
+  }
+  .g-main-scroll::-webkit-scrollbar{ display:none; }
+  .g-cell.g-main{
+    position:relative; flex:0 0 70%; width:50%; height:400px; overflow:hidden;
+    scroll-snap-align:start; background:var(--ink);
+  }
+  .g-cell.g-main img{ width:100%; height:100%; object-fit:cover;
+    background:var(--ink); }
+
+  .g-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:42px; height:42px; border-radius:50%; border:1px solid rgba(239,230,212,0.35);
+    background:rgba(20,31,25,0.75); color:var(--paper); font-size:16px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .g-arrow:hover{ background:var(--ink); border-color:var(--gold-soft); }
+  .g-arrow.prev{ left:12px; }
+  .g-arrow.next{ right:12px; }
+  .g-dots{ position:absolute; bottom:14px; left:0; right:0; display:flex; justify-content:center; gap:7px; }
+  .g-dot{ width:6px; height:6px; border-radius:50%; background:rgba(239,230,212,0.4); transition:background 0.2s ease; cursor:pointer; }
+  .g-dot.active{ background:var(--gold-soft); }
+
+  .g-strip-wrap{ position:relative; }
+  .g-thumb-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:30px; height:30px; border-radius:50%; border:1px solid rgba(239,230,212,0.35);
+    background:rgba(20,31,25,0.75); color:var(--paper); font-size:12px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .g-thumb-arrow.prev{ left:2px; }
+  .g-thumb-arrow.next{ right:2px; }
+  .g-scroll{
+    display:flex; gap:8px; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding-bottom:6px;
+    scrollbar-width:thin; scrollbar-color:var(--gold-soft) transparent;
+  }
+  .g-scroll::-webkit-scrollbar{ height:6px; }
+  .g-scroll::-webkit-scrollbar-thumb{ background:var(--gold-soft); border-radius:3px; }
+  .g-cell{
+    position:relative; overflow:hidden; border-radius:2px; cursor:pointer;
+    flex-shrink:0; width:110px; height:80px; scroll-snap-align:start;
+    border:2px solid transparent; transition:border-color 0.2s ease;
+  }
+  .g-cell img{ width:100%; height:100%; object-fit:cover;
+    background:var(--ink); }
+  .g-cell.active{ border-color:var(--gold-soft); }
+  .g-cell:hover{ border-color:var(--gold); }
+
+  /* Tour detail — info row */
+  .tour-info{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:48px;
+    padding:56px 0 60px; border-bottom:1px solid rgba(239,230,212,0.2); flex-wrap:wrap;
+  }
+  .tour-info .kicker{
+    font-size:13px; letter-spacing:3px; color:var(--gold-soft);
+    text-transform:uppercase; margin-bottom:18px; font-weight:500;
+  }
+  .tour-info h1{
+    font-family:'Cormorant Garamond', serif; font-weight:400;
+    font-size:clamp(32px, 4.2vw, 50px); color:var(--paper); line-height:1.2;
+    max-width:640px;
+  }
+  .tour-info h1 em{ font-style:italic; color:var(--gold-soft); font-weight:400; }
+  .tour-facts{
+    display:flex; gap:44px; margin-top:36px; padding-top:28px;
+    border-top:1px solid rgba(239,230,212,0.2); flex-wrap:wrap;
+  }
+  .tour-facts .fact b{
+    display:block; font-family:'Cormorant Garamond', serif;
+    font-size:30px; color:var(--gold-soft); font-weight:600; line-height:1.1;
+  }
+  .tour-facts .fact span{ font-size:13px; color:rgba(239,230,212,0.65); letter-spacing:0.3px; }
+
+  .price-box{
+    background:var(--ink); color:var(--paper); border-radius:3px;
+    padding:30px 34px; min-width:270px; flex-shrink:0;
+  }
+  .price-box .minimum{ font-size:12.5px; letter-spacing:1px; color:rgba(239,230,212,0.65); margin-bottom:10px; }
+  .price-box .from{ font-size:12.5px; letter-spacing:1.5px; color:rgba(239,230,212,0.65); text-transform:uppercase; }
+  .price-box .price{
+    font-family:'Jost', serif; font-size:40px; font-weight:500;
+    color:var(--gold-soft); margin:8px 0 22px;
+  }
+  .price-box .price span{ font-family:'Jost', sans-serif; font-size:14px; font-weight:400; color:rgba(239,230,212,0.7); }
+  .price-box .btn{ width:100%; }
+
+  /* Itinerary */
+  .itinerary-section{ padding:0 0 64px; }
+  .itinerary-section .kicker{
+    font-size:13px; letter-spacing:3px; color:var(--gold-soft);
+    text-transform:uppercase; margin-bottom:18px; font-weight:500;
+  }
+  .itinerary-section h2{
+    font-family:'Cormorant Garamond', serif; font-weight:400; font-size:28px;
+    color:var(--paper); margin-bottom:32px;
+  }
+  .itinerary-list{ position:relative; }
+  .itin-item{ display:flex; gap:24px; padding-bottom:32px; position:relative; }
+  .itin-item:last-child{ padding-bottom:0; }
+  .itin-time{ flex-shrink:0; width:84px; padding-top:2px; }
+  .itin-time b{
+    font-family:'Cormorant Garamond', serif; font-size:19px; color:var(--gold-soft); font-weight:600;
+  }
+  .itin-line{ flex-shrink:0; display:flex; flex-direction:column; align-items:center; }
+  .itin-dot{ width:10px; height:10px; border-radius:50%; background:var(--gold); margin-top:6px; }
+  .itin-item:not(:last-child) .itin-connector{ width:1px; flex:1; background:rgba(239,230,212,0.25); margin-top:4px; }
+  .itin-body h3{
+    font-family:'Cormorant Garamond', serif; font-weight:500; font-size:19px;
+    color:var(--paper); margin-bottom:6px;
+  }
+  .itin-body p{ font-size:14.5px; color:rgba(239,230,212,0.75); max-width:520px; }
+
+  /* Tour details — included / excluded / prepare / cancellation */
+  .tour-details{ padding:0 0 70px; }
+  .tour-details .kicker{
+    font-size:13px; letter-spacing:3px; color:var(--gold-soft);
+    text-transform:uppercase; margin-bottom:18px; font-weight:500;
+  }
+  .tour-details h2{
+    font-family:'Cormorant Garamond', serif; font-weight:400; font-size:28px;
+    color:var(--paper); margin-bottom:28px;
+  }
+  .details-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:48px; }
+  .details-grid h3{
+    font-family:'Cormorant Garamond', serif; font-weight:500; font-size:19px;
+    color:var(--gold-soft); margin-bottom:16px;
+  }
+  .details-grid ul{ list-style:none; }
+  .details-grid li{
+    display:flex; gap:10px; align-items:flex-start; margin-bottom:11px;
+    font-size:14.5px; color:rgba(239,230,212,0.85);
+  }
+  .details-grid li .mark{
+    flex-shrink:0; width:18px; height:18px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; margin-top:2px;
+  }
+  .mark.yes{ background:var(--gold-soft); color:var(--ink); }
+  .mark.no{ background:rgba(239,230,212,0.15); color:rgba(239,230,212,0.6); }
+
+  .info-blocks{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(239,230,212,0.2); border:1px solid rgba(239,230,212,0.2); }
+  .info-block{ background:var(--forest); padding:28px 30px; }
+  .info-block h3{
+    font-family:'Cormorant Garamond', serif; font-weight:500; font-size:19px;
+    color:var(--gold-soft); margin-bottom:14px;
+  }
+  .info-block p, .info-block li{ font-size:14.5px; color:rgba(239,230,212,0.85); }
+  .info-block ul{ list-style:none; }
+  .info-block li{ margin-bottom:8px; padding-left:14px; position:relative; }
+  .info-block li::before{ content:'—'; position:absolute; left:0; color:var(--gold-soft); }
+
+  @media(max-width:860px){
+    .tour-gallery{ padding:16px 0 0; }
+    .g-scroll .g-cell{ width:90px; height:66px; }
+    .g-cell.g-main{ height:280px; flex:0 0 92%; width:92%; }
+    .g-arrow{ width:38px; height:38px; font-size:14px; }
+    .tour-info{ flex-direction:column; padding:40px 0 44px; }
+    .wrap{ padding:0 20px; }
+    .g-wrap{ padding:0 20px; }
+    .price-box{ width:100%; }
+    .tour-facts{ gap:28px; }
+    .details-grid{ grid-template-columns:1fr; gap:28px; }
+    .info-blocks{ grid-template-columns:1fr; }
+    .itin-time{ width:64px; }
+    .tour-details{ padding-bottom:110px; }
+  }
+
+  /* ===== Sticky mobile book button ===== */
+  .mobile-cta{
+    display:none;
+    position:fixed; left:0; right:0; bottom:0; z-index:99;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background:rgba(20,31,25,0.95); backdrop-filter:blur(6px);
+    border-top:1px solid var(--line);
+    align-items:center; justify-content:space-between; gap:14px;
+  }
+  .mobile-cta .mc-price{ font-family:'Cormorant Garamond', serif; font-size:19px; color:var(--gold-soft); font-weight:600; white-space:nowrap; }
+  .mobile-cta .mc-price span{ display:block; font-family:'Jost', sans-serif; font-size:11px; color:rgba(239,230,212,0.6); font-weight:400; }
+  .mobile-cta .btn{ flex-shrink:0; padding:13px 26px; }
+  @media(max-width:640px){
+    .mobile-cta{ display:flex; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="bar">
+    <a href="index.html" class="logo">Northern Orchid <span>Tours</span></a>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="all-tours.html">Tours</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="all-tours.html">Tours</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="tour-gallery">
+  <div class="g-wrap">
+    <div class="g-main-wrap">
+      <div class="g-main-scroll" id="gMainScroll">
+        <div class="g-cell g-main" data-slot="1"><img src="image/ele09.jpeg" alt="Elephant Sanctuary"></div>
+        <div class="g-cell g-main" data-slot="2"><img src="image/ele13.png" alt="Elephant Sanctuary"></div>
+        <div class="g-cell g-main" data-slot="3"><img src="image/ele11.png" alt="Elephant Sanctuary"></div>
+        <div class="g-cell g-main" data-slot="4"><img src="image/ele14.jpg" alt="Bamboo Rafting"></div>
+        <div class="g-cell g-main" data-slot="5"><img src="image/sticky02.JPEG" alt="Bamboo Rafting"></div>
+        <div class="g-cell g-main" data-slot="6"><img src="image/sticky03.JPEG" alt="Dantewada (land of angels)"></div>
+      </div>
+      <div class="g-arrow prev" onclick="scrollMain(-1)">&#10094;</div>
+      <div class="g-arrow next" onclick="scrollMain(1)">&#10095;</div>
+      <div class="g-dots" id="gDots">
+        <div class="g-dot active" onclick="goToSlot(1)"></div>
+        <div class="g-dot" onclick="goToSlot(2)"></div>
+        <div class="g-dot" onclick="goToSlot(3)"></div>
+        <div class="g-dot" onclick="goToSlot(4)"></div>
+        <div class="g-dot" onclick="goToSlot(5)"></div>
+        <div class="g-dot" onclick="goToSlot(6)"></div>
+      </div>
+    </div>
+
+    <div class="g-strip-wrap">
+      <div class="g-thumb-arrow prev" onclick="scrollThumbs(-1)">&#10094;</div>
+      <div class="g-thumb-arrow next" onclick="scrollThumbs(1)">&#10095;</div>
+      <div class="g-scroll" id="gScroll">
+        <div class="g-cell active" data-slot="1" onclick="goToSlot(1)"><img src="image/ele09.jpeg" alt=""></div>
+        <div class="g-cell" data-slot="2" onclick="goToSlot(2)"><img src="image/ele13.png" alt=""></div>
+        <div class="g-cell" data-slot="3" onclick="goToSlot(3)"><img src="image/ele11.png" alt=""></div>
+        <div class="g-cell" data-slot="4" onclick="goToSlot(4)"><img src="image/ele14.jpg" alt=""></div>
+        <div class="g-cell" data-slot="5" onclick="goToSlot(5)"><img src="image/sticky02.JPEG" alt=""></div>
+        <div class="g-cell" data-slot="6" onclick="goToSlot(6)"><img src="image/sticky03.JPEG" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="tour-info">
+    <div>
+      <div class="kicker">Duration : 9 hours</div>
+      <h1>Elephant Sanctuary, Sticky Waterfall &amp; Bamboo Rafting</h1>
+    </div>
+    <div class="price-box">
+      <div class="minimum">minimum 2 persons</div>
+      <div class="price">Adult ฿2,200<span> / person</span></div>
+      <div class="price">Child ฿1,850<span> / person (0-9 years)</span></div>
+     <a class="btn btn-gold" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Elephant%20Sanctuary%2C%20Dantewada%20%26%20Sticky%20Waterfall%20tour." target="_blank" rel="noopener">Book now</a>
+    </div>
+  </div>
+
+  <div class="itinerary-section">
+    <h2>Itinerary</h2>
+    <div class="itinerary-list">
+
+      <div class="itin-item">
+        <div class="itin-time"><b>08:00</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Hotel Pickup</h3>
+          <p>Your guide meets you at your hotel lobby in an air-conditioned vehicle.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>09:30</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Arrive at Sticky Waterfall (1 hr)</h3>
+          <p>Conquer Thailand's famous "sticky waterfalls" in Chiang Mai. Thanks to unique mineral deposits, the rock surface is non-slip and grippy, allowing you to easily walk and climb straight up the rushing cascades.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>11:00</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Arrive at Dantewada (1 hr)</h3>
+          <p>Step into a magical fairytale wonderland surrounded by lush rainforests, grand artificial waterfalls. Relax in a serene, mystical landscape and enjoy drinks amidst breathtaking nature.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>12:30</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Lunch break (30-45 mins)</h3>
+          <p>Recharge with a delicious meal and relax before gearing up for your afternoon adventures.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>01:00</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Have activities at Doochang Doodoi Elephant Home + Bamboo Rafting (3 hrs)</h3>
+          <p>Connect with gentle giants through an immersive day of hands-on experiences. Prepare nutritious herbal digestive vitamin balls and natural insect-repellent herbal soap, craft eco-friendly paper from elephant dung, harvest sugarcane, and feed the elephants up close. Enjoy a traditional bamboo rafting ride across the river before wrapping up your adventure with a fun, refreshing mud spa and bath alongside them.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>04:00</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Return back to Chiang Mai city (1 hr)</h3>
+          <p>Sit back and relax on the comfortable drive back to Chiang Mai city, wrapping up a memorable day of adventure.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>05:00</b></div>
+        <div class="itin-line"><div class="itin-dot"></div></div>
+        <div class="itin-body">
+          <h3>Drop off at your hotel</h3>
+          <p>Arrive at your hotel safely.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tour-details">
+    <h2>Tour Details</h2>
+
+    <div class="details-grid">
+      <div>
+        <h3>What's Included</h3>
+        <ul>
+          <li><span class="mark yes">&#10003;</span>Round-trip transport in an air-conditioned vehicle</li>
+          <li><span class="mark yes">&#10003;</span>Basic English speaking driver / English speaking guide at elephant sanctuary</li>
+          <li><span class="mark yes">&#10003;</span>Activities fee (elephant sanctuary, dantewada and bamboo rafting)</li>
+          <li><span class="mark yes">&#10003;</span>Meals and drinks</li>
+          <li><span class="mark yes">&#10003;</span>Travel insurance</li>
+          <li><span class="mark yes">&#10003;</span>Hotel pickup and drop-off</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Not Included</h3>
+        <ul>
+          <li><span class="mark no">&#10005;</span>Personal expenses and souvenirs</li>
+          <li><span class="mark no">&#10005;</span>Tips for the guide and driver</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-blocks">
+      <div class="info-block">
+        <h3>What to Bring</h3>
+        <ul>
+          <li>A change of clothes for waterfall activities</li>
+          <li>Comfortable sandals or flip-flops</li>
+          <li>Sun hat and sunscreen</li>
+          <li>Cash for personal purchases</li>
+          <li>Regular medication (if applicable)</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3>Cancellation Policy</h3>
+        <ul>
+          <li>Free cancellation up to 24 hours before the tour for a full refund</li>
+          <li>50% refund for cancellations made 12&ndash;24 hours before the tour</li>
+          <li>No refund for cancellations made less than 12 hours before the tour or no-shows</li>
+          <li>Tours may be rescheduled free of charge in case of severe weather</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  menuToggle.addEventListener('click', function(){
+    var isOpen = mobileNav.classList.toggle('open');
+    menuToggle.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  function scrollMain(dir){
+    var el = document.getElementById('gMainScroll');
+    el.scrollBy({ left: dir * el.offsetWidth, behavior: 'smooth' });
+  }
+  function scrollThumbs(dir){
+    var el = document.getElementById('gScroll');
+    var cell = el.querySelector('.g-cell');
+    var step = cell ? cell.offsetWidth + 8 : 120;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+  function goToSlot(slot){
+    var mainScroll = document.getElementById('gMainScroll');
+    var slide = mainScroll.querySelector('.g-main[data-slot="' + slot + '"]');
+    if(slide) mainScroll.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+    setActive(slot);
+  }
+  function setActive(slot){
+    document.querySelectorAll('#gScroll .g-cell').forEach(function(c){
+      c.classList.toggle('active', c.getAttribute('data-slot') === String(slot));
+    });
+    var dots = document.querySelectorAll('#gDots .g-dot');
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === (slot - 1)); });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var mainScroll = document.getElementById('gMainScroll');
+    var slides = mainScroll.querySelectorAll('.g-main');
+
+    var scrollTimer;
+    mainScroll.addEventListener('scroll', function(){
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function(){
+        var index = Math.round(mainScroll.scrollLeft / mainScroll.offsetWidth);
+        var slide = slides[index];
+        if(slide) setActive(slide.getAttribute('data-slot'));
+      }, 100);
+    });
+  });
+</script>
+</body>
+</html>
