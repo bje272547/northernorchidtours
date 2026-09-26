@@ -1,7 +1,9 @@
-<!DOCTYPE html><html lang="en" style=""><head>
+<!DOCTYPE html>
+<html lang="en" style="">
+<head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Northern Orchid Tours — Lanna Luxury Journeys</title>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Northern Orchid Tours — Lanna - Herritage - Journeys</title>
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <style>
@@ -37,6 +39,7 @@
     position:fixed; top:0; left:0; right:0; z-index:100;
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 48px;
+    padding-top:calc(18px + env(safe-area-inset-top, 0px));
     background:linear-gradient(to bottom, rgba(20,31,25,0.95), rgba(20,31,25,0.72) 75%, transparent);
     color:var(--paper);
     backdrop-filter:blur(10px);
@@ -59,7 +62,7 @@
   /* Desktop Navigation & Dropdowns */
   .nav-center{ display:flex; align-items:center; }
   .nav-menu{
-    display:flex; align-items:center; gap:34px; list-style:none;
+    display:flex; align-items:center; gap:28px; list-style:none;
     font-size:14.5px; letter-spacing:0.8px;
   }
   .nav-item{ position:relative; }
@@ -157,7 +160,11 @@
     background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
     border-left:1px solid rgba(198,161,91,0.3); z-index:210;
-    padding:24px 22px 36px; display:flex; flex-direction:column;
+    padding:24px 22px 36px;
+    padding-top:calc(24px + env(safe-area-inset-top, 0px));
+    padding-bottom:calc(36px + env(safe-area-inset-bottom, 0px));
+    padding-right:calc(22px + env(safe-area-inset-right, 0px));
+    display:flex; flex-direction:column;
     transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-y:auto;
   }
@@ -221,8 +228,7 @@
   .hero{
     min-height:100vh;
     background-image:
-      linear-gradient(180deg, rgba(20,31,25,0.82) 0%, rgba(20,31,25,0.72) 40%, rgba(14,22,18,0.95) 100%),
-      url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPQ5GcQhxvf5RynBuh52NdSUi9yC9YMQhuZShHpK1QBwAfiCcvLq25-O60dswEirJ3SxQXl9qUVLvPnmLCHIa9hmTN2zGVutDB27NvNhMV-zIGR65yhe_SAHAy3Za_EmBeq6hZNbOZGGrSVUuXWjCplzGdIKgglrkSGcXXSFhqmiYXIjMo-cnutqUZdyxd7Rg92fsnA5rnEuItiH4ZFmEeunM8wIPbDzbirRUvmVqvut0EoNIZwZ7FTgYvJg_eK7SrPQ');
+      linear-gradient(160deg, rgba(20,31,25,0.96) 0%, rgba(38,57,46,0.94) 45%, rgba(14,22,18,0.98) 100%);
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -296,6 +302,38 @@
   }
   .tour-card:first-child .art{ height:380px; }
   .tour-card .art svg{ width:100%; height:100%; object-fit:cover; }
+
+  /* Swipeable photo gallery (matches chiangmai.html tour cards) */
+  .tour-card .art-scroll{
+    display:flex; height:100%; width:100%; overflow-x:auto; scroll-snap-type:x mandatory;
+    scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  }
+  .tour-card .art-scroll::-webkit-scrollbar{ display:none; }
+  .tour-card .art-scroll img,
+  .tour-card .art-scroll .art-slide{
+    flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:start; display:block;
+  }
+  .tour-card .art-scroll .art-slide svg{ width:100%; height:100%; display:block; }
+  .tour-card .art-dots{
+    position:absolute; bottom:12px; left:0; right:0; z-index:2;
+    display:flex; justify-content:center; gap:5px; pointer-events:none;
+  }
+  .tour-card .art-dot{ width:5px; height:5px; border-radius:50%; background:rgba(239,230,212,0.45); }
+  .tour-card .art-dot.active{ background:var(--gold-soft); }
+  .tour-card .art-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:36px; height:36px; border-radius:50%; border:1px solid rgba(239,230,212,0.35);
+    background:rgba(20,31,25,0.7); color:var(--paper); font-size:12px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    padding:0; transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .tour-card .art-arrow:hover{ background:var(--ink); border-color:var(--gold-soft); }
+  .tour-card .art-arrow.prev{ left:10px; }
+  .tour-card .art-arrow.next{ right:10px; }
+  @media(max-width:640px){
+    .tour-card .art-arrow{ width:40px; height:40px; font-size:13px; }
+  }
+
   .tour-card .body{ padding:28px 28px 34px; flex:1; display:flex; flex-direction:column; }
   .tour-card .place{ font-size:12.5px; letter-spacing:2px; color:var(--gold-soft); margin-bottom:12px; text-transform:uppercase; font-weight:500; }
   .tour-card h3{ font-size:24px; font-weight:400; margin-bottom:12px; line-height:1.3; }
@@ -447,6 +485,7 @@
   .lightbox-header{
     display:flex; align-items:center; justify-content:space-between;
     padding:16px 28px;
+    padding-top:calc(16px + env(safe-area-inset-top, 0px));
     background:linear-gradient(to bottom, rgba(14,24,19,0.95), rgba(14,24,19,0.7));
     border-bottom:1px solid rgba(198, 161, 91, 0.28);
     flex-shrink:0; z-index:20;
@@ -538,6 +577,7 @@
   .lightbox-footer{
     display:flex; align-items:center; justify-content:space-between;
     padding:12px 28px 16px;
+    padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px));
     background:linear-gradient(to top, rgba(14,24,19,0.98), rgba(14,24,19,0.7));
     border-top:1px solid rgba(198, 161, 91, 0.28);
     flex-shrink:0; z-index:20;
@@ -619,6 +659,11 @@
   .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
 
   /* Responsive Breakpoints */
+  @media(max-width:1080px){
+    .nav-menu{ gap:18px; }
+    .nav-link{ font-size:13px; }
+  }
+
   @media(max-width:960px){
     .carousel-btn.prev{ left:8px; }
     .carousel-btn.next{ right:8px; }
@@ -627,10 +672,13 @@
     .lb-nav-arrow.next{ right:12px; }
   }
 
-  @media(max-width:860px){
-    header.nav{ padding:14px 20px; }
+  @media(max-width:900px){
     .nav-center, .nav .nav-cta-booking{ display:none; }
     .mobile-toggle{ display:inline-flex; }
+  }
+
+  @media(max-width:860px){
+    header.nav{ padding:14px 20px; padding-top:calc(14px + env(safe-area-inset-top, 0px)); }
 
     .wrap{ padding:0 20px; }
     .intro{ padding:90px 0 70px; }
@@ -663,14 +711,14 @@
     .cta-sec{ padding:80px 0; }
     .f-grid{ grid-template-columns:1fr; gap:40px; padding-bottom:44px; }
 
-    .lightbox-header{ padding:12px 16px; }
-    .lightbox-footer{ padding:12px 16px; }
+    .lightbox-header{ padding:12px 16px; padding-top:calc(12px + env(safe-area-inset-top, 0px)); }
+    .lightbox-footer{ padding:12px 16px; padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px)); }
     .lightbox-title{ font-size:18px; }
     .lb-btn-reset{ display:none; }
   }
 
   @media(max-width:480px){
-    header.nav{ padding:12px 16px; }
+    header.nav{ padding:12px 16px; padding-top:calc(12px + env(safe-area-inset-top, 0px)); }
     .hero{ padding:120px 16px 70px; }
     .hero .actions{ flex-direction:column; width:100%; gap:12px; }
     .hero .actions .btn{ width:100%; min-width:unset; }
@@ -714,14 +762,14 @@
 <!-- Center / Right Main Menu -->
 <nav aria-label="Main Navigation" class="nav-center">
 <ul class="nav-menu">
-<!-- Destination Dropdown -->
-<li class="nav-item has-dropdown" data-dropdown="destination">
-<button aria-expanded="false" aria-haspopup="true" class="nav-link" type="button" data-i18n="nav_destination" data-i18n-chevron="true">Destination<svg class="chevron" fill="none" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+<!-- Private Tours Dropdown -->
+<li class="nav-item has-dropdown" data-dropdown="Our tours">
+<button aria-expanded="false" aria-haspopup="true" class="nav-link" type="button" data-i18n="nav_private_tours" data-i18n-chevron="true">Our Tours<svg class="chevron" fill="none" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
 <path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path>
 </svg></button>
 <ul class="dropdown-menu">
 <li>
-  <a href="chiangmai01.html">
+  <a href="chiangmai.html">
     <span class="drop-title" data-i18n="chiang_mai">
       Chiang Mai
     </span>
@@ -736,6 +784,12 @@
 </li>
 
 </ul>
+</li>
+<!-- multi day tours -->
+<li class="nav-item">
+  <a href="multidaytours.html" class="nav-link">
+    <span class="drop-title" data-i18n="nav_multiday_tours">Multi-Day Tours</span>
+  </a>
 </li>
 <!-- Transport -->
 <li class="nav-item">
@@ -784,16 +838,15 @@
 </button>
 </div>
 <ul class="mobile-nav-list">
-<!-- Destination Accordion -->
-<!-- Destination Accordion -->
+<!-- Private Tours Accordion -->
 <li class="mobile-accordion">
   <button
     class="mobile-accordion-btn"
     type="button"
-    data-i18n="nav_destination"
+    data-i18n="nav_private_tours"
     data-i18n-chevron="true"
   >
-    Destination
+    Private Tours
     <svg fill="none" viewBox="0 0 10 6">
       <path d="M1 1L5 5L9 1"
         stroke-linecap="round"
@@ -805,7 +858,7 @@
 
   <ul class="mobile-accordion-content">
     <li>
-      <a class="mobile-drawer-link" href="#chiangmai.html">
+      <a class="mobile-drawer-link" href="chiangmai.html">
         <span class="m-title" data-i18n="dest_chiang_mai">
           Chiang Mai
         </span>
@@ -813,7 +866,7 @@
     </li>
 
     <li>
-      <a class="mobile-drawer-link" href="#chiangrai.html">
+      <a class="mobile-drawer-link" href="chiangrai.html">
         <span class="m-title" data-i18n="dest_chiang_rai">
           Chiang Rai
         </span>
@@ -822,16 +875,14 @@
   </ul>
 </li>
 
-<!-- Transport Accordion -->
-<!-- Transport Accordion -->
-<ul class="mobile-accordion-content">
-  <li>
-    <a class="mobile-drawer-link" href="#transport.html">
-      <span class="m-title" data-i18n="dest_chiang_mai">Chiang Mai</span>
-    </a>
-  </li>
-
-</ul>
+<!-- Multi-Day Tours Link -->
+<li class="">
+  <a class="mobile-link mobile-drawer-link" href="multidaytours.html" data-i18n="nav_multiday_tours">Multi-Day Tours</a>
+</li>
+<!-- Transport Link -->
+<li class="">
+  <a class="mobile-link mobile-drawer-link" href="transport.html" data-i18n="nav_transport">Transport</a>
+</li>
 <!-- Activities Accordion -->
 <li class="">
 <a class="mobile-link mobile-drawer-link" href="#signature" data-i18n="nav_activities">Activities</a>
@@ -849,15 +900,13 @@
 <a class="nav-cta-booking mobile-drawer-link" href="#contact" data-i18n="nav_booking_now">Booking Now</a>
 </div>
 </aside>
-<!-- Hero Section with Doi Suthep Background -->
+<!-- Hero Section -->
 <section class="hero">
 <div class="hero-mist"></div>
-<div class="kicker" data-i18n="hero_kicker">L A N N A &amp;nbsp; L U X U R Y &amp;nbsp; J O U R N E Y S</div>
-<h1 class="" data-i18n="hero_h1">Every step through Lanna<br><em>is an unfinished poem</em></h1>
-<p class="lede" data-i18n="hero_lede">Travel gracefully through the sacred mountains, golden chedis, and living heritage of Northern Thailand — guided by local custodians and welcomed into private teak sanctuaries.</p>
+<div class="kicker" data-i18n="hero_kicker">L A N N A & H E R R I T A G E & J O U R N E Y S</div>
+<h1 class="" data-i18n="hero_h1">The art of travelling slowly<br><em>through Northern Thailand</em></h1>
+<p class="lede" data-i18n="hero_lede">Discover the essence of Lanna through tranquil temples, mountain landscapes, and living traditions — thoughtfully curated journeys shaped by local knowledge, refined details, and an unhurried sense of place.</p>
 <div class="actions">
-<a class="btn btn-gold" href="#tours" data-i18n="hero_btn_explore">Explore Journeys</a>
-<a class="btn btn-line" href="#contact" data-i18n="hero_btn_consult">Private Consultation</a>
 </div>
 <svg class="hero-ornament" viewBox="0 0 140 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 12 Q17.5 2 35 12 T70 12 T105 12 T140 12" fill="none" stroke="#C6A15B" stroke-width="1.2"></path>
@@ -872,15 +921,10 @@
 <div class="wrap grid">
 <div>
 <div class="eyebrow" data-i18n="story_eyebrow">Our Story</div>
-<h2 class="" data-i18n="story_h2">We don't just show you Lanna —<br>we invite you to live in its rhythm.</h2>
+<h2 class="" data-i18n="story_h2">Rooted in Chiang Mai. Inspired by the North.</h2>
 </div>
 <div class="side">
-<p class="" data-i18n="story_desc">We are a Chiang Mai based team passionate about showing you Northern Thailand the way we experience it ourselves.</p>
-<div class="stats">
-<div class="stat"><b data-i18n="stat_1_num">18</b><span class="" data-i18n="stat_1_label">Years on Lanna's paths</span></div>
-<div class="stat"><b data-i18n="stat_2_num">42</b><span class="" data-i18n="stat_2_label">Curated heritage stays</span></div>
-<div class="stat"><b data-i18n="stat_3_num">7</b><span class="" data-i18n="stat_3_label">Provinces under our care</span></div>
-</div>
+<p class="" data-i18n="story_desc">Born in Chiang Mai and shaped by the landscapes, traditions, and quiet beauty of Northern Thailand, we create thoughtfully curated journeys that reveal the North beyond the familiar — guided by local knowledge, genuine hospitality, and a slower, more considered way of travelling.</p>
 </div>
 </div>
 </section>
@@ -890,45 +934,90 @@
 <div class="head">
 <div>
 <div class="" style="color:var(--gold-soft); font-size:13.5px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px;" data-i18n="tours_kicker">Curated Journeys</div>
-<h2 class="" data-i18n="tours_h2">Immersive Northern Itineraries</h2>
+<h2 class="" data-i18n="tours_h2">Thoughtfully Crafted in the North</h2>
 </div>
-<p class="" data-i18n="tours_desc">Small-group and private journeys designed for an intimate, unhurried experience of the North.</p>
 </div>
 <div class="tour-grid">
-<div class="tour-card" id="destination-chiang-mai">
+<a href="doiin01.html" class="tour-card" id="destination-chiang-mai">
 <div class="art">
-<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 380">
-<defs>
-<linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
-<stop offset="0%" stop-color="#2D4638"></stop>
-<stop offset="100%" stop-color="#141F19"></stop>
-</linearGradient>
-</defs>
-<rect fill="url(#g1)" height="380" width="400"></rect>
-<path d="M0 260 L90 180 L160 230 L250 140 L340 210 L400 160 L400 380 L0 380 Z" fill="#203227"></path>
-<circle cx="320" cy="80" fill="#C6A15B" opacity="0.8" r="32"></circle>
-<path d="M120 280 L160 200 L200 280 Z" fill="#33513E" opacity="0.9"></path>
-<path d="M0 320 Q120 290 220 330 T400 300 L400 380 L0 380 Z" fill="#141F19"></path>
-</svg>
+<div class="art-scroll">
+<img src="doiin03.jpg" alt="Doi Inthanon, Wachirathan Waterfall" loading="lazy">
+<img src="phadok01.png" alt="Pha Dok Siew Trail" loading="lazy">
+<img src="doiin02.png" alt="Mae Klang Luang Village" loading="lazy">
+<img src="doiin04.jpeg" alt="Hmong hill-tribe village" loading="lazy">
+<img src="doiin01.png" alt="Local handicrafts" loading="lazy">
+<img src="doiin03.png" alt="Twin pagodas" loading="lazy">
+</div>
+<button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+<button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+<div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
 </div>
 <div class="body"><div class="place" data-i18n="tour1_place">Chiang Mai , Thailand</div>
-<h3 data-i18n="tour1_title" class="">Legends of Chiang Mai: 3-Day Highlights</h3>
+<h3 data-i18n="tour1_title" class="">The Essence of Doi Inthanon</h3>
 <p data-i18n="tour1_desc" class="">Doi Inthanon with Pha Dok Siew trail, Sightseeing Doi Suthep and Thai cooking class, and Ethical Elephant Sanctuary with Bamboo Rafting.</p>
 <div class="foot"><span data-i18n="tour1_guests" class="">maximum 2 guests</span><span class="price"><b data-i18n="tour1_price">$1,000</b> /person</span></div></div>
-</div>
-<div class="tour-card" id="destination-chiang-rai">
+</a>
+<a href="chiangrai.html" class="tour-card" id="destination-chiang-rai">
 <div class="art">
-<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260">
+<div class="art-scroll">
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+<linearGradient id="g2a" x1="0" x2="0" y1="0" y2="1">
 <stop offset="0%" stop-color="#26392E"></stop>
 <stop offset="100%" stop-color="#141F19"></stop>
 </linearGradient>
 </defs>
-<rect fill="url(#g2)" height="260" width="300"></rect>
+<rect fill="url(#g2a)" height="260" width="300"></rect>
 <path d="M0 190 L60 130 L120 170 L180 110 L250 160 L300 130 L300 260 L0 260 Z" fill="#1E2E25"></path>
 <circle cx="80" cy="70" fill="#DBBD86" opacity="0.6" r="22"></circle>
 </svg>
+</div>
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g2b" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#33513E"></stop>
+<stop offset="100%" stop-color="#141F19"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g2b)" height="260" width="300"></rect>
+<path d="M0 150 Q75 100 150 150 T300 150 L300 260 L0 260 Z" fill="#203227" opacity="0.9"></path>
+<path d="M0 200 Q90 170 180 205 T300 190 L300 260 L0 260 Z" fill="#141F19"></path>
+<circle cx="230" cy="60" fill="#C6A15B" opacity="0.7" r="18"></circle>
+</svg>
+</div>
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g2c" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#203227"></stop>
+<stop offset="100%" stop-color="#0E1612"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g2c)" height="260" width="300"></rect>
+<path d="M0 210 L50 160 L100 190 L150 140 L200 185 L250 150 L300 175 L300 260 L0 260 Z" fill="#1B2B21"></path>
+<circle cx="150" cy="55" fill="#DBBD86" opacity="0.55" r="26"></circle>
+</svg>
+</div>
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g2d" x1="1" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2D4638"></stop>
+<stop offset="100%" stop-color="#141F19"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g2d)" height="260" width="300"></rect>
+<path d="M0 170 Q60 120 120 165 T240 160 T300 170 L300 260 L0 260 Z" fill="#1E2E25"></path>
+<path d="M0 215 Q80 190 160 220 T300 205 L300 260 L0 260 Z" fill="#141F19" opacity="0.9"></path>
+<circle cx="60" cy="65" fill="#C6A15B" opacity="0.65" r="16"></circle>
+</svg>
+</div>
+</div>
+<button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+<button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+<div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
 </div>
 <div class="body">
 <div class="place" data-i18n="tour_2_place">Chiang Rai , Thailand</div>
@@ -936,20 +1025,68 @@
 <p class="" data-i18n="tour_2_desc">Sea-of-fog mornings and hill-tribe villages, travelled at an unhurried, private pace.</p>
 <div class="foot"><span class="" data-i18n="tour_2_pax">3 days, 2 nights</span><span class="price"><b data-i18n="tour_2_price">$740</b> /person</span></div>
 </div>
-</div>
-<div class="tour-card" id="destination-pai">
+</a>
+<a href="#contact" class="tour-card" id="destination-pai">
 <div class="art">
-<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260">
+<div class="art-scroll">
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<linearGradient id="g3" x1="0" x2="0" y1="0" y2="1">
+<linearGradient id="g3a" x1="0" x2="0" y1="0" y2="1">
 <stop offset="0%" stop-color="#23352B"></stop>
 <stop offset="100%" stop-color="#121C16"></stop>
 </linearGradient>
 </defs>
-<rect fill="url(#g3)" height="260" width="300"></rect>
+<rect fill="url(#g3a)" height="260" width="300"></rect>
 <circle cx="210" cy="70" fill="#33513E" opacity="0.85" r="28"></circle>
 <path d="M0 190 L100 140 L200 190 L300 150 L300 260 L0 260 Z" fill="#1B2B21"></path>
 </svg>
+</div>
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g3b" x1="1" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2D4638"></stop>
+<stop offset="100%" stop-color="#121C16"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g3b)" height="260" width="300"></rect>
+<path d="M0 160 Q70 110 140 155 T300 150 L300 260 L0 260 Z" fill="#1E2E25" opacity="0.9"></path>
+<path d="M0 205 Q85 180 170 210 T300 195 L300 260 L0 260 Z" fill="#121C16"></path>
+<circle cx="70" cy="55" fill="#DBBD86" opacity="0.6" r="20"></circle>
+</svg>
+</div>
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g3c" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#203227"></stop>
+<stop offset="100%" stop-color="#0E1612"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g3c)" height="260" width="300"></rect>
+<path d="M0 200 L45 155 L90 185 L135 145 L180 180 L225 150 L270 175 L300 160 L300 260 L0 260 Z" fill="#1B2B21"></path>
+<circle cx="240" cy="60" fill="#C6A15B" opacity="0.6" r="18"></circle>
+</svg>
+</div>
+<div class="art-slide">
+<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g3d" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#33513E"></stop>
+<stop offset="100%" stop-color="#141F19"></stop>
+</linearGradient>
+</defs>
+<rect fill="url(#g3d)" height="260" width="300"></rect>
+<path d="M0 175 Q65 125 130 170 T260 165 T300 175 L300 260 L0 260 Z" fill="#203227"></path>
+<path d="M0 220 Q80 195 160 222 T300 210 L300 260 L0 260 Z" fill="#121C16" opacity="0.9"></path>
+<circle cx="150" cy="50" fill="#DBBD86" opacity="0.55" r="24"></circle>
+</svg>
+</div>
+</div>
+<button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+<button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+<div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
 </div>
 <div class="body">
 <div class="place" data-i18n="tour_3_place">Mae Hong Son , Thailand</div>
@@ -957,33 +1094,7 @@
 <p class="" data-i18n="tour_3_desc">The whispered-love serenity of Pai and the quiet misty temples hidden along Mae Hong Son's ancient pine ridges.</p>
 <div class="foot"><span class="" data-i18n="tour_3_pax">3 days, 2 nights</span><span class="price"><b data-i18n="tour_3_price">$680</b> /person</span></div>
 </div>
-</div>
-</div>
-</div>
-</section>
-<!-- What Sets Us Apart -->
-<section class="signature" id="signature" style="background: rgb(51, 81, 62); color: var(--paper);">
-<div class="wrap">
-<div class="head">
-<div class="eyebrow" data-i18n="sets_apart_eyebrow" style="color: var(--gold-soft); letter-spacing: 1.5px; text-transform: uppercase;">What Sets Us Apart</div>
-<h2 class="" data-i18n="sets_apart_h2" style="color: var(--paper);">Small details that become lasting memories</h2>
-</div>
-<div class="exp-list">
-<div class="exp">
-<svg class="mark" viewBox="0 0 34 34"><circle cx="17" cy="17" fill="none" r="15" stroke="#C6A15B" stroke-width="1.4"></circle><path d="M9 17 Q17 8 25 17 Q17 26 9 17 Z" fill="none" stroke="#C6A15B" stroke-width="1.2"></path></svg>
-<h3 class="" data-i18n="exp_1_title" style="color: var(--paper);">Morning Alms Ceremony</h3>
-<p class="" data-i18n="exp_1_desc" style="color: rgba(239, 230, 212, 0.82);">Join monks in a quiet lane of the old town, offering alms before the city wakes.</p>
-</div>
-<div class="exp">
-<svg class="mark" viewBox="0 0 34 34"><rect fill="none" height="18" stroke="#C6A15B" stroke-width="1.4" transform="rotate(45 17 17)" width="18" x="8" y="8"></rect></svg>
-<h3 class="" data-i18n="exp_2_title" style="color: var(--paper);">Private Khantoke Dinner</h3>
-<p class="" data-i18n="exp_2_desc" style="color: rgba(239, 230, 212, 0.82);">An authentic Lanna feast inside a private teak house, with a fingernail dance performed by local artists.</p>
-</div>
-<div class="exp">
-<svg class="mark" viewBox="0 0 34 34"><path d="M17 5 L27 29 L7 29 Z" fill="none" stroke="#C6A15B" stroke-width="1.4"></path></svg>
-<h3 class="" data-i18n="exp_3_title" style="color: var(--paper);">Northern Herbal Spa</h3>
-<p class="" data-i18n="exp_3_desc" style="color: rgba(239, 230, 212, 0.82);">Traditional compress and massage rituals passed down through generations of local healers.</p>
-</div>
+</a>
 </div>
 </div>
 </section>
@@ -1001,32 +1112,6 @@
 </style>
 <!-- FULL-SCREEN / LIGHTBOX REVIEW VIEWER MODAL -->
 
-<!-- Gallery Section -->
-<section class="gallery" id="gallery">
-<div class="wrap">
-<div class="head">
-<h2 class="" data-i18n="gallery_title">Gallery</h2>
-<span class="" data-i18n="gallery_subtitle">Captured across Northern Thailand</span>
-</div>
-<div class="g-grid">
-<div class="g1" style="background:radial-gradient(circle at 30% 30%, #3a5444 0%, #1c2c22 100%);">
-<div class="g-caption" data-i18n="gallery_caption_1">Pha Dok Siew Trail</div>
-</div>
-<div class="g2" style="background:radial-gradient(circle at 40% 40%, #466752 0%, #223428 100%);">
-<div class="g-caption" data-i18n="gallery_caption_2">Wat Pha Lat</div>
-</div>
-<div class="g3" style="background:radial-gradient(circle at 50% 50%, #C6A15B 0%, #26392E 100%);">
-<div class="g-caption" data-i18n="gallery_caption_3">Lanna teak craft</div>
-</div>
-<div class="g4" style="background:radial-gradient(circle at 70% 30%, #30473a 0%, #16221b 100%);">
-<div class="g-caption" data-i18n="gallery_caption_4">Wat Rong Suea Ten</div>
-</div>
-<div class="g5" style="background:radial-gradient(circle at 40% 60%, #33513E 0%, #C6A15B 100%);">
-<div class="g-caption" data-i18n="gallery_caption_5">Bamboo Rafting along the river</div>
-</div>
-</div>
-</div>
-</section>
 <!-- Contact Form / CTA -->
 <section class="cta-sec" id="contact">
 <div class="wrap">
@@ -1066,10 +1151,9 @@
       <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="16"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
     </a>
     <div style="display: flex; flex-direction: column; gap: 3px;">
-      <span style="color: var(--gold-soft); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;" class="" data-i18n="footer_whatsapp_label">WhatsApp</span>
+    
       <div style="display: flex; flex-direction: column; gap: 2px;">
         <a href="tel:+66988198385" style="color: rgb(239, 230, 212); text-decoration: none; font-size: 13.5px; transition: color 0.25s;" onmouseover="this.style.color='#DBBD86'" onmouseout="this.style.color='#EFE6D4'" class="">+6698-8198385</a>
-        <a href="tel:+66613490982" style="color: rgb(239, 230, 212); text-decoration: none; font-size: 13.5px; transition: color 0.25s;" onmouseover="this.style.color='#DBBD86'" onmouseout="this.style.color='#EFE6D4'" class="">+6661-349-0982</a>
       </div>
     </div>
   </div>
@@ -1081,8 +1165,7 @@
         <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       </div>
       <div style="display: flex; flex-direction: column; gap: 2px;">
-        <span style="color: var(--gold-soft); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;" class="" data-i18n="footer_call_label">Direct Call</span>
-        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_whatsapp_label">WhatsApp</span>
+        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_whatsapp_label">+6698-819-8385</span>
       </div>
     </a>
   </div>
@@ -1104,7 +1187,6 @@
         <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
       </div>
       <div style="display: flex; flex-direction: column; gap: 2px;">
-        <span style="color: var(--gold-soft); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;" class="" data-i18n="footer_email_label">Email Us</span>
         <span style="color: #EFE6D4; font-size: 13.5px; word-break: break-all;" class="">northernorchidtours@gmail.com</span>
       </div>
     </a>
@@ -1123,26 +1205,10 @@
 <svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
 <ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></li><li class=""><button onclick="window.changeLanguage('fr')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Français (France)</button></li></ul>
-</div>
-<!-- Currency Switcher -->
-<div style="position: relative;">
-<label class="" style="display: block; font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 6px; font-weight: 500;" data-i18n="footer_lang_label">Language</label>
-<button id="footerCurrBtn" onclick="(function(){const d=document.getElementById('footerCurrMenu'); const l=document.getElementById('footerLangMenu'); if(l) l.style.display='none'; d.style.display = d.style.display==='block'?'none':'block';})()" style="min-height: 44px; width: 100%; display: flex; align-items: center; justify-content: space-between; background: rgba(20, 31, 25, 0.7); border: 1px solid rgba(198, 161, 91, 0.35); padding: 8px 12px; border-radius: 2px; color: #EFE6D4; font-family: 'Jost', sans-serif; font-size: 13px; cursor: pointer; transition: border-color 0.25s;" type="button">
-<span class="" id="footerSelectedCurr" style="display: flex; align-items: center; gap: 8px;"><span class="" style="color: var(--gold);">฿</span> THB — Thai Baht</span>
-<svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<ul id="footerCurrMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;">
-<li class=""><button class="" onclick="(function(){document.getElementById('footerSelectedCurr').innerHTML='&lt;span style=\'color: var(--gold);\'&gt;฿&lt;/span&gt; THB — Thai Baht'; document.getElementById('footerCurrMenu').style.display='none';})()" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button">THB — Thai Baht</button></li>
-<li class=""><button class="" onclick="(function(){document.getElementById('footerSelectedCurr').innerHTML='&lt;span style=\'color: var(--gold);\'&gt;$&lt;/span&gt; USD — US Dollar'; document.getElementById('footerCurrMenu').style.display='none';})()" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button">USD — US Dollar</button></li>
-<li class=""><button class="" onclick="(function(){document.getElementById('footerSelectedCurr').innerHTML='&lt;span style=\'color: var(--gold);\'&gt;€&lt;/span&gt; EUR — Euro'; document.getElementById('footerCurrMenu').style.display='none';})()" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Jost', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button">EUR — Euro</button></li>
-</ul>
-</div>
-</div>
+
 <!-- Legal & Policy Links -->
 <div>
-<div class="" style="font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 10px; font-weight: 500;" data-i18n="footer_legal_header">Legal &amp; Policy</div>
-<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li><li class=""><a href="#terms-modal" id="termsLink" class="legal-link" data-i18n="legal_link_terms" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'">Terms &amp; Guest Conditions</a></li><li class=""><a href="#privacy-modal" id="privacyLink" class="legal-link" data-i18n="legal_link_privacy" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'">Privacy &amp; Data Sanctuary</a></li></ul>
-</div>
+<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li><li class="">
 </div>
 </div>
 <!-- Bottom Bar -->
@@ -1223,6 +1289,36 @@
       btn.addEventListener('click', () => {
         const parent = btn.closest('.mobile-accordion');
         parent.classList.toggle('open');
+      });
+    });
+
+    // ---------------------------------------------
+    // Homepage tour-card swipeable photo galleries
+    // (same behaviour as the .art-scroll galleries on chiangmai.html)
+    // ---------------------------------------------
+    document.querySelectorAll('.tour-grid .tour-card .art-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const art = btn.closest('.art');
+        const scroll = art ? art.querySelector('.art-scroll') : null;
+        if (!scroll) return;
+        const dir = btn.classList.contains('next') ? 1 : -1;
+        scroll.scrollBy({ left: dir * scroll.offsetWidth, behavior: 'smooth' });
+      });
+    });
+
+    document.querySelectorAll('.tour-grid .tour-card .art').forEach(function (art) {
+      const scroll = art.querySelector('.art-scroll');
+      const dots = art.querySelectorAll('.art-dot');
+      if (!scroll || !dots.length) return;
+      let timer;
+      scroll.addEventListener('scroll', function () {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          const idx = Math.round(scroll.scrollLeft / scroll.offsetWidth);
+          dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        }, 80);
       });
     });
 
@@ -1612,6 +1708,8 @@
   const translations = {
     en: {
       nav_destination: "Destination",
+      nav_private_tours: "Our Tours",
+      nav_multiday_tours: "Multi-Day Tours",
       nav_transport: "Transport",
       nav_activities: "Activities",
       nav_gallery: "Gallery",
@@ -1626,14 +1724,14 @@
       trans_suv: "SUV",
       trans_van: "Van (Toyota Commuter)",
       trans_airport: "Airport Transfer",
-      hero_kicker: "L A N N A &nbsp; L U X U R Y &nbsp; J O U R N E Y S",
-      hero_h1: "Every step through Lanna<br><em>is an unfinished poem</em>",
-      hero_lede: "Travel gracefully through the sacred mountains, golden chedis, and living heritage of Northern Thailand — guided by local custodians and welcomed into private teak sanctuaries.",
+      hero_kicker: "L A N N A  &  H E R R I T A G E  &  J O U R N E Y S",
+      hero_h1: "The art of travelling slowly<br><em>through Northern Thailand</em>",
+      hero_lede: "Discover the essence of Lanna through tranquil temples, mountain landscapes, and living traditions — thoughtfully curated journeys shaped by local knowledge, refined details, and an unhurried sense of place.",
       hero_btn_explore: "Explore Journeys",
       hero_btn_consult: "Private Consultation",
       story_eyebrow: "Our Story",
-      story_h2: "We don't just show you Lanna —<br>we invite you to live in its rhythm.",
-      story_desc: "We are a Chiang Mai based team passionate about showing you Northern Thailand the way we experience it ourselves.",
+      story_h2: "Rooted in Chiang Mai.Inspired by the North.",
+      story_desc: "Born in Chiang Mai and shaped by the landscapes, traditions, and quiet beauty of Northern Thailand, we create thoughtfully curated journeys that reveal the North beyond the familiar — guided by local knowledge, genuine hospitality, and a slower, more considered way of travelling.",
       stat_1_num: "18",
       stat_1_label: "Years on Lanna's paths",
       stat_2_num: "42",
@@ -1641,8 +1739,8 @@
       stat_3_num: "7",
       stat_3_label: "Provinces under our care",
       tours_kicker: "Curated Journeys",
-      tours_h2: "Immersive Northern Itineraries",
-      tours_desc: "Small-group and private journeys designed for an intimate, unhurried experience of the North.",
+      tours_h2: "Thoughtfully Crafted in the North",
+      tours_desc: "Private and intimate journeys shaped around the landscapes, culture, and quiet moments of Northern Thailand — thoughtfully designed for those who prefer to travel at their own pace.",
       tour_1_place: "Chiang Mai , Thailand",
       tour_1_title: "Legends of Lanna — 3 Day Highlights",
       tour_1_desc: "Sunrise at Doi Suthep, a quiet boat along the Kok River, and a private khantoke dinner inside a heritage teak house.",
@@ -1692,9 +1790,8 @@
       footer_loc_label: "Location",
       footer_loc_val: "Chiang Mai, Thailand",
       footer_hours_val: "Daily 08:00 – 09:00 PM",
-      footer_whatsapp_label: "WhatsApp",
-      footer_call_label: "Direct Call",
-      footer_email_label: "Email Us",
+      footer_whatsapp_label: "+6698-819-8385",
+      footer_call_label: "+6698-819-8385",
       footer_pref_header: "Preferences & Policies",
       footer_lang_label: "Language",
       footer_curr_label: "Currency",
@@ -1706,6 +1803,8 @@
     },
     th: {
       nav_destination: "จุดหมายปลายทาง",
+      nav_private_tours: "ทัวร์ส่วนตัว",
+      nav_multiday_tours: "ทัวร์หลายวัน",
       nav_transport: "ยานพาหนะ",
       nav_activities: "กิจกรรมพิเศษ",
       nav_gallery: "แกลเลอรี",
@@ -1720,14 +1819,14 @@
       trans_suv: "รถยนต์ SUV",
       trans_van: "รถตู้พรีเมียม (Toyota Commuter)",
       trans_airport: "บริการรับ-ส่งสนามบิน",
-      hero_kicker: "ก า ร เ ดิ น ท า ง แ ส น ป ร ะ ณี ต แ ห่ ง ล้ า น น า",
-      hero_h1: "ทุกย่างก้าวผ่านดินแดนล้านนา<br><em>ดั่งบทกวีอันงดงามมิรู้จบ</em>",
-      hero_lede: "สัมผัสเทือกเขาศักดิ์สิทธิ์ เจดีย์ทองอร่าม และมรดกชีวิตแห่งแดนเหนือของไทย — ดูแลนำทางอย่างใกล้ชิดโดยผู้คนท้องถิ่นและพักผ่อนในเรือนไม้สักส่วนตัว",
+      hero_kicker: "ล้านนา • มรดก • การเดินทาง",
+      hero_h1: "ศิลปะแห่งการเดินทางอย่างเชื่องช้า<br><em>ผ่านดินแดนภาคเหนือของประเทศไทย</em>",
+      hero_lede: "สัมผัสแก่นแท้ของล้านนา ผ่านวัดวาอันเงียบสงบ ภูมิทัศน์แห่งขุนเขา และวิถีชีวิตที่ยังคงดำเนินอยู่ — กับการเดินทางที่คัดสรรอย่างพิถีพิถัน ถ่ายทอดผ่านความรู้จากคนท้องถิ่น รายละเอียดอันประณีต และจังหวะการเดินทางที่ไม่เร่งรีบ",
       hero_btn_explore: "ค้นหาโปรแกรมท่องเที่ยว",
       hero_btn_consult: "ปรึกษาการเดินทางส่วนตัว",
       story_eyebrow: "เรื่องราวของเรา",
-      story_h2: "เรามิได้เพียงพาคุณชมล้านนา —<br>แต่เราชวนคุณมาใช้ชีวิตในจังหวะแห่งล้านนา",
-      story_desc: "เราคือทีมงานท้องถิ่นเชียงใหม่ที่มุ่งมั่นส่งต่อมนต์เสน่ห์แห่งภาคเหนือในแบบที่เราผูกพันและสัมผัสอย่างแท้จริง",
+      story_h2: "หยั่งรากจากเชียงใหม่ ได้แรงบันดาลใจจากดินแดนเหนือ",
+      story_desc: "เราเติบโตจากเชียงใหม่ และได้รับแรงบันดาลใจจากภูมิประเทศ ขนบธรรมเนียม และความงดงามอันเงียบสงบของภาคเหนือ เราจึงตั้งใจรังสรรค์การเดินทางที่คัดสรรมาอย่างพิถีพิถัน เพื่อพาคุณสัมผัสภาคเหนือในมุมที่แตกต่างจากเส้นทางทั่วไป ผ่านความรู้จากคนท้องถิ่น การต้อนรับอย่างจริงใจ และจังหวะการเดินทางที่ช้าลงอย่างมีความหมาย",
       stat_1_num: "18",
       stat_1_label: "ปีบนเส้นทางล้านนา",
       stat_2_num: "42",
@@ -1800,6 +1899,8 @@
     },
     fr: {
       nav_destination: "Destinations",
+      nav_private_tours: "Circuits Privés",
+      nav_multiday_tours: "Circuits Multi-Jours",
       nav_transport: "Transports",
       nav_activities: "Expériences",
       nav_gallery: "Galerie",
@@ -1814,14 +1915,14 @@
       trans_suv: "SUV",
       trans_van: "Minibus de luxe (Toyota Commuter)",
       trans_airport: "Transfert aéroport",
-      hero_kicker: "V O Y A G E S &nbsp; D E &nbsp; L U X E &nbsp; L A N N A",
-      hero_h1: "Chaque pas à travers le Lanna<br><em>est un poème inachevé</em>",
-      hero_lede: "Voyagez avec élégance à travers les montagnes sacrées, les chedis dorés et le patrimoine vivant du nord de la Thaïlande — guidé par des gardiens locaux et accueilli dans des demeures de teck privées.",
+      hero_kicker: "L A N N A & H É R I T A G E & V O Y A G E S",
+      hero_h1: "L’art de voyager lentement<br><em>à travers le Nord de la Thaïlande</em>",
+      hero_lede: "Découvrez l’essence du Lanna à travers ses temples paisibles, ses paysages montagneux et ses traditions vivantes — des voyages soigneusement imaginés, façonnés par le savoir local, le sens du détail et un art de voyager en toute sérénité.",
       hero_btn_explore: "Découvrir les voyages",
       hero_btn_consult: "Consultation privée",
       story_eyebrow: "Notre Histoire",
-      story_h2: "Nous ne vous montrons pas seulement le Lanna —<br>nous vous invitons à vivre à son rythme.",
-      story_desc: "Nous sommes une équipe basée à Chiang Mai, passionnée par l'art de partager le nord de la Thaïlande tel que nous le vivons nous-mêmes.",
+      story_h2: "Ancrés à Chiang Mai. Inspirés par le Nord.",
+      story_desc: "Nés à Chiang Mai et façonnés par les paysages, les traditions et la beauté paisible du Nord de la Thaïlande, nous imaginons des voyages soigneusement pensés pour révéler un autre visage du Nord, au-delà des chemins familiers — guidés par le savoir local, une hospitalité sincère et une manière de voyager plus lente, plus intime et plus réfléchie.",
       stat_1_num: "18",
       stat_1_label: "Années sur les sentiers du Lanna",
       stat_2_num: "42",
@@ -1829,20 +1930,20 @@
       stat_3_num: "7",
       stat_3_label: "Provinces sous notre égide",
       tours_kicker: "Itinéraires Choisis",
-      tours_h2: "Voyages immersifs dans le Nord",
+      tours_h2: "L’art du voyage, façonné dans le Nord",
       tours_desc: "Voyages en petits groupes et privés conçus pour une découverte intime et sereine du Nord.",
-      tour_1_place: "Chiang Mai , Thaïlande",
+      tour_1_place: "DOIIN01",
       tour_1_title: "Légendes du Lanna — 3 Jours Inoubliables",
       tour_1_desc: "Lever du soleil à Doi Suthep, navigation paisible sur la rivière Kok, et dîner khantoke privé dans une maison en teck historique.",
       tour_1_pax: "2–6 personnes",
       tour_1_price: "1 340 $",
       per_person: "/personne",
-      tour_2_place: "Chiang Rai , Thaïlande",
+      tour_2_place: "ELE02",
       tour_2_title: "Chiang Rai & Le Triangle d'Or",
       tour_2_desc: "Matins dans une mer de brume et villages traditionnels des collines, explorés à un rythme doux et privé.",
       tour_2_pax: "3 jours, 2 nuits",
       tour_2_price: "740 $",
-      tour_3_place: "Mae Hong Son , Thaïlande",
+      tour_3_place: "TRAN01",
       tour_3_title: "Crêtes Brumeuses & Vallées Secrètes",
       tour_3_desc: "La sérénité poétique de Pai et les sanctuaires de brume lovés le long des crêtes de pins centenaires de Mae Hong Son.",
       tour_3_pax: "3 jours, 2 nuits",
@@ -1897,31 +1998,24 @@
   function setupI18nAttributes() {
     const mapping = [
       // Nav links (desktop & mobile)
-      { sel: '.nav-center .nav-item[data-dropdown="destination"] > button', key: 'nav_destination', hasChevron: true },
-      { sel: '.nav-center .nav-item[data-dropdown="transport"] > button', key: 'nav_transport', hasChevron: true },
+      { sel: '.nav-center .nav-item[data-dropdown="private tours"] > button', key: 'nav_private_tours', hasChevron: true },
+      { sel: '.nav-center a[href="multidaytours.html"]', key: 'nav_multiday_tours' },
+      { sel: '.nav-center a[href="transport.html"]', key: 'nav_transport' },
       { sel: '.nav-center a[href="#signature"]', key: 'nav_activities' },
       { sel: '.nav-center a[href="#gallery"]', key: 'nav_gallery' },
       { sel: '.nav-center a[href="#contact"]', key: 'nav_contact' },
       { sel: 'header.nav a.nav-cta-booking', key: 'nav_booking_now' },
-      { sel: '.mobile-accordion:nth-child(1) .mobile-accordion-btn', key: 'nav_destination', hasChevron: true },
-      { sel: '.mobile-accordion:nth-child(2) .mobile-accordion-btn', key: 'nav_transport', hasChevron: true },
+      { sel: '.mobile-accordion .mobile-accordion-btn', key: 'nav_private_tours', hasChevron: true },
+      { sel: '.mobile-nav-list a[href="multidaytours.html"]', key: 'nav_multiday_tours' },
+      { sel: '.mobile-nav-list a[href="transport.html"]', key: 'nav_transport' },
       { sel: '.mobile-nav-list a[href="#signature"]', key: 'nav_activities' },
       { sel: '.mobile-nav-list a[href="#gallery"]', key: 'nav_gallery' },
       { sel: '.mobile-nav-list a[href="#contact"]', key: 'nav_contact' },
       { sel: '.drawer-foot a.nav-cta-booking', key: 'nav_booking_now' },
 
       // Destination dropdown links
-      { sel: 'a[href="#destination-chiang-mai"] .drop-title, a[href="#destination-chiang-mai"] .m-title', key: 'dest_chiang_mai' },
-      { sel: 'a[href="#destination-chiang-rai"] .drop-title, a[href="#destination-chiang-rai"] .m-title', key: 'dest_chiang_rai' },
-      { sel: 'a[href="#destination-pai"] .drop-title, a[href="#destination-pai"] .m-title', key: 'dest_pai' },
-      { sel: 'a[href="#tours"] .drop-title, a[href="#tours"] .m-title', key: 'dest_nan' },
-      { sel: 'a[href="#destination-sukhothai"] .drop-title, a[href="#destination-sukhothai"] .m-title', key: 'dest_sukhothai' },
-
-      // Transport dropdown links
-      { sel: 'a[href="#transport-sedan"] .drop-title, a[href="#transport-sedan"] .m-title', key: 'trans_sedan' },
-      { sel: 'a[href="#transport-suv"] .drop-title, a[href="#transport-suv"] .m-title', key: 'trans_suv' },
-      { sel: 'a[href="#transport-van"] .drop-title, a[href="#transport-van"] .m-title', key: 'trans_van' },
-      { sel: 'a[href="#transport-airport-transfer"] .drop-title, a[href="#transport-airport-transfer"] .m-title', key: 'trans_airport' },
+      { sel: 'a[href="chiangmai01.html"] .drop-title, a[href="chiangmai01.html"] .m-title', key: 'dest_chiang_mai' },
+      { sel: 'a[href="chiangrai.html"] .drop-title, a[href="chiangrai.html"] .m-title', key: 'dest_chiang_rai' },
 
       // Hero
       { sel: '.hero .kicker', key: 'hero_kicker' },
@@ -2114,12 +2208,4 @@
   }
 })();
 </script>
-
-
-
-
-
-
-
-
 </body></html>
