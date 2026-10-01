@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>All Tours — Northern Orchid Tours</title>
+<title>Private Transport &amp; Transfers — Northern Orchid Tours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#141F19;
@@ -16,12 +16,12 @@
     --jade:#33513E;
     --line: rgba(198,161,91,0.35);
   }
-  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html{ scroll-behavior:smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
   *{ box-sizing:border-box; margin:0; padding:0; }
   body{
     background:var(--ink);
     color:var(--paper);
-    font-family:'Jost', sans-serif;
+    font-family:'Outfit', sans-serif;
     font-weight:400;
     line-height:1.7;
   }
@@ -29,7 +29,7 @@
   img{ max-width:100%; display:block; }
   .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
   .btn{
-    padding:13px 28px; font-size:13.5px; font-family:'Jost', sans-serif; border-radius:2px;
+    padding:13px 28px; font-size:13.5px; font-family:'Outfit', sans-serif; border-radius:2px;
     transition:all .3s ease; display:inline-flex; align-items:center; justify-content:center;
     min-height:44px;
   }
@@ -49,7 +49,7 @@
     padding:16px 32px; max-width:1180px; margin:0 auto;
   }
   .logo{
-    font-family:'Cormorant Garamond', serif; font-size:20px; letter-spacing:0.5px; font-weight:600;
+    font-family:'Outfit', sans-serif; font-size:20px; letter-spacing:0.5px; font-weight:600;
     color:var(--paper);
   }
   .logo span{ color:var(--gold-soft); }
@@ -111,7 +111,7 @@
     margin-bottom:8px; font-weight:500;
   }
   .grid-cover .cover-text h2{
-    font-family:'Cormorant Garamond', serif; font-weight:400; font-size:clamp(24px, 3.5vw, 34px);
+    font-family:'Outfit', sans-serif; font-weight:400; font-size:clamp(24px, 3.5vw, 34px);
     color:var(--paper);
   }
   @media(max-width:640px){
@@ -120,7 +120,7 @@
   }
   .page-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:56px; flex-wrap:wrap; }
   .page-head .kicker{ font-size:13px; letter-spacing:3px; color:var(--gold-soft); text-transform:uppercase; margin-bottom:14px; font-weight:500; }
-  .page-head h1{ font-family:'Cormorant Garamond', serif; font-weight:400; font-size:clamp(30px, 4vw, 44px); max-width:520px; }
+  .page-head h1{ font-family:'Outfit', sans-serif; font-weight:400; font-size:clamp(30px, 4vw, 44px); max-width:520px; }
   .page-head p{ max-width:320px; font-size:15px; color:rgba(239,230,212,0.7); }
 
   .filters{ display:flex; gap:12px; margin-bottom:48px; flex-wrap:wrap; }
@@ -140,10 +140,14 @@
     .filters::-webkit-scrollbar{ display:none; }
   }
 
-  .tour-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); border:1px solid var(--line); }
+  .tour-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2px; background:var(--line); border:1px solid var(--line); }
   .tour-card{ background:var(--ink); display:flex; flex-direction:column; transition:background 0.3s ease; }
   .tour-card:hover, .tour-card:active{ background:var(--jade); }
-  .tour-card .art{ position:relative; height:220px; overflow:hidden; flex-shrink:0; }
+  .tour-card .art{ position:relative; height:270px; overflow:hidden; flex-shrink:0; }
+  .tour-card .art::after{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(20,31,25,0.30) 0%, rgba(20,31,25,0) 30%, rgba(20,31,25,0.88) 100%);
+  }
   .tour-card .art-scroll{
     display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory;
     scrollbar-width:none; -webkit-overflow-scrolling:touch;
@@ -151,9 +155,11 @@
   .tour-card .art-scroll::-webkit-scrollbar{ display:none; }
   .tour-card .art-scroll img{
     flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:start; display:block;
+    transition:transform 0.9s ease;
   }
+  .tour-card:hover .art-scroll img{ transform:scale(1.04); }
   .tour-card .art-dots{
-    position:absolute; bottom:10px; left:0; right:0; z-index:2;
+    position:absolute; top:14px; left:0; right:0; z-index:2;
     display:flex; justify-content:center; gap:5px; pointer-events:none;
   }
   .tour-card .art-dot{ width:5px; height:5px; border-radius:50%; background:rgba(239,230,212,0.45); }
@@ -171,25 +177,86 @@
   @media(max-width:640px){
     .tour-card .art-arrow{ width:38px; height:38px; font-size:13px; }
   }
-  .tour-card .body{ padding:26px 26px 30px; flex:1; display:flex; flex-direction:column; }
+  .tour-card .body{ padding:22px 26px 26px; flex:1; display:flex; flex-direction:column; }
+  .tour-grid{ counter-reset:dest; }
+  .tour-card{ counter-increment:dest; }
+  .tour-card .art-title{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0 26px 20px; pointer-events:none; }
+  .tour-card .art-title .idx{ display:flex; align-items:center; gap:12px; font-size:12px; letter-spacing:3px; color:var(--gold-soft); font-weight:500; margin-bottom:6px; }
+  .tour-card .art-title .idx::before{ content:counter(dest, decimal-leading-zero); }
+  .tour-card .art-title .idx::after{ content:""; width:34px; height:1px; background:var(--gold); }
+  .tour-card .art-title h3{ font-size:clamp(26px, 2.6vw, 32px); font-weight:500; line-height:1.15; letter-spacing:0.3px; margin:0; color:var(--paper); text-shadow:0 2px 14px rgba(0,0,0,0.45); }
   .tour-card .place{ font-size:12px; letter-spacing:2px; color:var(--gold-soft); margin-bottom:10px; text-transform:uppercase; font-weight:500; }
-  .tour-card h3{ font-family:'Cormorant Garamond', serif; font-size:22px; font-weight:400; margin-bottom:10px; line-height:1.3; }
   .tour-card p{ font-size:14px; color:rgba(239,230,212,0.65); flex:1; line-height:1.7; }
   .tour-card .foot{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; border-top:1px solid var(--line); padding-top:16px; font-size:13px; }
-  .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Cormorant Garamond', serif; font-size:20px; font-weight:600; margin-left:4px; }
+  .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:20px; font-weight:600; margin-left:4px; }
   .tour-card .foot a{
     font-size:12.5px; letter-spacing:0.8px; color:var(--gold-soft); border-bottom:1px solid var(--gold-soft);
     padding:10px 2px; min-height:44px; display:inline-flex; align-items:center;
   }
 
+
+  .rates-link{
+    display:inline-flex; align-items:center; margin-top:14px; min-height:44px;
+    font-size:13px; letter-spacing:1px; color:var(--gold-soft); border-bottom:1px solid var(--gold-soft);
+  }
+
+  .rates-links{ display:flex; flex-wrap:wrap; gap:4px 28px; }
+
+  /* ===== Rates table ===== */
+  .rates{ padding:10px 0 110px; }
+  .rates-head{ text-align:center; max-width:620px; margin:0 auto 48px; }
+  .rates-head .kicker{ font-size:13px; letter-spacing:3px; color:var(--gold-soft); text-transform:uppercase; margin-bottom:14px; font-weight:500; }
+  .rates-head h2{ font-size:clamp(28px, 4vw, 42px); font-weight:400; line-height:1.2; }
+  .rates-head p{ margin-top:14px; font-size:15px; color:rgba(239,230,212,0.7); }
+  .rate-sub{ display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 18px; font-size:clamp(22px, 2.6vw, 28px); font-weight:500; margin:64px 0 20px; }
+  .rate-sub.first{ margin-top:0; }
+  .rate-sub span{ font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-soft); font-weight:500; }
+  .rate-table .r-arrow{ color:var(--gold); margin:0 4px; }
+  .rate-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); }
+  .rate-table{ width:100%; min-width:640px; border-collapse:collapse; table-layout:fixed; }
+  .rate-table thead th:first-child{ width:40%; }
+  .rate-table thead th{
+    background:var(--forest); color:var(--gold-soft); font-size:12px; letter-spacing:2.5px; text-transform:uppercase;
+    font-weight:500; padding:20px 24px; text-align:center; border-bottom:1px solid var(--gold);
+  }
+  .rate-table thead th:first-child{ text-align:left; }
+  .rate-table tbody tr{ border-bottom:1px solid var(--line); transition:background 0.25s ease; }
+  .rate-table tbody tr:last-child{ border-bottom:none; }
+  .rate-table tbody th, .rate-table tbody td{ padding:20px 24px; background:var(--ink); transition:background 0.25s ease; }
+  .rate-table tbody tr:hover th, .rate-table tbody tr:hover td{ background:#1E3225; }
+  .rate-table tbody th{ text-align:left; font-weight:500; }
+  .rate-table tbody th a{ display:flex; align-items:baseline; gap:16px; min-height:44px; align-items:center; }
+  .rate-table .r-idx{ font-size:12px; letter-spacing:2px; color:var(--gold); font-weight:500; }
+  .rate-table .r-name{ font-size:19px; color:var(--paper); }
+  .rate-table tbody th a:hover .r-name{ color:var(--gold-soft); }
+  .rate-table td.p{ text-align:center; font-size:19px; font-weight:500; color:var(--gold-soft); white-space:nowrap; }
+  .rate-table td.p.na{ color:rgba(239,230,212,0.3); }
+  .rate-table thead th:first-child, .rate-table tbody th{ position:sticky; left:0; z-index:1; }
+  .rate-table thead th:first-child{ background:var(--forest); }
+  .rates-foot{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-top:32px; }
+  .rates-foot p{ font-size:14.5px; color:rgba(239,230,212,0.7); max-width:520px; }
+
   @media(max-width:960px){
-    .tour-grid{ grid-template-columns:repeat(2,1fr); }
+    .tour-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   }
   @media(max-width:640px){
     .wrap{ padding:0 20px; }
     .tours-page{ padding:40px 0 70px; }
     .tour-grid{ grid-template-columns:1fr; }
     .page-head{ flex-direction:column; align-items:flex-start; }
+    .tour-card .art{ height:240px; }
+    .rates{ padding:0 0 70px; }
+    .rate-table{ min-width:0; }
+    .rate-table thead th{ padding:16px 6px; font-size:10.5px; letter-spacing:1px; }
+    .rate-table thead th:first-child, .rate-table tbody th{ padding-left:14px; padding-right:6px; width:36%; }
+    .rate-table tbody th, .rate-table tbody td{ padding:14px 6px; }
+    .rate-table tbody th a{ min-height:0; }
+    .rate-table .r-idx{ display:none; }
+    .rate-table .r-name{ font-size:15px; line-height:1.3; }
+    .rate-sub{ margin-top:48px; }
+    .rate-sub.first{ margin-top:0; }
+    .rate-table td.p{ font-size:15px; }
+    .rates-foot{ flex-direction:column; align-items:flex-start; }
   }
 </style>
 </head>
@@ -208,9 +275,9 @@
   </div>
   <nav class="mobile-nav" id="mobileNav">
     <a href="index.html">Home</a>
-    <a href="all-tours.html">Tours</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="chiangmai.html">Our Tours</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="index.html#contact">Contact Us</a>
   </nav>
 </header>
 
@@ -221,12 +288,18 @@
         <div class="kicker">Private Transportation</div>
         <h1>Travel Your Way</h1>
       </div>
-      <p>Private transfers and chauffeur-driven journeys, thoughtfully arranged for comfort and ease.</p>
+      <div>
+        <p>Private transfers and chauffeur-driven journeys, thoughtfully arranged for comfort and ease.</p>
+        <div class="rates-links">
+          <a class="rates-link" href="#rates">Day charter rates &#8595;</a>
+          <a class="rates-link" href="#transfers">Transfer rates &#8595;</a>
+        </div>
+      </div>
     </div>
 
 
     <div class="tour-grid">
-      <a href="maetaengtransport01.html" class="tour-card">
+      <a href="" class="tour-card" data-dest="mae-taeng-chiang-dao">
         <div class="art">
           <div class="art-scroll">
             <img src="doi-suthep.jpg" alt="Wat Phra That Doi Suthep">
@@ -239,9 +312,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Doi Inthanon</h3></div>
         </div>
         <div class="body">
-          <h3>Mae Taeng and Chiang Dao </h3>
           <p>Pay respect at the city's sacred temple, take in views over Chiang Mai, and visit a hill-tribe village.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -250,7 +323,7 @@
         </div>
       </a>
 
-      <a href="doiintransport.html" class="tour-card">
+      <a href="doiintransport.html" class="tour-card" data-dest="doi-inthanon">
         <div class="art">
           <div class="art-scroll">
             <img src="doiin03.jpg" alt="Wachirathan Waterfall">
@@ -263,9 +336,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Mae Taeng </h3></div>
         </div>
         <div class="body">
-          <h3>Doi Inthanon </h3>
           <p>Trek through hidden waterfalls, rice terraces, and an authentic Karen hill-tribe village.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -274,7 +347,7 @@
         </div>
       </a>
 
-      <a href="chiangraitransport01.html" class="tour-card">
+      <a href="chiangraitransport01.html" class="tour-card" data-dest="chiang-rai">
         <div class="art">
           <div class="art-scroll">
             <img src="ele09.jpeg" alt="Elephant Sanctuary">
@@ -287,9 +360,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Mae Kampong </h3></div>
         </div>
         <div class="body">
-          <h3>Chiang Rai </h3>
           <p>Connect with gentle giants, raft along the Mae Taeng river, and cool off at Sticky Waterfall.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -298,7 +371,7 @@
         </div>
       </a>
 
-      <a href="maekampongtransport01.html" class="tour-card">
+      <a href="maekampongtransport01.html" class="tour-card" data-dest="mae-kampong">
         <div class="art">
           <div class="art-scroll">
             <img src="image/ele01.png" alt="Elephant Sanctuary">
@@ -311,9 +384,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Chiang Rai</h3></div>
         </div>
         <div class="body">
-          <h3>Mae Kampong Village</h3>
           <p>Pay respect at the city's sacred temple, take in views over Chiang Mai, and visit a hill-tribe village.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -322,7 +395,7 @@
         </div>
       </a>
 
-      <a href="doisutheptransport01.html" class="tour-card">
+      <a href="doisutheptransport01.html" class="tour-card" data-dest="doi-suthep">
         <div class="art">
           <div class="art-scroll">
             <img src="image/cooking02.png" alt="Thai Cooking Class">
@@ -335,9 +408,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Chiang Mai City</h3></div>
         </div>
         <div class="body">
-          <h3>Doi Suthep</h3>
           <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -346,7 +419,7 @@
         </div>
       </a>
 
-      <a href="pai.html" class="tour-card">
+      <a href="pai.html" class="tour-card" data-dest="pai">
         <div class="art">
           <div class="art-scroll">
             <img src="image/cooking02.png" alt="Thai Cooking Class">
@@ -359,9 +432,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Pai</h3></div>
         </div>
         <div class="body">
-          <h3>Pai</h3>
           <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -370,7 +443,7 @@
         </div>
       </a>
 
-      <a href="maehongson.html" class="tour-card">
+      <a href="maehongson.html" class="tour-card" data-dest="mae-hong-son">
         <div class="art">
           <div class="art-scroll">
             <img src="image/cooking02.png" alt="Thai Cooking Class">
@@ -383,9 +456,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Mae Hong Son</h3></div>
         </div>
         <div class="body">
-          <h3>Mae Hong Son</h3>
           <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -394,7 +467,7 @@
         </div>
       </a>
 
-      <a href="sukothaitransport.html" class="tour-card">
+      <a href="sukothaitransport.html" class="tour-card" data-dest="sukothai">
         <div class="art">
           <div class="art-scroll">
             <img src="image/cooking02.png" alt="Thai Cooking Class">
@@ -407,9 +480,9 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Sukothai</h3></div>
         </div>
         <div class="body">
-          <h3>Sukothai</h3>
           <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -418,7 +491,7 @@
         </div>
       </a>
 
-      <a href="monjamtransport01.html" class="tour-card">
+      <a href="sukothaitransport.html" class="tour-card" data-dest="sukothai">
         <div class="art">
           <div class="art-scroll">
             <img src="image/cooking02.png" alt="Thai Cooking Class">
@@ -431,9 +504,81 @@
           <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
           <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
           <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Lampang</h3></div>
         </div>
         <div class="body">
-          <h3>Mon Jam</h3>
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="sukothaitransport.html" class="tour-card" data-dest="sukothai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="image/cooking02.png" alt="Thai Cooking Class">
+            <img src="image/cooking04.jpeg" alt="Doi Suthep golden chedi">
+            <img src="image/cooking05.jpeg" alt="View over Chiang Mai">
+            <img src="image/doisuthep02.jpeg" alt="Hmong hill-tribe village">
+            <img src="image/hmong-village-2.jpg" alt="Hmong hill-tribe village">
+            <img src="image/doi-suthep-steps.jpg" alt="Naga staircase">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Chiang Saen</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="sukothaitransport.html" class="tour-card" data-dest="sukothai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="image/cooking02.png" alt="Thai Cooking Class">
+            <img src="image/cooking04.jpeg" alt="Doi Suthep golden chedi">
+            <img src="image/cooking05.jpeg" alt="View over Chiang Mai">
+            <img src="image/doisuthep02.jpeg" alt="Hmong hill-tribe village">
+            <img src="image/hmong-village-2.jpg" alt="Hmong hill-tribe village">
+            <img src="image/doi-suthep-steps.jpg" alt="Naga staircase">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Nan</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="monjamtransport01.html" class="tour-card" data-dest="mon-jam">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="image/cooking02.png" alt="Thai Cooking Class">
+            <img src="image/cooking04.jpeg" alt="Doi Suthep golden chedi">
+            <img src="image/cooking05.jpeg" alt="View over Chiang Mai">
+            <img src="image/doisuthep02.jpeg" alt="Hmong hill-tribe village">
+            <img src="image/hmong-village-2.jpg" alt="Hmong hill-tribe village">
+            <img src="image/doi-suthep-steps.jpg" alt="Naga staircase">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Mon Jam</h3></div>
+        </div>
+        <div class="body">
           <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
           <div class="foot">
             <span>Full-day · private group</span>
@@ -445,7 +590,200 @@
   </div>
 </section>
 
+<section class="rates" id="rates">
+  <div class="wrap">
+    <div class="rates-head">
+      <div class="kicker">Private Rates</div>
+      <h2>Choose your vehicle</h2>
+      <p>Prices in Thai Baht (THB), per vehicle &mdash; not per person.</p>
+    </div>
+    <h3 class="rate-sub first">Day Charter <span>Full day &middot; per vehicle</span></h3>
+    <div class="rate-table-wrap">
+      <table class="rate-table">
+        <thead>
+          <tr><th scope="col">Price Details (includes fuel)</th><th scope="col">Sedan</th><th scope="col">SUV</th><th scope="col">VIP Van</th></tr>
+        </thead>
+        <tbody>
+        <tr data-dest="mae-taeng-chiang-dao">
+          <th scope="row"><a href=""><span class="r-idx">01</span><span class="r-name">Doi Inthanon</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="doi-inthanon">
+          <th scope="row"><a href=""><span class="r-idx">02</span><span class="r-name">Doi Inthanon + Pha Chor Cliff</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="chiang-rai">
+          <th scope="row"><a href=""><span class="r-idx">03</span><span class="r-name">Doi Inthanon + Mae Ya Waterfall</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mae-kampong">
+          <th scope="row"><a href=""><span class="r-idx">04</span><span class="r-name">Doi Suthep</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="doi-suthep">
+          <th scope="row"><a href=""><span class="r-idx">05</span><span class="r-name">Doi Suthep + Doi Pui and Mhong Village</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">06</span><span class="r-name">Doi Suthep + Wat Pha Lat + Wat Umong</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">07</span><span class="r-name">Chiang Rai 3 Temples + Lalitta Cafe</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">08</span><span class="r-name">Chiang Rai 3 Temples <br>+ Long Neck Karen Village</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">09</span><span class="r-name">Chiang Rai + Golden Triangles</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">10</span><span class="r-name">Chiang Dao</span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">11</span><span class="r-name">Mae Kampong </span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-dest="mon-jam">
+          <th scope="row"><a href=""><span class="r-idx">12</span><span class="r-name">Dantewada + Wat Ban Den <br>+ Bua Tong Waterfall </span></a></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="rate-sub" id="transfers">Transfers <span>One way &middot; per vehicle</span></h3>
+    <div class="rate-table-wrap">
+      <table class="rate-table">
+        <thead>
+          <tr><th scope="col">Route</th><th scope="col">Sedan</th><th scope="col">SUV</th><th scope="col">VIP Van</th></tr>
+        </thead>
+        <tbody>
+        <tr data-transfer="airport-city">
+          <th scope="row"><span class="r-name">Chiang Mai Airport <span class="r-arrow">&rarr;</span> Chiang Mai city</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-transfer="chiang-dao">
+          <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Chiang Rai</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-transfer="chiang-rai">
+          <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Pai</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-transfer="pai">
+          <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Mae Hong Son</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-transfer="mae-hong-son">
+          <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Chiang Khong</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-transfer="mae-hong-son">
+          <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Lampang</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-transfer="sukothai">
+          <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Sukothai</span></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rates-foot">
+      <p>Looking for a different route?
+Tell us your preferred destination or pick-up point, and we’ll be happy to provide a tailored quote for your journey.
+</p>
+      <a class="btn btn-gold" href="https://wa.me/66988198385">Request a quote on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
 <script>
+  // ===== PRICES (THB, per vehicle) =====
+  // Fill in the numbers below (e.g. sedan: 2500). Leave null if not set yet.
+  // The "From" price on each card and the rates table both read from this list.
+  var PRICES = {
+    'doi-inthanon':         { sedan:3500, suv:3800, van:4000 },
+    'doi-inthanon+pha-chor-cliff':         { sedan:4000, suv:4500, van:4500 },
+    'maetaeng':             { sedan:2500, suv:2500, van:3000 },
+    'chiang-rai':           { sedan:3800, suv:4000, van:4000 },
+    'mae-kampong':          { sedan:2500, suv:2500, van:3000 },
+    'doi-suthep':           { sedan:2500, suv:2500, van:2800 },
+    'chiang-dao':           { sedan:2800, suv:2800, van:3000 },
+    'mon-jam':              { sedan:2500, suv:2500, van:2800 }
+  };
+  // ===== TRANSFER PRICES (THB, one way, per vehicle) =====
+  var TRANSFER_PRICES = {
+    'airport-city':  { sedan:300, suv:500, van:500 },
+    'chiang-rai':    { sedan:3500, suv:4000, van:4000 },
+    'pai':           { sedan:3500, suv:4000, van:4000 },
+    'mae-hong-son':  { sedan:5500, suv:6000, van:6500 },
+    'chiang-khong':  { sedan:5000, suv:5500, van:5500 },
+    'lam-pang':      { sedan:3000, suv:3500, van:3500 },
+    'sukothai':      { sedan:4500, suv:5000, van:5000 }
+  };
+  function baht(n){ return '\u0E3F' + Number(n).toLocaleString('en-US'); }
+  Object.keys(TRANSFER_PRICES).forEach(function(key){
+    var p = TRANSFER_PRICES[key];
+    ['sedan','suv','van'].forEach(function(v){
+      var cell = document.querySelector('.rate-table tr[data-transfer="'+key+'"] td[data-v="'+v+'"]');
+      if(p[v] != null && cell){ cell.textContent = baht(p[v]); cell.classList.remove('na'); }
+    });
+  });
+  Object.keys(PRICES).forEach(function(key){
+    var p = PRICES[key], vals = [];
+    ['sedan','suv','van'].forEach(function(v){
+      var cell = document.querySelector('.rate-table tr[data-dest="'+key+'"] td[data-v="'+v+'"]');
+      if(p[v] != null && cell){ cell.textContent = baht(p[v]); cell.classList.remove('na'); }
+      if(p[v] != null) vals.push(p[v]);
+    });
+    var tag = document.querySelector('.tour-card[data-dest="'+key+'"] .price b');
+    if(tag && vals.length){ tag.textContent = 'From ' + baht(Math.min.apply(null, vals)); }
+  });
+
   var menuToggle = document.getElementById('menuToggle');
   var mobileNav = document.getElementById('mobileNav');
   menuToggle.addEventListener('click', function(){
