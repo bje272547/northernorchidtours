@@ -27,13 +27,11 @@
     line-height:1.7;
     overflow-x:hidden;
   }
-  h1,h2,h3,.serif{ font-family:'Outfit', sans-serif; }
+  h1,h2,h3{ font-family:'Outfit', sans-serif; }
   a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; }
   .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
 
-  .cloudline{ width:100%; height:22px; display:block; }
-  .cloudline path{ fill:none; stroke:var(--gold); stroke-width:1.4; }
 
   /* Header & Quiet Luxury Navigation */
   header.nav{
@@ -58,7 +56,7 @@
     border:1px solid var(--gold-soft); background:transparent;
     box-shadow:0 2px 12px rgba(0,0,0,0.35); flex-shrink:0;
   }
-  .nav .brand span{ color:var(--gold-soft); font-weight:500; font-style:italic; }
+  .nav .brand span{ color:var(--gold-soft); font-weight:400; font-style:italic; }
 
   /* Desktop Navigation & Dropdowns */
   .nav-center{ display:flex; align-items:center; }
@@ -118,7 +116,7 @@
     background:rgba(198, 161, 91, 0.08); padding-left:26px;
   }
   .dropdown-menu li a .drop-title{
-    font-family:'Outfit', sans-serif; font-size:17px; font-weight:500;
+    font-family:'Outfit', sans-serif; font-size:17px; font-weight:600;
     color:var(--paper); transition:color 0.22s ease; line-height:1.3;
   }
   .dropdown-menu li a:hover .drop-title{
@@ -244,14 +242,9 @@
     position:absolute; inset:0; pointer-events:none; opacity:0.18;
     background:radial-gradient(circle at 50% 60%, #DBBD86 0%, transparent 70%);
   }
-  .hero .kicker{
-    font-family:'Outfit', sans-serif; font-weight:500; font-size:clamp(11px, 2.5vw, 13px);
-    letter-spacing:clamp(3px, 1vw, 6px);
-    color:var(--gold-soft); margin-bottom:24px; text-transform:uppercase;
-  }
   .hero h1{
     font-size:clamp(32px, 5.8vw, 76px);
-    font-weight:500; line-height:1.2;
+    font-weight:400; line-height:1.2;
     max-width:1000px;
     letter-spacing:-0.5px;
   }
@@ -280,17 +273,14 @@
     width:140px; opacity:0.75;
   }
 
-  .intro{ padding:120px 0 100px; background:var(--paper); }
-  .intro .grid{
-    display:grid; grid-template-columns:0.95fr 1.05fr; gap:80px; align-items:start;
+  .intro{ padding:0; }
+  .story-frames{ display:grid; grid-template-columns:repeat(4,1fr); gap:0px; width:100%; margin:0; padding:0; background:var(--ink); }
+  .story-frames figure{ margin:0; overflow:hidden; aspect-ratio:16/9; background:var(--forest); }
+  .story-frames img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.8s ease; }
+  .story-frames figure:hover img{ transform:scale(1.05); }
+  @media (max-width:700px){
+    .story-frames{ grid-template-columns:repeat(2,1fr); }
   }
-  .intro .eyebrow{ color:var(--jade); font-size:14px; font-weight:600; margin-bottom:18px; letter-spacing:1.5px; text-transform:uppercase; }
-  .intro h2{ font-size:clamp(28px, 4vw, 38px); font-weight:400; line-height:1.35; color:var(--forest); }
-  .intro .side{ padding-top:20px; }
-  .intro .side p{ font-size:16.5px; color:#4a4a3c; line-height:1.85; }
-  .intro .side .stats{ display:flex; gap:50px; margin-top:42px; border-top:1px solid rgba(198,161,91,0.3); padding-top:32px; flex-wrap:wrap; }
-  .intro .side .stat b{ display:block; font-family:'Outfit', sans-serif; font-size:36px; color:var(--jade); font-weight:600; line-height:1.1; }
-  .intro .side .stat span{ font-size:13.5px; color:#6b6b57; letter-spacing:0.3px; }
 
   .tours{ background:var(--ink); color:var(--paper); padding:120px 0; }
   .tours .head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:60px; gap:40px; }
@@ -315,11 +305,9 @@
     scrollbar-width:none; -webkit-overflow-scrolling:touch;
   }
   .tour-card .art-scroll::-webkit-scrollbar{ display:none; }
-  .tour-card .art-scroll img,
-  .tour-card .art-scroll .art-slide{
+  .tour-card .art-scroll img{
     flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:start; display:block;
   }
-  .tour-card .art-scroll .art-slide svg{ width:100%; height:100%; display:block; }
   .tour-card .art-dots{
     position:absolute; bottom:12px; left:0; right:0; z-index:2;
     display:flex; justify-content:center; gap:5px; pointer-events:none;
@@ -347,302 +335,17 @@
   .tour-card .foot{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; border-top:1px solid rgba(198,161,91,0.25); padding-top:18px; font-size:13.5px; }
   .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:22px; font-weight:600; margin-left:4px; }
 
-  .signature{ padding:120px 0; background:var(--paper); }
+  .signature{ padding:120px 0; background:var(--jade); }
   .signature .head{ text-align:center; max-width:640px; margin:0 auto 70px; }
-  .signature .head .eyebrow{ color:var(--jade); font-weight:600; font-size:14px; margin-bottom:16px; letter-spacing:1.5px; text-transform:uppercase; }
-  .signature .head h2{ font-size:clamp(28px, 4vw, 38px); color:var(--forest); font-weight:400; }
+  .signature .head .eyebrow{ color:var(--gold-soft); font-weight:600; font-size:14px; margin-bottom:16px; letter-spacing:1.5px; text-transform:uppercase; }
+  .signature .head h2{ font-size:clamp(28px, 4vw, 38px); color:var(--paper); font-weight:400; }
   .exp-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .exp{ padding:44px 34px; border-right:1px solid var(--line); transition:background 0.3s ease; }
   .exp:hover{ background:rgba(198,161,91,0.06); }
   .exp:last-child{ border-right:none; }
   .exp .mark{ width:38px; height:38px; margin-bottom:22px; }
-  .exp h3{ font-size:21px; font-weight:500; color:var(--forest); margin-bottom:12px; }
-  .exp p{ font-size:15px; color:#6b6b57; line-height:1.8; }
-
-  /* Authentic Experiences & Interactive Carousel */
-  .quote-sec{
-    background:var(--jade); color:var(--paper); padding:120px 0; text-align:center;
-    position:relative; overflow:hidden; width:100%;
-  }
-
-  .carousel-wrapper{
-    position:relative; max-width:880px; margin:0 auto;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .carousel-track-container{
-    width:100%; max-width:780px; overflow:hidden; position:relative;
-    cursor:grab; user-select:none;
-  }
-  .carousel-track-container:active{
-    cursor:grabbing;
-  }
-  .carousel-slides{
-    display:flex; width:100%; transition:transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-  .carousel-slide{
-    flex:0 0 100%; width:100%; display:flex; flex-direction:column; align-items:center;
-    box-sizing:border-box; padding:0 4px;
-  }
-  .review-card-frame{
-    width:100%; border:1px solid rgba(198, 161, 91, 0.5);
-    background:rgba(20, 31, 25, 0.72); padding:18px; border-radius:3px;
-    box-shadow:0 20px 48px rgba(10, 18, 13, 0.45);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    transition:border-color 0.3s ease, box-shadow 0.3s ease;
-    position:relative;
-  }
-  .review-card-frame:hover{
-    border-color:rgba(198, 161, 91, 0.85);
-    box-shadow:0 24px 54px rgba(10, 18, 13, 0.6);
-  }
-  .review-interactive-box{
-    position:relative;
-    width:100%;
-    cursor:pointer;
-    border-radius:2px;
-    overflow:hidden;
-    background:#121212;
-    border:1px solid rgba(198, 161, 91, 0.25);
-    display:flex; justify-content:center; align-items:center;
-    transition:border-color 0.25s ease;
-  }
-  .review-interactive-box:hover{
-    border-color:var(--gold-soft);
-  }
-  .review-img{
-    max-width:100%; width:auto; height:auto; display:block;
-    max-height:480px;
-    object-fit:contain; flex-shrink:0; pointer-events:none;
-  }
-
-  /* Quiet Luxury Zoom Hint Badge */
-  .review-zoom-badge{
-    position:absolute; bottom:14px; right:14px;
-    display:inline-flex; align-items:center; gap:8px;
-    background:rgba(20, 31, 25, 0.88);
-    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    border:1px solid rgba(198, 161, 91, 0.55);
-    color:var(--gold-soft);
-    padding:7px 14px; border-radius:30px;
-    font-size:12px; letter-spacing:0.8px; font-weight:500;
-    pointer-events:none;
-    box-shadow:0 6px 18px rgba(0,0,0,0.4);
-    transition:transform 0.25s ease, background 0.25s ease, color 0.25s ease;
-  }
-  .review-interactive-box:hover .review-zoom-badge{
-    background:rgba(198, 161, 91, 0.95);
-    color:var(--ink);
-    transform:translateY(-2px);
-    border-color:var(--gold);
-  }
-  .review-zoom-badge svg{ width:14px; height:14px; stroke:currentColor; }
-
-  /* Carousel Navigation Buttons */
-  .carousel-btn{
-    width:46px; height:46px; border-radius:50%;
-    border:1px solid rgba(198, 161, 91, 0.55);
-    background:rgba(20, 31, 25, 0.7);
-    color:var(--gold-soft); cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    transition:all 0.25s ease; position:absolute; top:calc(50% - 23px); z-index:10;
-    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-  }
-  .carousel-btn:hover{
-    border-color:var(--gold); background:rgba(20, 31, 25, 0.95);
-    color:var(--paper); transform:scale(1.06);
-    box-shadow:0 4px 16px rgba(0,0,0,0.35);
-  }
-  .carousel-btn:active{ transform:scale(0.96); }
-  .carousel-btn.prev{ left:-64px; }
-  .carousel-btn.next{ right:-64px; }
-  .carousel-btn svg{ width:18px; height:18px; stroke:currentColor; }
-
-  /* Carousel Indicators & Dots */
-  .carousel-dots{
-    display:flex; align-items:center; justify-content:center; gap:12px;
-    margin-top:28px; list-style:none; padding:0;
-  }
-  .carousel-dot{
-    width:9px; height:9px; border-radius:50%;
-    border:1px solid var(--gold); background:transparent;
-    cursor:pointer; padding:0; transition:all 0.3s ease;
-    opacity:0.5;
-  }
-  .carousel-dot:hover{ opacity:0.85; transform:scale(1.2); }
-  .carousel-dot.active{
-    background:var(--gold); opacity:1; width:22px; border-radius:10px;
-    box-shadow:0 0 8px rgba(198, 161, 91, 0.6);
-  }
-
-  /* FULL-SCREEN / LIGHTBOX REVIEW VIEWER MODAL */
-  .lightbox-modal{
-    position:fixed; inset:0; z-index:9999;
-    background:rgba(12, 22, 17, 0.97);
-    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
-    display:flex; flex-direction:column;
-    opacity:0; pointer-events:none; visibility:hidden;
-    transition:opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
-    user-select:none;
-  }
-  .lightbox-modal.open{
-    opacity:1; pointer-events:auto; visibility:visible;
-  }
-
-  .lightbox-header{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px;
-    padding-top:calc(16px + env(safe-area-inset-top, 0px));
-    background:linear-gradient(to bottom, rgba(14,24,19,0.95), rgba(14,24,19,0.7));
-    border-bottom:1px solid rgba(198, 161, 91, 0.28);
-    flex-shrink:0; z-index:20;
-  }
-  .lightbox-header-left{
-    display:flex; align-items:center; gap:14px;
-  }
-  .lightbox-title{
-    font-family:'Outfit', sans-serif;
-    font-size:22px; font-weight:500; color:var(--paper); letter-spacing:0.5px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .lightbox-title span.count{
-    color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:12.5px;
-    letter-spacing:1.8px; text-transform:uppercase; font-weight:500;
-    border:1px solid rgba(198, 161, 91, 0.4); padding:3px 10px; border-radius:12px;
-  }
-  .lightbox-header-actions{
-    display:flex; align-items:center; gap:8px;
-  }
-  .lb-btn{
-    min-width:44px; min-height:44px; width:44px; height:44px;
-    display:inline-flex; align-items:center; justify-content:center;
-    background:rgba(20, 31, 25, 0.7);
-    border:1px solid rgba(198, 161, 91, 0.35);
-    color:var(--paper); border-radius:3px; cursor:pointer;
-    transition:all 0.2s ease;
-  }
-  .lb-btn:hover{
-    border-color:var(--gold); color:var(--gold-soft);
-    background:rgba(198, 161, 91, 0.12);
-  }
-  .lb-btn svg{ width:18px; height:18px; stroke:currentColor; }
-  .lb-btn-reset{
-    width:auto; padding:0 14px; font-family:'Outfit', sans-serif; font-size:12px;
-    letter-spacing:1px; text-transform:uppercase;
-  }
-  .lb-btn-close{
-    border-color:rgba(198, 161, 91, 0.5);
-    color:var(--gold-soft); margin-left:8px;
-  }
-  .lb-btn-close:hover{
-    background:#c6a15b; color:var(--ink);
-  }
-
-  .lightbox-viewport{
-    flex:1; width:100%; height:100%; position:relative;
-    overflow:hidden; display:flex; align-items:center; justify-content:center;
-    cursor:grab; touch-action:none;
-  }
-  .lightbox-viewport.grabbing{
-    cursor:grabbing;
-  }
-  .lightbox-canvas{
-    position:relative; display:flex; align-items:center; justify-content:center;
-    transform-origin:center center;
-    transition:transform 0.08s linear;
-    will-change:transform;
-  }
-  .lightbox-image{
-    max-width:90vw; max-height:76vh;
-    object-fit:contain; display:block;
-    border-radius:2px;
-    box-shadow:0 24px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(198, 161, 91, 0.35);
-    pointer-events:none;
-  }
-
-  /* Lightbox Navigation Chevrons */
-  .lb-nav-arrow{
-    position:absolute; top:calc(50% - 25px); z-index:15;
-    width:50px; height:50px; border-radius:50%;
-    background:rgba(20, 31, 25, 0.82);
-    border:1px solid rgba(198, 161, 91, 0.45);
-    color:var(--paper); cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    transition:all 0.25s ease;
-    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-  }
-  .lb-nav-arrow:hover{
-    background:rgba(198, 161, 91, 0.95);
-    border-color:var(--gold); color:var(--ink);
-    transform:scale(1.08);
-  }
-  .lb-nav-arrow.prev{ left:24px; }
-  .lb-nav-arrow.next{ right:24px; }
-  .lb-nav-arrow svg{ width:20px; height:20px; stroke:currentColor; }
-
-  /* Lightbox Footer Bar */
-  .lightbox-footer{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 28px 16px;
-    padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px));
-    background:linear-gradient(to top, rgba(14,24,19,0.98), rgba(14,24,19,0.7));
-    border-top:1px solid rgba(198, 161, 91, 0.28);
-    flex-shrink:0; z-index:20;
-    gap:16px; flex-wrap:wrap;
-  }
-  .lightbox-nav-btns{
-    display:flex; align-items:center; gap:10px;
-  }
-  .lb-footer-nav-btn{
-    min-height:44px; padding:8px 18px; border-radius:2px;
-    border:1px solid rgba(198, 161, 91, 0.4);
-    background:rgba(20, 31, 25, 0.7);
-    color:var(--paper); font-family:'Outfit', sans-serif;
-    font-size:13px; letter-spacing:1px; cursor:pointer;
-    display:inline-flex; align-items:center; gap:8px;
-    transition:all 0.25s ease;
-  }
-  .lb-footer-nav-btn:hover{
-    background:rgba(198, 161, 91, 0.15);
-    border-color:var(--gold-soft); color:var(--gold-soft);
-  }
-  .lb-footer-nav-btn svg{ width:14px; height:14px; stroke:currentColor; }
-
-  .lightbox-dots{
-    display:flex; align-items:center; gap:10px; list-style:none; margin:0; padding:0;
-  }
-  .lb-dot{
-    width:8px; height:8px; border-radius:50%;
-    border:1px solid var(--gold); background:transparent;
-    cursor:pointer; padding:0; transition:all 0.25s; opacity:0.5;
-  }
-  .lb-dot.active{
-    background:var(--gold); opacity:1; width:20px; border-radius:10px;
-  }
-
-  .lightbox-hint-mobile{
-    font-size:12px; color:rgba(239, 230, 212, 0.65);
-    font-family:'Outfit', sans-serif; letter-spacing:0.5px;
-    display:flex; align-items:center; gap:6px;
-  }
-  .lightbox-hint-mobile svg{ width:14px; height:14px; stroke:var(--gold-soft); }
-
-  .gallery{ padding:120px 0; background:var(--paper); }
-  .gallery .head{ margin-bottom:50px; display:flex; justify-content:space-between; align-items:baseline; }
-  .gallery .head h2{ font-size:clamp(28px, 4vw, 36px); color:var(--forest); font-weight:400; }
-  .gallery .head span{ font-size:14px; color:#787864; font-style:italic; }
-  .g-grid{
-    display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:120px; gap:16px;
-  }
-  .g-grid div{ border-radius:2px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(20,31,25,0.08); }
-  .g-grid div .g-caption{
-    position:absolute; bottom:0; left:0; right:0; padding:16px; font-size:13px; color:var(--paper);
-    background:linear-gradient(to top, rgba(20,31,25,0.85), transparent);
-  }
-  .g1{ grid-column:span 3; grid-row:span 3; }
-  .g2{ grid-column:span 2; grid-row:span 2; }
-  .g3{ grid-column:span 1; grid-row:span 2; }
-  .g4{ grid-column:span 3; grid-row:span 2; }
-  .g5{ grid-column:span 3; grid-row:span 3; }
+  .exp h3{ font-size:21px; font-weight:500; color:var(--paper); margin-bottom:12px; }
+  .exp p{ font-size:15px; color:rgba(239,230,212,0.78); line-height:1.8; }
 
   .cta-sec{
     background:var(--forest); color:var(--paper); padding:110px 0; text-align:center;
@@ -670,14 +373,6 @@
     .nav-link{ font-size:13px; }
   }
 
-  @media(max-width:960px){
-    .carousel-btn.prev{ left:8px; }
-    .carousel-btn.next{ right:8px; }
-    .carousel-btn{ background:rgba(20, 31, 25, 0.88); }
-    .lb-nav-arrow.prev{ left:12px; }
-    .lb-nav-arrow.next{ right:12px; }
-  }
-
   @media(max-width:900px){
     .nav-center, .nav .nav-cta-booking{ display:none; }
     .mobile-toggle{ display:inline-flex; }
@@ -687,11 +382,6 @@
     header.nav{ padding:14px 20px; padding-top:calc(14px + env(safe-area-inset-top, 0px)); }
 
     .wrap{ padding:0 20px; }
-    .intro{ padding:90px 0 70px; }
-    .intro .grid{ grid-template-columns:1fr; gap:32px; }
-    .intro .side{ padding-top:0; }
-    .intro .side .stats{ gap:32px; justify-content:flex-start; margin-top:32px; padding-top:24px; }
-
     .tours{ padding:90px 0; }
     .tours .head{ flex-direction:column; align-items:flex-start; gap:16px; margin-bottom:36px; }
     .tour-grid{ grid-template-columns:1fr; }
@@ -703,24 +393,9 @@
     .exp{ border-right:none; border-bottom:1px solid var(--line); padding:32px 16px; }
     .exp:last-child{ border-bottom:none; }
 
-    .quote-sec{ padding:90px 0; }
-
-    .gallery{ padding:90px 0; }
-    .gallery .head{ flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:32px; }
-    .g-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:140px; }
-    .g1{ grid-column:span 2; grid-row:span 2; }
-    .g2{ grid-column:span 1; grid-row:span 1; }
-    .g3{ grid-column:span 1; grid-row:span 1; }
-    .g4{ grid-column:span 2; grid-row:span 2; }
-    .g5{ grid-column:span 2; grid-row:span 2; }
-
     .cta-sec{ padding:80px 0; }
     .f-grid{ grid-template-columns:1fr; gap:40px; padding-bottom:44px; }
 
-    .lightbox-header{ padding:12px 16px; padding-top:calc(12px + env(safe-area-inset-top, 0px)); }
-    .lightbox-footer{ padding:12px 16px; padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px)); }
-    .lightbox-title{ font-size:18px; }
-    .lb-btn-reset{ display:none; }
   }
 
   @media(max-width:480px){
@@ -729,23 +404,7 @@
     .hero .actions{ flex-direction:column; width:100%; gap:12px; }
     .hero .actions .btn{ width:100%; min-width:unset; }
 
-    .intro .side .stats{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
-    .intro .side .stats .stat:last-child{ grid-column:span 2; }
-
     .tour-card .body{ padding:22px 18px 26px; }
-
-    .review-card-frame{ padding:12px 8px; }
-    .carousel-btn{ width:40px; height:40px; }
-    .carousel-btn.prev{ left:4px; }
-    .carousel-btn.next{ right:4px; }
-    .review-zoom-badge{ bottom:8px; right:8px; font-size:11px; padding:5px 10px; }
-
-    .lb-nav-arrow{ display:none; }
-    .lightbox-footer{ justify-content:center; }
-    .lightbox-hint-mobile{ width:100%; justify-content:center; order:3; }
-
-    .g-grid{ grid-template-columns:1fr; grid-auto-rows:180px; }
-    .g1, .g2, .g3, .g4, .g5{ grid-column:span 1; grid-row:span 1; }
 
     .cta-sec form{ flex-direction:column; width:100%; }
     .cta-sec form .btn{ width:100%; }
@@ -916,19 +575,13 @@
 <circle cx="70" cy="12" fill="#C6A15B" r="3.5"></circle>
 </svg>
 </section>
-<svg class="cloudline" preserveAspectRatio="none" viewBox="0 0 1180 22">
-<path d="M0 11 Q30 0 60 11 T120 11 T180 11 T240 11 T300 11 T360 11 T420 11 T480 11 T540 11 T600 11 T660 11 T720 11 T780 11 T840 11 T900 11 T960 11 T1020 11 T1080 11 T1180 11"></path>
-</svg>
 <!-- Story / Intro Section -->
 <section class="intro">
-<div class="wrap grid">
-<div>
-<div class="eyebrow" data-i18n="story_eyebrow">About Us</div>
-<h2 class="" data-i18n="story_h2">Rooted in Chiang Mai. Inspired by the North.</h2>
-</div>
-<div class="side">
-<p class="" data-i18n="story_desc">Bassy and Beembie are the founders and managing directors of Northern Orchid Tours Co., Ltd. Both grew up in Chiang Mai, giving them deep local knowledge and a genuine understanding of the region. Their passion for Northern Thailand’s tourism industry drives their mission to share the true charm, culture, and beauty of the North with every traveler. Their vision and leadership are the driving forces behind the company’s commitment to creating thoughtful, personalized travel experiences that cater to the unique needs of each guest.</p>
-</div>
+<div class="story-frames">
+<figure><img src="image/ele18.jpeg" alt="Baby Elephant" loading="lazy"></figure>
+<figure><img src="image/chiangrai08.jpeg" alt="Wat Huay Pla Klang" loading="lazy"></figure>
+<figure><img src="image/sukothai01.jpeg" alt="Sukothai" loading="lazy"></figure>
+<figure><img src="image/doisu01.JPG" alt="Wat Phra That Doi Suthep" loading="lazy"></figure>
 </div>
 </section>
 <!-- Curated Journeys -->
@@ -937,7 +590,7 @@
 <div class="head">
 <div>
 <div class="" style="color:var(--gold-soft); font-size:13.5px; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px;" data-i18n="tours_kicker">Curated Journeys</div>
-<h2 class="" data-i18n="tours_h2">Thoughtfully Crafted in the North</h2>
+<h2 class="" data-i18n="tours_h2">Highlights of Packages</h2>
 </div>
 </div>
 <div class="tour-grid">
@@ -1003,18 +656,32 @@
 </div>
 </section>
 <!-- Authentic Experiences & Guest Dispatches Interactive Carousel -->
-<style class="">
-  #reviews.quote-sec {
-    overflow: visible;
-  }
-  @media (max-width: 860px) {
-    .review-grid-container {
-      grid-template-columns: 1fr !important;
-      gap: 20px !important;
-    }
-  }
-</style>
 <!-- FULL-SCREEN / LIGHTBOX REVIEW VIEWER MODAL -->
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">What Sets Us Apart</div>
+      <h2>Small details that become lasting memories</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp">
+        <svg class="mark" viewBox="0 0 34 34"><circle cx="17" cy="17" r="15" fill="none" stroke="#C6A15B" stroke-width="1.4"/><path d="M9 17 Q17 8 25 17 Q17 26 9 17 Z" fill="none" stroke="#C6A15B" stroke-width="1.2"/></svg>
+        <h3>Morning Alms Ceremony</h3>
+        <p>Join monks in a quiet lane of the old town, offering alms before the city wakes.</p>
+      </div>
+      <div class="exp">
+        <svg class="mark" viewBox="0 0 34 34"><rect x="8" y="8" width="18" height="18" fill="none" stroke="#C6A15B" stroke-width="1.4" transform="rotate(45 17 17)"/></svg>
+        <h3>Private Khantoke Dinner</h3>
+        <p>An authentic Lanna feast inside a private teak house, with a fingernail dance performed by local artists.</p>
+      </div>
+      <div class="exp">
+        <svg class="mark" viewBox="0 0 34 34"><path d="M17 5 L27 29 L7 29 Z" fill="none" stroke="#C6A15B" stroke-width="1.4"/></svg>
+        <h3>Northern Herbal Spa</h3>
+        <p>Traditional compress and massage rituals passed down through generations of local healers.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Contact Form / CTA -->
 <!-- Contact Form / CTA -->
@@ -1159,7 +826,6 @@
 </div>
 </div>
 </footer><div id="policyModalOverlay" style="position: fixed; inset: 0px; background: rgba(10, 18, 14, 0.85); backdrop-filter: blur(10px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 24px;"><div id="policyModalCard" style="background: rgb(25, 39, 32); border: 1px solid rgba(198, 161, 91, 0.4); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.6) 0px 25px 60px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.96) translateY(12px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);"><div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(198, 161, 91, 0.25); background: rgba(20, 31, 25, 0.95);"><h3 id="policyModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 500; color: #DBBD86; margin: 0;" class="">Privacy &amp; Data Sanctuary</h3><button id="closePolicyModal" aria-label="Close policy dialog" type="button" style="background: none; border: 1px solid rgba(198, 161, 91, 0.35); color: #EFE6D4; width: 38px; height: 38px; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div id="policyModalBody" style="padding: 28px; overflow-y: auto; color: rgba(239, 230, 212, 0.85); font-size: 14.5px; line-height: 1.8; font-family: 'Outfit', sans-serif;"><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;" class="">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;" class="">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">3. Right to Erasure</h4><p class="">At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p></div><div style="padding: 16px 28px; border-top: 1px solid rgba(198, 161, 91, 0.2); background: rgba(20, 31, 25, 0.9); display: flex; justify-content: flex-end;"><button id="policyModalCloseBtn" type="button" class="btn btn-gold" style="padding: 8px 24px; font-size: 13px; min-height: 38px; min-width: 100px; cursor: pointer;">Close</button></div></div></div> 
-</body>div></div>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------
@@ -1670,7 +1336,7 @@
       hero_btn_explore: "Our Tour Package",
       hero_btn_consult: "Private Transport",
       story_eyebrow: "Our Story",
-      story_h2: "Rooted in Chiang Mai.Inspired by the North.",
+      story_h2: "Rooted in Chiang Mai",
       story_desc: "Bassy and Beembie are the founders and managing directors of Northern Orchid Tours Co., Ltd. Both grew up in Chiang Mai, giving them deep local knowledge and a genuine understanding of the region. Their passion for Northern Thailand’s tourism industry drives their mission to share the true charm, culture, and beauty of the North with every traveler.",
       stat_1_num: "18",
       stat_1_label: "Years on Lanna's paths",
@@ -1679,7 +1345,7 @@
       stat_3_num: "7",
       stat_3_label: "Provinces under our care",
       tours_kicker: "Curated Journeys",
-      tours_h2: "Thoughtfully Crafted in the North",
+      tours_h2: "Highlights of Our Packages",
       tours_desc: "Private and intimate journeys shaped around the landscapes, culture, and quiet moments of Northern Thailand — thoughtfully designed for those who prefer to travel at their own pace.",
       tour_1_place: "DOIIN01",
       tour_1_title: "The Essence of Doi Inthanon",
