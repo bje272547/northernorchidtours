@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Private Transport &amp; Transfers — Northern Orchid Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141F19;
+    --forest:#26392E;
+    --paper:#EFE6D4;
+    --gold:#C6A15B;
+    --gold-soft:#DBBD86;
+    --jade:#33513E;
+    --line: rgba(198,161,91,0.35);
+  }
+  html{ scroll-behavior:smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Outfit', sans-serif;
+    font-weight:400;
+    line-height:1.7;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .btn{
+    padding:13px 28px; font-size:13.5px; font-family:'Outfit', sans-serif; border-radius:2px;
+    transition:all .3s ease; display:inline-flex; align-items:center; justify-content:center;
+    min-height:44px;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
+
+  /* ===== Mobile-ready header / nav ===== */
+  .site-header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(20,31,25,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top, 0px);
+  }
+  .site-header .bar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Outfit', sans-serif; font-size:20px; letter-spacing:0.5px; font-weight:600;
+    color:var(--paper);
+  }
+  .logo span{ color:var(--gold-soft); }
+  .desktop-nav{ display:flex; gap:30px; font-size:13.5px; letter-spacing:0.5px; }
+  .desktop-nav a{ color:rgba(239,230,212,0.8); }
+  .desktop-nav a:hover{ color:var(--gold-soft); }
+
+  .menu-toggle{
+    display:none; width:44px; height:44px; border:1px solid var(--line);
+    background:transparent; border-radius:2px; cursor:pointer;
+    align-items:center; justify-content:center; position:relative;
+  }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after{
+    content:""; display:block; width:20px; height:1.5px; background:var(--paper);
+    position:relative; transition:all .25s ease;
+  }
+  .menu-toggle span::before{ position:absolute; top:-6px; }
+  .menu-toggle span::after{ position:absolute; top:6px; }
+  .menu-toggle.open span{ background:transparent; }
+  .menu-toggle.open span::before{ top:0; transform:rotate(45deg); background:var(--gold-soft); }
+  .menu-toggle.open span::after{ top:0; transform:rotate(-45deg); background:var(--gold-soft); }
+
+  .mobile-nav{
+    display:none; flex-direction:column; gap:2px; background:var(--forest);
+    border-bottom:1px solid var(--line); overflow:hidden;
+    max-height:0; transition:max-height .3s ease;
+  }
+  .mobile-nav.open{ max-height:400px; }
+  .mobile-nav a{
+    padding:16px 32px; font-size:14.5px; border-top:1px solid var(--line);
+    min-height:44px; display:flex; align-items:center;
+  }
+  .mobile-nav a:active{ background:var(--jade); }
+
+  @media(max-width:860px){
+    .desktop-nav{ display:none; }
+    .menu-toggle{ display:flex; }
+    .mobile-nav{ display:flex; }
+  }
+
+  .tours-page{ padding:60px 0 100px; }
+
+  .grid-cover{
+    position:relative; height:340px; border-radius:3px; overflow:hidden;
+    margin-bottom:48px;
+    background-image:url('image/doiin03.jpg');
+    background-size:cover; background-position:center;
+  }
+  .grid-cover::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,31,25,0.15) 0%, rgba(20,31,25,0.75) 100%);
+  }
+  .grid-cover .cover-text{
+    position:absolute; left:0; right:0; bottom:0; z-index:1;
+    padding:28px 32px;
+  }
+  .grid-cover .cover-text .kicker{
+    font-size:12.5px; letter-spacing:3px; color:var(--gold-soft); text-transform:uppercase;
+    margin-bottom:8px; font-weight:500;
+  }
+  .grid-cover .cover-text h2{
+    font-family:'Outfit', sans-serif; font-weight:400; font-size:clamp(24px, 3.5vw, 34px);
+    color:var(--paper);
+  }
+  @media(max-width:640px){
+    .grid-cover{ height:220px; margin:0 -20px 32px; border-radius:0; }
+    .grid-cover .cover-text{ padding:20px; }
+  }
+  .page-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:56px; flex-wrap:wrap; }
+  .page-head .kicker{ font-size:13px; letter-spacing:3px; color:var(--gold-soft); text-transform:uppercase; margin-bottom:14px; font-weight:500; }
+  .page-head h1{ font-family:'Outfit', sans-serif; font-weight:400; font-size:clamp(30px, 4vw, 44px); max-width:520px; }
+  .page-head p{ max-width:320px; font-size:15px; color:rgba(239,230,212,0.7); }
+
+  .filters{ display:flex; gap:12px; margin-bottom:48px; flex-wrap:wrap; }
+  .filter-chip{
+    border:1px solid var(--line); border-radius:2px; padding:9px 20px;
+    font-size:13px; letter-spacing:0.5px; color:rgba(239,230,212,0.75); cursor:pointer;
+    min-height:44px; display:inline-flex; align-items:center; white-space:nowrap;
+  }
+  .filter-chip.active{ background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:500; }
+
+  @media(max-width:640px){
+    .filters{
+      flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      margin:0 -20px 40px; padding:0 20px 6px;
+      scrollbar-width:none;
+    }
+    .filters::-webkit-scrollbar{ display:none; }
+  }
+
+  .tour-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2px; background:var(--line); border:1px solid var(--line); }
+  .tour-card{ background:var(--ink); display:flex; flex-direction:column; transition:background 0.3s ease; }
+  .tour-card:hover, .tour-card:active{ background:var(--jade); }
+  .tour-card .art{ position:relative; height:270px; overflow:hidden; flex-shrink:0; }
+  .tour-card .art::after{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(20,31,25,0.30) 0%, rgba(20,31,25,0) 30%, rgba(20,31,25,0.88) 100%);
+  }
+  .tour-card .art-scroll{
+    display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory;
+    scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  }
+  .tour-card .art-scroll::-webkit-scrollbar{ display:none; }
+  .tour-card .art-scroll img{
+    flex:0 0 100%; width:100%; height:100%; object-fit:cover; scroll-snap-align:start; display:block;
+    transition:transform 0.9s ease;
+  }
+  .tour-card:hover .art-scroll img{ transform:scale(1.04); }
+  .tour-card .art-dots{
+    position:absolute; top:14px; left:0; right:0; z-index:2;
+    display:flex; justify-content:center; gap:5px; pointer-events:none;
+  }
+  .tour-card .art-dot{ width:5px; height:5px; border-radius:50%; background:rgba(239,230,212,0.45); }
+  .tour-card .art-dot.active{ background:var(--gold-soft); }
+  .tour-card .art-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:34px; height:34px; border-radius:50%; border:1px solid rgba(239,230,212,0.35);
+    background:rgba(20,31,25,0.7); color:var(--paper); font-size:12px;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    padding:0; transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .tour-card .art-arrow:hover{ background:var(--ink); border-color:var(--gold-soft); }
+  .tour-card .art-arrow.prev{ left:8px; }
+  .tour-card .art-arrow.next{ right:8px; }
+  @media(max-width:640px){
+    .tour-card .art-arrow{ width:38px; height:38px; font-size:13px; }
+  }
+  .tour-card .body{ padding:22px 26px 26px; flex:1; display:flex; flex-direction:column; }
+  .tour-grid{ counter-reset:dest; }
+  .tour-card{ counter-increment:dest; }
+  .tour-card .art-title{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:0 26px 20px; pointer-events:none; }
+  .tour-card .art-title .idx{ display:flex; align-items:center; gap:12px; font-size:12px; letter-spacing:3px; color:var(--gold-soft); font-weight:500; margin-bottom:6px; }
+  .tour-card .art-title .idx::before{ content:counter(dest, decimal-leading-zero); }
+  .tour-card .art-title .idx::after{ content:""; width:34px; height:1px; background:var(--gold); }
+  .tour-card .art-title h3{ font-size:clamp(26px, 2.6vw, 32px); font-weight:500; line-height:1.15; letter-spacing:0.3px; margin:0; color:var(--paper); text-shadow:0 2px 14px rgba(0,0,0,0.45); }
+  .tour-card .place{ font-size:12px; letter-spacing:2px; color:var(--gold-soft); margin-bottom:10px; text-transform:uppercase; font-weight:500; }
+  .tour-card p{ font-size:14px; color:rgba(239,230,212,0.65); flex:1; line-height:1.7; }
+  .tour-card .foot{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; border-top:1px solid var(--line); padding-top:16px; font-size:13px; }
+  .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:20px; font-weight:600; margin-left:4px; }
+  .tour-card .foot a{
+    font-size:12.5px; letter-spacing:0.8px; color:var(--gold-soft); border-bottom:1px solid var(--gold-soft);
+    padding:10px 2px; min-height:44px; display:inline-flex; align-items:center;
+  }
+
+
+  .rates-link{
+    display:inline-flex; align-items:center; margin-top:14px; min-height:44px;
+    font-size:13px; letter-spacing:1px; color:var(--gold-soft); border-bottom:1px solid var(--gold-soft);
+  }
+
+  .rates-links{ display:flex; flex-wrap:wrap; gap:4px 28px; }
+
+  /* ===== Rates table ===== */
+  .rates{ padding:10px 0 110px; }
+  .rates-head{ text-align:center; max-width:620px; margin:0 auto 48px; }
+  .rates-head .kicker{ font-size:13px; letter-spacing:3px; color:var(--gold-soft); text-transform:uppercase; margin-bottom:14px; font-weight:500; }
+  .rates-head h2{ font-size:clamp(28px, 4vw, 42px); font-weight:400; line-height:1.2; }
+  .rates-head p{ margin-top:14px; font-size:15px; color:rgba(239,230,212,0.7); }
+  .rate-sub{ display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 18px; font-size:clamp(22px, 2.6vw, 28px); font-weight:500; margin:64px 0 20px; }
+  .rate-sub.first{ margin-top:0; }
+  .rate-sub span{ font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-soft); font-weight:500; }
+  .rate-table .r-arrow{ color:var(--gold); margin:0 4px; }
+  .rate-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); }
+  .rate-table{ width:100%; min-width:640px; border-collapse:collapse; table-layout:fixed; }
+  .rate-table thead th:first-child{ width:40%; }
+  .rate-table thead th{
+    background:var(--forest); color:var(--gold-soft); font-size:12px; letter-spacing:2.5px; text-transform:uppercase;
+    font-weight:500; padding:20px 24px; text-align:center; border-bottom:1px solid var(--gold);
+  }
+  .rate-table thead th:first-child{ text-align:left; }
+  .rate-table tbody tr{ border-bottom:1px solid var(--line); transition:background 0.25s ease; }
+  .rate-table tbody tr:last-child{ border-bottom:none; }
+  .rate-table tbody th, .rate-table tbody td{ padding:20px 24px; background:var(--ink); transition:background 0.25s ease; }
+  .rate-table tbody tr:hover th, .rate-table tbody tr:hover td{ background:#1E3225; }
+  .rate-table tbody th{ text-align:left; font-weight:500; }
+  .rate-table tbody th a{ display:flex; align-items:baseline; gap:16px; min-height:44px; align-items:center; }
+  .rate-table .r-idx{ font-size:12px; letter-spacing:2px; color:var(--gold); font-weight:500; }
+  .rate-table .r-name{ font-size:19px; color:var(--paper); }
+  .rate-table tbody th a:hover .r-name{ color:var(--gold-soft); }
+  .rate-table td.p{ text-align:center; font-size:19px; font-weight:500; color:var(--gold-soft); white-space:nowrap; }
+  .rate-table td.p.na{ color:rgba(239,230,212,0.3); }
+  .rate-table thead th:first-child, .rate-table tbody th{ position:sticky; left:0; z-index:1; }
+  .rate-table thead th:first-child{ background:var(--forest); }
+  .rates-foot{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-top:32px; }
+  .rates-foot p{ font-size:14.5px; color:rgba(239,230,212,0.7); max-width:520px; }
+
+  .cta-sec{
+    background:var(--forest); color:var(--paper); padding:110px 0; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta-sec h2{ font-size:clamp(28px, 4vw, 36px); font-weight:400; max-width:540px; margin:0 auto 16px; }
+  .cta-sec p{ color:rgba(239,230,212,0.78); max-width:480px; margin:0 auto 42px; font-size:16px; line-height:1.75; }
+  .cta-sec form{ display:flex; justify-content:center; gap:12px; max-width:480px; margin:0 auto; }
+  .cta-sec input{
+    flex:1; padding:16px 20px; border:1px solid rgba(239,230,212,0.35);
+    background:rgba(20,31,25,0.4); color:var(--paper); font-family:'Outfit', sans-serif; border-radius:2px; font-size:14.5px;
+    outline:none; min-height:44px;
+  }
+  .cta-sec input::placeholder{ color:rgba(239,230,212,0.5); }
+  .cta-sec input:focus{ border-color:var(--gold-soft); }
+  .cta-sec button{ min-height:44px; }
+
+  footer{ background:var(--ink); color:rgba(239,230,212,0.65); padding:90px 0 36px; border-top:1px solid rgba(198,161,91,0.2); }
+  .f-grid{ display:grid; grid-template-columns:1.5fr 1.2fr 1.3fr; gap:48px; padding-bottom:60px; }
+  .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
+  @media(max-width:960px){
+    .tour-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  }
+  @media(max-width:640px){
+    .wrap{ padding:0 20px; }
+    .tours-page{ padding:40px 0 70px; }
+    .tour-grid{ grid-template-columns:1fr; }
+    .page-head{ flex-direction:column; align-items:flex-start; }
+    .tour-card .art{ height:240px; }
+    .rates{ padding:0 0 70px; }
+    .rate-table{ min-width:0; }
+    .rate-table thead th{ padding:16px 6px; font-size:10.5px; letter-spacing:1px; }
+    .rate-table thead th:first-child, .rate-table tbody th{ padding-left:14px; padding-right:6px; width:36%; }
+    .rate-table tbody th, .rate-table tbody td{ padding:14px 6px; }
+    .rate-table tbody th a{ min-height:0; }
+    .rate-table .r-idx{ display:none; }
+    .rate-table .r-name{ font-size:15px; line-height:1.3; }
+    .rate-sub{ margin-top:48px; }
+    .rate-sub.first{ margin-top:0; }
+    .rate-table td.p{ font-size:15px; }
+    .rates-foot{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="bar">
+    <a href="index.html" class="logo">Northern Orchid <span>Tours</span></a>
+    <nav class="desktop-nav">
+      <a href="index.html">Home page</a>
+      <a href="tours.html">Our Tours</a>
+      <a href="multidaytours.html">Multi-Day Tours</a>
+      <a href="transport.html">Transport</a>
+      <a href="activities.html">Activities</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home page</a>
+      <a href="tours.html">Our Tours</a>
+      <a href="multidaytours.html">Multi-Day Tours</a>
+      <a href="transport.html">Transport</a>
+      <a href="activities.html">Activities</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="tours-page">
+  <div class="wrap">
+    <div class="page-head">
+      <div>
+        <div class="kicker">Our tours</div>
+        <h1>All tours in Chiang Mai</h1>
+      </div>
+      <p>Choose the right tour from a range of routes across Chiang Mai</p>
+    </div>
+
+
+    <div class="tour-grid">
+      <a href="doiin01.html" class="tour-card" data-dest="mae-taeng-chiang-dao">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="doiin03.jpg" alt="Pha Dok Siew Trail">
+            <img src="doiin04.jpeg" alt="Pha Dok Siew Trail">
+            <img src="doiin01.png" alt="Ang Ka Trail">
+            <img src="doiin02.png" alt="Wachirathan Waterfall">
+            <img src="doiin03.png" alt="Mae Klang Luang Village">
+            <img src="phadok01.png" alt="Pha Dok Siew Trail">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Doi Inthanon</h3></div>
+        </div>
+        <div class="body">
+          <p>Pay respect at the city's sacred temple, take in views over Chiang Mai, and visit a hill-tribe village.</p>
+          <div class="foot">
+            <span>Full Day · 10 hours</span>
+            <span class="price"><b>view details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="ele02.html" class="tour-card" data-dest="elephant-sanctuary">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="ele09.jpeg" alt="Elephant Sanctuary">
+            <img src="ele13.png" alt="Elephant Sanctuary">
+            <img src="ele11.png" alt="Elephant Sanctuary">
+            <img src="ele14.jpg" alt="Bamboo Rafting">
+            <img src="sticky02.JPEG" alt="Sticky Waterfall">
+            <img src="sticky03.JPEG" alt="Sticky Waterfall">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Elephant Sanctuary</h3></div>
+        </div>
+        <div class="body">
+          <p>Trek through hidden waterfalls, rice terraces, and an authentic Karen hill-tribe village.</p>
+          <div class="foot">
+            <span>Full Day · 9 hours</span>
+            <span class="price"><b>view details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="doisuthep02.html" class="tour-card" data-dest="chiang-rai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="doisuthep02.jpeg" alt="Wat Phra That Doi Suthep">
+            <img src="cooking02.png" alt="Thai Cooking Class">
+            <img src="cooking04.jpeg" alt="Thai Cooking Class">
+            <img src="cooking05.jpeg" alt="Thai Cooking Class">
+            <img src="sticky02.JPEG" alt="Sticky Waterfall">
+            <img src="sticky03.JPEG" alt="Sticky Waterfall">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Doi Suthep</h3></div>
+        </div>
+        <div class="body">
+          <p>Connect with gentle giants, raft along the Mae Taeng river, and cool off at Sticky Waterfall.</p>
+          <div class="foot">
+            <span>Full-day · 8 hours</span>
+            <span class="price"><b>view details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="chiangrai01.html" class="tour-card" data-dest="chiang-rai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="longneck01.JPEG" alt="Wat Rong Suea Ten">
+            <img src="chiangrai01.JPEG" alt="Long Neck Karen Village">
+            <img src="chiangrai05.jpeg" alt="Wat Rong Khun">
+            <img src="chiangrai04.jpg" alt="Wat Huay Pla Klang">
+            <img src="chiangrai07.jpeg" alt="Wat Rong Khun">
+            <img src=".jpg" alt="Dantewada">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Chiang Rai</h3></div>
+        </div>
+        <div class="body">
+          <p>Pay respect at the city's sacred temple, take in views over Chiang Mai, and visit a hill-tribe village.</p>
+          <div class="foot">
+            <span>Full-day · 12 hours</span>
+            <span class="price"><b>view details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="oldcity01.html" class="tour-card" data-dest="doi-suthep">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="chedi01.jpeg" alt="Wat Chedi Luang">
+            <img src="image/.jpeg" alt="Doi Suthep golden chedi">
+            <img src="image/.jpeg" alt="View over Chiang Mai">
+            <img src="image/.jpeg" alt="Hmong hill-tribe village">
+            <img src="image/.jpg" alt="Hmong hill-tribe village">
+            <img src="image/.jpg" alt="Naga staircase">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Old City</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="ele01.html" class="tour-card" data-dest="pai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="ele01.png" alt="Elephant Sanctuary">
+            <img src="ele08.png" alt="Elephant Sanctuary">
+            <img src="ele07.jpeg" alt="Elephant Sanctuary">
+            <img src="sticky01.PNG" alt="Bua Tong Waterfall">
+            <img src="dan01.jpg" alt="Dantewada (land of angels)">
+            <img src="dan02.jpg" alt="Dantewada (land of angels)">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Elephant Sanctuary</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="doisuthep01.html" class="tour-card" data-dest="doi-suthep">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="lampang01.png" alt="Wat Umong">
+            <img src="lampang02.png" alt="Wat Umong">
+            <img src="lampang03.png" alt="Wat Phra That Doi Suthep">
+            <img src="image/doisuthep01.JPEG" alt="Wat Phra That Doi Suthep">
+            <img src="image/wat-pha-lat.jpg" alt="Wat Pha Lat">
+            <img src="image/phalat01.JPEG" alt="Wat Pha Lat">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Doi Inthanon</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="sukothaitransport.html" class="tour-card" data-dest="sukothai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="wat-umong.jpg" alt="Thai Cooking Class">
+            <img src="wat-umong01.jpg" alt="Doi Suthep golden chedi">
+            <img src="doi-suthep.jpeg" alt="View over Chiang Mai">
+            <img src="doisuthep01.JPEG" alt="Hmong hill-tribe village">
+            <img src="wat-pha-lat.jpg" alt="Hmong hill-tribe village">
+            <img src="phalat01.JPEG" alt="Naga staircase">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Doi Suthep</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="sukothaitransport.html" class="tour-card" data-dest="sukothai">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="image/cooking02.png" alt="Thai Cooking Class">
+            <img src="image/cooking04.jpeg" alt="Doi Suthep golden chedi">
+            <img src="image/cooking05.jpeg" alt="View over Chiang Mai">
+            <img src="image/doisuthep02.jpeg" alt="Hmong hill-tribe village">
+            <img src="image/hmong-village-2.jpg" alt="Hmong hill-tribe village">
+            <img src="image/doi-suthep-steps.jpg" alt="Naga staircase">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Golden Triangle</h3></div>
+        </div>
+        <div class="body">
+          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <div class="foot">
+            <span>Full-day · private group</span>
+            <span class="price"><b>See Details</b></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- Dark Responsive Footer -->
+<footer style="background: rgb(20, 31, 25); color: rgba(239, 230, 212, 0.75); padding: 90px 0px 42px; border-top: 1px solid rgba(198, 161, 91, 0.3); font-family: 'Outfit', sans-serif;">
+<div class="wrap">
+<div class="f-grid">
+<!-- Column 1: Brand & Quiet Luxury Invitation -->
+<div>
+<div class="brand" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+<img alt="Northern Orchid Tours insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaT_m19uLfrX0cLKSmUcobPMsBREy2dwF_uvgtMa_uAaTqyQom-euhyJPC5VDvMnLGg_mrsDbRUtQMtagnpkmbvyqBrSpxsfpPooGE6DJ2466kA3I6DhK8PNhS4y3XcFphKVQc2FypAMjmjrKN--BCi3EoBKMGjOqHMAdo0O_qHTycIlzidpcshrimr4szpDMJdMPvdJ0GPXbwcmNELCYipJKZLmVE7dSapcSu5BKn9V7a3iN24CeylIwu0t1Gt8gpVA" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-soft); box-shadow: 0 2px 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+<span class="" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: 0.6px; color: rgb(239, 230, 212);">Northern Orchid Tours</span>
+</div>
+<p class="" style="font-size: 13.5px; line-height: 1.85; color: rgba(239, 230, 212, 0.72); max-width: 320px; margin-bottom: 20px; font-weight: 300;" data-i18n="footer_motto">We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.</p>
+<div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1.2px; color: var(--gold-soft); text-transform: uppercase; font-weight: 500;">
+<span style="display: inline-block; width: 24px; height: 1px; background: rgba(198, 161, 91, 0.5);"></span>
+<span class="" data-i18n="footer_brand_tag">TAT License : 24/01226</span>
+</div>
+</div>
+<!-- Column 2: Contact Information -->
+<div><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" class="" data-i18n="footer_contact_header">Contact</h4>
+<div style="display: flex; flex-direction: column; gap: 16px;" class="">
+  <!-- 1st: Location & Hours -->
+  
+
+  <!-- 2nd: WhatsApp with two phone numbers -->
+  <div style="display: flex; align-items: flex-start; gap: 12px;">
+    <a href="https://wa.me/66988198385" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp chat" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: rgba(239, 230, 212, 0.85); transition: all 0.25s; text-decoration: none; margin-top: 2px;" onmouseover="this.style.borderColor='#C6A15B'; this.style.color='#DBBD86'; this.style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.borderColor='rgba(198, 161, 91, 0.35)'; this.style.color='rgba(239, 230, 212, 0.85)'; this.style.background='transparent'">
+      <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="16"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 3px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <a href="tel:+66988198385" style="color: rgb(239, 230, 212); text-decoration: none; font-size: 13.5px; transition: color 0.25s;" onmouseover="this.style.color='#DBBD86'" onmouseout="this.style.color='#EFE6D4'" class="">+6698-819-8385</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3rd: Phone icon & Call line -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="tel:+66988198385" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_call_label">+6698-819-8385</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- 4th: Facebook -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="https://www.facebook.com/profile.php?id=61571111382735" target="_blank" rel="noopener noreferrer" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      </div>
+      <span style="color: #EFE6D4; font-size: 13.5px;" class="">Northern Orchid Tours</span>
+    </a>
+  </div>
+
+  <!-- 5th: Email -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="mailto:northernorchidtours@gmail.com" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="color: #EFE6D4; font-size: 13.5px; word-break: break-all;" class="">northernorchidtours@gmail.com</span>
+      </div>
+    </a>
+  </div>
+</div></div>
+<!-- Column 3: Preferences & Policies -->
+<div>
+<h4 class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" data-i18n="footer_pref_header">Preferences &amp; Policies</h4>
+<!-- Switchers Container -->
+<div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+<!-- Language Switcher -->
+<div style="position: relative;">
+<label class="" style="display: block; font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 6px; font-weight: 500;" data-i18n="footer_lang_label">Language</label>
+<button id="footerLangBtn" onclick="(function(){const d=document.getElementById('footerLangMenu'); const c=document.getElementById('footerCurrMenu'); if(c) c.style.display='none'; d.style.display = d.style.display==='block'?'none':'block';})()" style="min-height: 44px; width: 100%; display: flex; align-items: center; justify-content: space-between; background: rgba(20, 31, 25, 0.7); border: 1px solid rgba(198, 161, 91, 0.35); padding: 8px 12px; border-radius: 2px; color: #EFE6D4; font-family: 'Outfit', sans-serif; font-size: 13px; cursor: pointer; transition: border-color 0.25s;" type="button">
+<span class="" id="footerSelectedLang" style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--gold);">✦</span> English</span>
+<svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></ul>
+
+<!-- Legal & Policy Links -->
+<div>
+<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li><li class="">
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="f-bottom">
+<span class="" data-i18n="footer_copyright">© 2026 Northern Orchid Tours. All rights reserved.</span>
+
+<span class="" style="font-family: 'Outfit', sans-serif; font-style: italic; font-size: 14.5px; color: var(--gold-soft);">Designed with quiet care in Chiang Mai · Lanna Heritage Sanctuary</span>
+</div>
+</div>
+</footer><div id="policyModalOverlay" style="position: fixed; inset: 0px; background: rgba(10, 18, 14, 0.85); backdrop-filter: blur(10px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 24px;"><div id="policyModalCard" style="background: rgb(25, 39, 32); border: 1px solid rgba(198, 161, 91, 0.4); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.6) 0px 25px 60px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.96) translateY(12px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);"><div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(198, 161, 91, 0.25); background: rgba(20, 31, 25, 0.95);"><h3 id="policyModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 500; color: #DBBD86; margin: 0;" class="">Privacy &amp; Data Sanctuary</h3><button id="closePolicyModal" aria-label="Close policy dialog" type="button" style="background: none; border: 1px solid rgba(198, 161, 91, 0.35); color: #EFE6D4; width: 38px; height: 38px; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div id="policyModalBody" style="padding: 28px; overflow-y: auto; color: rgba(239, 230, 212, 0.85); font-size: 14.5px; line-height: 1.8; font-family: 'Outfit', sans-serif;"><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;" class="">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;" class="">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">3. Right to Erasure</h4><p class="">At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p></div><div style="padding: 16px 28px; border-top: 1px solid rgba(198, 161, 91, 0.2); background: rgba(20, 31, 25, 0.9); display: flex; justify-content: flex-end;"><button id="policyModalCloseBtn" type="button" class="btn btn-gold" style="padding: 8px 24px; font-size: 13px; min-height: 38px; min-width: 100px; cursor: pointer;">Close</button></div></div></div> 
+
+
+<script>
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  menuToggle.addEventListener('click', function(){
+    var isOpen = mobileNav.classList.toggle('open');
+    menuToggle.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  document.querySelectorAll('.filter-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      document.querySelectorAll('.filter-chip').forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+    });
+  });  document.querySelectorAll('.tour-card .art-arrow').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var art = btn.closest('.art');
+      var scroll = art.querySelector('.art-scroll');
+      if(!scroll) return;
+      var dir = btn.classList.contains('next') ? 1 : -1;
+      scroll.scrollBy({ left: dir * scroll.offsetWidth, behavior: 'smooth' });
+    });
+  });
+
+  document.querySelectorAll('.tour-card .art').forEach(function(art){
+    var scroll = art.querySelector('.art-scroll');
+    var dots = art.querySelectorAll('.art-dot');
+    if(!scroll || !dots.length) return;
+    var timer;
+    scroll.addEventListener('scroll', function(){
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        var idx = Math.round(scroll.scrollLeft / scroll.offsetWidth);
+        dots.forEach(function(d, i){ d.classList.toggle('active', i === idx); });
+      }, 80);
+    });
+  });
+</script>
+
+</body>
+</html>
