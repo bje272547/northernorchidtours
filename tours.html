@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Private Transport &amp; Transfers — Northern Orchid Tours</title>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title> Our Tours— Northern Orchid Tours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#141F19;
@@ -15,6 +16,212 @@
     --gold-soft:#DBBD86;
     --jade:#33513E;
     --line: rgba(198,161,91,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Outfit', sans-serif;
+    font-weight:500;
+    line-height:1.5;
+    letter-spacing:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{ font-family:'Outfit', sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+
+  /* Header & Quiet Luxury Navigation */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 48px;
+    padding-top:calc(18px + env(safe-area-inset-top, 0px));
+    background:linear-gradient(to bottom, rgba(20,31,25,0.95), rgba(20,31,25,0.72) 75%, transparent);
+    color:var(--paper);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:background 0.3s ease, padding 0.3s ease;
+  }
+  .nav .brand{
+    display:flex; align-items:center; gap:14px;
+    font-family:'Outfit', sans-serif; font-size:20px; letter-spacing:1.5px; font-weight:500; line-height:1.5;
+    color:var(--paper); text-decoration:none;
+    min-height:44px;
+  }
+  .nav .brand img{
+    width:44px; height:44px; border-radius:50%; object-fit:cover;
+    border:1px solid var(--gold-soft); background:transparent;
+    box-shadow:0 2px 12px rgba(0,0,0,0.35); flex-shrink:0;
+  }
+  .nav .brand span{ color:var(--gold-soft); font-weight:400; font-style:italic; }
+
+  /* Desktop Navigation & Dropdowns */
+  .nav-center{ display:flex; align-items:center; }
+  .nav-menu{
+    display:flex; align-items:center; gap:28px; list-style:none;
+    font-size:14.5px; letter-spacing:1.5px; line-height:1.5;
+  }
+  .nav-item{ position:relative; }
+  .nav-link{
+    color:var(--paper); opacity:0.9; transition:color 0.25s, opacity 0.25s;
+    background:none; border:none; font-family:'Outfit', sans-serif; font-size:16px;
+    font-weight:500; letter-spacing:1px; cursor:pointer; display:inline-flex;
+    align-items:center; gap:7px; padding:12px 2px; text-decoration:none;
+    min-height:44px;
+  }
+  .nav-link:hover, .nav-item.active > .nav-link, .nav-item:hover > .nav-link{
+    opacity:1; color:var(--gold-soft);
+  }
+  .nav-link svg.chevron{
+    width:10px; height:6px; transition:transform 0.25s ease; stroke:currentColor;
+  }
+  .nav-item:hover svg.chevron, .nav-item.active svg.chevron{ transform:rotate(180deg); }
+
+  /* Elegant Quiet Luxury Dropdown Menus */
+  .dropdown-menu{
+    position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(6px);
+    width:280px; background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(198, 161, 91, 0.35); border-radius:2px;
+    box-shadow:0 16px 36px rgba(8, 14, 10, 0.45); padding:8px 0; list-style:none;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+    z-index:120;
+  }
+  .dropdown-menu::before{
+    content:''; position:absolute; top:-5px; left:50%; transform:translateX(-50%) rotate(45deg);
+    width:9px; height:9px; background:rgba(20, 31, 25, 0.98);
+    border-top:1px solid rgba(198, 161, 91, 0.35); border-left:1px solid rgba(198, 161, 91, 0.35);
+  }
+  .nav-item:hover .dropdown-menu,
+  .nav-item.active .dropdown-menu{
+    opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0);
+  }
+  .dropdown-menu li{
+    border-bottom:1px solid rgba(198, 161, 91, 0.12);
+  }
+  .dropdown-menu li:last-child{
+    border-bottom:none;
+  }
+  .dropdown-menu li a{
+    display:flex; flex-direction:column; padding:12px 22px;
+    color:rgba(239, 230, 212, 0.9); text-decoration:none;
+    transition:background 0.22s ease, padding-left 0.22s ease;
+    min-height:44px; justify-content:center;
+  }
+  .dropdown-menu li a:hover{
+    background:rgba(198, 161, 91, 0.08); padding-left:26px;
+  }
+  .dropdown-menu li a .drop-title{
+    font-family:'Outfit', sans-serif; font-size:17px; font-weight:450;
+    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.5;
+  }
+  .dropdown-menu li a:hover .drop-title{
+    color:var(--gold-soft);
+  }
+
+  /* Far-right CTA button: 'Booking Now' */
+  .nav .nav-cta-booking{
+    border:1px solid #C6A15B; padding:10px 24px; font-size:12.5px;
+    border-radius:2px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500;
+    transition:all .3s ease; color:var(--paper); display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Outfit', sans-serif; text-decoration:none; background:transparent;
+    min-height:44px;
+  }
+  .nav .nav-cta-booking:hover{
+    background:var(--gold-soft); color:var(--ink);
+  }
+
+  /* Mobile Hamburger Toggle */
+  .mobile-toggle{
+    display:none; background:transparent; border:none; cursor:pointer;
+    padding:9px; z-index:110; color:var(--gold-soft);
+    width:44px; height:44px; align-items:center; justify-content:center;
+    border-radius:2px; transition:color 0.25s, background 0.25s;
+  }
+  .mobile-toggle:hover{
+    color:var(--paper); background:rgba(198,161,91,0.12);
+  }
+  .mobile-toggle svg{ width:26px; height:26px; display:block; }
+
+  /* Mobile Drawer */
+  .mobile-drawer-overlay{
+    position:fixed; inset:0; background:rgba(10,16,13,0.75); backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    z-index:200; opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+  }
+  .mobile-drawer-overlay.open{ opacity:1; pointer-events:auto; }
+  .mobile-drawer{
+    position:fixed; top:0; right:0; bottom:0; width:100%; max-width:360px;
+    background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-left:1px solid rgba(198,161,91,0.3); z-index:210;
+    padding:24px 22px 36px;
+    padding-top:calc(24px + env(safe-area-inset-top, 0px));
+    padding-bottom:calc(36px + env(safe-area-inset-bottom, 0px));
+    padding-right:calc(22px + env(safe-area-inset-right, 0px));
+    display:flex; flex-direction:column;
+    transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y:auto;
+  }
+  .mobile-drawer.open{ transform:translateX(0); }
+  .drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:18px; border-bottom:1px solid rgba(198,161,91,0.22); margin-bottom:18px;
+  }
+  .drawer-head .brand{
+    font-family:'Outfit', sans-serif; font-size:20px; color:var(--paper);
+    display:flex; align-items:center; gap:12px;
+  }
+  .drawer-head .brand img{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--gold-soft);
+  }
+  .drawer-close{
+    background:transparent; border:none; color:var(--gold-soft); cursor:pointer;
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    border-radius:2px; transition:color 0.2s, background 0.2s;
+  }
+  .drawer-close:hover{
+    color:var(--paper); background:rgba(198,161,91,0.12);
+  }
+  .drawer-close svg{ width:22px; height:22px; }
+
+  .mobile-nav-list{ list-style:none; display:flex; flex-direction:column; gap:0; flex:1; }
+  .mobile-nav-list a.mobile-link,
+  .mobile-nav-list button.mobile-accordion-btn{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:12px 6px; min-height:44px; font-family:'Outfit', sans-serif; font-size:15px; color:var(--paper);
+    background:none; border:none; text-align:left; cursor:pointer;
+    border-bottom:1px solid rgba(198,161,91,0.14); letter-spacing:1px;
+    transition:color 0.2s ease, background 0.2s ease;
+  }
+  .mobile-nav-list a.mobile-link:hover,
+  .mobile-nav-list button.mobile-accordion-btn:hover{ color:var(--gold-soft); }
+  .mobile-accordion-btn svg{ width:12px; height:12px; transition:transform 0.25s ease; stroke:currentColor; }
+  .mobile-accordion.open .mobile-accordion-btn svg{ transform:rotate(180deg); }
+  .mobile-accordion-content{
+    display:none; padding:6px 0 10px 14px; list-style:none;
+  }
+  .mobile-accordion.open .mobile-accordion-content{ display:block; }
+  .mobile-accordion-content li{ margin-bottom:2px; }
+  .mobile-accordion-content li a{
+    display:flex; align-items:center; padding:10px 8px; text-decoration:none;
+    min-height:44px;
+  }
+  .mobile-accordion-content li a .m-title{
+    font-family:'Outfit', sans-serif; font-size:17px; color:rgba(239,230,212,0.92);
+    display:block; line-height:1.3;
+  }
+  .mobile-accordion-content li a:hover .m-title{ color:var(--gold-soft); }
+
+  .drawer-foot{ margin-top:24px; padding-top:20px; border-top:1px solid rgba(198,161,91,0.22); }
+  .drawer-foot .nav-cta-booking{
+    width:100%; text-align:center; padding:13px; font-size:13px; display:inline-flex;
+    justify-content:center; align-items:center; min-height:44px;
   }
   html{ scroll-behavior:smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -188,7 +395,7 @@
   .tour-card .place{ font-size:12px; letter-spacing:2px; color:var(--gold-soft); margin-bottom:10px; text-transform:uppercase; font-weight:500; }
   .tour-card p{ font-size:14px; color:rgba(239,230,212,0.65); flex:1; line-height:1.7; }
   .tour-card .foot{ display:flex; justify-content:space-between; align-items:center; margin-top:22px; border-top:1px solid var(--line); padding-top:16px; font-size:13px; }
-  .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:20px; font-weight:600; margin-left:4px; }
+  .tour-card .foot .price b{ color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:20px; font-weight:400; margin-left:4px; }
   .tour-card .foot a{
     font-size:12.5px; letter-spacing:0.8px; color:var(--gold-soft); border-bottom:1px solid var(--gold-soft);
     padding:10px 2px; min-height:44px; display:inline-flex; align-items:center;
@@ -281,32 +488,144 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="bar">
-    <a href="index.html" class="logo">Northern Orchid <span>Tours</span></a>
-    <nav class="desktop-nav">
-      <a href="index.html">Home page</a>
-      <a href="tours.html">Our Tours</a>
-      <a href="multidaytours.html">Multi-Day Tours</a>
-      <a href="transport.html">Transport</a>
-      <a href="activities.html">Activities</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span>
-    </button>
-  </div>
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home page</a>
-      <a href="tours.html">Our Tours</a>
-      <a href="multidaytours.html">Multi-Day Tours</a>
-      <a href="transport.html">Transport</a>
-      <a href="activities.html">Activities</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="index.html#contact">Contact</a>
-  </nav>
+<svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<!-- Header & Interactive Quiet Luxury Navigation -->
+<header class="nav">
+<!-- Left Side: Circular Logo Badge & Brand Name -->
+<a class="brand" href="#">
+<img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz1L3YuPunMP5QTjAEtaIDb7Kuj4zERdEKtbTvV_ObTEtBZQu36Rgx6FKybCtlcFEPqdKBXiCUbeULKdwSPwVw1boSWrrnouHMhQMb2L_PEx0mOSXNoJQ-00Ge20lFzD0n4oRvCil8L_2ch9HvAoEDUX0xkGexfgjah9ju58gmoOgH49ubrfBJIGjw6ZQdfjYTN2MYdSyGvszwEgWdVOCq0p-lHqPG3H6yXGHMc9mlMTwuvd533_M2a_z_A5Jys-EpuA">
+    NORTHERN ORCHID TOURS <span class=""></span>
+</a>
+<!-- Center / Right Main Menu -->
+<nav aria-label="Main Navigation" class="nav-center">
+<ul class="nav-menu">
+<!-- Private Tours Dropdown -->
+<li class="nav-item has-dropdown" data-dropdown="private tours">
+<button aria-expanded="false" aria-haspopup="true" class="nav-link" type="button" data-i18n="nav_private_tours" data-i18n-chevron="true">Our Tours<svg class="chevron" fill="none" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path>
+</svg></button>
+<ul class="dropdown-menu">
+<li>
+  <a href="tours.html">
+    <span class="drop-title" data-i18n="chiang_mai">
+      One Day Tour
+    </span>
+  </a>
+</li>
+<li>
+  <a href="multidaytours.html">
+    <span class="drop-title" data-i18n="chiang_rai">
+      Multi-Day Tour
+    </span>
+  </a>
+</li>
+
+</ul>
+</li>
+<!-- Transport -->
+<li class="nav-item">
+  <a href="transport.html" class="nav-link">
+    <span class="drop-title" data-i18n="nav_transport">Transport</span>
+  </a>
+</li>
+<!-- Activities Dropdown -->
+<li class="nav-item">
+<a class="nav-link" href="#activies" data-i18n="nav_activities">Activities</a>
+</li>
+<!-- Gallery Link -->
+<li class="nav-item">
+<a class="nav-link" href="aboutus.html" data-i18n="nav_gallery">About Us</a>
+</li>
+<!-- Contact Link -->
+<li class="nav-item">
+<a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a>
+</li>
+</ul>
+</nav>
+<!-- Far Right: 'Booking Now' CTA -->
+<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Book now</a>
+<!-- Mobile Hamburger Button (44x44 min tap target) -->
+<button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
 </header>
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+<aside aria-label="Mobile Navigation" class="mobile-drawer" id="mobileDrawer">
+<div class="drawer-head">
+<div class="brand">
+<img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKksZ1iSFnDSJDzUkHwRDkAyxpSl8ZiLIJ6zsk1peraOp1bTUFWWrsaBof--lPoZfjEZSAUpMbiOJ53YecAJu0CbJi2wtiUsl7xgXmB8lCtgQ1xAjkw0Lo8SISV11lWZHgDcTWkKQ2sGmVx6r14D_nob4rUfCD5P7i49yH7wQetdlvszRgOiPUXcYz5Xe8JaXZ6Eg3li9-LvarWeauX1K9bEomgTEw0b90vSjqsSqwqE6OEuboY-LfMCj_O_pyv_Y8Mg">
+      Northern Orchid <span class="" style="color:var(--gold-soft); font-style:italic;">Tours</span>
+</div>
+<button aria-label="Close navigation menu" class="drawer-close" id="mobileMenuClose">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewBox="0 0 24 24">
+<line x1="6" x2="18" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="18" y2="6"></line>
+</svg>
+</button>
+</div>
+<ul class="mobile-nav-list">
+<!-- Private Tours Accordion -->
+<li class="mobile-accordion">
+  <button
+    class="mobile-accordion-btn"
+    type="button"
+    data-i18n="nav_private_tours"
+    data-i18n-chevron="true"
+  >
+    Private Tours
+    <svg fill="none" viewBox="0 0 10 6">
+      <path d="M1 1L5 5L9 1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.4">
+      </path>
+    </svg>
+  </button>
+
+  <ul class="mobile-accordion-content">
+    <li>
+      <a class="mobile-drawer-link" href="tours.html">
+        <span class="m-title" data-i18n="dest_chiang_mai">
+          One Day Tour
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a class="mobile-drawer-link" href="multidaytours.html">
+        <span class="m-title" data-i18n="dest_chiang_rai">
+          Multi-Day Tour
+        </span>
+      </a>
+    </li>
+  </ul>
+</li>
+<!-- Transport Link -->
+<li class="">
+  <a class="mobile-link mobile-drawer-link" href="transport.html" data-i18n="nav_transport">Transport</a>
+</li>
+<!-- Activities Accordion -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="#Activities" data-i18n="nav_activities">Activities</a>
+</li>
+<!-- Gallery Accordion -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="aboutus.html" data-i18n="nav_gallery">About Us</a>
+</li>
+<!-- Contact Link -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="#contact" data-i18n="nav_contact">Contact</a>
+</li>
+</ul>
+<div class="drawer-foot">
+<a class="nav-cta-booking mobile-drawer-link" href="#bookingnow" data-i18n="nav_booking_now">Booking Now</a>
+</div>
+</aside>
 
 <section class="tours-page">
   <div class="wrap">
@@ -336,7 +655,7 @@
         <div class="art-title"><span class="idx"></span><h3>Doi Inthanon</h3></div>
         </div>
         <div class="body">
-          <p>Pay respect at the city's sacred temple, take in views over Chiang Mai, and visit a hill-tribe village.</p>
+          <p>Explore one of Chiang Mai’s iconic natural highlights — Doi Inthanon and the Pha Dok Siew Trail.</p>
           <div class="foot">
             <span>Full Day · 10 hours</span>
             <span class="price"><b>view details</b></span>
@@ -360,7 +679,7 @@
         <div class="art-title"><span class="idx"></span><h3>Elephant Sanctuary</h3></div>
         </div>
         <div class="body">
-          <p>Trek through hidden waterfalls, rice terraces, and an authentic Karen hill-tribe village.</p>
+          <p>Experience an unforgettable day of hands-on elephant care and a scenic bamboo rafting adventure along the Mae Taeng River.</p>
           <div class="foot">
             <span>Full Day · 9 hours</span>
             <span class="price"><b>view details</b></span>
@@ -384,7 +703,7 @@
         <div class="art-title"><span class="idx"></span><h3>Doi Suthep</h3></div>
         </div>
         <div class="body">
-          <p>Connect with gentle giants, raft along the Mae Taeng river, and cool off at Sticky Waterfall.</p>
+          <p>Discover Northern Thailand through its spiritual traditions and culinary culture — from the sacred mountain of Doi Suthep to the flavours of Thai cuisine.</p>
           <div class="foot">
             <span>Full-day · 8 hours</span>
             <span class="price"><b>view details</b></span>
@@ -408,7 +727,7 @@
         <div class="art-title"><span class="idx"></span><h3>Chiang Rai</h3></div>
         </div>
         <div class="body">
-          <p>Pay respect at the city's sacred temple, take in views over Chiang Mai, and visit a hill-tribe village.</p>
+          <p>Take a journey from Chiang Mai to Chiang Rai and discover the art, culture, and local life of Northern Thailand.</p>
           <div class="foot">
             <span>Full-day · 12 hours</span>
             <span class="price"><b>view details</b></span>
@@ -432,10 +751,10 @@
         <div class="art-title"><span class="idx"></span><h3>Old City</h3></div>
         </div>
         <div class="body">
-          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <p>Step into the history of Chiang Mai through its old city temples and historic landmarks.</p>
           <div class="foot">
             <span>Full-day · private group</span>
-            <span class="price"><b>See Details</b></span>
+            <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
@@ -456,10 +775,10 @@
         <div class="art-title"><span class="idx"></span><h3>Elephant Sanctuary</h3></div>
         </div>
         <div class="body">
-          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <p>A day of highlights nature, elephants, and local experiences in Northern Thailand.</p>
           <div class="foot">
             <span>Full-day · private group</span>
-            <span class="price"><b>See Details</b></span>
+            <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
@@ -480,10 +799,10 @@
         <div class="art-title"><span class="idx"></span><h3>Doi Inthanon</h3></div>
         </div>
         <div class="body">
-          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <p>Visit Doi Inthanon and walk the Kew Mae Pan Trail, with panoramic views across the mountains of Northern Thailand.</p>
           <div class="foot">
             <span>Full-day · private group</span>
-            <span class="price"><b>See Details</b></span>
+            <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
@@ -504,10 +823,10 @@
         <div class="art-title"><span class="idx"></span><h3>Doi Suthep</h3></div>
         </div>
         <div class="body">
-          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <p>Visit three of Chiang Mai’s well-known temples, each with its own character and history.</p>
           <div class="foot">
             <span>Full-day · private group</span>
-            <span class="price"><b>See Details</b></span>
+            <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
@@ -528,10 +847,11 @@
         <div class="art-title"><span class="idx"></span><h3>Golden Triangle</h3></div>
         </div>
         <div class="body">
-          <p>Visit the mountaintop temple and a hidden forest temple, then learn to cook authentic Thai dishes.</p>
+          <p>Explore the Golden Triangle, where Thailand, Laos, and Myanmar meet along the Mekong River, and enjoy a scenic boat ride.
+</p>
           <div class="foot">
             <span>Full-day · private group</span>
-            <span class="price"><b>See Details</b></span>
+            <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
@@ -579,7 +899,7 @@
         <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       </div>
       <div style="display: flex; flex-direction: column; gap: 2px;">
-        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_call_label">+6698-819-8385</span>
+        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_call_label">Direct Call</span>
       </div>
     </a>
   </div>
