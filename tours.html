@@ -17,17 +17,25 @@
     --jade:#33513E;
     --line: rgba(198,161,91,0.35);
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{ scroll-behavior:smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
+  *{ box-sizing:border-box; margin:0; padding:0; }
   body{
-    background:var(--paper);
-    color:var(--ink);
+    background:var(--ink);
+    color:var(--paper);
     font-family:'Outfit', sans-serif;
-    font-weight:500;
-    line-height:1.5;
-    letter-spacing:1.5;
-    overflow-x:hidden;
+    font-weight:400;
+    line-height:1.7;
   }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .btn{
+    padding:13px 28px; font-size:13.5px; font-family:'Outfit', sans-serif; border-radius:2px;
+    transition:all .3s ease; display:inline-flex; align-items:center; justify-content:center;
+    min-height:44px;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
   h1,h2,h3{ font-family:'Outfit', sans-serif; }
   a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; }
@@ -80,8 +88,7 @@
     width:10px; height:6px; transition:transform 0.25s ease; stroke:currentColor;
   }
   .nav-item:hover svg.chevron, .nav-item.active svg.chevron{ transform:rotate(180deg); }
-
-  /* Elegant Quiet Luxury Dropdown Menus */
+   /* Elegant Quiet Luxury Dropdown Menus */
   .dropdown-menu{
     position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(6px);
     width:280px; background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(18px);
@@ -488,10 +495,11 @@
 </head>
 <body>
 
+<svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
 <!-- Header & Interactive Quiet Luxury Navigation -->
 <header class="nav">
 <!-- Left Side: Circular Logo Badge & Brand Name -->
-<a class="brand" href="index.html">
+<a class="brand" href="#">
 <img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz1L3YuPunMP5QTjAEtaIDb7Kuj4zERdEKtbTvV_ObTEtBZQu36Rgx6FKybCtlcFEPqdKBXiCUbeULKdwSPwVw1boSWrrnouHMhQMb2L_PEx0mOSXNoJQ-00Ge20lFzD0n4oRvCil8L_2ch9HvAoEDUX0xkGexfgjah9ju58gmoOgH49ubrfBJIGjw6ZQdfjYTN2MYdSyGvszwEgWdVOCq0p-lHqPG3H6yXGHMc9mlMTwuvd533_M2a_z_A5Jys-EpuA">
     NORTHERN ORCHID TOURS <span class=""></span>
 </a>
@@ -529,7 +537,7 @@
 </li>
 <!-- Activities Dropdown -->
 <li class="nav-item">
-<a class="nav-link" href="activities.html" data-i18n="nav_activities">Activities</a>
+<a class="nav-link" href="#activies" data-i18n="nav_activities">Activities</a>
 </li>
 <!-- Gallery Link -->
 <li class="nav-item">
@@ -545,7 +553,7 @@
 </ul>
 </nav>
 <!-- Far Right: 'Booking Now' CTA -->
-<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20transfer%20or%20transport%20service." target="_blank" rel="noopener">Book now</a>
+<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Book now</a>
 <!-- Mobile Hamburger Button (44x44 min tap target) -->
 <button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
@@ -579,7 +587,7 @@
     data-i18n="nav_private_tours"
     data-i18n-chevron="true"
   >
-    Our Tours
+    Private Tours
     <svg fill="none" viewBox="0 0 10 6">
       <path d="M1 1L5 5L9 1"
         stroke-linecap="round"
@@ -592,7 +600,7 @@
   <ul class="mobile-accordion-content">
     <li>
       <a class="mobile-drawer-link" href="tours.html">
-        <span class="m-title" data-i18n="dest_chiang_mai">
+        <span class="m-title" data-i18n="dest_one_day_tour">
           One Day Tour
         </span>
       </a>
@@ -613,7 +621,7 @@
 </li>
 <!-- Activities Accordion -->
 <li class="">
-<a class="mobile-link mobile-drawer-link" href="activities.html" data-i18n="nav_activities">Activities</a>
+<a class="mobile-link mobile-drawer-link" href="#Activities" data-i18n="nav_activities">Activities</a>
 </li>
 <!-- Gallery Accordion -->
 <li class="">
@@ -621,11 +629,11 @@
 </li>
 <!-- Contact Link -->
 <li class="">
-<a class="mobile-link mobile-drawer-link" href="contact.html" data-i18n="nav_contact">Contact</a>
+<a class="mobile-link mobile-drawer-link" href="#contact" data-i18n="nav_contact">Contact</a>
 </li>
 </ul>
 <div class="drawer-foot">
-<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20transfer%20or%20transport%20service." target="_blank" rel="noopener" data-i18n="nav_booking_now">Booking Now</a>
+<a class="nav-cta-booking mobile-drawer-link" href="#bookingnow" data-i18n="nav_booking_now">Booking Now</a>
 </div>
 </aside>
 
