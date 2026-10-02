@@ -88,7 +88,8 @@
     width:10px; height:6px; transition:transform 0.25s ease; stroke:currentColor;
   }
   .nav-item:hover svg.chevron, .nav-item.active svg.chevron{ transform:rotate(180deg); }
-   /* Elegant Quiet Luxury Dropdown Menus */
+
+  /* Elegant Quiet Luxury Dropdown Menus */
   .dropdown-menu{
     position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(6px);
     width:280px; background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(18px);
@@ -230,78 +231,20 @@
     width:100%; text-align:center; padding:13px; font-size:13px; display:inline-flex;
     justify-content:center; align-items:center; min-height:44px;
   }
-  html{ scroll-behavior:smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'Outfit', sans-serif;
-    font-weight:400;
-    line-height:1.7;
-  }
-  a{ color:inherit; text-decoration:none; }
-  img{ max-width:100%; display:block; }
-  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
-  .btn{
-    padding:13px 28px; font-size:13.5px; font-family:'Outfit', sans-serif; border-radius:2px;
-    transition:all .3s ease; display:inline-flex; align-items:center; justify-content:center;
-    min-height:44px;
-  }
-  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
-  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
 
-  /* ===== Mobile-ready header / nav ===== */
-  .site-header{
-    position:sticky; top:0; z-index:100;
-    background:rgba(20,31,25,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-    padding-top:env(safe-area-inset-top, 0px);
+  /* Collapse desktop nav into the hamburger drawer */
+  @media(max-width:1100px){
+    header.nav{ padding:14px 20px; padding-top:calc(14px + env(safe-area-inset-top, 0px)); }
+    .nav-center, .nav > .nav-cta-booking{ display:none; }
+    .mobile-toggle{ display:flex; }
+    .nav .brand{ font-size:17px; gap:10px; }
+    .nav .brand img{ width:38px; height:38px; }
   }
-  .site-header .bar{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 32px; max-width:1180px; margin:0 auto;
+  @media(max-width:400px){
+    .nav .brand{ font-size:15px; letter-spacing:1px; }
   }
-  .logo{
-    font-family:'Outfit', sans-serif; font-size:20px; letter-spacing:0.5px; font-weight:600;
-    color:var(--paper);
-  }
-  .logo span{ color:var(--gold-soft); }
-  .desktop-nav{ display:flex; gap:30px; font-size:13.5px; letter-spacing:0.5px; }
-  .desktop-nav a{ color:rgba(239,230,212,0.8); }
-  .desktop-nav a:hover{ color:var(--gold-soft); }
-
-  .menu-toggle{
-    display:none; width:44px; height:44px; border:1px solid var(--line);
-    background:transparent; border-radius:2px; cursor:pointer;
-    align-items:center; justify-content:center; position:relative;
-  }
-  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after{
-    content:""; display:block; width:20px; height:1.5px; background:var(--paper);
-    position:relative; transition:all .25s ease;
-  }
-  .menu-toggle span::before{ position:absolute; top:-6px; }
-  .menu-toggle span::after{ position:absolute; top:6px; }
-  .menu-toggle.open span{ background:transparent; }
-  .menu-toggle.open span::before{ top:0; transform:rotate(45deg); background:var(--gold-soft); }
-  .menu-toggle.open span::after{ top:0; transform:rotate(-45deg); background:var(--gold-soft); }
-
-  .mobile-nav{
-    display:none; flex-direction:column; gap:2px; background:var(--forest);
-    border-bottom:1px solid var(--line); overflow:hidden;
-    max-height:0; transition:max-height .3s ease;
-  }
-  .mobile-nav.open{ max-height:400px; }
-  .mobile-nav a{
-    padding:16px 32px; font-size:14.5px; border-top:1px solid var(--line);
-    min-height:44px; display:flex; align-items:center;
-  }
-  .mobile-nav a:active{ background:var(--jade); }
-
-  @media(max-width:860px){
-    .desktop-nav{ display:none; }
-    .menu-toggle{ display:flex; }
-    .mobile-nav{ display:flex; }
+  @media(min-width:1101px){
+    .mobile-drawer, .mobile-drawer-overlay{ display:none; }
   }
 
   .tours-page{ padding:60px 0 100px; }
@@ -469,6 +412,7 @@
   footer{ background:var(--ink); color:rgba(239,230,212,0.65); padding:90px 0 36px; border-top:1px solid rgba(198,161,91,0.2); }
   .f-grid{ display:grid; grid-template-columns:1.5fr 1.2fr 1.3fr; gap:48px; padding-bottom:60px; }
   .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
+
   @media(max-width:960px){
     .tour-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   }
@@ -499,7 +443,7 @@
 <!-- Header & Interactive Quiet Luxury Navigation -->
 <header class="nav">
 <!-- Left Side: Circular Logo Badge & Brand Name -->
-<a class="brand" href="#">
+<a class="brand" href="index.html">
 <img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz1L3YuPunMP5QTjAEtaIDb7Kuj4zERdEKtbTvV_ObTEtBZQu36Rgx6FKybCtlcFEPqdKBXiCUbeULKdwSPwVw1boSWrrnouHMhQMb2L_PEx0mOSXNoJQ-00Ge20lFzD0n4oRvCil8L_2ch9HvAoEDUX0xkGexfgjah9ju58gmoOgH49ubrfBJIGjw6ZQdfjYTN2MYdSyGvszwEgWdVOCq0p-lHqPG3H6yXGHMc9mlMTwuvd533_M2a_z_A5Jys-EpuA">
     NORTHERN ORCHID TOURS <span class=""></span>
 </a>
@@ -537,7 +481,7 @@
 </li>
 <!-- Activities Dropdown -->
 <li class="nav-item">
-<a class="nav-link" href="#activies" data-i18n="nav_activities">Activities</a>
+<a class="nav-link" href="activities.html" data-i18n="nav_activities">Activities</a>
 </li>
 <!-- Gallery Link -->
 <li class="nav-item">
@@ -587,7 +531,7 @@
     data-i18n="nav_private_tours"
     data-i18n-chevron="true"
   >
-    Private Tours
+    Our Tours
     <svg fill="none" viewBox="0 0 10 6">
       <path d="M1 1L5 5L9 1"
         stroke-linecap="round"
@@ -600,7 +544,7 @@
   <ul class="mobile-accordion-content">
     <li>
       <a class="mobile-drawer-link" href="tours.html">
-        <span class="m-title" data-i18n="dest_one_day_tour">
+        <span class="m-title" data-i18n="dest_chiang_mai">
           One Day Tour
         </span>
       </a>
@@ -621,7 +565,7 @@
 </li>
 <!-- Activities Accordion -->
 <li class="">
-<a class="mobile-link mobile-drawer-link" href="#Activities" data-i18n="nav_activities">Activities</a>
+<a class="mobile-link mobile-drawer-link" href="activities.html" data-i18n="nav_activities">Activities</a>
 </li>
 <!-- Gallery Accordion -->
 <li class="">
@@ -629,11 +573,11 @@
 </li>
 <!-- Contact Link -->
 <li class="">
-<a class="mobile-link mobile-drawer-link" href="#contact" data-i18n="nav_contact">Contact</a>
+<a class="mobile-link mobile-drawer-link" href="contact.html" data-i18n="nav_contact">Contact</a>
 </li>
 </ul>
 <div class="drawer-foot">
-<a class="nav-cta-booking mobile-drawer-link" href="#bookingnow" data-i18n="nav_booking_now">Booking Now</a>
+<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener" data-i18n="nav_booking_now">Booking Now</a>
 </div>
 </aside>
 
