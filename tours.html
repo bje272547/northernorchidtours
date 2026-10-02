@@ -126,7 +126,7 @@
   }
   .dropdown-menu li a .drop-title{
     font-family:'Outfit', sans-serif; font-size:17px; font-weight:450;
-    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.5;
+    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.5px;
   }
   .dropdown-menu li a:hover .drop-title{
     color:var(--gold-soft);
@@ -892,11 +892,13 @@
 <span class="" id="footerSelectedLang" style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--gold);">✦</span> English</span>
 <svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
-<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></ul>
-
+<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></li></ul>
+</div>
+</div>
 <!-- Legal & Policy Links -->
 <div>
-<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li><li class="">
+<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li></ul>
+</div>
 </div>
 </div>
 <!-- Bottom Bar -->
@@ -910,25 +912,126 @@
 
 
 <script>
-  var menuToggle = document.getElementById('menuToggle');
-  var mobileNav = document.getElementById('mobileNav');
-  menuToggle.addEventListener('click', function(){
-    var isOpen = mobileNav.classList.toggle('open');
-    menuToggle.classList.toggle('open', isOpen);
-    menuToggle.setAttribute('aria-expanded', isOpen);
+(function(){
+  'use strict';
+
+  /* ===== Mobile drawer ===== */
+  var drawer   = document.getElementById('mobileDrawer');
+  var overlay  = document.getElementById('mobileDrawerOverlay');
+  var openBtn  = document.getElementById('mobileMenuOpen');
+  var closeBtn = document.getElementById('mobileMenuClose');
+
+  function setDrawer(open){
+    if(!drawer || !overlay) return;
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if(openBtn)  openBtn.addEventListener('click', function(){ setDrawer(true); });
+  if(closeBtn) closeBtn.addEventListener('click', function(){ setDrawer(false); });
+  if(overlay)  overlay.addEventListener('click', function(){ setDrawer(false); });
+  document.querySelectorAll('.mobile-drawer-link').forEach(function(a){
+    a.addEventListener('click', function(){ setDrawer(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ setDrawer(false); closePolicy(); closeDesktopDropdowns(); }
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 1100) setDrawer(false);
   });
 
+  /* ===== Mobile accordion ("Our Tours") ===== */
+  document.querySelectorAll('.mobile-accordion-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.mobile-accordion');
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+
+  /* ===== Desktop dropdown (hover + tap on touch screens) ===== */
+  function closeDesktopDropdowns(){
+    document.querySelectorAll('.nav-item.active').forEach(function(i){
+      i.classList.remove('active');
+      var b = i.querySelector('.nav-link[aria-expanded]');
+      if(b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.querySelectorAll('.nav-item.has-dropdown > .nav-link').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var item = btn.parentElement;
+      var willOpen = !item.classList.contains('active');
+      closeDesktopDropdowns();
+      if(willOpen){
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-item')) closeDesktopDropdowns();
+  });
+
+  /* ===== Footer language menu ===== */
+  var langMenu = document.getElementById('footerLangMenu');
+  var langBtn  = document.getElementById('footerLangBtn');
+  document.addEventListener('click', function(e){
+    if(langMenu && !e.target.closest('#footerLangMenu') && !e.target.closest('#footerLangBtn')){
+      langMenu.style.display = 'none';
+    }
+  });
+  // Fallback only: if your own i18n script defines changeLanguage, that one is kept.
+  if(typeof window.changeLanguage !== 'function'){
+    window.changeLanguage = function(lang){
+      var label = document.getElementById('footerSelectedLang');
+      if(label){
+        label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (lang === 'th' ? 'ภาษาไทย' : 'English');
+      }
+      document.documentElement.setAttribute('lang', lang);
+      if(langMenu) langMenu.style.display = 'none';
+    };
+  }
+
+  /* ===== Policy modal ===== */
+  var pOverlay = document.getElementById('policyModalOverlay');
+  var pCard    = document.getElementById('policyModalCard');
+  function openPolicy(){
+    if(!pOverlay) return;
+    pOverlay.style.opacity = '1';
+    pOverlay.style.pointerEvents = 'auto';
+    if(pCard) pCard.style.transform = 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  function closePolicy(){
+    if(!pOverlay) return;
+    pOverlay.style.opacity = '0';
+    pOverlay.style.pointerEvents = 'none';
+    if(pCard) pCard.style.transform = 'scale(0.96) translateY(12px)';
+    if(!drawer || !drawer.classList.contains('open')) document.body.style.overflow = '';
+  }
+  var policyLink = document.getElementById('bookingPolicyLink');
+  if(policyLink) policyLink.addEventListener('click', function(e){ e.preventDefault(); openPolicy(); });
+  ['closePolicyModal','policyModalCloseBtn'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', closePolicy);
+  });
+  if(pOverlay) pOverlay.addEventListener('click', function(e){ if(e.target === pOverlay) closePolicy(); });
+
+  /* ===== Filter chips (none on page right now, safe no-op) ===== */
   document.querySelectorAll('.filter-chip').forEach(function(chip){
     chip.addEventListener('click', function(){
       document.querySelectorAll('.filter-chip').forEach(function(c){ c.classList.remove('active'); });
       chip.classList.add('active');
     });
-  });  document.querySelectorAll('.tour-card .art-arrow').forEach(function(btn){
+  });
+
+  /* ===== Photo sliders ===== */
+  document.querySelectorAll('.tour-card .art-arrow').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.preventDefault();
       e.stopPropagation();
-      var art = btn.closest('.art');
-      var scroll = art.querySelector('.art-scroll');
+      var scroll = btn.closest('.art').querySelector('.art-scroll');
       if(!scroll) return;
       var dir = btn.classList.contains('next') ? 1 : -1;
       scroll.scrollBy({ left: dir * scroll.offsetWidth, behavior: 'smooth' });
@@ -937,17 +1040,34 @@
 
   document.querySelectorAll('.tour-card .art').forEach(function(art){
     var scroll = art.querySelector('.art-scroll');
-    var dots = art.querySelectorAll('.art-dot');
-    if(!scroll || !dots.length) return;
+    if(!scroll) return;
+
+    // Remove images that fail to load (and one dot for each) so there are no blank slides
+    function dropBroken(img){
+      var dots = art.querySelectorAll('.art-dot');
+      if(img.parentNode) img.parentNode.removeChild(img);
+      if(dots.length > 1) dots[dots.length - 1].parentNode.removeChild(dots[dots.length - 1]);
+      var remaining = scroll.querySelectorAll('img').length;
+      if(remaining <= 1){
+        art.querySelectorAll('.art-arrow, .art-dots').forEach(function(el){ el.style.display = 'none'; });
+      }
+    }
+    scroll.querySelectorAll('img').forEach(function(img){
+      if(img.complete && img.naturalWidth === 0){ dropBroken(img); }
+      else { img.addEventListener('error', function(){ dropBroken(img); }, { once: true }); }
+    });
+
     var timer;
     scroll.addEventListener('scroll', function(){
       clearTimeout(timer);
       timer = setTimeout(function(){
+        var dots = art.querySelectorAll('.art-dot');
         var idx = Math.round(scroll.scrollLeft / scroll.offsetWidth);
         dots.forEach(function(d, i){ d.classList.toggle('active', i === idx); });
       }, 80);
     });
   });
+})();
 </script>
 
 </body>
