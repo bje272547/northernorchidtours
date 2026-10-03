@@ -429,6 +429,26 @@
   footer{ background:var(--ink); color:rgba(239,230,212,0.65); padding:90px 0 36px; border-top:1px solid rgba(198,161,91,0.2); }
   .f-grid{ display:grid; grid-template-columns:1.5fr 1.2fr 1.3fr; gap:48px; padding-bottom:60px; }
   .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
+  @media(max-width:860px){
+    .f-grid{ grid-template-columns:1fr; gap:40px; padding-bottom:44px; }
+  }
+  @media(max-width:480px){
+    .f-bottom{ flex-direction:column; gap:18px; align-items:flex-start; }
+    .f-bottom div{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .f-bottom span[style*="opacity: 0.35"]{ display:none; }
+  }
+
+  /* Footer parity with index.html: index's body uses weight 500 / line-height 1.5,
+     this page's body uses 400 / 1.7, so the footer sets its own values. */
+  footer{ font-weight:500; line-height:1.5; letter-spacing:normal; }
+  #policyModalOverlay{ font-weight:500; line-height:1.5; }
+  /* index.html's .btn-gold override, scoped to the policy modal button only */
+  #policyModalCloseBtn{
+    min-width:100px !important; min-height:40px !important; padding:15px 25px !important;
+    font-size:16px !important; font-family:'Outfit', sans-serif !important; font-weight:600 !important;
+  }
+  /* index.html uses 20px side padding from 860px down */
+  @media(max-width:860px){ footer .wrap{ padding:0 20px; } }
 </style>
 </head>
 <body>
@@ -842,7 +862,6 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
 </div>
 </div>
 </footer><div id="policyModalOverlay" style="position: fixed; inset: 0px; background: rgba(10, 18, 14, 0.85); backdrop-filter: blur(10px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 24px;"><div id="policyModalCard" style="background: rgb(25, 39, 32); border: 1px solid rgba(198, 161, 91, 0.4); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.6) 0px 25px 60px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.96) translateY(12px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);"><div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(198, 161, 91, 0.25); background: rgba(20, 31, 25, 0.95);"><h3 id="policyModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 500; color: #DBBD86; margin: 0;" class="">Privacy &amp; Data Sanctuary</h3><button id="closePolicyModal" aria-label="Close policy dialog" type="button" style="background: none; border: 1px solid rgba(198, 161, 91, 0.35); color: #EFE6D4; width: 38px; height: 38px; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div id="policyModalBody" style="padding: 28px; overflow-y: auto; color: rgba(239, 230, 212, 0.85); font-size: 14.5px; line-height: 1.8; font-family: 'Outfit', sans-serif;"><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;" class="">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;" class="">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">3. Right to Erasure</h4><p class="">At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p></div><div style="padding: 16px 28px; border-top: 1px solid rgba(198, 161, 91, 0.2); background: rgba(20, 31, 25, 0.9); display: flex; justify-content: flex-end;"><button id="policyModalCloseBtn" type="button" class="btn btn-gold" style="padding: 8px 24px; font-size: 13px; min-height: 38px; min-width: 100px; cursor: pointer;">Close</button></div></div></div> 
-
 <script>
   // ===== PRICES (THB, per vehicle) =====
   // Fill in the numbers below (e.g. sedan: 2500). Leave null if not set yet.
@@ -970,6 +989,132 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
       }, 80);
     });
   });
+
+  /* ===== Footer: language switching + policy modal (same behaviour as index.html / tours.html) ===== */
+  (function(){
+  'use strict';
+  var drawer = document.getElementById('mobileDrawer');
+
+  /* ===== Language switching (same behaviour & storage key as index.html) ===== */
+  var translations = {
+  "en": {
+    "nav_home": "Home",
+    "nav_private_tours": "Our Tours",
+    "nav_transport": "Transport",
+    "nav_activities": "Activities",
+    "nav_gallery": "About Us",
+    "nav_contact": "Contact",
+    "nav_booking_now": "Booking Now",
+    "footer_brand_tag": "TAT License : 24/01226",
+    "footer_call_label": "+6698-819-8385",
+    "footer_contact_header": "Contact",
+    "footer_copyright": "© 2026 Northern Orchid Tours. All rights reserved.",
+    "footer_curr_label": "Currency",
+    "footer_email_label": "Email Us",
+    "footer_hours_val": "Daily 08:00 – 09:00 PM",
+    "footer_lang_label": "Language",
+    "footer_legal_header": "Legal & Policy",
+    "footer_loc_label": "Location",
+    "footer_loc_val": "Chiang Mai, Thailand",
+    "footer_motto": "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
+    "footer_pref_header": "Preferences & Policies",
+    "footer_whatsapp_label": "WhatsApp",
+    "legal_link_booking": "Booking & Cancellation Policy",
+    "legal_link_privacy": "Privacy & Data Sanctuary",
+    "legal_link_terms": "Terms & Guest Conditions"
+  },
+  "th": {
+    "nav_home": "หน้าแรก",
+    "nav_private_tours": "ทัวร์ของเรา",
+    "nav_transport": "ยานพาหนะ",
+    "nav_activities": "กิจกรรมพิเศษ",
+    "nav_gallery": "แกลเลอรี",
+    "nav_contact": "ติดต่อเรา",
+    "nav_booking_now": "จองตอนนี้",
+    "footer_brand_tag": "จิตวิญญาณแห่งล้านนา",
+    "footer_call_label": "+6698-819-8385",
+    "footer_contact_header": "ข้อมูลติดต่อ",
+    "footer_copyright": "© 2026 Northern Orchid Tours. สงวนลิขสิทธิ์ทุกประการ",
+    "footer_curr_label": "สกุลเงิน",
+    "footer_email_label": "ส่งอีเมลถึงเรา",
+    "footer_hours_val": "เปิดทุกวัน 08:00 – 21:00 น.",
+    "footer_lang_label": "ภาษา",
+    "footer_legal_header": "ข้อกำหนดทางกฎหมาย",
+    "footer_loc_label": "ที่ตั้ง",
+    "footer_loc_val": "เชียงใหม่, ประเทศไทย",
+    "footer_motto": "เราหวังว่า นอร์ทเทิร์น ออร์คิด ทัวร์ จะเป็นชื่อแรกที่คุณนึกถึงเมื่อวางแผนท่องเที่ยวภาคเหนือ เดินทางอย่างสง่างามผ่านขุนเขา เจดีย์ทอง และมรดกวัฒนธรรมอันมีชีวิต",
+    "footer_pref_header": "การตั้งค่าและนโยบาย",
+    "footer_whatsapp_label": "WhatsApp",
+    "legal_link_booking": "นโยบายการจองและยกเลิก",
+    "legal_link_privacy": "นโยบายความเป็นส่วนตัวและการคุ้มครองข้อมูล",
+    "legal_link_terms": "ข้อตกลงและเงื่อนไขสำหรับผู้เดินทาง"
+  }
+};
+
+  window.changeLanguage = function(lang){
+    if(!translations[lang]) lang = 'en';
+    document.documentElement.lang = lang;
+    var t = translations[lang];
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var val = t[el.getAttribute('data-i18n')];
+      if(!val) return;
+      if(el.getAttribute('data-i18n-chevron')){
+        var chevron = el.querySelector('svg');
+        el.innerHTML = val + (chevron ? chevron.outerHTML : '');
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    var label = document.getElementById('footerSelectedLang');
+    if(label){
+      label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (lang === 'th' ? 'ภาษาไทย (Thai)' : 'English');
+    }
+    var menu = document.getElementById('footerLangMenu');
+    if(menu) menu.style.display = 'none';
+    try { localStorage.setItem('northern_orchid_lang', lang); } catch(e) {}
+  };
+
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('footerLangMenu');
+    var btn  = document.getElementById('footerLangBtn');
+    if(menu && menu.style.display === 'block' && !menu.contains(e.target) && !(btn && btn.contains(e.target))){
+      menu.style.display = 'none';
+    }
+  });
+
+  var savedLang = 'en';
+  try { savedLang = localStorage.getItem('northern_orchid_lang') || 'en'; } catch(e) {}
+  window.changeLanguage(savedLang);
+
+  /* ===== Policy modal ===== */
+  var pOverlay = document.getElementById('policyModalOverlay');
+  var pCard    = document.getElementById('policyModalCard');
+  function openPolicy(){
+    if(!pOverlay) return;
+    pOverlay.style.opacity = '1';
+    pOverlay.style.pointerEvents = 'auto';
+    if(pCard) pCard.style.transform = 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  function closePolicy(){
+    if(!pOverlay) return;
+    pOverlay.style.opacity = '0';
+    pOverlay.style.pointerEvents = 'none';
+    if(pCard) pCard.style.transform = 'scale(0.96) translateY(12px)';
+    if(!drawer || !drawer.classList.contains('open')) document.body.style.overflow = '';
+  }
+  var policyLink = document.getElementById('bookingPolicyLink');
+  if(policyLink) policyLink.addEventListener('click', function(e){ e.preventDefault(); openPolicy(); });
+  ['closePolicyModal','policyModalCloseBtn'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', closePolicy);
+  });
+  if(pOverlay) pOverlay.addEventListener('click', function(e){ if(e.target === pOverlay) closePolicy(); });
+
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePolicy(); });
+  })();
 </script>
 
 </body>
