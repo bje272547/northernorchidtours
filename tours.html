@@ -413,6 +413,18 @@
   .f-grid{ display:grid; grid-template-columns:1.5fr 1.2fr 1.3fr; gap:48px; padding-bottom:60px; }
   .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
 
+  /* Footer parity with index.html: index's body uses weight 500 / line-height 1.5,
+     tours' body uses 400 / 1.7, so the footer must set its own values. */
+  footer{ font-weight:500; line-height:1.5; letter-spacing:normal; }
+  #policyModalOverlay{ font-weight:500; line-height:1.5; }
+  /* index.html's .btn-gold override, scoped to the policy modal button so the rest of this page is unaffected */
+  #policyModalCloseBtn{
+    min-width:100px !important; min-height:40px !important; padding:15px 25px !important;
+    font-size:16px !important; font-family:'Outfit', sans-serif !important; font-weight:600 !important;
+  }
+  /* index.html uses 20px side padding from 860px down (tours used 640px) */
+  @media(max-width:860px){ footer .wrap{ padding:0 20px; } }
+
   @media(max-width:960px){
     .tour-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   }
