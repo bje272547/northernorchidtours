@@ -286,6 +286,19 @@
     text-align:center; position:relative;
     padding:160px 24px 80px;
   }
+  /* Hero background video (falls back to the northern02.png background if the video is missing) */
+  .page-hero{ overflow:hidden; isolation:isolate; }
+  .page-hero .hero-video{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center center;
+    z-index:-2; pointer-events:none; background:var(--ink);
+  }
+  .page-hero::before{
+    content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:linear-gradient(160deg, rgba(20,31,25,0.72) 0%, rgba(38,57,46,0.55) 45%, rgba(14,22,18,0.82) 100%);
+  }
+  @media (prefers-reduced-motion: reduce){ .page-hero .hero-video{ display:none; } }
+
   .page-hero .kicker{
     font-family:'Jost', sans-serif; font-weight:400; font-size:clamp(11px, 2.5vw, 13px);
     letter-spacing:clamp(3px, 1vw, 6px);
@@ -381,7 +394,8 @@
 
   @media(max-width:860px){
     .wrap{ padding:0 20px; }
-    .page-hero{ padding:130px 20px 60px; min-height:46vh; }
+    .page-hero{ padding:130px 20px 60px; min-height:60vh; min-height:60svh; }
+    .page-hero .hero-video{ object-position:center 40%; }
     .story-sec{ padding:80px 0 70px; }
     .story-sec .grid{ grid-template-columns:1fr; gap:32px; }
     .values-sec{ padding:80px 0; }
@@ -548,6 +562,9 @@
 
 <!-- ===== Page banner ===== -->
 <section class="page-hero">
+<video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="northern02.png" aria-hidden="true" tabindex="-1">
+<source src="aboutus-hero.mp4" type="video/mp4">
+</video>
 <div class="kicker">About Northern Orchid Tours</div>
 <h1>The people behind<br><em>every journey we craft</em></h1>
 <p class="lede">A small team of Chiang Mai locals, guides and storytellers, dedicated to showing Northern Thailand at its own unhurried pace.</p>
@@ -637,41 +654,33 @@
 </div>
 <div class="frame-grid">
 <figure class="frame tall">
-<div class="photo-slot"><img src="image/ele19.jpeg" alt="Guests at Doi Suthep temple" loading="lazy"></div>
+<div class="photo-slot"><img src="ele19.jpeg" alt="Guests at Doi Suthep temple" loading="lazy"></div>
 <figcaption>Sunrise at Doi Suthep</figcaption>
 </figure>
 <figure class="frame">
-<div class="photo-slot"><img src="image/car01.png" alt="Team with elephants at the sanctuary" loading="lazy"></div>
+<div class="photo-slot"><img src="car01.png" alt="Team with elephants at the sanctuary" loading="lazy"></div>
 <figcaption>A morning with the elephants</figcaption>
 </figure>
 <figure class="frame">
-<div class="photo-slot"><img src="image/car02.png" alt="Private khantoke dinner" loading="lazy"></div>
+<div class="photo-slot"><img src="car02.png" alt="Private khantoke dinner" loading="lazy"></div>
 <figcaption>Khantoke dinner, Old Chiang Mai</figcaption>
 </figure>
 <figure class="frame">
-<div class="photo-slot"><img src="image/car03.png" alt="Hmong hill-tribe village visit" loading="lazy"></div>
+<div class="photo-slot"><img src="car03.png" alt="Hmong hill-tribe village visit" loading="lazy"></div>
 <figcaption>Visiting a Hmong village</figcaption>
 </figure>
 <figure class="frame tall">
-<div class="photo-slot"><img src="image/doiin13.jpeg" alt="Mist over Doi Inthanon" loading="lazy"></div>
+<div class="photo-slot"><img src="doiin13.jpeg" alt="Mist over Doi Inthanon" loading="lazy"></div>
 <figcaption>Mist over Doi Inthanon</figcaption>
 </figure>
 <figure class="frame">
-<div class="photo-slot"><img src="image/car04.png" alt="Bamboo rafting on the Mae Taeng river" loading="lazy"></div>
+<div class="photo-slot"><img src="car04.png" alt="Bamboo rafting on the Mae Taeng river" loading="lazy"></div>
 <figcaption>Bamboo rafting, Mae Taeng</figcaption>
 </figure>
 </div>
 </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="cta-sec">
-<div class="wrap">
-<h2>Ready to travel with us?</h2>
-<p>Tell us a little about your trip and our team will design an itinerary around it.</p>
-<a class="btn btn-gold" href="index.html#contact">Get in Touch</a>
-</div>
-</section>
 
 <!-- Dark Responsive Footer -->
 <footer style="background: rgb(20, 31, 25); color: rgba(239, 230, 212, 0.75); padding: 90px 0px 42px; border-top: 1px solid rgba(198, 161, 91, 0.3); font-family: 'Outfit', sans-serif;">
@@ -951,5 +960,18 @@
 })();
 </script>
 
+<script>
+(function(){
+  var v=document.querySelector(".page-hero .hero-video");
+  if(!v) return;
+  v.muted=true; v.setAttribute("muted","");
+  if(window.matchMedia("(max-width:860px)").matches){ v.querySelector("source").src="aboutus-hero-720.mp4"; v.load(); }
+  var src=v.querySelector("source");
+  if(src) src.addEventListener("error",function(){ v.style.display="none"; });
+  var p=v.play(); if(p&&p.catch) p.catch(function(){
+    document.addEventListener("touchstart",function once(){ v.play(); document.removeEventListener("touchstart",once); },{passive:true});
+  });
+})();
+</script>
 </body>
 </html>
