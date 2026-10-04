@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en" style="">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>About Us — Northern Orchid Tours</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141F19;
+    --forest:#26392E;
+    --paper:#EFE6D4;
+    --gold:#C6A15B;
+    --gold-soft:#DBBD86;
+    --jade:#33513E;
+    --line: rgba(198,161,91,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond', serif; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  /* Header & Quiet Luxury Navigation */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 48px;
+    padding-top:calc(18px + env(safe-area-inset-top, 0px));
+    background:linear-gradient(to bottom, rgba(20,31,25,0.95), rgba(20,31,25,0.72) 75%, transparent);
+    color:var(--paper);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:background 0.3s ease, padding 0.3s ease;
+  }
+  .nav .brand{
+    display:flex; align-items:center; gap:14px;
+    font-family:'Outfit', sans-serif; font-size:20px; letter-spacing:1.5px; font-weight:500; line-height:1.5;
+    color:var(--paper); text-decoration:none;
+    min-height:44px;
+  }
+  .nav .brand img{
+    width:44px; height:44px; border-radius:50%; object-fit:cover;
+    border:1px solid var(--gold-soft); background:transparent;
+    box-shadow:0 2px 12px rgba(0,0,0,0.35); flex-shrink:0;
+  }
+  .nav .brand span{ color:var(--gold-soft); font-weight:400; font-style:italic; }
+
+  /* Desktop Navigation & Dropdowns */
+  .nav-center{ display:flex; align-items:center; }
+  .nav-menu{
+    display:flex; align-items:center; gap:28px; list-style:none;
+    font-size:14.5px; letter-spacing:1.5px; line-height:1.5;
+  }
+  .nav-item{ position:relative; }
+  .nav-link{
+    color:var(--paper); opacity:0.9; transition:color 0.25s, opacity 0.25s;
+    background:none; border:none; font-family:'Outfit', sans-serif; font-size:16px;
+    font-weight:500; letter-spacing:1.2px; cursor:pointer; display:inline-flex;
+    align-items:center; gap:7px; padding:12px 2px; text-decoration:none;
+    min-height:44px;
+  }
+  .nav-link:hover, .nav-item.active > .nav-link, .nav-item:hover > .nav-link{
+    opacity:1; color:var(--gold-soft);
+  }
+  .nav-link svg.chevron{
+    width:10px; height:6px; transition:transform 0.25s ease; stroke:currentColor;
+  }
+  .nav-item:hover svg.chevron, .nav-item.active svg.chevron{ transform:rotate(180deg); }
+
+  /* Elegant Quiet Luxury Dropdown Menus */
+  .dropdown-menu{
+    position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(6px);
+    width:280px; background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(198, 161, 91, 0.35); border-radius:2px;
+    box-shadow:0 16px 36px rgba(8, 14, 10, 0.45); padding:8px 0; list-style:none;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+    z-index:120;
+  }
+  .dropdown-menu::before{
+    content:''; position:absolute; top:-5px; left:50%; transform:translateX(-50%) rotate(45deg);
+    width:9px; height:9px; background:rgba(20, 31, 25, 0.98);
+    border-top:1px solid rgba(198, 161, 91, 0.35); border-left:1px solid rgba(198, 161, 91, 0.35);
+  }
+  .nav-item:hover .dropdown-menu,
+  .nav-item.active .dropdown-menu{
+    opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0);
+  }
+  .dropdown-menu li{
+    border-bottom:1px solid rgba(198, 161, 91, 0.12);
+  }
+  .dropdown-menu li:last-child{
+    border-bottom:none;
+  }
+  .dropdown-menu li a{
+    display:flex; flex-direction:column; padding:12px 22px;
+    color:rgba(239, 230, 212, 0.9); text-decoration:none;
+    transition:background 0.22s ease, padding-left 0.22s ease;
+    min-height:44px; justify-content:center;
+  }
+  .dropdown-menu li a:hover{
+    background:rgba(198, 161, 91, 0.08); padding-left:26px;
+  }
+  .dropdown-menu li a .drop-title{
+    font-family:'Outfit', sans-serif; font-size:14px; font-weight:500;
+    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.2px;
+  }
+  .dropdown-menu li a:hover .drop-title{
+    color:var(--gold-soft);
+  }
+
+  /* Far-right CTA button: 'Booking Now' */
+  .nav .nav-cta-booking{
+    border:1px solid #C6A15B; padding:10px 24px; font-size:12.5px;
+    border-radius:2px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500;
+    transition:all .3s ease; color:var(--paper); display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Outfit', sans-serif; text-decoration:none; background:transparent;
+    min-height:44px;
+  }
+  .nav .nav-cta-booking:hover{
+    background:var(--gold-soft); color:var(--ink);
+  }
+
+  /* Mobile Hamburger Toggle */
+  .mobile-toggle{
+    display:none; background:transparent; border:none; cursor:pointer;
+    padding:9px; z-index:110; color:var(--gold-soft);
+    width:44px; height:44px; align-items:center; justify-content:center;
+    border-radius:2px; transition:color 0.25s, background 0.25s;
+  }
+  .mobile-toggle:hover{
+    color:var(--paper); background:rgba(198,161,91,0.12);
+  }
+  .mobile-toggle svg{ width:26px; height:26px; display:block; }
+
+  /* Mobile Drawer */
+  .mobile-drawer-overlay{
+    position:fixed; inset:0; background:rgba(10,16,13,0.75); backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    z-index:200; opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+  }
+  .mobile-drawer-overlay.open{ opacity:1; pointer-events:auto; }
+  .mobile-drawer{
+    position:fixed; top:0; right:0; bottom:0; width:100%; max-width:360px;
+    background:rgba(20, 31, 25, 0.98); backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-left:1px solid rgba(198,161,91,0.3); z-index:210;
+    padding:24px 22px 36px;
+    padding-top:calc(24px + env(safe-area-inset-top, 0px));
+    padding-bottom:calc(36px + env(safe-area-inset-bottom, 0px));
+    padding-right:calc(22px + env(safe-area-inset-right, 0px));
+    display:flex; flex-direction:column;
+    transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y:auto;
+  }
+  .mobile-drawer.open{ transform:translateX(0); }
+  .drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:18px; border-bottom:1px solid rgba(198,161,91,0.22); margin-bottom:18px;
+  }
+  .drawer-head .brand{
+    font-family:'Outfit', sans-serif; font-size:20px; color:var(--paper);
+    display:flex; align-items:center; gap:12px;
+  }
+  .drawer-head .brand img{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--gold-soft);
+  }
+  .drawer-close{
+    background:transparent; border:none; color:var(--gold-soft); cursor:pointer;
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    border-radius:2px; transition:color 0.2s, background 0.2s;
+  }
+  .drawer-close:hover{
+    color:var(--paper); background:rgba(198,161,91,0.12);
+  }
+  .drawer-close svg{ width:22px; height:22px; }
+
+  .mobile-nav-list{ list-style:none; display:flex; flex-direction:column; gap:0; flex:1; }
+  .mobile-nav-list a.mobile-link,
+  .mobile-nav-list button.mobile-accordion-btn{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:12px 6px; min-height:44px; font-family:'Outfit', sans-serif; font-size:15px; color:var(--paper);
+    background:none; border:none; text-align:left; cursor:pointer;
+    border-bottom:1px solid rgba(198,161,91,0.14); letter-spacing:1px;
+    transition:color 0.2s ease, background 0.2s ease;
+  }
+  .mobile-nav-list a.mobile-link:hover,
+  .mobile-nav-list button.mobile-accordion-btn:hover{ color:var(--gold-soft); }
+  .mobile-accordion-btn svg{ width:12px; height:12px; transition:transform 0.25s ease; stroke:currentColor; }
+  .mobile-accordion.open .mobile-accordion-btn svg{ transform:rotate(180deg); }
+  .mobile-accordion-content{
+    display:none; padding:6px 0 10px 14px; list-style:none;
+  }
+  .mobile-accordion.open .mobile-accordion-content{ display:block; }
+  .mobile-accordion-content li{ margin-bottom:2px; }
+  .mobile-accordion-content li a{
+    display:flex; align-items:center; padding:10px 8px; text-decoration:none;
+    min-height:44px;
+  }
+  .mobile-accordion-content li a .m-title{
+    font-family:'Outfit', sans-serif; font-size:17px; color:rgba(239,230,212,0.92);
+    display:block; line-height:1.3;
+  }
+  .mobile-accordion-content li a:hover .m-title{ color:var(--gold-soft); }
+
+  .drawer-foot{ margin-top:24px; padding-top:20px; border-top:1px solid rgba(198,161,91,0.22); }
+  .drawer-foot .nav-cta-booking{
+    width:100%; text-align:center; padding:13px; font-size:13px; display:inline-flex;
+    justify-content:center; align-items:center; min-height:44px;
+  }
+
+  /* Collapse desktop nav into the hamburger drawer */
+  @media(max-width:1100px){
+    header.nav{ padding:14px 20px; padding-top:calc(14px + env(safe-area-inset-top, 0px)); }
+    .nav-center, .nav > .nav-cta-booking{ display:none; }
+    .mobile-toggle{ display:flex; }
+    .nav .brand{ font-size:17px; gap:10px; }
+    .nav .brand img{ width:38px; height:38px; }
+  }
+  @media(max-width:400px){
+    .nav .brand{ font-size:15px; letter-spacing:1px; }
+  }
+  @media(min-width:1101px){
+    .mobile-drawer, .mobile-drawer-overlay{ display:none; }
+  }
+
+  footer{ background:var(--ink); color:rgba(239,230,212,0.65); padding:90px 0 36px; border-top:1px solid rgba(198,161,91,0.2); }
+  .f-grid{ display:grid; grid-template-columns:1.5fr 1.2fr 1.3fr; gap:48px; padding-bottom:60px; }
+  .f-bottom{ border-top:1px solid rgba(198,161,91,0.18); padding-top:28px; display:flex; justify-content:space-between; font-size:13px; color:rgba(239,230,212,0.5); }
+
+  /* Footer parity with index.html: index's body uses weight 500 / line-height 1.5,
+     tours' body uses 400 / 1.7, so the footer must set its own values. */
+  footer{ font-weight:500; line-height:1.5; letter-spacing:normal; }
+  #policyModalOverlay{ font-weight:500; line-height:1.5; }
+  /* index.html's .btn-gold override, scoped to the policy modal button so the rest of this page is unaffected */
+  #policyModalCloseBtn{
+    min-width:100px !important; min-height:40px !important; padding:15px 25px !important;
+    font-size:16px !important; font-family:'Outfit', sans-serif !important; font-weight:600 !important;
+  }
+  /* index.html uses 20px side padding from 860px down (tours used 640px) */
+  @media(max-width:860px){ footer .wrap{ padding:0 20px; } }
+
+  @media(max-width:860px){
+    .f-grid{ grid-template-columns:1fr; gap:40px; padding-bottom:44px; }
+  }
+  @media(max-width:480px){
+    .f-bottom{ flex-direction:column; gap:18px; align-items:flex-start; }
+    .f-bottom div{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .f-bottom span[style*="opacity: 0.35"]{ display:none; }
+  }
+
+
+  .btn{
+    padding:15px 34px; font-size:14.5px; font-family:'Jost', sans-serif; border-radius:2px;
+    transition:all .3s ease; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
+    min-height:44px; min-width:180px;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
+
+  /* ===== Page banner ===== */
+  .page-hero{
+    min-height:56vh;
+    background-image:
+      linear-gradient(160deg, rgba(20,31,25,0.82) 0%, rgba(38,57,46,0.68) 45%, rgba(14,22,18,0.88) 100%),
+      url('image/northern02.png');
+    background-size:1550px;
+    background-position:top center;
+    background-repeat:no-repeat;
+    color:var(--paper);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; position:relative;
+    padding:160px 24px 80px;
+  }
+  .page-hero .kicker{
+    font-family:'Jost', sans-serif; font-weight:400; font-size:clamp(11px, 2.5vw, 13px);
+    letter-spacing:clamp(3px, 1vw, 6px);
+    color:var(--gold-soft); margin-bottom:22px; text-transform:uppercase;
+  }
+  .page-hero h1{
+    font-size:clamp(30px, 5vw, 60px);
+    font-weight:400; line-height:1.2; max-width:760px; letter-spacing:-0.5px;
+  }
+  .page-hero h1 em{ font-style:italic; color:var(--gold-soft); font-weight:400; font-family:'Cormorant Garamond', serif; }
+  .page-hero p.lede{
+    margin-top:22px; max-width:560px; font-size:clamp(15px, 2.2vw, 17px); color:rgba(239,230,212,0.88);
+    font-weight:300; line-height:1.8;
+  }
+
+  /* ===== Our Story ===== */
+  .story-sec{ padding:110px 0 100px; background:var(--paper); }
+  .story-sec .grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:start; }
+  .story-sec .eyebrow{ color:var(--jade); font-size:14px; font-weight:600; margin-bottom:16px; letter-spacing:1.5px; text-transform:uppercase; }
+  .story-sec h2{ font-size:clamp(28px, 4vw, 38px); font-weight:400; line-height:1.35; color:var(--forest); }
+  .story-sec .side p{ font-size:16.5px; color:#4a4a3c; line-height:1.9; margin-bottom:20px; }
+  .story-sec .side p:last-child{ margin-bottom:0; }
+
+  /* ===== Values ===== */
+  .values-sec{ background:var(--jade); color:var(--paper); padding:100px 0; }
+  .values-sec .head{ text-align:center; max-width:640px; margin:0 auto 60px; }
+  .values-sec .head .eyebrow{ color:var(--gold-soft); font-weight:600; font-size:14px; margin-bottom:14px; letter-spacing:1.5px; text-transform:uppercase; }
+  .values-sec .head h2{ font-size:clamp(28px, 4vw, 36px); font-weight:400; color:var(--paper); }
+  .values-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid rgba(198,161,91,0.3); border-bottom:1px solid rgba(198,161,91,0.3); }
+  .value{ padding:40px 32px; border-right:1px solid rgba(198,161,91,0.3); }
+  .value:last-child{ border-right:none; }
+  .value .mark{ width:36px; height:36px; margin-bottom:20px; }
+  .value h3{ font-size:20px; font-weight:500; color:var(--paper); margin-bottom:10px; }
+  .value p{ font-size:14.5px; color:rgba(239,230,212,0.8); line-height:1.8; }
+
+  /* ===== Team ===== */
+  .team-sec{ padding:110px 0; background:var(--paper); }
+  .team-sec .head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .team-sec .head .eyebrow{ color:var(--jade); font-weight:600; font-size:14px; margin-bottom:14px; letter-spacing:1.5px; text-transform:uppercase; }
+  .team-sec .head h2{ font-size:clamp(28px, 4vw, 36px); color:var(--forest); font-weight:400; }
+  .team-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+  .team-card{ text-align:center; }
+  .team-card .photo{
+    aspect-ratio:1/1.05; border-radius:2px; overflow:hidden; margin-bottom:18px;
+    border:1px solid var(--line); background:var(--forest);
+  }
+  .team-card .photo img{ width:100%; height:100%; object-fit:cover; }
+  .team-card h3{ font-family:'Cormorant Garamond', serif; font-size:20px; font-weight:500; color:var(--forest); margin-bottom:4px; }
+  .team-card span{ font-size:12.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--jade); }
+
+  /* ===== Gallery — framed photo grid ===== */
+  .gallery-sec{ background:var(--ink); color:var(--paper); padding:110px 0; }
+  .gallery-sec .head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .gallery-sec .head .eyebrow{ color:var(--gold-soft); font-weight:600; font-size:14px; margin-bottom:14px; letter-spacing:1.5px; text-transform:uppercase; }
+  .gallery-sec .head h2{ font-size:clamp(28px, 4vw, 36px); color:var(--paper); font-weight:400; }
+  .gallery-sec .head p{ margin-top:14px; font-size:15px; color:rgba(239,230,212,0.7); line-height:1.8; }
+
+  .frame-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  .frame{
+    position:relative; padding:14px; border:1px solid rgba(198,161,91,0.45);
+    background:rgba(198,161,91,0.03); border-radius:2px;
+    transition:border-color 0.3s ease, transform 0.3s ease;
+  }
+  .frame:hover{ border-color:var(--gold-soft); transform:translateY(-3px); }
+  .frame::before{
+    content:''; position:absolute; top:5px; left:5px; right:5px; bottom:5px;
+    border:1px solid rgba(198,161,91,0.25); pointer-events:none; border-radius:1px;
+  }
+  .frame .photo-slot{
+    aspect-ratio:4/5; overflow:hidden; background:var(--forest);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .frame .photo-slot img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .frame figcaption{
+    margin-top:14px; text-align:center; font-family:'Cormorant Garamond', serif;
+    font-size:16px; color:var(--gold-soft); font-style:italic; letter-spacing:0.3px;
+  }
+  .frame.tall .photo-slot{ aspect-ratio:4/6; }
+
+  @media(max-width:960px){
+    .frame-grid{ grid-template-columns:repeat(2, 1fr); }
+    .team-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  /* ===== CTA ===== */
+  .cta-sec{
+    background:var(--forest); color:var(--paper); padding:100px 0; text-align:center;
+  }
+  .cta-sec h2{ font-size:clamp(28px, 4vw, 34px); font-weight:400; max-width:520px; margin:0 auto 14px; }
+  .cta-sec p{ color:rgba(239,230,212,0.78); max-width:460px; margin:0 auto 32px; font-size:16px; line-height:1.75; }
+
+  @media(max-width:860px){
+    .wrap{ padding:0 20px; }
+    .page-hero{ padding:130px 20px 60px; min-height:46vh; }
+    .story-sec{ padding:80px 0 70px; }
+    .story-sec .grid{ grid-template-columns:1fr; gap:32px; }
+    .values-sec{ padding:80px 0; }
+    .values-list{ grid-template-columns:1fr; }
+    .value{ border-right:none; border-bottom:1px solid rgba(198,161,91,0.3); }
+    .value:last-child{ border-bottom:none; }
+    .team-sec{ padding:80px 0; }
+    .team-grid{ grid-template-columns:repeat(2,1fr); gap:20px; }
+    .gallery-sec{ padding:80px 0; }
+    .frame-grid{ grid-template-columns:1fr; gap:22px; }
+    .cta-sec{ padding:70px 0; }
+  }
+
+  @media(max-width:480px){
+    .team-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+  }
+
+  /* Shared header/footer (same as doiin01.html / tours.html): this page's body font is Jost, they use Outfit */
+  header.nav, .mobile-drawer, footer, #policyModalOverlay{ font-family:'Outfit', sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- Header & Interactive Quiet Luxury Navigation -->
+<header class="nav">
+<!-- Left Side: Circular Logo Badge & Brand Name -->
+<a class="brand" href="index.html">
+<img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz1L3YuPunMP5QTjAEtaIDb7Kuj4zERdEKtbTvV_ObTEtBZQu36Rgx6FKybCtlcFEPqdKBXiCUbeULKdwSPwVw1boSWrrnouHMhQMb2L_PEx0mOSXNoJQ-00Ge20lFzD0n4oRvCil8L_2ch9HvAoEDUX0xkGexfgjah9ju58gmoOgH49ubrfBJIGjw6ZQdfjYTN2MYdSyGvszwEgWdVOCq0p-lHqPG3H6yXGHMc9mlMTwuvd533_M2a_z_A5Jys-EpuA">
+    NORTHERN ORCHID TOURS <span class=""></span>
+</a>
+<!-- Center / Right Main Menu -->
+<nav aria-label="Main Navigation" class="nav-center">
+<ul class="nav-menu">
+<!-- Private Tours Dropdown -->
+<li class="nav-item has-dropdown" data-dropdown="private tours">
+<button aria-expanded="false" aria-haspopup="true" class="nav-link" type="button" data-i18n="nav_private_tours" data-i18n-chevron="true">Our Tours<svg class="chevron" fill="none" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path>
+</svg></button>
+<ul class="dropdown-menu">
+<li>
+  <a href="tours.html">
+    <span class="drop-title" data-i18n="chiang_mai">
+      ONE DAY TOUR
+    </span>
+  </a>
+</li>
+<li>
+  <a href="multidaytours.html">
+    <span class="drop-title" data-i18n="chiang_rai">
+      MULTI-DAY TOUR
+    </span>
+  </a>
+</li>
+
+</ul>
+</li>
+<!-- Transport -->
+<li class="nav-item">
+  <a href="transport.html" class="nav-link">
+    <span class="drop-title" data-i18n="nav_transport">TRANSPORT</span>
+  </a>
+</li>
+<!-- Activities Dropdown -->
+<li class="nav-item">
+<a class="nav-link" href="activities.html" data-i18n="nav_activities">ACTIVITIES</a>
+</li>
+<!-- Gallery Link -->
+<li class="nav-item">
+<a class="nav-link" href="aboutus.html" data-i18n="nav_gallery" style="opacity:1; color:var(--gold-soft);">ABOUT US</a>
+</li>
+<!-- Contact Link -->
+<li class="nav-item">
+<a class="nav-link" href="contact.html" data-i18n="nav_contact">CONTACT</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html" data-i18n="nav_home">HOME</a>
+</li>
+</ul>
+</nav>
+<!-- Far Right: 'Booking Now' CTA -->
+<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Northern%20Orchid%20Tours." target="_blank" rel="noopener">Book now</a>
+<!-- Mobile Hamburger Button (44x44 min tap target) -->
+<button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<line x1="3" x2="21" y1="12" y2="12"></line>
+<line x1="3" x2="21" y1="18" y2="18"></line>
+</svg>
+</button>
+</header>
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+<aside aria-label="Mobile Navigation" class="mobile-drawer" id="mobileDrawer">
+<div class="drawer-head">
+<div class="brand">
+<img alt="Northern Orchid Tours emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKksZ1iSFnDSJDzUkHwRDkAyxpSl8ZiLIJ6zsk1peraOp1bTUFWWrsaBof--lPoZfjEZSAUpMbiOJ53YecAJu0CbJi2wtiUsl7xgXmB8lCtgQ1xAjkw0Lo8SISV11lWZHgDcTWkKQ2sGmVx6r14D_nob4rUfCD5P7i49yH7wQetdlvszRgOiPUXcYz5Xe8JaXZ6Eg3li9-LvarWeauX1K9bEomgTEw0b90vSjqsSqwqE6OEuboY-LfMCj_O_pyv_Y8Mg">
+      Northern Orchid <span class="" style="color:var(--gold-soft); font-style:italic;">Tours</span>
+</div>
+<button aria-label="Close navigation menu" class="drawer-close" id="mobileMenuClose">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewBox="0 0 24 24">
+<line x1="6" x2="18" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="18" y2="6"></line>
+</svg>
+</button>
+</div>
+<ul class="mobile-nav-list">
+<!-- Private Tours Accordion -->
+<li class="mobile-accordion">
+  <button
+    class="mobile-accordion-btn"
+    type="button"
+    data-i18n="nav_private_tours"
+    data-i18n-chevron="true"
+  >
+    OUR TOURS
+    <svg fill="none" viewBox="0 0 10 6">
+      <path d="M1 1L5 5L9 1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.4">
+      </path>
+    </svg>
+  </button>
+
+  <ul class="mobile-accordion-content">
+    <li>
+      <a class="mobile-drawer-link" href="tours.html">
+        <span class="m-title" data-i18n="dest_chiang_mai">
+          ONE DAY TOUR
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a class="mobile-drawer-link" href="multidaytours.html">
+        <span class="m-title" data-i18n="dest_chiang_rai">
+          MULTI-DAY TOUR
+        </span>
+      </a>
+    </li>
+  </ul>
+</li>
+<!-- Transport Link -->
+<li class="">
+  <a class="mobile-link mobile-drawer-link" href="transport.html" data-i18n="nav_transport">TRANSPORT</a>
+</li>
+<!-- Activities Accordion -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="activities.html" data-i18n="nav_activities">ACTIVITIES</a>
+</li>
+<!-- Gallery Accordion -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="aboutus.html" data-i18n="nav_gallery" style="opacity:1; color:var(--gold-soft);">ABOUT US</a>
+</li>
+<!-- Contact Link -->
+<li class="">
+<a class="mobile-link mobile-drawer-link" href="contact.html" data-i18n="nav_contact">CONTACT</a>
+</li>
+</ul>
+<div class="drawer-foot">
+<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Northern%20Orchid%20Tours." target="_blank" rel="noopener" data-i18n="nav_booking_now">Booking Now</a>
+</div>
+</aside>
+
+<!-- ===== Page banner ===== -->
+<section class="page-hero">
+<div class="kicker">About Northern Orchid Tours</div>
+<h1>The people behind<br><em>every journey we craft</em></h1>
+<p class="lede">A small team of Chiang Mai locals, guides and storytellers, dedicated to showing Northern Thailand at its own unhurried pace.</p>
+</section>
+
+<!-- ===== Our Story ===== -->
+<section class="story-sec">
+<div class="wrap grid">
+<div>
+<div class="eyebrow">Our Story</div>
+<h2>Born in Chiang Mai, shaped by the North</h2>
+</div>
+<div class="side">
+<p>Northern Orchid Tours began with a simple idea: that the North of Thailand is best discovered slowly, in the company of people who actually live here. We are guides, drivers, cooks and hosts who grew up among these mountains, temples and rivers — and who still find something new in them every season.</p>
+<p>Rather than moving guests through a checklist of sights, we design each day around quiet moments: a sunrise offering at a hillside temple, a cup of tea with a hill-tribe family, the particular light on Doi Inthanon before the crowds arrive. Every itinerary is built by hand, for a small group or a single family, never mass-produced.</p>
+<p>Today, our team looks after journeys across Chiang Mai, Chiang Rai and Mae Hong Son — but the intention has never changed: genuine hospitality, local knowledge, and a slower, more considered way of travelling.</p>
+</div>
+</div>
+</section>
+
+<!-- ===== Values ===== -->
+<section class="values-sec">
+<div class="wrap">
+<div class="head">
+<div class="eyebrow">What We Believe</div>
+<h2>The principles behind every itinerary</h2>
+</div>
+<div class="values-list">
+<div class="value">
+<svg class="mark" viewBox="0 0 34 34"><circle cx="17" cy="17" fill="none" r="15" stroke="#C6A15B" stroke-width="1.4"></circle><path d="M9 17 Q17 8 25 17 Q17 26 9 17 Z" fill="none" stroke="#C6A15B" stroke-width="1.2"></path></svg>
+<h3>Local, Not Outsourced</h3>
+<p>Every guide and driver is based in the North. What you get is lived-in knowledge, not a script.</p>
+</div>
+<div class="value">
+<svg class="mark" viewBox="0 0 34 34"><rect fill="none" height="18" stroke="#C6A15B" stroke-width="1.4" transform="rotate(45 17 17)" width="18" x="8" y="8"></rect></svg>
+<h3>Slow by Design</h3>
+<p>Fewer stops, more time at each one. We would rather you remember three places well than rush through ten.</p>
+</div>
+<div class="value">
+<svg class="mark" viewBox="0 0 34 34"><path d="M17 5 L27 29 L7 29 Z" fill="none" stroke="#C6A15B" stroke-width="1.4"></path></svg>
+<h3>Respect for Place</h3>
+<p>From hill-tribe villages to sacred temples, we travel as guests — with consent, care and fair pay to the communities we visit.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== Meet the Team ===== -->
+<section class="team-sec">
+<div class="wrap">
+<div class="head">
+<div class="eyebrow">Meet the Team</div>
+<h2>The faces you'll travel with</h2>
+</div>
+<div class="team-grid">
+<div class="team-card">
+<div class="photo"><img src="team-founder.jpg" alt="Founder of Northern Orchid Tours" loading="lazy"></div>
+<h3>Name Surname</h3>
+<span>Founder &amp; Head Guide</span>
+</div>
+<div class="team-card">
+<div class="photo"><img src="team-guide01.jpg" alt="Senior tour guide" loading="lazy"></div>
+<h3>Name Surname</h3>
+<span>Senior Guide</span>
+</div>
+<div class="team-card">
+<div class="photo"><img src="team-driver01.jpg" alt="Private driver" loading="lazy"></div>
+<h3>Name Surname</h3>
+<span>Private Driver</span>
+</div>
+<div class="team-card">
+<div class="photo"><img src="team-coordinator01.jpg" alt="Guest experience coordinator" loading="lazy"></div>
+<h3>Name Surname</h3>
+<span>Guest Experience</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== Gallery — framed photo grid (ready for real images) ===== -->
+<section class="gallery-sec" id="about-gallery">
+<div class="wrap">
+<div class="head">
+<div class="eyebrow">Our Gallery</div>
+<h2>Moments from the road</h2>
+<p>A few frames from the journeys we've guided — drop your own photos into the slots below.</p>
+</div>
+<div class="frame-grid">
+<figure class="frame tall">
+<div class="photo-slot"><img src="image/ele19.jpeg" alt="Guests at Doi Suthep temple" loading="lazy"></div>
+<figcaption>Sunrise at Doi Suthep</figcaption>
+</figure>
+<figure class="frame">
+<div class="photo-slot"><img src="image/car01.png" alt="Team with elephants at the sanctuary" loading="lazy"></div>
+<figcaption>A morning with the elephants</figcaption>
+</figure>
+<figure class="frame">
+<div class="photo-slot"><img src="image/car02.png" alt="Private khantoke dinner" loading="lazy"></div>
+<figcaption>Khantoke dinner, Old Chiang Mai</figcaption>
+</figure>
+<figure class="frame">
+<div class="photo-slot"><img src="image/car03.png" alt="Hmong hill-tribe village visit" loading="lazy"></div>
+<figcaption>Visiting a Hmong village</figcaption>
+</figure>
+<figure class="frame tall">
+<div class="photo-slot"><img src="image/doiin13.jpeg" alt="Mist over Doi Inthanon" loading="lazy"></div>
+<figcaption>Mist over Doi Inthanon</figcaption>
+</figure>
+<figure class="frame">
+<div class="photo-slot"><img src="image/car04.png" alt="Bamboo rafting on the Mae Taeng river" loading="lazy"></div>
+<figcaption>Bamboo rafting, Mae Taeng</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-sec">
+<div class="wrap">
+<h2>Ready to travel with us?</h2>
+<p>Tell us a little about your trip and our team will design an itinerary around it.</p>
+<a class="btn btn-gold" href="index.html#contact">Get in Touch</a>
+</div>
+</section>
+
+<!-- Dark Responsive Footer -->
+<footer style="background: rgb(20, 31, 25); color: rgba(239, 230, 212, 0.75); padding: 90px 0px 42px; border-top: 1px solid rgba(198, 161, 91, 0.3); font-family: 'Outfit', sans-serif;">
+<div class="wrap">
+<div class="f-grid">
+<!-- Column 1: Brand & Quiet Luxury Invitation -->
+<div>
+<div class="brand" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+<img alt="Northern Orchid Tours insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaT_m19uLfrX0cLKSmUcobPMsBREy2dwF_uvgtMa_uAaTqyQom-euhyJPC5VDvMnLGg_mrsDbRUtQMtagnpkmbvyqBrSpxsfpPooGE6DJ2466kA3I6DhK8PNhS4y3XcFphKVQc2FypAMjmjrKN--BCi3EoBKMGjOqHMAdo0O_qHTycIlzidpcshrimr4szpDMJdMPvdJ0GPXbwcmNELCYipJKZLmVE7dSapcSu5BKn9V7a3iN24CeylIwu0t1Gt8gpVA" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-soft); box-shadow: 0 2px 10px rgba(0,0,0,0.3); flex-shrink: 0;">
+<span class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; color: rgb(239, 230, 212);">NORTHERN ORCHID TOURS</span>
+</div>
+<p class="" style="font-size: 13.5px; line-height: 1.85; color: rgba(239, 230, 212, 0.72); max-width: 320px; margin-bottom: 20px; font-weight: 300;" data-i18n="footer_motto">We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.</p>
+<div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1.2px; color: var(--gold-soft); text-transform: uppercase; font-weight: 500;">
+<span style="display: inline-block; width: 24px; height: 1px; background: rgba(198, 161, 91, 0.5);"></span>
+<span class="" data-i18n="footer_brand_tag">TAT License : 24/01226</span>
+</div>
+</div>
+<!-- Column 2: Contact Information -->
+<div><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" class="" data-i18n="footer_contact_header">Contact</h4>
+<div style="display: flex; flex-direction: column; gap: 16px;" class="">
+  <!-- 1st: Location & Hours -->
+  
+
+  <!-- 2nd: WhatsApp with two phone numbers -->
+  <div style="display: flex; align-items: flex-start; gap: 12px;">
+    <a href="https://wa.me/66988198385" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp chat" style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: rgba(239, 230, 212, 0.85); transition: all 0.25s; text-decoration: none; margin-top: 2px;" onmouseover="this.style.borderColor='#C6A15B'; this.style.color='#DBBD86'; this.style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.borderColor='rgba(198, 161, 91, 0.35)'; this.style.color='rgba(239, 230, 212, 0.85)'; this.style.background='transparent'">
+      <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="16"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 3px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <a href="tel:+66988198385" style="color: rgb(239, 230, 212); text-decoration: none; font-size: 13.5px; transition: color 0.25s;" onmouseover="this.style.color='#DBBD86'" onmouseout="this.style.color='#EFE6D4'" class="">+6698-819-8385</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3rd: Phone icon & Call line -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="tel:+66988198385" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="color: #EFE6D4; font-size: 13.5px;" class="" data-i18n="footer_call_label">Direct Call</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- 4th: Facebook -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="https://www.facebook.com/profile.php?id=61571111382735" target="_blank" rel="noopener noreferrer" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+      </div>
+      <span style="color: #EFE6D4; font-size: 13.5px;" class="">Northern Orchid Tours</span>
+    </a>
+  </div>
+
+  <!-- 5th: Email -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="mailto:northernorchidtours@gmail.com" style="min-height: 44px; display: inline-flex; align-items: center; gap: 12px; color: rgba(239, 230, 212, 0.85); text-decoration: none; transition: 0.25s;" onmouseover="this.style.color='#DBBD86'; this.querySelector('div').style.borderColor='#C6A15B'; this.querySelector('div').style.background='rgba(198,161,91,0.1)'" onmouseout="this.style.color='rgba(239,230,212,0.85)'; this.querySelector('div').style.borderColor='rgba(198, 161, 91, 0.35)'; this.querySelector('div').style.background='transparent'">
+      <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(198, 161, 91, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.25s; background: transparent;">
+        <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="color: #EFE6D4; font-size: 13.5px; word-break: break-all;" class="">northernorchidtours@gmail.com</span>
+      </div>
+    </a>
+  </div>
+</div></div>
+<!-- Column 3: Preferences & Policies -->
+<div>
+<h4 class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" data-i18n="footer_pref_header">Preferences &amp; Policies</h4>
+<!-- Switchers Container -->
+<div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+<!-- Language Switcher -->
+<div style="position: relative;">
+<label class="" style="display: block; font-size: 11px; letter-spacing: 1px; color: var(--gold-soft); text-transform: uppercase; margin-bottom: 6px; font-weight: 500;" data-i18n="footer_lang_label">Language</label>
+<button id="footerLangBtn" onclick="(function(){const d=document.getElementById('footerLangMenu'); const c=document.getElementById('footerCurrMenu'); if(c) c.style.display='none'; d.style.display = d.style.display==='block'?'none':'block';})()" style="min-height: 44px; width: 100%; display: flex; align-items: center; justify-content: space-between; background: rgba(20, 31, 25, 0.7); border: 1px solid rgba(198, 161, 91, 0.35); padding: 8px 12px; border-radius: 2px; color: #EFE6D4; font-family: 'Outfit', sans-serif; font-size: 13px; cursor: pointer; transition: border-color 0.25s;" type="button">
+<span class="" id="footerSelectedLang" style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--gold);">✦</span> English</span>
+<svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></ul>
+
+<!-- Legal & Policy Links -->
+<div>
+<ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><li class=""><a class="" href="#booking-policy" onmouseout="this.style.color='#EFE6D4'; this.style.paddingLeft='0'" onmouseover="this.style.color='#DBBD86'; this.style.paddingLeft='4px'" style="min-height: 44px; color: rgb(239, 230, 212); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.25s; padding-left: 0px;" data-i18n="legal_link_booking" id="bookingPolicyLink">Booking &amp; Cancellation Policy</a></li><li class="">
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="f-bottom">
+<span class="" data-i18n="footer_copyright">© 2026 Northern Orchid Tours. All rights reserved.</span>
+
+<span class="" style="font-family: 'Outfit', sans-serif; font-style: italic; font-size: 14.5px; color: var(--gold-soft);"></span>
+</div>
+</div>
+</footer><div id="policyModalOverlay" style="position: fixed; inset: 0px; background: rgba(10, 18, 14, 0.85); backdrop-filter: blur(10px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 24px;"><div id="policyModalCard" style="background: rgb(25, 39, 32); border: 1px solid rgba(198, 161, 91, 0.4); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.6) 0px 25px 60px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.96) translateY(12px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);"><div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(198, 161, 91, 0.25); background: rgba(20, 31, 25, 0.95);"><h3 id="policyModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 500; color: #DBBD86; margin: 0;" class="">Privacy &amp; Data Sanctuary</h3><button id="closePolicyModal" aria-label="Close policy dialog" type="button" style="background: none; border: 1px solid rgba(198, 161, 91, 0.35); color: #EFE6D4; width: 38px; height: 38px; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div id="policyModalBody" style="padding: 28px; overflow-y: auto; color: rgba(239, 230, 212, 0.85); font-size: 14.5px; line-height: 1.8; font-family: 'Outfit', sans-serif;"><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;" class="">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;" class="">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">3. Right to Erasure</h4><p class="">At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p></div><div style="padding: 16px 28px; border-top: 1px solid rgba(198, 161, 91, 0.2); background: rgba(20, 31, 25, 0.9); display: flex; justify-content: flex-end;"><button id="policyModalCloseBtn" type="button" class="btn btn-gold" style="padding: 8px 24px; font-size: 13px; min-height: 38px; min-width: 100px; cursor: pointer;">Close</button></div></div></div> 
+<script>
+(function(){
+  'use strict';
+
+  /* ===== Mobile drawer ===== */
+  var drawer   = document.getElementById('mobileDrawer');
+  var overlay  = document.getElementById('mobileDrawerOverlay');
+  var openBtn  = document.getElementById('mobileMenuOpen');
+  var closeBtn = document.getElementById('mobileMenuClose');
+
+  function setDrawer(open){
+    if(!drawer || !overlay) return;
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if(openBtn)  openBtn.addEventListener('click', function(){ setDrawer(true); });
+  if(closeBtn) closeBtn.addEventListener('click', function(){ setDrawer(false); });
+  if(overlay)  overlay.addEventListener('click', function(){ setDrawer(false); });
+  document.querySelectorAll('.mobile-drawer-link').forEach(function(a){
+    a.addEventListener('click', function(){ setDrawer(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ setDrawer(false); closePolicy(); closeDesktopDropdowns(); }
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 1100) setDrawer(false);
+  });
+
+  /* ===== Mobile accordion ("Our Tours") ===== */
+  document.querySelectorAll('.mobile-accordion-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.mobile-accordion');
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+
+  /* ===== Desktop dropdown (hover + tap on touch screens) ===== */
+  function closeDesktopDropdowns(){
+    document.querySelectorAll('.nav-item.active').forEach(function(i){
+      i.classList.remove('active');
+      var b = i.querySelector('.nav-link[aria-expanded]');
+      if(b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.querySelectorAll('.nav-item.has-dropdown > .nav-link').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var item = btn.parentElement;
+      var willOpen = !item.classList.contains('active');
+      closeDesktopDropdowns();
+      if(willOpen){
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-item')) closeDesktopDropdowns();
+  });
+
+  /* ===== Language switching (same behaviour & storage key as index.html) ===== */
+  var translations = {
+  "en": {
+    "nav_home": "HOME",
+    "nav_private_tours": "OUR TOURS",
+    "nav_transport": "TRANSPORT",
+    "nav_activities": "ACTIVITIES",
+    "nav_gallery": "ABOUT US",
+    "nav_contact": "CONTACT",
+    "nav_booking_now": "Booking Now",
+    "footer_brand_tag": "TAT License : 24/01226",
+    "footer_call_label": "+6698-819-8385",
+    "footer_contact_header": "Contact",
+    "footer_copyright": "© 2026 Northern Orchid Tours. All rights reserved.",
+    "footer_curr_label": "Currency",
+    "footer_email_label": "Email Us",
+    "footer_hours_val": "Daily 08:00 – 09:00 PM",
+    "footer_lang_label": "Language",
+    "footer_legal_header": "Legal & Policy",
+    "footer_loc_label": "Location",
+    "footer_loc_val": "Chiang Mai, Thailand",
+    "footer_motto": "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
+    "footer_pref_header": "Preferences & Policies",
+    "footer_whatsapp_label": "WhatsApp",
+    "legal_link_booking": "Booking & Cancellation Policy",
+    "legal_link_privacy": "Privacy & Data Sanctuary",
+    "legal_link_terms": "Terms & Guest Conditions"
+  },
+  "th": {
+    "nav_home": "หน้าแรก",
+    "nav_private_tours": "ทัวร์ของเรา",
+    "nav_transport": "ยานพาหนะ",
+    "nav_activities": "กิจกรรมพิเศษ",
+    "nav_gallery": "แกลเลอรี",
+    "nav_contact": "ติดต่อเรา",
+    "nav_booking_now": "จองตอนนี้",
+    "footer_brand_tag": "จิตวิญญาณแห่งล้านนา",
+    "footer_call_label": "+6698-819-8385",
+    "footer_contact_header": "ข้อมูลติดต่อ",
+    "footer_copyright": "© 2026 Northern Orchid Tours. สงวนลิขสิทธิ์ทุกประการ",
+    "footer_curr_label": "สกุลเงิน",
+    "footer_email_label": "ส่งอีเมลถึงเรา",
+    "footer_hours_val": "เปิดทุกวัน 08:00 – 21:00 น.",
+    "footer_lang_label": "ภาษา",
+    "footer_legal_header": "ข้อกำหนดทางกฎหมาย",
+    "footer_loc_label": "ที่ตั้ง",
+    "footer_loc_val": "เชียงใหม่, ประเทศไทย",
+    "footer_motto": "เราหวังว่า นอร์ทเทิร์น ออร์คิด ทัวร์ จะเป็นชื่อแรกที่คุณนึกถึงเมื่อวางแผนท่องเที่ยวภาคเหนือ เดินทางอย่างสง่างามผ่านขุนเขา เจดีย์ทอง และมรดกวัฒนธรรมอันมีชีวิต",
+    "footer_pref_header": "การตั้งค่าและนโยบาย",
+    "footer_whatsapp_label": "WhatsApp",
+    "legal_link_booking": "นโยบายการจองและยกเลิก",
+    "legal_link_privacy": "นโยบายความเป็นส่วนตัวและการคุ้มครองข้อมูล",
+    "legal_link_terms": "ข้อตกลงและเงื่อนไขสำหรับผู้เดินทาง"
+  }
+};
+
+  window.changeLanguage = function(lang){
+    if(!translations[lang]) lang = 'en';
+    document.documentElement.lang = lang;
+    var t = translations[lang];
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var val = t[el.getAttribute('data-i18n')];
+      if(!val) return;
+      if(el.getAttribute('data-i18n-chevron')){
+        var chevron = el.querySelector('svg');
+        el.innerHTML = val + (chevron ? chevron.outerHTML : '');
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    var label = document.getElementById('footerSelectedLang');
+    if(label){
+      label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (lang === 'th' ? 'ภาษาไทย (Thai)' : 'English');
+    }
+    var menu = document.getElementById('footerLangMenu');
+    if(menu) menu.style.display = 'none';
+    try { localStorage.setItem('northern_orchid_lang', lang); } catch(e) {}
+  };
+
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('footerLangMenu');
+    var btn  = document.getElementById('footerLangBtn');
+    if(menu && menu.style.display === 'block' && !menu.contains(e.target) && !(btn && btn.contains(e.target))){
+      menu.style.display = 'none';
+    }
+  });
+
+  var savedLang = 'en';
+  try { savedLang = localStorage.getItem('northern_orchid_lang') || 'en'; } catch(e) {}
+  window.changeLanguage(savedLang);
+
+  /* ===== Policy modal ===== */
+  var pOverlay = document.getElementById('policyModalOverlay');
+  var pCard    = document.getElementById('policyModalCard');
+  function openPolicy(){
+    if(!pOverlay) return;
+    pOverlay.style.opacity = '1';
+    pOverlay.style.pointerEvents = 'auto';
+    if(pCard) pCard.style.transform = 'none';
+    document.body.style.overflow = 'hidden';
+  }
+  function closePolicy(){
+    if(!pOverlay) return;
+    pOverlay.style.opacity = '0';
+    pOverlay.style.pointerEvents = 'none';
+    if(pCard) pCard.style.transform = 'scale(0.96) translateY(12px)';
+    if(!drawer || !drawer.classList.contains('open')) document.body.style.overflow = '';
+  }
+  var policyLink = document.getElementById('bookingPolicyLink');
+  if(policyLink) policyLink.addEventListener('click', function(e){ e.preventDefault(); openPolicy(); });
+  ['closePolicyModal','policyModalCloseBtn'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', closePolicy);
+  });
+  if(pOverlay) pOverlay.addEventListener('click', function(e){ if(e.target === pOverlay) closePolicy(); });
+
+})();
+</script>
+
+</body>
+</html>
