@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="">
 <head>
+<script>document.documentElement.className+=" js";</script>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
 <title> Our Tours— Northern Orchid Tours</title>
@@ -454,6 +455,72 @@
     .rate-sub.first{ margin-top:0; }
     .rate-table td.p{ font-size:15px; }
     .rates-foot{ flex-direction:column; align-items:flex-start; }
+  }
+
+  /* ===== Tours grid: separated cards + motion ===== */
+  [hidden]{ display:none !important; }
+  .tour-grid{ gap:28px; background:none; border:0; }
+  .tour-card{
+    position:relative; border:1px solid var(--line); border-radius:8px; overflow:hidden;
+    background:linear-gradient(180deg, #19281F 0%, var(--ink) 100%);
+    transition:transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .4s ease, opacity .35s ease;
+    --mx:50%; --my:0%;
+  }
+  .tour-card:hover, .tour-card:active{ background:linear-gradient(180deg, #1D3025 0%, var(--ink) 100%); }
+
+  /* cursor spotlight */
+  .tour-card::before{
+    content:""; position:absolute; inset:0; z-index:4; pointer-events:none; opacity:0;
+    background:radial-gradient(420px circle at var(--mx) var(--my), rgba(219,189,134,0.16), transparent 62%);
+    transition:opacity .4s ease;
+  }
+  /* light sweep across the photo */
+  .tour-card .art::before{
+    content:""; position:absolute; top:0; bottom:0; left:-70%; width:40%; z-index:2; pointer-events:none;
+    background:linear-gradient(100deg, transparent, rgba(255,240,205,0.25), transparent);
+    transform:skewX(-18deg);
+  }
+  @keyframes cardShine{ from{ left:-70%; } to{ left:140%; } }
+  @keyframes cardIn{ from{ opacity:0; transform:translateY(44px) scale(.96); } to{ opacity:1; transform:none; } }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:none; } }
+
+  .tour-card .art-title h3{ transition:transform .5s cubic-bezier(.2,.8,.2,1); }
+  .tour-card .art-title .idx::after{ transition:width .5s cubic-bezier(.2,.8,.2,1); }
+  .tour-card .foot .price b{ display:inline-flex; align-items:center; gap:10px; }
+  .tour-card .foot .price b::after{ content:"\2192"; display:inline-block; transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+
+  @media (hover:hover){
+    .tour-card:hover{
+      transform:translateY(-10px); border-color:var(--gold);
+      box-shadow:0 30px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(198,161,91,0.35), 0 0 46px -12px rgba(198,161,91,0.4);
+    }
+    .tour-card:hover::before{ opacity:1; }
+    .tour-card:hover .art::before{ animation:cardShine .95s ease; }
+    .tour-card:hover .art-scroll img{ transform:scale(1.09); }
+    .tour-card:hover .art-title h3{ transform:translateY(-4px); }
+    .tour-card:hover .art-title .idx::after{ width:76px; }
+    .tour-card:hover .foot .price b::after{ transform:translateX(8px); }
+  }
+  .tour-card:active{ transform:scale(.985); }
+
+  /* scroll reveal (only when JS is running) */
+  .js .tour-card{ opacity:0; }
+  .js .tour-card.in{ opacity:1; animation:cardIn .95s cubic-bezier(.2,.8,.2,1) var(--d,0ms) backwards; }
+  .js .tour-card.in.is-out{ opacity:0; transform:scale(.92) translateY(12px); pointer-events:none; animation:none; }
+
+  .page-head > div, .page-head > p{ animation:fadeUp .8s cubic-bezier(.2,.8,.2,1) backwards; }
+  .page-head > p{ animation-delay:.12s; }
+
+  @media(max-width:640px){
+    .tour-grid{ gap:20px; }
+    .tour-card{ border-radius:6px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .js .tour-card{ opacity:1; }
+    .js .tour-card.in{ animation:none; }
+    .tour-card, .tour-card *{ transition:none !important; }
+    .tour-card:hover .art::before{ animation:none; }
+    .page-head > div, .page-head > p{ animation:none; }
   }
 </style>
 </head>
@@ -912,7 +979,7 @@
 <span class="" id="footerSelectedLang" style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--gold);">✦</span> English</span>
 <svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
-<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></ul>
+<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('fr')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Français (French)</button></li><li class=""><button onclick="window.changeLanguage('it')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Italiano (Italian)</button></li><li class=""><button onclick="window.changeLanguage('es')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Español (Spanish)</button></li></ul>
 
 <!-- Legal & Policy Links -->
 <div>
@@ -1017,31 +1084,83 @@
     "legal_link_privacy": "Privacy & Data Sanctuary",
     "legal_link_terms": "Terms & Guest Conditions"
   },
-  "th": {
-    "nav_home": "หน้าแรก",
-    "nav_private_tours": "ทัวร์ของเรา",
-    "nav_transport": "ยานพาหนะ",
-    "nav_activities": "กิจกรรมพิเศษ",
-    "nav_gallery": "แกลเลอรี",
-    "nav_contact": "ติดต่อเรา",
-    "nav_booking_now": "จองตอนนี้",
-    "footer_brand_tag": "จิตวิญญาณแห่งล้านนา",
+  "fr": {
+    "nav_home": "ACCUEIL",
+    "nav_private_tours": "NOS CIRCUITS",
+    "nav_transport": "TRANSPORT",
+    "nav_activities": "ACTIVITÉS",
+    "nav_gallery": "À PROPOS",
+    "nav_contact": "CONTACT",
+    "nav_booking_now": "Réserver",
+    "footer_brand_tag": "Licence TAT : 24/01226",
     "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "ข้อมูลติดต่อ",
-    "footer_copyright": "© 2026 Northern Orchid Tours. สงวนลิขสิทธิ์ทุกประการ",
-    "footer_curr_label": "สกุลเงิน",
-    "footer_email_label": "ส่งอีเมลถึงเรา",
-    "footer_hours_val": "เปิดทุกวัน 08:00 – 21:00 น.",
-    "footer_lang_label": "ภาษา",
-    "footer_legal_header": "ข้อกำหนดทางกฎหมาย",
-    "footer_loc_label": "ที่ตั้ง",
-    "footer_loc_val": "เชียงใหม่, ประเทศไทย",
-    "footer_motto": "เราหวังว่า นอร์ทเทิร์น ออร์คิด ทัวร์ จะเป็นชื่อแรกที่คุณนึกถึงเมื่อวางแผนท่องเที่ยวภาคเหนือ เดินทางอย่างสง่างามผ่านขุนเขา เจดีย์ทอง และมรดกวัฒนธรรมอันมีชีวิต",
-    "footer_pref_header": "การตั้งค่าและนโยบาย",
+    "footer_contact_header": "Contact",
+    "footer_copyright": "© 2026 Northern Orchid Tours. Tous droits réservés.",
+    "footer_curr_label": "Devise",
+    "footer_email_label": "Écrivez-nous",
+    "footer_hours_val": "Tous les jours 08h00 – 21h00",
+    "footer_lang_label": "Langue",
+    "footer_legal_header": "Mentions légales et politiques",
+    "footer_loc_label": "Lieu",
+    "footer_loc_val": "Chiang Mai, Thaïlande",
+    "footer_motto": "Nous espérons que Northern Orchid Tours sera l'un des noms qui vous viendront à l'esprit lorsque vous commencerez à préparer votre voyage dans le nord de la Thaïlande. Voyagez avec grâce à travers des montagnes sacrées, des chedis dorés et un patrimoine vivant — guidé avec une proximité toute locale et une attention discrète.",
+    "footer_pref_header": "Préférences et politiques",
     "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "นโยบายการจองและยกเลิก",
-    "legal_link_privacy": "นโยบายความเป็นส่วนตัวและการคุ้มครองข้อมูล",
-    "legal_link_terms": "ข้อตกลงและเงื่อนไขสำหรับผู้เดินทาง"
+    "legal_link_booking": "Politique de réservation et d'annulation",
+    "legal_link_privacy": "Confidentialité et protection des données",
+    "legal_link_terms": "Conditions générales et conditions pour les voyageurs"
+  },
+  "it": {
+    "nav_home": "HOME",
+    "nav_private_tours": "I NOSTRI TOUR",
+    "nav_transport": "TRASPORTI",
+    "nav_activities": "ATTIVITÀ",
+    "nav_gallery": "CHI SIAMO",
+    "nav_contact": "CONTATTI",
+    "nav_booking_now": "Prenota ora",
+    "footer_brand_tag": "Licenza TAT : 24/01226",
+    "footer_call_label": "+6698-819-8385",
+    "footer_contact_header": "Contatti",
+    "footer_copyright": "© 2026 Northern Orchid Tours. Tutti i diritti riservati.",
+    "footer_curr_label": "Valuta",
+    "footer_email_label": "Scrivici",
+    "footer_hours_val": "Tutti i giorni 08:00 – 21:00",
+    "footer_lang_label": "Lingua",
+    "footer_legal_header": "Note legali e normative",
+    "footer_loc_label": "Sede",
+    "footer_loc_val": "Chiang Mai, Thailandia",
+    "footer_motto": "Ci auguriamo che Northern Orchid Tours sia uno dei nomi a cui penserete quando inizierete a pianificare il vostro viaggio nella Thailandia del Nord. Viaggiate con eleganza tra montagne sacre, chedi dorati e un patrimonio vivo — accompagnati con vicinanza locale e discreta cura.",
+    "footer_pref_header": "Preferenze e normative",
+    "footer_whatsapp_label": "WhatsApp",
+    "legal_link_booking": "Politica di prenotazione e cancellazione",
+    "legal_link_privacy": "Privacy e protezione dei dati",
+    "legal_link_terms": "Termini e condizioni per gli ospiti"
+  },
+  "es": {
+    "nav_home": "INICIO",
+    "nav_private_tours": "NUESTROS TOURS",
+    "nav_transport": "TRANSPORTE",
+    "nav_activities": "ACTIVIDADES",
+    "nav_gallery": "SOBRE NOSOTROS",
+    "nav_contact": "CONTACTO",
+    "nav_booking_now": "Reservar ahora",
+    "footer_brand_tag": "Licencia TAT : 24/01226",
+    "footer_call_label": "+6698-819-8385",
+    "footer_contact_header": "Contacto",
+    "footer_copyright": "© 2026 Northern Orchid Tours. Todos los derechos reservados.",
+    "footer_curr_label": "Moneda",
+    "footer_email_label": "Escríbanos",
+    "footer_hours_val": "Todos los días 08:00 – 21:00",
+    "footer_lang_label": "Idioma",
+    "footer_legal_header": "Legal y políticas",
+    "footer_loc_label": "Ubicación",
+    "footer_loc_val": "Chiang Mai, Tailandia",
+    "footer_motto": "Esperamos que Northern Orchid Tours sea uno de los nombres que le vengan a la mente cuando empiece a planificar su viaje por el norte de Tailandia. Viaje con elegancia a través de montañas sagradas, chedis dorados y un patrimonio vivo — guiado con cercanía local y un cuidado discreto.",
+    "footer_pref_header": "Preferencias y políticas",
+    "footer_whatsapp_label": "WhatsApp",
+    "legal_link_booking": "Política de reserva y cancelación",
+    "legal_link_privacy": "Privacidad y protección de datos",
+    "legal_link_terms": "Términos y condiciones para los huéspedes"
   }
 };
 
@@ -1063,7 +1182,7 @@
 
     var label = document.getElementById('footerSelectedLang');
     if(label){
-      label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (lang === 'th' ? 'ภาษาไทย (Thai)' : 'English');
+      label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + ({ en: 'English', fr: 'Français (French)', it: 'Italiano (Italian)', es: 'Español (Spanish)' }[lang] || 'English');
     }
     var menu = document.getElementById('footerLangMenu');
     if(menu) menu.style.display = 'none';
@@ -1114,6 +1233,35 @@
       chip.classList.add('active');
     });
   });
+
+  /* ===== Tour grid: scroll reveal + cursor spotlight ===== */
+  (function(){
+    var grid  = document.querySelector('.tour-grid');
+    if(!grid) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.tour-card'));
+
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        var batch = entries.filter(function(e){ return e.isIntersecting; });
+        batch.forEach(function(e, i){
+          e.target.style.setProperty('--d', (i * 90) + 'ms');
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      cards.forEach(function(c){ io.observe(c); });
+    } else {
+      cards.forEach(function(c){ c.classList.add('in'); });
+    }
+
+    grid.addEventListener('pointermove', function(e){
+      var c = e.target.closest ? e.target.closest('.tour-card') : null;
+      if(!c) return;
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  })();
 
   /* ===== Photo sliders ===== */
   document.querySelectorAll('.tour-card .art-arrow').forEach(function(btn){
