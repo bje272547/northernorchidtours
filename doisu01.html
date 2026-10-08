@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Doi Inthanon  — Northern Orchid Tours</title>
+<title>Doi Suthep  — Northern Orchid Tours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -31,11 +31,11 @@
   img{ max-width:100%; display:block; }
   .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
   .btn{
-    padding:15px 34px; font-size:14.5px; font-family:'Outfit', sans-serif; border-radius:2px;
+    padding:15px 34px; font-size:16px; font-family:'Outfit', sans-serif; border-radius:2px;
     transition:all .3s ease; display:inline-flex; align-items:center; justify-content:center;
     min-height:44px;
   }
-  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:500; }
+  .btn-gold{ background:var(--gold); color:var(--ink); font-weight:600; }
   .btn-gold:hover{ background:var(--gold-soft); transform:translateY(-1px); }
 
   /* Header & Quiet Luxury Navigation */
@@ -497,6 +497,110 @@
   @media(max-width:860px){ .tour-gallery{ padding-top:calc(88px + env(safe-area-inset-top, 0px)); } }
   /* Keep the footer clear of the sticky mobile book bar */
   @media(max-width:640px){ body{ padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px)); } }
+
+  /* ===== Itinerary + booking form side by side ===== */
+  [hidden]{ display:none !important; }
+  .itin-booking{ display:grid; grid-template-columns:minmax(0,1fr) 410px; gap:56px; align-items:start; }
+  .booking-col{ scroll-margin-top:96px; }
+  .booking-card{
+    background:var(--ink); border:1px solid var(--line); border-radius:6px; padding:30px 28px 28px;
+    box-shadow:0 24px 50px -26px rgba(0,0,0,0.7);
+  }
+  .booking-head .kicker{ font-size:13px; letter-spacing:3px; color:var(--gold-soft); text-transform:uppercase; margin-bottom:10px; font-weight:500; }
+  .booking-head h2{ font-family:'Outfit', serif; font-weight:500; font-size:24px; letter-spacing:1px; color:var(--paper); line-height:1.25; margin-bottom:8px; }
+  .booking-head p{ font-size:14px; color:rgba(239,230,212,0.7); letter-spacing:0.3px; margin-bottom:22px; }
+  .f-row{ display:grid; gap:12px; margin-bottom:14px; }
+  .f-row.two{ grid-template-columns:1fr 1fr; }
+  .f-field{ display:flex; flex-direction:column; gap:6px; min-width:0; }
+  .f-field .lbl{ font-size:12px; letter-spacing:1px; text-transform:uppercase; color:var(--gold-soft); font-weight:500; }
+  .f-field input, .f-field textarea{
+    width:100%; min-height:46px; padding:10px 12px; font-family:'Outfit', sans-serif; font-size:16px; line-height:1.4;
+    color:var(--paper); background:rgba(239,230,212,0.06); border:1px solid rgba(239,230,212,0.28);
+    border-radius:2px; color-scheme:dark; transition:border-color .2s ease, background .2s ease;
+  }
+  .f-field textarea{ min-height:88px; resize:vertical; }
+  .f-field input::placeholder, .f-field textarea::placeholder{ color:rgba(239,230,212,0.38); }
+  .f-field input:focus, .f-field textarea:focus{
+    outline:2px solid rgba(219,189,134,0.35); outline-offset:1px; border-color:var(--gold-soft); background:rgba(239,230,212,0.09);
+  }
+  .f-help{ font-size:12.5px; color:rgba(239,230,212,0.55); }
+  .f-err{ display:none; font-size:12.5px; color:#F0A898; }
+  .f-field.invalid .f-err{ display:block; }
+  .f-field.invalid input, .f-field.invalid textarea, .f-field.invalid .stepper{ border-color:#E0917E; }
+  .stepper{ display:grid; grid-template-columns:46px 1fr 46px; border:1px solid rgba(239,230,212,0.28); border-radius:2px; background:rgba(239,230,212,0.06); overflow:hidden; }
+  .stepper button{
+    min-height:46px; background:none; border:none; color:var(--gold-soft); font-size:22px; line-height:1; cursor:pointer;
+    font-family:'Outfit', sans-serif; transition:background .2s ease, color .2s ease;
+  }
+  .stepper button:hover{ background:rgba(198,161,91,0.15); color:var(--paper); }
+  .stepper input{ border:none !important; border-radius:0; background:transparent !important; text-align:center; padding:0; min-width:0; -moz-appearance:textfield; outline-offset:-2px; }
+  .stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+  .hp{ position:absolute !important; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none; }
+  .booking-submit{ width:100%; margin-top:6px; }
+  .booking-submit[disabled]{ opacity:0.65; cursor:wait; transform:none; }
+  .f-status{ margin-top:14px; font-size:14px; line-height:1.6; color:rgba(239,230,212,0.85); }
+  .f-status:empty{ display:none; }
+  .f-status.err{ color:#F0A898; }
+  .f-status a{ display:inline-flex; align-items:center; min-height:44px; margin-top:6px; color:var(--gold-soft); text-decoration:underline; text-underline-offset:3px; font-weight:500; }
+  .f-fine{ margin-top:12px; font-size:12.5px; color:rgba(239,230,212,0.55); letter-spacing:0.3px; }
+  .booking-done{ text-align:center; padding:14px 4px 6px; }
+  .booking-done:focus{ outline:none; }
+  .done-icon{
+    width:60px; height:60px; margin:0 auto 16px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:28px; color:var(--ink); background:var(--gold-soft);
+    animation:donePop .6s cubic-bezier(.2,.9,.3,1.4) backwards;
+  }
+  @keyframes donePop{ from{ transform:scale(.3); opacity:0; } to{ transform:none; opacity:1; } }
+  .booking-done h3{ font-family:'Outfit', serif; font-weight:500; font-size:24px; letter-spacing:1px; color:var(--paper); margin-bottom:10px; }
+  .booking-done p{ font-size:14.5px; color:rgba(239,230,212,0.78); letter-spacing:0.3px; margin-bottom:18px; }
+  .done-ref{ display:inline-block; padding:10px 18px; border:1px dashed rgba(198,161,91,0.5); border-radius:2px; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:rgba(239,230,212,0.7); }
+  .done-ref b{ display:block; margin-top:2px; font-size:18px; letter-spacing:2px; color:var(--gold-soft); font-weight:500; }
+  .done-again{
+    display:block; margin:22px auto 0; min-height:44px; padding:10px 22px; background:none; cursor:pointer;
+    border:1px solid rgba(198,161,91,0.45); border-radius:2px; color:var(--gold-soft); font-family:'Outfit', sans-serif; font-size:14px; letter-spacing:1px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .done-again:hover{ background:var(--gold-soft); color:var(--ink); }
+
+  @media(max-width:1100px){ .itin-booking{ grid-template-columns:minmax(0,1fr) 370px; gap:40px; } }
+  @media(max-width:980px){
+    .itin-booking{ grid-template-columns:1fr; gap:8px; }
+    .booking-card{ margin-bottom:64px; }
+  }
+  @media(max-width:480px){ .booking-card{ padding:24px 18px; } }
+  @media (prefers-reduced-motion: reduce){ .done-icon{ animation:none; } }
+
+  /* ===== English calendar (date picker) ===== */
+  .datepick{ position:relative; }
+  .datepick #travelDateDisplay{ cursor:pointer; padding-right:46px; }
+  .dp-ico{ position:absolute; right:13px; top:13px; color:var(--gold-soft); pointer-events:none; }
+  .dp-pop{
+    position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30; min-width:290px;
+    background:#0F1914; border:1px solid var(--gold-soft); border-radius:4px; padding:12px;
+    box-shadow:0 22px 44px -12px rgba(0,0,0,0.75);
+  }
+  .dp-pop.up{ top:auto; bottom:calc(100% + 6px); }
+  .dp-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .dp-title{ font-size:15px; font-weight:500; letter-spacing:1px; color:var(--paper); }
+  .dp-nav{
+    width:44px; height:44px; background:none; border:none; border-radius:2px; cursor:pointer;
+    color:var(--gold-soft); font-size:14px; transition:background .2s ease;
+  }
+  .dp-nav:hover:not([disabled]){ background:rgba(198,161,91,0.18); }
+  .dp-nav[disabled]{ opacity:0.25; cursor:not-allowed; }
+  .dp-grid{ display:grid; grid-template-columns:repeat(7, 1fr); gap:2px; }
+  .dp-dow{ text-align:center; padding:4px 0 6px; font-size:11px; letter-spacing:1px; color:var(--gold-soft); }
+  .dp-day{
+    min-height:42px; background:none; border:1px solid transparent; border-radius:2px; cursor:pointer;
+    color:var(--paper); font-family:'Outfit', sans-serif; font-size:14px; transition:background .15s ease;
+  }
+  .dp-day:hover:not([disabled]){ background:rgba(198,161,91,0.2); }
+  .dp-day.today{ border-color:rgba(198,161,91,0.6); }
+  .dp-day.sel{ background:var(--gold-soft); color:var(--ink); font-weight:600; }
+  .dp-day[disabled]{ opacity:0.28; cursor:not-allowed; }
+  .dp-day:focus-visible, .dp-nav:focus-visible{ outline:2px solid var(--gold-soft); outline-offset:1px; }
+
+  .f-status{ white-space:pre-line; }
 </style>
 </head>
 <body>
@@ -558,8 +662,6 @@
 </li>
 </ul>
 </nav>
-<!-- Far Right: 'Booking Now' CTA -->
-<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Book now</a>
 <!-- Mobile Hamburger Button (44x44 min tap target) -->
 <button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
@@ -638,9 +740,6 @@
 <a class="mobile-link mobile-drawer-link" href="contact.html" data-i18n="nav_contact">CONTACT</a>
 </li>
 </ul>
-<div class="drawer-foot">
-<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener" data-i18n="nav_booking_now">Booking Now</a>
-</div>
 </aside>
 
 <section class="tour-gallery">
@@ -691,9 +790,6 @@
         <div class="fact"><b>Culture</b><span>Tour category</span></div>
       </div>
     </div>
-    <div class="price-box">
-      <a class="btn btn-gold" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Book now</a>
-    </div>
   </div>
 
   <div class="price-table-section">
@@ -724,6 +820,8 @@
     </table>
   </div>
 
+  <div class="itin-booking">
+  <div class="itin-col">
   <div class="itinerary-section">
     <h2>Itinerary</h2>
     <div class="itinerary-list">
@@ -774,6 +872,96 @@
       </div>
 
     </div>
+  </div>
+  </div>
+
+  <aside class="booking-col" id="booking" aria-labelledby="bookingTitle">
+    <div class="booking-card">
+      <div id="bookingFormWrap">
+        <div class="booking-head">
+          <div class="kicker">Book this tour</div>
+          <h2 id="bookingTitle">Request your booking</h2>
+          <p>Tell us a few details and our team will get back <br>to you within 24 hours.</p>
+        </div>
+        <form id="bookingForm" novalidate>
+          <div class="f-row">
+            <label class="f-field"><span class="lbl">First name *</span>
+              <input type="text" name="firstName" autocomplete="given-name" maxlength="60" required>
+              <span class="f-err"></span></label>
+          </div>
+          <div class="f-row two">
+            <label class="f-field"><span class="lbl">Middle name</span>
+              <input type="text" name="middleName" autocomplete="additional-name" maxlength="60">
+              <span class="f-err"></span></label>
+            <label class="f-field"><span class="lbl">Last name *</span>
+              <input type="text" name="lastName" autocomplete="family-name" maxlength="60" required>
+              <span class="f-err"></span></label>
+          </div>
+          <div class="f-row">
+            <label class="f-field"><span class="lbl">Email *</span>
+              <input type="email" name="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="name@example.com" required>
+              <span class="f-err"></span></label>
+          </div>
+          <div class="f-row">
+            <label class="f-field"><span class="lbl">WhatsApp number *</span>
+              <input type="tel" name="whatsapp" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="+66 98 123 4567" required>
+              <span class="f-help">Include your country code</span>
+              <span class="f-err"></span></label>
+          </div>
+          <div class="f-row">
+            <div class="f-field"><label class="lbl" for="travelDateDisplay">Travel date *</label>
+              <div class="datepick" id="datepick">
+                <input type="text" id="travelDateDisplay" name="travelDateDisplay" readonly inputmode="none" autocomplete="off" placeholder="Select a date" aria-haspopup="dialog" aria-expanded="false" aria-controls="dpPop">
+                <input type="hidden" name="travelDate" value="">
+                <svg class="dp-ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                <div class="dp-pop" id="dpPop" role="dialog" aria-label="Choose travel date" hidden>
+                  <div class="dp-head">
+                    <button type="button" class="dp-nav" id="dpPrev" aria-label="Previous month">&#10094;</button>
+                    <div class="dp-title" id="dpTitle" aria-live="polite"></div>
+                    <button type="button" class="dp-nav" id="dpNext" aria-label="Next month">&#10095;</button>
+                  </div>
+                  <div class="dp-grid" id="dpGrid"></div>
+                </div>
+              </div>
+              <span class="f-err"></span></div>
+          </div>
+          <div class="f-row two">
+            <div class="f-field"><span class="lbl" id="lblAdults">Adults *</span>
+              <div class="stepper" role="group" aria-labelledby="lblAdults">
+                <button type="button" data-step="-1" data-target="adults" aria-label="Fewer adults">&minus;</button>
+                <input type="number" name="adults" value="2" min="1" max="20" inputmode="numeric" aria-labelledby="lblAdults">
+                <button type="button" data-step="1" data-target="adults" aria-label="More adults">+</button>
+              </div>
+              <span class="f-err"></span></div>
+            <div class="f-field"><span class="lbl" id="lblChildren">Children (0-9 years)</span>
+              <div class="stepper" role="group" aria-labelledby="lblChildren">
+                <button type="button" data-step="-1" data-target="children" aria-label="Fewer children">&minus;</button>
+                <input type="number" name="children" value="0" min="0" max="20" inputmode="numeric" aria-labelledby="lblChildren">
+                <button type="button" data-step="1" data-target="children" aria-label="More children">+</button>
+              </div>
+              <span class="f-err"></span></div>
+          </div>
+          <div class="f-row">
+            <label class="f-field"><span class="lbl">Notes</span>
+              <textarea name="notes" rows="3" maxlength="1000" placeholder="Hotel name, dietary needs, anything we should know"></textarea>
+              <span class="f-err"></span></label>
+          </div>
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-gold booking-submit" type="submit" id="bookingSubmit">Send booking request</button>
+          <div class="f-status" id="bookingStatus" role="status" aria-live="polite"></div>
+          <p class="f-fine">Group pricing applies - see the price table <br>Your details are only used to arrange your tour</p>
+        </form>
+      </div>
+
+      <div class="booking-done" id="bookingDone" tabindex="-1" hidden>
+        <div class="done-icon" aria-hidden="true">&#10003;</div>
+        <h3 id="doneTitle">Thank you!</h3>
+        <p>Your booking request has been sent. We will contact you on WhatsApp or by email within 24 hours.</p>
+        <div class="done-ref">Reference <b id="doneRef"></b></div>
+        <button type="button" class="done-again" id="bookingAgain">Send another request</button>
+      </div>
+    </div>
+  </aside>
   </div>
 
   <div class="tour-details">
@@ -1144,6 +1332,274 @@
       }, 100);
     });
   });
+</script>
+<!-- Sticky mobile book bar (jumps to the booking form) -->
+<div class="mobile-cta">
+  <div class="mc-price">Book this tour<span>Group pricing</span></div>
+  <a class="btn btn-gold" href="#booking">Book now</a>
+</div>
+
+<script>
+/* ===== Booking form -> Google Apps Script (Sheet + email + LINE group) ===== */
+(function(){
+  'use strict';
+
+  /* ==================================================================
+     EDIT HERE
+     BOOKING_ENDPOINT : paste the Web app URL (ends with /exec) from your
+                        Google Apps Script deployment (see BookingBackend.gs).
+                        Until it is set, the form opens WhatsApp with the
+                        customer's details instead.
+     ================================================================== */
+  var BOOKING_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyJNriE6QR9X1dVpEzMn7uECFW2yxwR828pwBDht6Aq4VuI5sAWYskD0eR8nhCHzIOz/exec';
+  var WHATSAPP_NUMBER  = '66988198385';
+  /* ================================================================== */
+
+  var form = document.getElementById('bookingForm');
+  if(!form) return;
+  var el = form.elements;
+  var statusBox = document.getElementById('bookingStatus');
+  var submitBtn = document.getElementById('bookingSubmit');
+  var tour = ((document.querySelector('.tour-info h1') || {}).textContent || document.title).replace(/\s+/g, ' ').trim();
+  var clientId = newId();
+
+  function newId(){
+    try { if(window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch(e) {}
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+  }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  var now = new Date();
+  var today = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+  initDatePicker();
+
+  /* English calendar: the native <input type=date> follows the device language, so this one is built in */
+  function initDatePicker(){
+    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var MON3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var DAY3 = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var wrap = document.getElementById('datepick'), pop = document.getElementById('dpPop');
+    var disp = el.travelDateDisplay, hid = el.travelDate;
+    var title = document.getElementById('dpTitle'), grid = document.getElementById('dpGrid');
+    var prev = document.getElementById('dpPrev'), next = document.getElementById('dpNext');
+    var tp = today.split('-');
+    var todayD = new Date(+tp[0], +tp[1] - 1, +tp[2]);
+    var view = new Date(todayD.getFullYear(), todayD.getMonth(), 1);
+    var sel = '';
+
+    function iso(d){ return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+    function parse(s){ var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+
+    function render(focusIso){
+      var y = view.getFullYear(), m = view.getMonth();
+      title.textContent = MONTHS[m] + ' ' + y;
+      prev.disabled = (y * 12 + m) <= (todayD.getFullYear() * 12 + todayD.getMonth());
+      var html = DOW.map(function(n){ return '<span class="dp-dow" aria-hidden="true">' + n + '</span>'; }).join('');
+      for(var b = 0; b < new Date(y, m, 1).getDay(); b++) html += '<span></span>';
+      var count = new Date(y, m + 1, 0).getDate();
+      for(var day = 1; day <= count; day++){
+        var d = new Date(y, m, day), id = iso(d), past = d < todayD;
+        html += '<button type="button" class="dp-day' + (id === today ? ' today' : '') + (id === sel ? ' sel' : '') + '"' +
+          ' data-iso="' + id + '" tabindex="-1"' + (past ? ' disabled' : '') + (id === sel ? ' aria-pressed="true"' : '') +
+          ' aria-label="' + DAYS[d.getDay()] + ', ' + day + ' ' + MONTHS[m] + ' ' + y + '">' + day + '</button>';
+      }
+      grid.innerHTML = html;
+      var t = (focusIso && grid.querySelector('[data-iso="' + focusIso + '"]:not([disabled])')) ||
+              grid.querySelector('.sel') || grid.querySelector('.today:not([disabled])') ||
+              grid.querySelector('.dp-day:not([disabled])');
+      if(t){ t.tabIndex = 0; if(focusIso) t.focus(); }
+    }
+
+    function open(){
+      var base = sel ? parse(sel) : todayD;
+      view = new Date(base.getFullYear(), base.getMonth(), 1);
+      render();
+      pop.classList.remove('up'); pop.hidden = false;
+      disp.setAttribute('aria-expanded', 'true');
+      var pr = pop.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+      if(window.innerHeight - wr.bottom < pr.height + 12 && wr.top > pr.height + 12) pop.classList.add('up');
+    }
+    function close(returnFocus){
+      if(pop.hidden) return;
+      pop.hidden = true; disp.setAttribute('aria-expanded', 'false');
+      if(returnFocus) disp.focus();
+    }
+    function choose(id){
+      var d = parse(id);
+      sel = id; hid.value = id;
+      disp.value = DAY3[d.getDay()] + ', ' + d.getDate() + ' ' + MON3[d.getMonth()] + ' ' + d.getFullYear();
+      clearError(disp);
+      close(true);
+    }
+
+    disp.addEventListener('click', function(){ pop.hidden ? open() : close(false); });
+    disp.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown'){ e.preventDefault(); if(pop.hidden) open(); }
+    });
+    prev.addEventListener('click', function(){ view = new Date(view.getFullYear(), view.getMonth() - 1, 1); render(); });
+    next.addEventListener('click', function(){ view = new Date(view.getFullYear(), view.getMonth() + 1, 1); render(); });
+    grid.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('.dp-day') : null;
+      if(b && !b.disabled) choose(b.getAttribute('data-iso'));
+    });
+    pop.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ e.preventDefault(); close(true); return; }
+      var b = e.target.closest ? e.target.closest('.dp-day') : null; if(!b) return;
+      var step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
+      if(step === undefined) return;
+      e.preventDefault();
+      var p = b.getAttribute('data-iso').split('-');
+      var d = new Date(+p[0], +p[1] - 1, +p[2] + step);
+      if(d < todayD) return;
+      view = new Date(d.getFullYear(), d.getMonth(), 1);
+      render(iso(d));
+    });
+    document.addEventListener('click', function(e){ if(!wrap.contains(e.target)) close(false); });
+    form.addEventListener('reset', function(){ setTimeout(function(){ sel = ''; hid.value = ''; disp.value = ''; close(false); }, 0); });
+  }
+
+  /* + / - steppers */
+  form.querySelectorAll('.stepper button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var input = el[btn.getAttribute('data-target')];
+      var v = parseInt(input.value, 10); if(isNaN(v)) v = 0;
+      v += parseInt(btn.getAttribute('data-step'), 10);
+      v = Math.max(parseInt(input.min, 10), Math.min(parseInt(input.max, 10), v));
+      input.value = v;
+      clearError(input);
+    });
+  });
+
+  /* validation */
+  function field(input){ return input.closest('.f-field'); }
+  function setError(input, msg){
+    var f = field(input); if(!f) return;
+    f.classList.add('invalid');
+    var e = f.querySelector('.f-err'); if(e) e.textContent = msg;
+  }
+  function clearError(input){
+    var f = field(input); if(!f) return;
+    f.classList.remove('invalid');
+    var e = f.querySelector('.f-err'); if(e) e.textContent = '';
+  }
+  form.addEventListener('input', function(e){ clearError(e.target); });
+
+  function validate(){
+    var first = null;
+    function bad(input, msg){ setError(input, msg); if(!first) first = input; }
+    var v = function(n){ return (el[n].value || '').trim(); };
+    if(!v('firstName')) bad(el.firstName, 'Please enter your first name.');
+    if(!v('lastName')) bad(el.lastName, 'Please enter your last name.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))) bad(el.email, 'Please enter a valid email address.');
+    var digits = v('whatsapp').replace(/\D/g, '');
+    if(!/^[0-9+()\-\s.]+$/.test(v('whatsapp')) || digits.length < 7 || digits.length > 15) bad(el.whatsapp, 'Please enter a valid number with country code.');
+    if(!v('travelDate')) bad(el.travelDateDisplay, 'Please choose your travel date.');
+    else if(v('travelDate') < today) bad(el.travelDateDisplay, 'Travel date cannot be in the past.');
+    var a = parseInt(el.adults.value, 10), c = parseInt(el.children.value || '0', 10);
+    if(isNaN(a) || a < 1 || a > 20) bad(el.adults, 'Choose 1 to 20 adults.');
+    if(isNaN(c) || c < 0 || c > 20) bad(el.children, 'Choose 0 to 20 children.');
+    if(first){ first.focus(); return null; }
+    return {
+      clientId: clientId,
+      tour: tour,
+      page: location.href,
+      firstName: v('firstName'), middleName: v('middleName'), lastName: v('lastName'),
+      email: v('email'), whatsapp: v('whatsapp'), travelDate: v('travelDate'),
+      adults: a, children: c, notes: (el.notes.value || '').trim(),
+      website: el.website.value            /* honeypot - must stay empty */
+    };
+  }
+
+  /* WhatsApp fallback */
+  function waLink(d, ref){
+    var lines = ["Hi, I'd like to book: " + d.tour + (ref ? ' (ref ' + ref + ')' : '') + '.',
+      'Name: ' + [d.firstName, d.middleName, d.lastName].filter(Boolean).join(' '),
+      'Travel date: ' + d.travelDate,
+      'Guests: ' + d.adults + ' adult(s), ' + d.children + ' child(ren) 0-9',
+      'Email: ' + d.email, 'WhatsApp: ' + d.whatsapp];
+    if(d.notes) lines.push('Notes: ' + d.notes);
+    return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  function showStatus(text, isErr, linkHref){
+    statusBox.className = 'f-status' + (isErr ? ' err' : '');
+    statusBox.textContent = text;
+    if(linkHref){
+      statusBox.appendChild(document.createElement('br'));
+      var a = document.createElement('a');
+      a.href = linkHref; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = 'Send your details by WhatsApp instead';
+      statusBox.appendChild(a);
+    }
+  }
+  function busy(on){
+    submitBtn.disabled = on;
+    submitBtn.textContent = on ? 'Sending\u2026' : 'Send booking request';
+  }
+
+  function done(ref, d){
+    document.getElementById('doneTitle').textContent = 'Thank you, ' + d.firstName + '!';
+    document.getElementById('doneRef').textContent = ref || '';
+    document.getElementById('bookingFormWrap').hidden = true;
+    var box = document.getElementById('bookingDone');
+    box.hidden = false; box.focus();
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d = validate(); if(!d) return;
+    if(d.website){ return; }                       /* bot */
+    showStatus('', false);
+
+    if(!/^https:\/\//.test(BOOKING_ENDPOINT)){    /* backend not connected yet */
+      window.open(waLink(d), '_blank', 'noopener');
+      showStatus('The online booking system is not connected yet, so we opened WhatsApp with your details. Please press send there.', false);
+      return;
+    }
+
+    busy(true);
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctrl) ctrl.abort(); }, 25000);
+    fetch(BOOKING_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },   /* simple request: no CORS preflight */
+      body: JSON.stringify(d),
+      redirect: 'follow',
+      signal: ctrl ? ctrl.signal : undefined
+    })
+    .then(function(r){
+      return r.text().then(function(t){
+        var json = null;
+        try { json = JSON.parse(t); } catch(e) {}
+        if(!json){
+          var err = new Error('The booking system returned an unexpected page (HTTP ' + r.status + '): ' + t.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160));
+          err.name = 'BadResponse'; throw err;
+        }
+        return json;
+      });
+    })
+    .then(function(res){
+      clearTimeout(timer); busy(false);
+      if(res && res.ok){ done(res.id, d); }
+      else { showStatus((res && res.error) || 'Something went wrong. Please try again.', true, waLink(d)); }
+    })
+    .catch(function(err){
+      clearTimeout(timer); busy(false);
+      console.error('[booking]', err);
+      var msg = 'We could not reach the booking system. Please try again, or send your details by WhatsApp.';
+      if(/[?&]debug(=|&|$)/.test(location.search)) msg += '\n[debug] ' + (err && err.name ? err.name + ': ' : '') + ((err && err.message) || err);
+      showStatus(msg, true, waLink(d));
+    });
+  });
+
+  document.getElementById('bookingAgain').addEventListener('click', function(){
+    form.reset(); clientId = newId(); showStatus('', false);
+    document.getElementById('bookingDone').hidden = true;
+    document.getElementById('bookingFormWrap').hidden = false;
+  });
+})();
 </script>
 </body>
 </html>

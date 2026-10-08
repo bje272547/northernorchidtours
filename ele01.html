@@ -807,7 +807,7 @@
     <div class="price-box">
       <div class="minimum">minimum 2 persons</div>
       <div class="price">Adult ฿1,950<span> / person</span></div>
-      <div class="price">Child ฿1,650<span> / person (0-9 years)</span></div>
+      <div class="price">Child ฿1,650<span> / person (under 10 years)</span></div>
     </div>
   </div>
 
@@ -948,7 +948,7 @@
                 <button type="button" data-step="1" data-target="adults" aria-label="More adults">+</button>
               </div>
               <span class="f-err"></span></div>
-            <div class="f-field"><span class="lbl" id="lblChildren">Children (0-9 years)</span>
+            <div class="f-field"><span class="lbl" id="lblChildren">Children (under 10 years)</span>
               <div class="stepper" role="group" aria-labelledby="lblChildren">
                 <button type="button" data-step="-1" data-target="children" aria-label="Fewer children">&minus;</button>
                 <input type="number" name="children" value="0" min="0" max="20" inputmode="numeric" aria-labelledby="lblChildren">
@@ -1527,7 +1527,7 @@
     var lines = ["Hi, I'd like to book: " + d.tour + (ref ? ' (ref ' + ref + ')' : '') + '.',
       'Name: ' + [d.firstName, d.middleName, d.lastName].filter(Boolean).join(' '),
       'Travel date: ' + d.travelDate,
-      'Guests: ' + d.adults + ' adult(s), ' + d.children + ' child(ren) 0-9',
+      'Guests: ' + d.adults + ' adult(s), ' + d.children + ' child(ren) (under 10 years old)',
       'Email: ' + d.email, 'WhatsApp: ' + d.whatsapp];
     if(d.notes) lines.push('Notes: ' + d.notes);
     return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));

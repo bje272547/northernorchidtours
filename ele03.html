@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Doi Suthep  — Northern Orchid Tours</title>
+<title>Chiang Mai ELephant Sanctuary  — Northern Orchid Tours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -356,8 +356,8 @@
   }
   .price-box .from{ font-size:12.5px; letter-spacing:1.5px; color:rgba(239,230,212,0.65); text-transform:uppercase; }
   .price-box .price{
-    font-family:'Cormorant Garamond', serif; font-size:44px; font-weight:500;
-    color:var(--gold-soft); margin:8px 0 22px;
+    font-family:'Outfit', serif; font-size:30px; font-weight:500;
+    color:var(--gold-soft); margin:4px 0 11px;
   }
   .price-box .price span{ font-family:'Jost', sans-serif; font-size:14px; font-weight:500; color:rgba(239,230,212,0.7); }
   .price-box .btn{ width:100%; }
@@ -498,6 +498,25 @@
   /* Keep the footer clear of the sticky mobile book bar */
   @media(max-width:640px){ body{ padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px)); } }
 
+  /* About-the-sanctuary note box (same as ele02.html) */
+  .sanctuary-note{
+    margin-top:18px; max-width:560px;
+    background:rgba(198,161,91,0.07);
+    border:1px solid rgba(198,161,91,0.3);
+    border-left:3px solid var(--gold);
+    border-radius:2px;
+    padding:20px 24px;
+  }
+  .sanctuary-note h4{
+    font-family:'Outfit', serif; font-weight:500; font-size:13.5px; letter-spacing:1.5px;
+    color:var(--gold-soft); margin-bottom:12px; text-transform:uppercase;
+  }
+  .sanctuary-note p{
+    font-size:14px; color:rgba(239,230,212,0.82); letter-spacing:0.5px; line-height:1.8;
+    margin-bottom:12px; max-width:none;
+  }
+  .sanctuary-note p:last-child{ margin-bottom:0; }
+
   /* ===== Itinerary + booking form side by side ===== */
   [hidden]{ display:none !important; }
   .itin-booking{ display:grid; grid-template-columns:minmax(0,1fr) 410px; gap:56px; align-items:start; }
@@ -604,7 +623,6 @@
 </style>
 </head>
 <body>
-
 
 
 <!-- Header & Interactive Quiet Luxury Navigation -->
@@ -747,12 +765,10 @@
   <div class="g-wrap">
     <div class="g-main-wrap">
       <div class="g-main-scroll" id="gMainScroll">
-        <div class="g-cell g-main" data-slot="1"><img src="cooking02.png" alt="Pha Dok Siew Trail"></div>
-        <div class="g-cell g-main" data-slot="2"><img src="cooking04.jpeg" alt="Golden chedi at Doi Suthep"></div>
-        <div class="g-cell g-main" data-slot="3"><img src="cooking05.jpeg" alt="View over Chiang Mai from Doi Suthep"></div>
-        <div class="g-cell g-main" data-slot="4"><img src="doisuthep02.jpeg" alt="Hmong hill-tribe village"></div>
-        <div class="g-cell g-main" data-slot="5"><img src=".jpg" alt="Local handicrafts at the Hmong village"></div>
-        <div class="g-cell g-main" data-slot="6"><img src=".jpg" alt="Naga staircase at Doi Suthep"></div>
+        <div class="g-cell g-main" data-slot="1"><img src="ele16.jpeg" alt="Elephant Sanctuary"></div>
+        <div class="g-cell g-main" data-slot="2"><img src="ele17.jpeg" alt="Elephant Sanctuary"></div>
+        <div class="g-cell g-main" data-slot="3"><img src="ele22.jpeg" alt="Elephant Sanctuary"></div>
+        <div class="g-cell g-main" data-slot="4"><img src="sticky04.jpg" alt="Bamboo Rafting"></div>
       </div>
       <div class="g-arrow prev" onclick="scrollMain(-1)">&#10094;</div>
       <div class="g-arrow next" onclick="scrollMain(1)">&#10095;</div>
@@ -770,12 +786,10 @@
       <div class="g-thumb-arrow prev" onclick="scrollThumbs(-1)">&#10094;</div>
       <div class="g-thumb-arrow next" onclick="scrollThumbs(1)">&#10095;</div>
       <div class="g-scroll" id="gScroll">
-        <div class="g-cell active" data-slot="1" onclick="goToSlot(1)"><img src="cooking02.png" alt=""></div>
-        <div class="g-cell" data-slot="2" onclick="goToSlot(2)"><img src="cooking04.jpeg" alt=""></div>
-        <div class="g-cell" data-slot="3" onclick="goToSlot(3)"><img src="cooking05.jpeg" alt=""></div>
-        <div class="g-cell" data-slot="4" onclick="goToSlot(4)"><img src="doisuthep02.jpeg" alt=""></div>
-        <div class="g-cell" data-slot="5" onclick="goToSlot(5)"><img src="hmong-village-2.jpg" alt=""></div>
-        <div class="g-cell" data-slot="6" onclick="goToSlot(6)"><img src="doi-suthep-steps.jpg" alt=""></div>
+        <div class="g-cell active" data-slot="1" onclick="goToSlot(1)"><img src="ele16.jpeg" alt=""></div>
+        <div class="g-cell" data-slot="2" onclick="goToSlot(2)"><img src="ele17.jpeg" alt=""></div>
+        <div class="g-cell" data-slot="3" onclick="goToSlot(3)"><img src="ele22.jpeg" alt=""></div>
+        <div class="g-cell" data-slot="4" onclick="goToSlot(4)"><img src="sticky04.jpg" alt=""></div>
       </div>
     </div>
   </div>
@@ -784,64 +798,28 @@
 <div class="wrap">
   <div class="tour-info">
     <div>
-      <div class="kicker">Chiang Mai · Full-day tour</div>
-      <h1>Thai Cooking Class, Doi Suthep Temple &amp; Wat Pha Lat</em></h1>
-      <div class="tour-facts">
-        <div class="fact"><b>8 hrs</b><span>Duration</span></div>
-        <div class="fact"><b>Culture</b><span>Tour category</span></div>
-      </div>
+      <div class="kicker">Duration : 9 hours</div>
+      <h1>Smiley Elephant Sanctuary <br> &amp; Sticky Waterfall</h1>
     </div>
-  </div>
-
-  <div class="price-table-section">
-    <div class="kicker">Group Pricing</div>
-    <table class="price-table">
-      <thead>
-        <tr>
-          <th>1 pax</th>
-          <th>2 pax</th>
-          <th>3 pax</th>
-          <th>4&ndash;5 pax</th>
-          <th>6&ndash;7 pax</th>
-          <th>8&ndash;9 pax</th>
-          <th>10+ pax</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>฿6,200<span>/person</span></td>
-          <td>฿3,600<span>/person</span></td>
-          <td>฿2,750<span>/person</span></td>
-          <td>฿2,300<span>/person</span></td>
-          <td>฿1,900<span>/person</span></td>
-          <td>฿1,700<span>/person</span></td>
-          <td>฿1,550<span>/person</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="price-box">
+      <div class="minimum">minimum 2 persons</div>
+      <div class="price">Adult ฿2,500<span> / person</span></div>
+      <div class="price">Child ฿2,000<span> / person (under 10 years)</span></div>
+    </div>
   </div>
 
   <div class="itin-booking">
   <div class="itin-col">
   <div class="itinerary-section">
-    <h2>Itinerary</h2>
+    <h2>ITINERARY</h2>
     <div class="itinerary-list">
 
       <div class="itin-item">
-        <div class="itin-time"><b>07:30</b></div>
+        <div class="itin-time"><b>08:45</b></div>
         <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
         <div class="itin-body">
           <h3>Hotel Pickup</h3>
-          <p>Your guide meets you at your hotel lobby in an air-conditioned vehicle.</p>
-        </div>
-      </div>
-
-      <div class="itin-item">
-        <div class="itin-time"><b>08:30</b></div>
-        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
-        <div class="itin-body">
-          <h3>Visit Doi Suthep Temple (1 hr)</h3>
-          <p>Climb the naga staircase to the golden chedi and pay respects, with sweeping views over Chiang Mai city.</p>
+          <p>Your driver meets you at your hotel lobby in an air-conditioned vehicle.</p>
         </div>
       </div>
 
@@ -849,17 +827,14 @@
         <div class="itin-time"><b>10:00</b></div>
         <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
         <div class="itin-body">
-          <h3>Visit Wat Pha Lat (45 mins)</h3>
-          <p>A scenic drive further up the mountain to a local Hmong hill-tribe village.</p>
-        </div>
-      </div>
-
-      <div class="itin-item">
-        <div class="itin-time"><b>11:30</b></div>
-        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
-        <div class="itin-body">
-          <h3>Visit Thai Cottage Home Cookery School (4 hrs)</h3>
-          <p>Walk through the village, browse handwoven textiles, and learn about local hill-tribe life and traditions.</p>
+          <h3>Arrive at Smiley Elephant Sanctuary (4 hrs)</h3>
+          <p>Learn about the history of Thai elephants before changing into traditional Northern Thai clothing and walking into the forest to meet the elephants. Take your time observing and learning about their lives in a natural setting, with no fixed schedule and no need to rush.</p>
+          <div class="sanctuary-note">
+            <h4>About Smiley Elephant Sanctuary</h4>
+            <p>Smiley Elephant Sanctuary is the most known example of "hands off" sanctuary. It means you watch elephants from distance like safari or open air zoo. There are others like Chang Chill or Gentle Giants with same idea.</p>
+            <p>No chains, no riding, no hooks, and none of the painting or performance tricks used in the past. They are ran by locals. They follow different concept but both care of elephants very well, from their heart.</p>
+            <p>These elephants were not brought from the wild. They mostly  worked in forests in the past.</p>
+          </div>
         </div>
       </div>
 
@@ -867,17 +842,26 @@
         <div class="itin-time"><b>03:00</b></div>
         <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
         <div class="itin-body">
-          <h3>Return Journey</h3>
-          <p>Head back down the mountain toward the city.</p>
+          <h3>Visit Bua Tong Waterfall (45 mins)</h3>
+          <p>A refreshing stop in the forest, where clear water flows over unique limestone formations. Take a gentle walk along the falls, enjoy the cool surroundings, and spend some unhurried time in nature.</p>
         </div>
       </div>
 
       <div class="itin-item">
-        <div class="itin-time"><b>03:30</b></div>
+        <div class="itin-time"><b>04:00</b></div>
+        <div class="itin-line"><div class="itin-dot"></div><div class="itin-connector"></div></div>
+        <div class="itin-body">
+          <h3>Return back to Chiang Mai city (1 hr)</h3>
+          <p>Sit back and relax on the comfortable drive back to Chiang Mai city, wrapping up a memorable day of adventure.</p>
+        </div>
+      </div>
+
+      <div class="itin-item">
+        <div class="itin-time"><b>05:00</b></div>
         <div class="itin-line"><div class="itin-dot"></div></div>
         <div class="itin-body">
-          <h3>Drop-off at Hotel</h3>
-          <p>Tour ends with drop-off back at your hotel.</p>
+          <h3>Drop off at your hotel</h3>
+          <p>Arrive at your hotel safely.</p>
         </div>
       </div>
 
@@ -943,7 +927,7 @@
                 <button type="button" data-step="1" data-target="adults" aria-label="More adults">+</button>
               </div>
               <span class="f-err"></span></div>
-            <div class="f-field"><span class="lbl" id="lblChildren">Children (0-9 years)</span>
+            <div class="f-field"><span class="lbl" id="lblChildren">Children (under 10 years)</span>
               <div class="stepper" role="group" aria-labelledby="lblChildren">
                 <button type="button" data-step="-1" data-target="children" aria-label="Fewer children">&minus;</button>
                 <input type="number" name="children" value="0" min="0" max="20" inputmode="numeric" aria-labelledby="lblChildren">
@@ -959,7 +943,7 @@
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-gold booking-submit" type="submit" id="bookingSubmit">Send booking request</button>
           <div class="f-status" id="bookingStatus" role="status" aria-live="polite"></div>
-          <p class="f-fine">Group pricing applies - see the price table <br>Your details are only used to arrange your tour</p>
+          <p class="f-fine">Minimum 2 persons <br>Your details are only used to arrange your tour</p>
         </form>
       </div>
 
@@ -975,16 +959,16 @@
   </div>
 
   <div class="tour-details">
-    <h2>Tour Details</h2>
+    <h2>TOUR DETAILS</h2>
 
     <div class="details-grid">
       <div>
         <h3>What's Included</h3>
         <ul>
           <li><span class="mark yes">&#10003;</span>Round-trip transport in an air-conditioned vehicle</li>
-          <li><span class="mark yes">&#10003;</span>Licensed English speaking guide</li>
-          <li><span class="mark yes">&#10003;</span>Entrance fee to Doi Suthep Temple</li>
-          <li><span class="mark yes">&#10003;</span>Activity fees at Thai Cottage Home Cookery School</li>
+          <li><span class="mark yes">&#10003;</span>Basic English speaking driver / English speaking guide at elephant sanctuary</li>
+          <li><span class="mark yes">&#10003;</span>Activities fee (elephant sanctuary)</li>
+          <li><span class="mark yes">&#10003;</span>Meals and drinks</li>
           <li><span class="mark yes">&#10003;</span>Travel insurance</li>
           <li><span class="mark yes">&#10003;</span>Hotel pickup and drop-off</li>
         </ul>
@@ -1002,21 +986,23 @@
       <div class="info-block">
         <h3>What to Bring</h3>
         <ul>
-          <li>Comfortable walking shoes</li>
-          <li>Modest clothing that covers shoulders and knees (required at the temple)</li>
+          <li>A change of clothes for waterfall activities</li>
+          <li>Comfortable sandals or flip-flops</li>
           <li>Sun hat and sunscreen</li>
-          <li>Light jacket (cooler at higher elevation)</li>
           <li>Cash for personal purchases</li>
+          <li>Regular medication (if applicable)</li>
         </ul>
       </div>
-    
-    <div class="info-block" style="margin-top:2px;">
-      <h3>Cancellation Policy</h3>
-      <ul>
-        <li>Cancellations made 7 days or more before the scheduled tour date: The deposit will be refunded in full, excluding any applicable bank transfer or payment processing fees.</li>
-        <li>Cancellations made 3–7 days before the scheduled tour date: 50% of the deposit will be refunded.</li>
-        <li>Cancellations made less than 3 days before the scheduled tour date, or in the event of a no-show: The deposit is non-refundable.</li>
-      </ul>
+
+      <div class="info-block">
+        <h3>Cancellation Policy</h3>
+        <ul>
+          <li>Free cancellation up to 24 hours before the tour for a full refund</li>
+          <li>50% refund for cancellations made 12&ndash;24 hours before the tour</li>
+          <li>No refund for cancellations made less than 12 hours before the tour or no-shows</li>
+          <li>Tours may be rescheduled free of charge in case of severe weather</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -1032,7 +1018,7 @@
 <div>
 <div class="brand" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
 <img alt="Northern Orchid Tours insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaT_m19uLfrX0cLKSmUcobPMsBREy2dwF_uvgtMa_uAaTqyQom-euhyJPC5VDvMnLGg_mrsDbRUtQMtagnpkmbvyqBrSpxsfpPooGE6DJ2466kA3I6DhK8PNhS4y3XcFphKVQc2FypAMjmjrKN--BCi3EoBKMGjOqHMAdo0O_qHTycIlzidpcshrimr4szpDMJdMPvdJ0GPXbwcmNELCYipJKZLmVE7dSapcSu5BKn9V7a3iN24CeylIwu0t1Gt8gpVA" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-soft); box-shadow: 0 2px 10px rgba(0,0,0,0.3); flex-shrink: 0;">
-<span class="" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: 0.6px; color: rgb(239, 230, 212);">Northern Orchid Tours</span>
+<span class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; color: rgb(239, 230, 212);">NORTHERN ORCHID TOURS</span>
 </div>
 <p class="" style="font-size: 13.5px; line-height: 1.85; color: rgba(239, 230, 212, 0.72); max-width: 320px; margin-bottom: 20px; font-weight: 300;" data-i18n="footer_motto">We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.</p>
 <div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1.2px; color: var(--gold-soft); text-transform: uppercase; font-weight: 500;">
@@ -1041,7 +1027,7 @@
 </div>
 </div>
 <!-- Column 2: Contact Information -->
-<div><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" class="" data-i18n="footer_contact_header">Contact</h4>
+<div><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" class="" data-i18n="footer_contact_header">CONTACT</h4>
 <div style="display: flex; flex-direction: column; gap: 16px;" class="">
   <!-- 1st: Location & Hours -->
   
@@ -1094,7 +1080,7 @@
 </div></div>
 <!-- Column 3: Preferences & Policies -->
 <div>
-<h4 class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" data-i18n="footer_pref_header">Preferences &amp; Policies</h4>
+<h4 class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--gold-soft); margin-bottom: 22px; font-weight: 500; letter-spacing: 0.8px;" data-i18n="footer_pref_header">PREFERENCES & POLICIES</h4>
 <!-- Switchers Container -->
 <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
 <!-- Language Switcher -->
@@ -1193,7 +1179,7 @@
     "nav_booking_now": "Booking Now",
     "footer_brand_tag": "TAT License : 24/01226",
     "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "Contact",
+    "footer_contact_header": "CONTACT",
     "footer_copyright": "© 2026 Northern Orchid Tours. All rights reserved.",
     "footer_curr_label": "Currency",
     "footer_email_label": "Email Us",
@@ -1203,7 +1189,7 @@
     "footer_loc_label": "Location",
     "footer_loc_val": "Chiang Mai, Thailand",
     "footer_motto": "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
-    "footer_pref_header": "Preferences & Policies",
+    "footer_pref_header": "PREFERENCES & POLICIES",
     "footer_whatsapp_label": "WhatsApp",
     "legal_link_booking": "Booking & Cancellation Policy",
     "legal_link_privacy": "Privacy & Data Sanctuary",
@@ -1342,7 +1328,7 @@
 </script>
 <!-- Sticky mobile book bar (jumps to the booking form) -->
 <div class="mobile-cta">
-  <div class="mc-price">Book this tour<span>Group pricing</span></div>
+  <div class="mc-price">Adult &#3647;2,500<span>/ person</span></div>
   <a class="btn btn-gold" href="#booking">Book now</a>
 </div>
 
@@ -1523,7 +1509,7 @@
     var lines = ["Hi, I'd like to book: " + d.tour + (ref ? ' (ref ' + ref + ')' : '') + '.',
       'Name: ' + [d.firstName, d.middleName, d.lastName].filter(Boolean).join(' '),
       'Travel date: ' + d.travelDate,
-      'Guests: ' + d.adults + ' adult(s), ' + d.children + ' child(ren) 0-9',
+      'Guests: ' + d.adults + ' adult(s), ' + d.children + ' child(ren) (under 10 years old)',
       'Email: ' + d.email, 'WhatsApp: ' + d.whatsapp];
     if(d.notes) lines.push('Notes: ' + d.notes);
     return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
