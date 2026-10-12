@@ -4,7 +4,7 @@
 <script>document.documentElement.className+=" js";</script>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
-<title> Our Tours— Northern Orchid Tours</title>
+<title>Activities — Northern Orchid Tours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -68,6 +68,9 @@
   }
   .nav .brand span{ color:var(--gold-soft); font-weight:400; font-style:italic; }
 
+  /* Header/drawer parity with index.html */
+  header.nav, .mobile-drawer{ font-weight:400; line-height:1.7; }
+
   /* Desktop Navigation & Dropdowns */
   .nav-center{ display:flex; align-items:center; }
   .nav-menu{
@@ -78,7 +81,7 @@
   .nav-link{
     color:var(--paper); opacity:0.9; transition:color 0.25s, opacity 0.25s;
     background:none; border:none; font-family:'Outfit', sans-serif; font-size:16px;
-    font-weight:500; letter-spacing:1px; cursor:pointer; display:inline-flex;
+    font-weight:500; letter-spacing:1.2px; cursor:pointer; display:inline-flex;
     align-items:center; gap:7px; padding:12px 2px; text-decoration:none;
     min-height:44px;
   }
@@ -126,8 +129,8 @@
     background:rgba(198, 161, 91, 0.08); padding-left:26px;
   }
   .dropdown-menu li a .drop-title{
-    font-family:'Outfit', sans-serif; font-size:17px; font-weight:450;
-    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.5px;
+    font-family:'Outfit', sans-serif; font-size:14px; font-weight:500;
+    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.2px;
   }
   .dropdown-menu li a:hover .drop-title{
     color:var(--gold-soft);
@@ -248,7 +251,7 @@
     .mobile-drawer, .mobile-drawer-overlay{ display:none; }
   }
 
-  .tours-page{ padding:60px 0 100px; }
+  .tours-page{ padding:calc(60px + 80px + env(safe-area-inset-top, 0px)) 0 100px; }
 
   .grid-cover{
     position:relative; height:340px; border-radius:3px; overflow:hidden;
@@ -457,7 +460,7 @@
     .rates-foot{ flex-direction:column; align-items:flex-start; }
   }
 
-  /* ===== Tours grid: separated cards + motion ===== */
+  /* ===== Activities grid: separated cards + motion ===== */
   [hidden]{ display:none !important; }
   .tour-grid{ gap:28px; background:none; border:0; }
   .tour-card{
@@ -510,6 +513,11 @@
 
   .page-head > div, .page-head > p{ animation:fadeUp .8s cubic-bezier(.2,.8,.2,1) backwards; }
   .page-head > p{ animation-delay:.12s; }
+  .filters{ animation:fadeUp .8s cubic-bezier(.2,.8,.2,1) .22s backwards; }
+  button.filter-chip{ background:transparent; font-family:inherit; transition:background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease; }
+  button.filter-chip:hover{ border-color:var(--gold); color:var(--paper); }
+  button.filter-chip:active{ transform:scale(.95); }
+  button.filter-chip.active:hover{ color:var(--ink); }
 
   @media(max-width:640px){
     .tour-grid{ gap:20px; }
@@ -520,7 +528,7 @@
     .js .tour-card.in{ animation:none; }
     .tour-card, .tour-card *{ transition:none !important; }
     .tour-card:hover .art::before{ animation:none; }
-    .page-head > div, .page-head > p{ animation:none; }
+    .page-head > div, .page-head > p, .filters{ animation:none; }
   }
 </style>
 </head>
@@ -578,13 +586,10 @@
 <li class="nav-item">
 <a class="nav-link" href="contact.html" data-i18n="nav_contact">CONTACT</a>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="index.html" data-i18n="nav_home">HOME</a>
-</li>
 </ul>
 </nav>
 <!-- Far Right: 'Booking Now' CTA -->
-<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Book now</a>
+<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener">Contact Now</a>
 <!-- Mobile Hamburger Button (44x44 min tap target) -->
 <button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
@@ -664,7 +669,7 @@
 </li>
 </ul>
 <div class="drawer-foot">
-<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener" data-i18n="nav_booking_now">Booking Now</a>
+<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Doi%20Suthep%20Temple%2C%20Wat%20Pha%20Lat%20%26%20Wat%20Umong%20tour." target="_blank" rel="noopener" data-i18n="nav_booking_now">Contact Now</a>
 </div>
 </aside>
 
@@ -677,10 +682,18 @@
       </div>
       <p>Choose the right tour from a range of routes across Northern Thailand</p>
     </div>
+    <div class="filters" role="group" aria-label="Filter tours">
+      <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="filter-chip" data-filter="doi-inthanon" aria-pressed="false">Doi Inthanon</button>
+      <button type="button" class="filter-chip" data-filter="doi-suthep" aria-pressed="false">Doi Suthep</button>
+      <button type="button" class="filter-chip" data-filter="elephant-sanctuary" aria-pressed="false">Elephant Sanctuary</button>
+      <button type="button" class="filter-chip" data-filter="chiang-rai" aria-pressed="false">Chiang Rai</button>
+      <button type="button" class="filter-chip" data-filter="old-city" aria-pressed="false">Old City</button>
+    </div>
 
 
     <div class="tour-grid">
-      <a href="doiin01.html" class="tour-card" data-dest="mae-taeng-chiang-dao">
+      <a href="doiin01.html" class="tour-card" data-dest="doi-inthanon" data-tour="doi-inthanon">
         <div class="art">
           <div class="art-scroll">
             <img src="doiin03.jpg" alt="Pha Dok Siew Trail">
@@ -704,7 +717,7 @@
         </div>
       </a>
 
-      <a href="ele02.html" class="tour-card" data-dest="elephant-sanctuary">
+      <a href="ele02.html" class="tour-card" data-dest="elephant-sanctuary" data-tour="elephant-sanctuary">
         <div class="art">
           <div class="art-scroll">
             <img src="ele09.jpeg" alt="Elephant Sanctuary">
@@ -728,7 +741,7 @@
         </div>
       </a>
 
-      <a href="doisu02.html" class="tour-card" data-dest="chiang-rai">
+      <a href="doisu02.html" class="tour-card" data-dest="doi-suthep" data-tour="doi-suthep">
         <div class="art">
           <div class="art-scroll">
             <img src="doisuthep02.jpeg" alt="Wat Phra That Doi Suthep">
@@ -752,7 +765,7 @@
         </div>
       </a>
 
-      <a href="cri01.html" class="tour-card" data-dest="chiang-rai">
+      <a href="cri01.html" class="tour-card" data-dest="chiang-rai" data-tour="chiang-rai">
         <div class="art">
           <div class="art-scroll">
             <img src="longneck01.JPEG" alt="Wat Rong Suea Ten">
@@ -776,7 +789,7 @@
         </div>
       </a>
 
-      <a href="oldcity01.html" class="tour-card" data-dest="doi-suthep">
+      <a href="oldcity01.html" class="tour-card" data-dest="old-city" data-tour="old-city">
         <div class="art">
           <div class="art-scroll">
             <img src="chedi01.jpeg" alt="Wat Chedi Luang">
@@ -794,13 +807,13 @@
         <div class="body">
           <p>Step into the history of Chiang Mai through its old city temples and historic landmarks.</p>
           <div class="foot">
-            <span>Full-day · private group</span>
+            <span>Half-day · 5 hours</span>
             <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
 
-      <a href="ele01.html" class="tour-card" data-dest="pai">
+      <a href="ele01.html" class="tour-card" data-dest="elephant-sanctuary" data-tour="elephant-sanctuary">
         <div class="art">
           <div class="art-scroll">
             <img src="ele01.png" alt="Elephant Sanctuary">
@@ -818,13 +831,13 @@
         <div class="body">
           <p>A day of highlights nature, elephants, and local experiences in Northern Thailand.</p>
           <div class="foot">
-            <span>Full-day · private group</span>
+            <span>Full-day · 9 hours</span>
             <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
 
-      <a href="doiin02.html" class="tour-card" data-dest="doi-suthep">
+      <a href="doiin02.html" class="tour-card" data-dest="doi-inthanon" data-tour="doi-inthanon">
         <div class="art">
           <div class="art-scroll">
             <img src="doiin05.jpg" alt="Twin Pagodas">
@@ -842,13 +855,13 @@
         <div class="body">
           <p>Discover Doi Inthanon’s stunning nature, vibrant Hmong Market, and the peaceful hill tribe village of Mae Klang Luang.</p>
           <div class="foot">
-            <span>Full-day · private group</span>
+            <span>Full-day · 9 hours</span>
             <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
 
-      <a href="doisu01.html" class="tour-card" data-dest="doi-suthep">
+      <a href="doisu01.html" class="tour-card" data-dest="doi-suthep" data-tour="doi-suthep">
         <div class="art">
           <div class="art-scroll">
             <img src="wat-umong.jpg" alt="Thai Cooking Class">
@@ -866,13 +879,13 @@
         <div class="body">
           <p>Visit three of Chiang Mai’s well-known temples, each with its own character and history.</p>
           <div class="foot">
-            <span>Full-day · private group</span>
+            <span>Half-day · 5 hours</span>
             <span class="price"><b>view details</b></span>
           </div>
         </div>
       </a>
 
-      <a href="cri02.html" class="tour-card" data-dest="sukothai">
+      <a href="cri02.html" class="tour-card" data-dest="chiang-rai" data-tour="chiang-rai">
         <div class="art">
           <div class="art-scroll">
             <img src="chiangrai13.png" alt="Golden Triangle">
@@ -891,7 +904,30 @@
           <p>Explore the Golden Triangle, where Thailand, Laos, and Myanmar meet along the Mekong River, and enjoy a scenic boat ride.
 </p>
           <div class="foot">
-            <span>Full-day · private group</span>
+            <span>Full-day · 14 hours</span>
+            <span class="price"><b>view details</b></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="ele03.html" class="tour-card" data-dest="chiang-rai" data-tour="elephant-sanctuary">
+        <div class="art">
+          <div class="art-scroll">
+            <img src="ele16.png" alt="Golden Triangle">
+            <img src="ele17.jpeg" alt="Golden Triangle">
+            <img src="ele22.jpeg" alt="View over Chiang Mai">
+            <img src="sticky04.jpg" alt="Hmong hill-tribe village">
+          </div>
+          <button class="art-arrow prev" aria-label="Previous photo" type="button">&#10094;</button>
+          <button class="art-arrow next" aria-label="Next photo" type="button">&#10095;</button>
+          <div class="art-dots"><span class="art-dot active"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span><span class="art-dot"></span></div>
+        <div class="art-title"><span class="idx"></span><h3>Elephant Sanctuary</h3></div>
+        </div>
+        <div class="body">
+          <p>Explore the Golden Triangle, where Thailand, Laos, and Myanmar meet along the Mekong River, and enjoy a scenic boat ride.
+</p>
+          <div class="foot">
+            <span>Full-day · 9 hours</span>
             <span class="price"><b>view details</b></span>
           </div>
         </div>
@@ -907,7 +943,7 @@
 <div>
 <div class="brand" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
 <img alt="Northern Orchid Tours insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaT_m19uLfrX0cLKSmUcobPMsBREy2dwF_uvgtMa_uAaTqyQom-euhyJPC5VDvMnLGg_mrsDbRUtQMtagnpkmbvyqBrSpxsfpPooGE6DJ2466kA3I6DhK8PNhS4y3XcFphKVQc2FypAMjmjrKN--BCi3EoBKMGjOqHMAdo0O_qHTycIlzidpcshrimr4szpDMJdMPvdJ0GPXbwcmNELCYipJKZLmVE7dSapcSu5BKn9V7a3iN24CeylIwu0t1Gt8gpVA" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-soft); box-shadow: 0 2px 10px rgba(0,0,0,0.3); flex-shrink: 0;">
-<span class="" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: 0.6px; color: rgb(239, 230, 212);">Northern Orchid Tours</span>
+<span class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; color: rgb(239, 230, 212);">NORTHERN ORCHID TOURS</span>
 </div>
 <p class="" style="font-size: 13.5px; line-height: 1.85; color: rgba(239, 230, 212, 0.72); max-width: 320px; margin-bottom: 20px; font-weight: 300;" data-i18n="footer_motto">We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.</p>
 <div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1.2px; color: var(--gold-soft); text-transform: uppercase; font-weight: 500;">
@@ -1056,149 +1092,213 @@
     if(!e.target.closest('.nav-item')) closeDesktopDropdowns();
   });
 
-  /* ===== Language switching (same behaviour & storage key as index.html) ===== */
+  /* ===== Language switching (same as index.html) ===== */
   var translations = {
-  "en": {
-    "nav_home": "HOME",
-    "nav_private_tours": "OUR TOURS",
-    "nav_transport": "TRANSPORT",
-    "nav_activities": "ACTIVITIES",
-    "nav_gallery": "ABOUT US",
-    "nav_contact": "CONTACT",
-    "nav_booking_now": "Booking Now",
-    "footer_brand_tag": "TAT License : 24/01226",
-    "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "Contact",
-    "footer_copyright": "© 2026 Northern Orchid Tours. All rights reserved.",
-    "footer_curr_label": "Currency",
-    "footer_email_label": "Email Us",
-    "footer_hours_val": "Daily 08:00 – 09:00 PM",
-    "footer_lang_label": "Language",
-    "footer_legal_header": "Legal & Policy",
-    "footer_loc_label": "Location",
-    "footer_loc_val": "Chiang Mai, Thailand",
-    "footer_motto": "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
-    "footer_pref_header": "Preferences & Policies",
-    "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "Booking & Cancellation Policy",
-    "legal_link_privacy": "Privacy & Data Sanctuary",
-    "legal_link_terms": "Terms & Guest Conditions"
-  },
-  "fr": {
-    "nav_home": "ACCUEIL",
-    "nav_private_tours": "NOS CIRCUITS",
-    "nav_transport": "TRANSPORT",
-    "nav_activities": "ACTIVITÉS",
-    "nav_gallery": "À PROPOS",
-    "nav_contact": "CONTACT",
-    "nav_booking_now": "Réserver",
-    "footer_brand_tag": "Licence TAT : 24/01226",
-    "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "Contact",
-    "footer_copyright": "© 2026 Northern Orchid Tours. Tous droits réservés.",
-    "footer_curr_label": "Devise",
-    "footer_email_label": "Écrivez-nous",
-    "footer_hours_val": "Tous les jours 08h00 – 21h00",
-    "footer_lang_label": "Langue",
-    "footer_legal_header": "Mentions légales et politiques",
-    "footer_loc_label": "Lieu",
-    "footer_loc_val": "Chiang Mai, Thaïlande",
-    "footer_motto": "Nous espérons que Northern Orchid Tours sera l'un des noms qui vous viendront à l'esprit lorsque vous commencerez à préparer votre voyage dans le nord de la Thaïlande. Voyagez avec grâce à travers des montagnes sacrées, des chedis dorés et un patrimoine vivant — guidé avec une proximité toute locale et une attention discrète.",
-    "footer_pref_header": "Préférences et politiques",
-    "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "Politique de réservation et d'annulation",
-    "legal_link_privacy": "Confidentialité et protection des données",
-    "legal_link_terms": "Conditions générales et conditions pour les voyageurs"
-  },
-  "it": {
-    "nav_home": "HOME",
-    "nav_private_tours": "I NOSTRI TOUR",
-    "nav_transport": "TRASPORTI",
-    "nav_activities": "ATTIVITÀ",
-    "nav_gallery": "CHI SIAMO",
-    "nav_contact": "CONTATTI",
-    "nav_booking_now": "Prenota ora",
-    "footer_brand_tag": "Licenza TAT : 24/01226",
-    "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "Contatti",
-    "footer_copyright": "© 2026 Northern Orchid Tours. Tutti i diritti riservati.",
-    "footer_curr_label": "Valuta",
-    "footer_email_label": "Scrivici",
-    "footer_hours_val": "Tutti i giorni 08:00 – 21:00",
-    "footer_lang_label": "Lingua",
-    "footer_legal_header": "Note legali e normative",
-    "footer_loc_label": "Sede",
-    "footer_loc_val": "Chiang Mai, Thailandia",
-    "footer_motto": "Ci auguriamo che Northern Orchid Tours sia uno dei nomi a cui penserete quando inizierete a pianificare il vostro viaggio nella Thailandia del Nord. Viaggiate con eleganza tra montagne sacre, chedi dorati e un patrimonio vivo — accompagnati con vicinanza locale e discreta cura.",
-    "footer_pref_header": "Preferenze e normative",
-    "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "Politica di prenotazione e cancellazione",
-    "legal_link_privacy": "Privacy e protezione dei dati",
-    "legal_link_terms": "Termini e condizioni per gli ospiti"
-  },
-  "es": {
-    "nav_home": "INICIO",
-    "nav_private_tours": "NUESTROS TOURS",
-    "nav_transport": "TRANSPORTE",
-    "nav_activities": "ACTIVIDADES",
-    "nav_gallery": "SOBRE NOSOTROS",
-    "nav_contact": "CONTACTO",
-    "nav_booking_now": "Reservar ahora",
-    "footer_brand_tag": "Licencia TAT : 24/01226",
-    "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "Contacto",
-    "footer_copyright": "© 2026 Northern Orchid Tours. Todos los derechos reservados.",
-    "footer_curr_label": "Moneda",
-    "footer_email_label": "Escríbanos",
-    "footer_hours_val": "Todos los días 08:00 – 21:00",
-    "footer_lang_label": "Idioma",
-    "footer_legal_header": "Legal y políticas",
-    "footer_loc_label": "Ubicación",
-    "footer_loc_val": "Chiang Mai, Tailandia",
-    "footer_motto": "Esperamos que Northern Orchid Tours sea uno de los nombres que le vengan a la mente cuando empiece a planificar su viaje por el norte de Tailandia. Viaje con elegancia a través de montañas sagradas, chedis dorados y un patrimonio vivo — guiado con cercanía local y un cuidado discreto.",
-    "footer_pref_header": "Preferencias y políticas",
-    "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "Política de reserva y cancelación",
-    "legal_link_privacy": "Privacidad y protección de datos",
-    "legal_link_terms": "Términos y condiciones para los huéspedes"
+    en: {
+      nav_destination: "Destination",
+      nav_private_tours: "OUR TOURS",
+      nav_home: "HOME",
+      nav_multiday_tours: "MULTI-DAY TOURS",
+      nav_transport: "TRANSPORT",
+      nav_activities: "ACTIVITIES",
+      nav_gallery: "ABOUT US",
+      nav_contact: "CONTACT",
+      nav_booking_now: "Booking Now",
+      dest_chiang_mai: "ONE DAY TOURS",
+      dest_chiang_rai: "MULTI-DAY TOUR",
+      chiang_mai: "ONE DAY TOUR",
+      chiang_rai: "MULTI-DAY TOUR",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      footer_brand_tag: "TAT License : 24/01226",
+      footer_motto: "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
+      footer_contact_header: "Contact",
+      footer_loc_label: "Location",
+      footer_loc_val: "Chiang Mai, Thailand",
+      footer_hours_val: "Daily 08:00 – 09:00 PM",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Email Us",
+      footer_pref_header: "Preferences & Policies",
+      footer_lang_label: "Language",
+      footer_curr_label: "Currency",
+      footer_legal_header: "Legal & Policy",
+      legal_link_booking: "Privacy & Data Sanctuary",
+      legal_link_terms: "Terms & Guest Conditions",
+      legal_link_privacy: "Privacy & Data Sanctuary",
+      footer_copyright: "© 2026 Northern Orchid Tours. All rights reserved."
+    },
+    fr: {
+      nav_destination: "Destination",
+      nav_private_tours: "NOS CIRCUITS",
+      nav_home: "ACCUEIL",
+      nav_multiday_tours: "CIRCUITS MULTI-JOURS",
+      nav_transport: "TRANSPORT",
+      nav_activities: "ACTIVITÉS",
+      nav_gallery: "À PROPOS",
+      nav_contact: "CONTACT",
+      nav_booking_now: "Réserver",
+      dest_chiang_mai: "CIRCUITS D'UNE JOURNÉE",
+      dest_chiang_rai: "CIRCUIT MULTI-JOURS",
+      chiang_mai: "CIRCUIT D'UNE JOURNÉE",
+      chiang_rai: "CIRCUIT MULTI-JOURS",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothaï",
+      footer_brand_tag: "Licence TAT : 24/01226",
+      footer_motto: "Nous espérons que Northern Orchid Tours sera l'un des noms qui vous viendront à l'esprit lorsque vous commencerez à préparer votre voyage dans le nord de la Thaïlande. Voyagez avec grâce à travers des montagnes sacrées, des chedis dorés et un patrimoine vivant — guidé avec une proximité toute locale et une attention discrète.",
+      footer_contact_header: "Contact",
+      footer_loc_label: "Lieu",
+      footer_loc_val: "Chiang Mai, Thaïlande",
+      footer_hours_val: "Tous les jours 08h00 – 21h00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Écrivez-nous",
+      footer_pref_header: "Préférences et politiques",
+      footer_lang_label: "Langue",
+      footer_curr_label: "Devise",
+      footer_legal_header: "Mentions légales et politiques",
+      legal_link_booking: "Politique de réservation et d'annulation",
+      legal_link_terms: "Conditions générales et conditions pour les voyageurs",
+      legal_link_privacy: "Confidentialité et protection des données",
+      footer_copyright: "© 2026 Northern Orchid Tours. Tous droits réservés."
+    },
+    it: {
+      nav_destination: "Destinazione",
+      nav_private_tours: "I NOSTRI TOUR",
+      nav_home: "HOME",
+      nav_multiday_tours: "TOUR DI PIÙ GIORNI",
+      nav_transport: "TRASPORTI",
+      nav_activities: "ATTIVITÀ",
+      nav_gallery: "CHI SIAMO",
+      nav_contact: "CONTATTI",
+      nav_booking_now: "Prenota ora",
+      dest_chiang_mai: "TOUR DI UN GIORNO",
+      dest_chiang_rai: "TOUR DI PIÙ GIORNI",
+      chiang_mai: "TOUR DI UN GIORNO",
+      chiang_rai: "TOUR DI PIÙ GIORNI",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      footer_brand_tag: "Licenza TAT : 24/01226",
+      footer_motto: "Ci auguriamo che Northern Orchid Tours sia uno dei nomi a cui penserete quando inizierete a pianificare il vostro viaggio nella Thailandia del Nord. Viaggiate con eleganza tra montagne sacre, chedi dorati e un patrimonio vivo — accompagnati con vicinanza locale e discreta cura.",
+      footer_contact_header: "Contatti",
+      footer_loc_label: "Sede",
+      footer_loc_val: "Chiang Mai, Thailandia",
+      footer_hours_val: "Tutti i giorni 08:00 – 21:00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Scrivici",
+      footer_pref_header: "Preferenze e normative",
+      footer_lang_label: "Lingua",
+      footer_curr_label: "Valuta",
+      footer_legal_header: "Note legali e normative",
+      legal_link_booking: "Politica di prenotazione e cancellazione",
+      legal_link_terms: "Termini e condizioni per gli ospiti",
+      legal_link_privacy: "Privacy e protezione dei dati",
+      footer_copyright: "© 2026 Northern Orchid Tours. Tutti i diritti riservati."
+    },
+    es: {
+      nav_destination: "Destino",
+      nav_private_tours: "NUESTROS TOURS",
+      nav_home: "INICIO",
+      nav_multiday_tours: "TOURS DE VARIOS DÍAS",
+      nav_transport: "TRANSPORTE",
+      nav_activities: "ACTIVIDADES",
+      nav_gallery: "SOBRE NOSOTROS",
+      nav_contact: "CONTACTO",
+      nav_booking_now: "Reservar ahora",
+      dest_chiang_mai: "TOURS DE UN DÍA",
+      dest_chiang_rai: "TOUR DE VARIOS DÍAS",
+      chiang_mai: "TOUR DE UN DÍA",
+      chiang_rai: "TOUR DE VARIOS DÍAS",
+      dest_pai: "Mae Hong Son y Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      footer_brand_tag: "Licencia TAT : 24/01226",
+      footer_motto: "Esperamos que Northern Orchid Tours sea uno de los nombres que le vengan a la mente cuando empiece a planificar su viaje por el norte de Tailandia. Viaje con elegancia a través de montañas sagradas, chedis dorados y un patrimonio vivo — guiado con cercanía local y un cuidado discreto.",
+      footer_contact_header: "Contacto",
+      footer_loc_label: "Ubicación",
+      footer_loc_val: "Chiang Mai, Tailandia",
+      footer_hours_val: "Todos los días 08:00 – 21:00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Escríbanos",
+      footer_pref_header: "Preferencias y políticas",
+      footer_lang_label: "Idioma",
+      footer_curr_label: "Moneda",
+      footer_legal_header: "Legal y políticas",
+      legal_link_booking: "Política de reserva y cancelación",
+      legal_link_terms: "Términos y condiciones para los huéspedes",
+      legal_link_privacy: "Privacidad y protección de datos",
+      footer_copyright: "© 2026 Northern Orchid Tours. Todos los derechos reservados."
+    }
+  };
+
+  function setupI18nAttributes() {
+    const mapping = [
+      // Footer
+      { sel: 'footer .brand + p', key: 'footer_motto' },
+      { sel: 'footer .brand ~ div span:last-child', key: 'footer_brand_tag' },
+      { sel: 'footer .f-grid > div:nth-child(2) > h4', key: 'footer_contact_header' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:first-child', key: 'footer_loc_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:nth-child(2)', key: 'footer_loc_val' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:nth-child(3)', key: 'footer_hours_val' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(2) span', key: 'footer_whatsapp_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(3) span:first-child', key: 'footer_call_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(5) span:first-child', key: 'footer_email_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > h4', key: 'footer_pref_header' },
+      { sel: 'footer .f-grid > div:nth-child(3) label:nth-of-type(1)', key: 'footer_lang_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) label', key: 'footer_curr_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > div:nth-child(3) > div', key: 'footer_legal_header' },
+      { sel: 'a[href="#booking-policy"]', key: 'legal_link_booking' },
+      { sel: 'a[href="#terms"]', key: 'legal_link_terms' },
+      { sel: 'a[href="#privacy"]', key: 'legal_link_privacy' },
+      { sel: '.f-bottom > span:first-child', key: 'footer_copyright' }
+    ];
+    mapping.forEach(m => {
+      document.querySelectorAll(m.sel).forEach(el => {
+        if (!el.getAttribute('data-i18n')) el.setAttribute('data-i18n', m.key);
+      });
+    });
   }
-};
 
-  window.changeLanguage = function(lang){
-    if(!translations[lang]) lang = 'en';
+  window.changeLanguage = function(lang) {
+    if (!translations[lang]) lang = 'en';
     document.documentElement.lang = lang;
-    var t = translations[lang];
-
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var val = t[el.getAttribute('data-i18n')];
-      if(!val) return;
-      if(el.getAttribute('data-i18n-chevron')){
-        var chevron = el.querySelector('svg');
+    setupI18nAttributes();
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const val = t[el.getAttribute('data-i18n')];
+      if (!val) return;
+      if (el.getAttribute('data-i18n-chevron')) {
+        const chevron = el.querySelector('svg');
         el.innerHTML = val + (chevron ? chevron.outerHTML : '');
+      } else if (val.includes('<') && val.includes('>')) {
+        el.innerHTML = val;
       } else {
         el.textContent = val;
       }
     });
-
-    var label = document.getElementById('footerSelectedLang');
-    if(label){
-      label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + ({ en: 'English', fr: 'Français (French)', it: 'Italiano (Italian)', es: 'Español (Spanish)' }[lang] || 'English');
-    }
-    var menu = document.getElementById('footerLangMenu');
-    if(menu) menu.style.display = 'none';
-    try { localStorage.setItem('northern_orchid_lang', lang); } catch(e) {}
+    const selectedLangEl = document.getElementById('footerSelectedLang');
+    const langNames = { en: 'English', fr: 'Français (French)', it: 'Italiano (Italian)', es: 'Español (Spanish)' };
+    if (selectedLangEl) selectedLangEl.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (langNames[lang] || langNames.en);
+    const menu = document.getElementById('footerLangMenu');
+    if (menu) menu.style.display = 'none';
+    try { localStorage.setItem('northern_orchid_lang', lang); } catch (e) {}
   };
 
-  document.addEventListener('click', function(e){
-    var menu = document.getElementById('footerLangMenu');
-    var btn  = document.getElementById('footerLangBtn');
-    if(menu && menu.style.display === 'block' && !menu.contains(e.target) && !(btn && btn.contains(e.target))){
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('footerLangMenu');
+    const btn = document.getElementById('footerLangBtn');
+    if (menu && menu.style.display === 'block' && !menu.contains(e.target) && !(btn && btn.contains(e.target))) {
       menu.style.display = 'none';
     }
   });
 
-  var savedLang = 'en';
-  try { savedLang = localStorage.getItem('northern_orchid_lang') || 'en'; } catch(e) {}
+  let savedLang = 'en';
+  try { savedLang = localStorage.getItem('northern_orchid_lang') || 'en'; } catch (e) {}
   window.changeLanguage(savedLang);
 
   /* ===== Policy modal ===== */
@@ -1226,13 +1326,57 @@
   });
   if(pOverlay) pOverlay.addEventListener('click', function(e){ if(e.target === pOverlay) closePolicy(); });
 
-  /* ===== Filter chips (none on page right now, safe no-op) ===== */
-  document.querySelectorAll('.filter-chip').forEach(function(chip){
-    chip.addEventListener('click', function(){
-      document.querySelectorAll('.filter-chip').forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
+  /* ===== Filter chips: show only the tours that match the chip ===== */
+  (function(){
+    var chips = document.querySelectorAll('.filter-chip');
+    var cards = document.querySelectorAll('.tour-grid .tour-card');
+    if(!chips.length || !cards.length) return;
+    var token = 0;
+
+    function matches(card, f){
+      if(f === 'all') return true;
+      return (card.getAttribute('data-tour') || '').split(/\s+/).indexOf(f) !== -1;
+    }
+
+    function applyFilter(f){
+      var my = ++token;
+      var show = [], hide = [];
+      cards.forEach(function(c){ (matches(c, f) ? show : hide).push(c); });
+
+      // fade out what no longer matches, then remove it from the layout
+      hide.forEach(function(c){
+        if(c.hasAttribute('hidden')) return;
+        c.classList.add('in', 'is-out');
+        setTimeout(function(){ if(my === token) c.setAttribute('hidden', ''); }, 320);
+      });
+
+      // bring back what matches (cards just re-shown fade in with a small stagger)
+      show.forEach(function(c, i){
+        var wasHidden = c.hasAttribute('hidden');
+        c.removeAttribute('hidden');
+        c.classList.add('in');
+        if(wasHidden){
+          c.classList.add('is-out');
+          void c.offsetWidth;
+          setTimeout(function(){ if(my === token) c.classList.remove('is-out'); }, 30 + i * 70);
+        } else {
+          c.classList.remove('is-out');
+        }
+      });
+    }
+
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){
+          c.classList.remove('active');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        chip.classList.add('active');
+        chip.setAttribute('aria-pressed', 'true');
+        applyFilter(chip.getAttribute('data-filter') || 'all');
+      });
     });
-  });
+  })();
 
   /* ===== Tour grid: scroll reveal + cursor spotlight ===== */
   (function(){
