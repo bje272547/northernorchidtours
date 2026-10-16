@@ -62,6 +62,9 @@
   }
   .nav .brand span{ color:var(--gold-soft); font-weight:400; font-style:italic; }
 
+  /* Header/drawer parity with index.html */
+  header.nav, .mobile-drawer{ font-weight:400; line-height:1.7; }
+
   /* Desktop Navigation & Dropdowns */
   .nav-center{ display:flex; align-items:center; }
   .nav-menu{
@@ -72,7 +75,7 @@
   .nav-link{
     color:var(--paper); opacity:0.9; transition:color 0.25s, opacity 0.25s;
     background:none; border:none; font-family:'Outfit', sans-serif; font-size:16px;
-    font-weight:500; letter-spacing:1px; cursor:pointer; display:inline-flex;
+    font-weight:500; letter-spacing:1.2px; cursor:pointer; display:inline-flex;
     align-items:center; gap:7px; padding:12px 2px; text-decoration:none;
     min-height:44px;
   }
@@ -120,8 +123,8 @@
     background:rgba(198, 161, 91, 0.08); padding-left:26px;
   }
   .dropdown-menu li a .drop-title{
-    font-family:'Outfit', sans-serif; font-size:17px; font-weight:450;
-    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.5;
+    font-family:'Outfit', sans-serif; font-size:14px; font-weight:500;
+    color:var(--paper); transition:color 0.22s ease; line-height:1.5; letter-spacing:1.2px;
   }
   .dropdown-menu li a:hover .drop-title{
     color:var(--gold-soft);
@@ -385,6 +388,13 @@
   .rate-table td.p.na{ color:rgba(239,230,212,0.3); }
   .rate-table thead th:first-child, .rate-table tbody th{ position:sticky; left:0; z-index:1; }
   .rate-table thead th:first-child{ background:var(--forest); }
+  /* Car rental (fuel not included) */
+  .rental-terms{ list-style:none; display:flex; flex-wrap:wrap; gap:10px 12px; margin:0 0 20px; padding:0; }
+  .rental-terms li{ border:1px solid var(--line); padding:10px 16px; font-size:14px; color:rgba(239,230,212,0.8); }
+  .rental-terms b{ color:var(--gold-soft); font-weight:600; margin-right:4px; }
+  .rate-table .r-plan{ display:flex; align-items:center; gap:16px; min-height:44px; }
+  .rate-table .r-text{ display:flex; flex-direction:column; gap:4px; }
+  .rate-table .r-sub{ font-size:13px; line-height:1.5; color:rgba(239,230,212,0.6); }
   .rates-foot{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-top:32px; }
   .rates-foot p{ font-size:14.5px; color:rgba(239,230,212,0.7); max-width:520px; }
 
@@ -405,6 +415,9 @@
     .rate-table tbody th a{ min-height:0; }
     .rate-table .r-idx{ display:none; }
     .rate-table .r-name{ font-size:15px; line-height:1.3; }
+    .rate-table .r-sub{ font-size:12px; }
+    .rate-table .r-plan{ min-height:0; }
+    .rental-terms li{ font-size:13px; padding:8px 12px; }
     .rate-sub{ margin-top:48px; }
     .rate-sub.first{ margin-top:0; }
     .rate-table td.p{ font-size:15px; }
@@ -472,14 +485,14 @@
 <li>
   <a href="tours.html">
     <span class="drop-title" data-i18n="chiang_mai">
-      One Day Tour
+      ONE DAY TOUR
     </span>
   </a>
 </li>
 <li>
   <a href="multidaytours.html">
     <span class="drop-title" data-i18n="chiang_rai">
-      Multi-Day Tour
+      MULTI-DAY TOUR
     </span>
   </a>
 </li>
@@ -489,28 +502,21 @@
 <!-- Transport -->
 <li class="nav-item">
   <a href="transport.html" class="nav-link">
-    <span class="drop-title" data-i18n="nav_transport">Transport</span>
+    <span class="drop-title" data-i18n="nav_transport">TRANSPORT</span>
   </a>
 </li>
 <!-- Activities Dropdown -->
 <li class="nav-item">
-<a class="nav-link" href="activities.html" data-i18n="nav_activities">Activities</a>
+<a class="nav-link" href="activities.html" data-i18n="nav_activities">ACTIVITIES</a>
 </li>
 <!-- Gallery Link -->
 <li class="nav-item">
-<a class="nav-link" href="aboutus.html" data-i18n="nav_gallery">About Us</a>
-</li>
-<!-- Contact Link -->
-<li class="nav-item">
-<a class="nav-link" href="contact.html" data-i18n="nav_contact">Contact</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="index.html" data-i18n="nav_home">Home</a>
+<a class="nav-link" href="aboutus.html" data-i18n="nav_gallery">ABOUT US</a>
 </li>
 </ul>
 </nav>
 <!-- Far Right: 'Booking Now' CTA -->
-<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20transfer%20or%20transport%20service." target="_blank" rel="noopener">Book now</a>
+<a class="nav-cta-booking" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20transfer%20or%20transport%20service." target="_blank" rel="noopener">Contact Now</a>
 <!-- Mobile Hamburger Button (44x44 min tap target) -->
 <button aria-label="Open navigation menu" class="mobile-toggle" id="mobileMenuOpen">
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6" viewBox="0 0 24 24">
@@ -544,7 +550,7 @@
     data-i18n="nav_private_tours"
     data-i18n-chevron="true"
   >
-    Our Tours
+    OUR TOURS
     <svg fill="none" viewBox="0 0 10 6">
       <path d="M1 1L5 5L9 1"
         stroke-linecap="round"
@@ -558,7 +564,7 @@
     <li>
       <a class="mobile-drawer-link" href="tours.html">
         <span class="m-title" data-i18n="dest_chiang_mai">
-          One Day Tour
+          ONE DAY TOUR
         </span>
       </a>
     </li>
@@ -566,7 +572,7 @@
     <li>
       <a class="mobile-drawer-link" href="multidaytours.html">
         <span class="m-title" data-i18n="dest_chiang_rai">
-          Multi-Day Tour
+          MULTI-DAY TOUR
         </span>
       </a>
     </li>
@@ -574,23 +580,18 @@
 </li>
 <!-- Transport Link -->
 <li class="">
-  <a class="mobile-link mobile-drawer-link" href="transport.html" data-i18n="nav_transport">Transport</a>
+  <a class="mobile-link mobile-drawer-link" href="transport.html" data-i18n="nav_transport">TRANSPORT</a>
 </li>
 <!-- Activities Accordion -->
 <li class="">
-<a class="mobile-link mobile-drawer-link" href="activities.html" data-i18n="nav_activities">Activities</a>
+<a class="mobile-link mobile-drawer-link" href="activities.html" data-i18n="nav_activities">ACTIVITIES</a>
 </li>
 <!-- Gallery Accordion -->
 <li class="">
-<a class="mobile-link mobile-drawer-link" href="aboutus.html" data-i18n="nav_gallery">About Us</a>
+<a class="mobile-link mobile-drawer-link" href="aboutus.html" data-i18n="nav_gallery">ABOUT US</a>
 </li>
-<!-- Contact Link -->
-<li class="">
-<a class="mobile-link mobile-drawer-link" href="contact.html" data-i18n="nav_contact">Contact</a>
-</li>
-</ul>
 <div class="drawer-foot">
-<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20transfer%20or%20transport%20service." target="_blank" rel="noopener" data-i18n="nav_booking_now">Booking Now</a>
+<a class="nav-cta-booking mobile-drawer-link" href="https://wa.me/66988198385?text=Hi%2C%20I%27d%20like%20to%20book%20a%20private%20transfer%20or%20transport%20service." target="_blank" rel="noopener" data-i18n="nav_booking_now">Contact Now</a>
 </div>
 </aside>
 
@@ -598,14 +599,14 @@
   <div class="wrap">
     <div class="page-head">
       <div>
-        <div class="kicker">Private Transportation</div>
+        <div class="kicker">PRIVATE TRANSPORT &amp; TRANSFERS  </div>
         <h1>Travel Your Way</h1>
       </div>
       <div>
-        <p>Private transfers and chauffeur-driven journeys, thoughtfully arranged for comfort and ease.</p>
         <div class="rates-links">
           <a class="rates-link" href="#rates">Day charter rates &#8595;</a>
           <a class="rates-link" href="#transfers">Transfer rates &#8595;</a>
+          <a class="rates-link" href="#rental">Car rental (no fuel) &#8595;</a>
         </div>
       </div>
     </div>
@@ -622,7 +623,7 @@
     <div class="rate-table-wrap">
       <table class="rate-table">
         <thead>
-          <tr><th scope="col">Price Details (includes fuel)</th><th scope="col">Sedan<br>(1-3 passengers)</th><th scope="col">SUV<br>(1-6 passengers)</th><th scope="col">VIP Van<br>(1-9 passengers)</th></tr>
+          <tr><th scope="col">Price Details (includes fuel)</th><th scope="col">Sedan<br>(1-3 pax)</th><th scope="col">SUV<br>(1-6 pax)</th><th scope="col">VIP Van<br>(1-9 pax)</th></tr>
         </thead>
         <tbody>
         <tr data-dest="doi-inthanon">
@@ -710,7 +711,7 @@
     <div class="rate-table-wrap">
       <table class="rate-table">
         <thead>
-          <tr><th scope="col">Route (Airport or Hotel Transfer)</th><th scope="col">Sedan<br>(1-3 passengers)</th><th scope="col">SUV<br>(1-6 passengers)</th><th scope="col">VIP Van<br>(1-9 passengers)</th></tr>
+          <tr><th scope="col">Route (Airport or Hotel Transfer)</th><th scope="col">Sedan<br>(1-3 pax)</th><th scope="col">SUV<br>(1-6 pax)</th><th scope="col">VIP Van<br>(1-9 pax)</th></tr>
         </thead>
         <tbody>
         <tr data-transfer="airport-city">
@@ -719,31 +720,31 @@
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
           <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
         </tr>
-        <tr data-transfer="chiang-dao">
+        <tr data-transfer="chiang-rai">
           <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Chiang Rai</span></th>
           <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
           <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
         </tr>
-        <tr data-transfer="chiang-rai">
+        <tr data-transfer="pai">
           <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Pai</span></th>
           <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
           <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
         </tr>
-        <tr data-transfer="pai">
+        <tr data-transfer="mae-hong-son">
           <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Mae Hong Son</span></th>
           <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
           <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
         </tr>
-        <tr data-transfer="mae-hong-son">
+        <tr data-transfer="chiang-khong">
           <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Chiang Khong</span></th>
           <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
           <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
         </tr>
-        <tr data-transfer="mae-hong-son">
+        <tr data-transfer="lampang">
           <th scope="row"><span class="r-name">Chiang Mai <span class="r-arrow">&rarr;</span> Lampang</span></th>
           <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
@@ -755,6 +756,50 @@
           <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
           <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
         </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="rate-sub" id="rental">Car Rental with driver <span>Fuel not included &middot; per day</span></h3>
+    <ul class="rental-terms">
+    </ul>
+    <div class="rate-table-wrap">
+      <table class="rate-table">
+        <thead>
+          <tr><th scope="col">Day plan (fuel not include)</th><th scope="col">Sedan<br>(1-3 pax)</th><th scope="col">SUV<br>(1-6 pax)</th><th scope="col">VIP Van<br>(1-9 pax)</th></tr>
+        </thead>
+        <tbody>
+        <tr data-rental="flex-city">
+          <th scope="row"><div class="r-plan"><span class="r-idx">01</span><span class="r-text"><span class="r-name">Half Day (4 hours)</span><span class="r-sub">Your own route within Chiang Mai &mdash; you choose the stops</span></span></div></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-rental="old-city">
+          <th scope="row"><div class="r-plan"><span class="r-idx">02</span><span class="r-text"><span class="r-name">Full Day (9 hours)</span><span class="r-sub">Your own route within Chiang Mai &mdash; you choose the stops</span></span></div></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-rental="doi-suthep">
+          <th scope="row"><div class="r-plan"><span class="r-idx">03</span><span class="r-text"><span class="r-name">Full-day mountain excursions <br>/ Outside Chiang Mai</span><span class="r-sub">Your own route within Chiang Mai &mdash; you choose the stops</span></span></div></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-rental="doi-suthep-hmong">
+          <th scope="row"><div class="r-plan"><span class="r-idx">04</span><span class="r-text"><span class="r-name">Additional charge for overtime</span><span class="r-sub"></span></span></div></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+        <tr data-rental="doi-inthanon">
+          <th scope="row"><div class="r-plan"><span class="r-idx">05</span><span class="r-text"><span class="r-name">Journeys Beyond Chiang Mai <br>& Overnight Stays</span><span class="r-sub">Your own route within Chiang Mai &mdash; you choose the stops</span></span></div></th>
+          <td class="p na" data-v="sedan" data-label="Sedan">&mdash;</td>
+          <td class="p na" data-v="suv" data-label="SUV">&mdash;</td>
+          <td class="p na" data-v="van" data-label="VIP Van">&mdash;</td>
+        </tr>
+
         </tbody>
       </table>
     </div>
@@ -775,7 +820,7 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
 <div>
 <div class="brand" style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
 <img alt="Northern Orchid Tours insignia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaT_m19uLfrX0cLKSmUcobPMsBREy2dwF_uvgtMa_uAaTqyQom-euhyJPC5VDvMnLGg_mrsDbRUtQMtagnpkmbvyqBrSpxsfpPooGE6DJ2466kA3I6DhK8PNhS4y3XcFphKVQc2FypAMjmjrKN--BCi3EoBKMGjOqHMAdo0O_qHTycIlzidpcshrimr4szpDMJdMPvdJ0GPXbwcmNELCYipJKZLmVE7dSapcSu5BKn9V7a3iN24CeylIwu0t1Gt8gpVA" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-soft); box-shadow: 0 2px 10px rgba(0,0,0,0.3); flex-shrink: 0;">
-<span class="" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: 0.6px; color: rgb(239, 230, 212);">Northern Orchid Tours</span>
+<span class="" style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: 0.6px; color: rgb(239, 230, 212);">NORTHERN ORCHID TOURS</span>
 </div>
 <p class="" style="font-size: 13.5px; line-height: 1.85; color: rgba(239, 230, 212, 0.72); max-width: 320px; margin-bottom: 20px; font-weight: 300;" data-i18n="footer_motto">We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.</p>
 <div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1.2px; color: var(--gold-soft); text-transform: uppercase; font-weight: 500;">
@@ -847,7 +892,7 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
 <span class="" id="footerSelectedLang" style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--gold);">✦</span> English</span>
 <svg fill="none" height="5" stroke="#C6A15B" stroke-width="1.4" viewBox="0 0 10 6" width="9"><path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
-<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('th')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">ภาษาไทย (Thai)</button></ul>
+<ul id="footerLangMenu" style="display: none; position: absolute; top: calc(100% + 4px); left: 0px; right: 0px; background: rgba(20, 31, 25, 0.98); border: 1px solid rgba(198, 161, 91, 0.35); border-radius: 2px; list-style: none; padding: 4px 0px; z-index: 50; box-shadow: rgba(0, 0, 0, 0.45) 0px 12px 28px;"><li class=""><button onclick="window.changeLanguage('en')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">English</button></li><li class=""><button onclick="window.changeLanguage('fr')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Français (French)</button></li><li class=""><button onclick="window.changeLanguage('it')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Italiano (Italian)</button></li><li class=""><button onclick="window.changeLanguage('es')" style="min-height: 44px; width: 100%; text-align: left; background: none; border: none; padding: 10px 14px; font-size: 13px; color: #EFE6D4; font-family: 'Outfit', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;" type="button" class="">Español (Spanish)</button></li></ul>
 
 <!-- Legal & Policy Links -->
 <div>
@@ -858,7 +903,7 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
 <div class="f-bottom">
 <span class="" data-i18n="footer_copyright">© 2026 Northern Orchid Tours. All rights reserved.</span>
 
-<span class="" style="font-family: 'Outfit', sans-serif; font-style: italic; font-size: 14.5px; color: var(--gold-soft);">Designed with quiet care in Chiang Mai · Lanna Heritage Sanctuary</span>
+<span class="" style="font-family: 'Outfit', sans-serif; font-style: italic; font-size: 14.5px; color: var(--gold-soft);"></span>
 </div>
 </div>
 </footer><div id="policyModalOverlay" style="position: fixed; inset: 0px; background: rgba(10, 18, 14, 0.85); backdrop-filter: blur(10px); z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; padding: 24px;"><div id="policyModalCard" style="background: rgb(25, 39, 32); border: 1px solid rgba(198, 161, 91, 0.4); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.6) 0px 25px 60px; max-width: 680px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; transform: scale(0.96) translateY(12px); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);"><div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(198, 161, 91, 0.25); background: rgba(20, 31, 25, 0.95);"><h3 id="policyModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 500; color: #DBBD86; margin: 0;" class="">Privacy &amp; Data Sanctuary</h3><button id="closePolicyModal" aria-label="Close policy dialog" type="button" style="background: none; border: 1px solid rgba(198, 161, 91, 0.35); color: #EFE6D4; width: 38px; height: 38px; border-radius: 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div id="policyModalBody" style="padding: 28px; overflow-y: auto; color: rgba(239, 230, 212, 0.85); font-size: 14.5px; line-height: 1.8; font-family: 'Outfit', sans-serif;"><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">1. Sanctuary of Personal Confidentiality</h4><p style="margin-bottom: 16px;" class="">Your personal details, contact coordinates, travel dates, and companion information are preserved with strict discretion. We never share, trade, or distribute guest data to outside marketing parties.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">2. Direct Communication Guarantee</h4><p style="margin-bottom: 16px;" class="">Details submitted via our contact forms or direct WhatsApp channels are exclusively utilized to tailor your itinerary and facilitate your journey in Chiang Mai, Chiang Rai, and Mae Hong Son.</p><h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #DBBD86; margin-bottom: 8px;" class="">3. Right to Erasure</h4><p class="">At any point following your expedition, you may request full erasure of your travel records from our concierge systems with immediate effect.</p></div><div style="padding: 16px 28px; border-top: 1px solid rgba(198, 161, 91, 0.2); background: rgba(20, 31, 25, 0.9); display: flex; justify-content: flex-end;"><button id="policyModalCloseBtn" type="button" class="btn btn-gold" style="padding: 8px 24px; font-size: 13px; min-height: 38px; min-width: 100px; cursor: pointer;">Close</button></div></div></div> 
@@ -867,7 +912,7 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
   // Fill in the numbers below (e.g. sedan: 2500). Leave null if not set yet.
   // The "From" price on each card and the rates table both read from this list.
   var PRICES = {
-    'doi-inthanon':         { sedan:3500, suv:4000, van:4000 },
+    'doi-inthanon':         { sedan:3800, suv:4000, van:4000 }, 
     'doi-inthanon+pha-chor-cliff':{ sedan:4000, suv:4500, van:4500 },
     'doi-inthanon+mae-ya-waterfall':{ sedan:4000, suv:4500, van:4500 },
     'doi-suthep':             { sedan:1500, suv:2000, van:2000 },
@@ -884,14 +929,33 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
   // ===== TRANSFER PRICES (THB, one way, per vehicle) =====
   var TRANSFER_PRICES = {
     'airport-city':  { sedan:300, suv:500, van:500 },
-    'chiang-rai':    { sedan:3500, suv:4000, van:4000 },
-    'pai':           { sedan:3500, suv:4000, van:4000 },
+    'chiang-rai':    { sedan:3800, suv:4000, van:4000 },
+    'pai':           { sedan:3800, suv:4000, van:4000 },
     'mae-hong-son':  { sedan:5500, suv:6000, van:6500 },
     'chiang-khong':  { sedan:5000, suv:5500, van:5500 },
-    'lam-pang':      { sedan:3000, suv:3500, van:3500 },
+    'lampang':      { sedan:3000, suv:3500, van:3500 },
     'sukothai':      { sedan:4500, suv:5000, van:5000 }
   };
+  // ===== CAR RENTAL, FUEL NOT INCLUDED (THB per vehicle, per day of 10 hours) =====
+  // Overtime: 300 THB per extra hour. Fill in the numbers; leave null to show a dash.
+  var RENTAL_OVERTIME = 300;
+  var RENTAL_PRICES = {
+    'flex-city':        { sedan:1300, suv:1500, van:1500 },
+    'old-city':         { sedan:2000, suv:2500, van:2500 },
+    'doi-suthep':       { sedan:2500, suv:3000, van:3000 },
+    'doi-suthep-hmong': { sedan:300, suv:300, van:300 },
+    'doi-inthanon':     { sedan:2500, suv:3000, van:3000 }
+  };
   function baht(n){ return '\u0E3F' + Number(n).toLocaleString('en-US'); }
+  Object.keys(RENTAL_PRICES).forEach(function(key){
+    var p = RENTAL_PRICES[key];
+    ['sedan','suv','van'].forEach(function(v){
+      var cell = document.querySelector('.rate-table tr[data-rental="'+key+'"] td[data-v="'+v+'"]');
+      if(p[v] != null && cell){ cell.textContent = baht(p[v]); cell.classList.remove('na'); }
+    });
+  });
+  var otEl = document.querySelector('.rental-terms li:nth-child(2) b');
+  if(otEl) otEl.textContent = baht(RENTAL_OVERTIME);
   Object.keys(TRANSFER_PRICES).forEach(function(key){
     var p = TRANSFER_PRICES[key];
     ['sedan','suv','van'].forEach(function(v){
@@ -910,53 +974,73 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
     if(tag && vals.length){ tag.textContent = 'From ' + baht(Math.min.apply(null, vals)); }
   });
 
-  // ===== Header: mobile drawer + dropdown =====
+  // ===== Header: desktop dropdown + mobile drawer (same as index.html) =====
   (function(){
-    var openBtn = document.getElementById('mobileMenuOpen');
-    var closeBtn = document.getElementById('mobileMenuClose');
-    var drawer = document.getElementById('mobileDrawer');
-    var overlay = document.getElementById('mobileDrawerOverlay');
-    if(!openBtn || !drawer || !overlay) return;
+    // ---------------------------------------------
+    // Desktop Dropdowns (hover + tap/click, closes on outside click / Esc)
+    // ---------------------------------------------
+    function closeDesktopDropdowns() {
+      document.querySelectorAll('.nav-item.active').forEach(function (it) {
+        it.classList.remove('active');
+        var b = it.querySelector('.nav-link[aria-expanded]');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+    document.querySelectorAll('.nav-item.has-dropdown > .nav-link').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var item = btn.parentElement;
+        var willOpen = !item.classList.contains('active');
+        closeDesktopDropdowns();
+        if (willOpen) {
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-item')) closeDesktopDropdowns();
+    });
 
-    function setDrawer(open){
-      drawer.classList.toggle('open', open);
-      overlay.classList.toggle('open', open);
-      openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // ---------------------------------------------
+    // Mobile Drawer
+    // ---------------------------------------------
+    const mobileMenuOpen = document.getElementById('mobileMenuOpen');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileOverlay = document.getElementById('mobileDrawerOverlay');
+
+    function setDrawer(open) {
+      if (!mobileDrawer || !mobileOverlay) return;
+      mobileDrawer.classList.toggle('open', open);
+      mobileOverlay.classList.toggle('open', open);
       document.body.style.overflow = open ? 'hidden' : '';
     }
-    openBtn.addEventListener('click', function(){ setDrawer(true); });
-    if(closeBtn) closeBtn.addEventListener('click', function(){ setDrawer(false); });
-    overlay.addEventListener('click', function(){ setDrawer(false); });
-    drawer.querySelectorAll('.mobile-drawer-link').forEach(function(a){
-      a.addEventListener('click', function(){ setDrawer(false); });
+    function openMobileMenu() { setDrawer(true); }
+    function closeMobileMenu() { setDrawer(false); }
+
+    if (mobileMenuOpen) mobileMenuOpen.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+    document.querySelectorAll('.mobile-drawer-link').forEach(function (link) {
+      link.addEventListener('click', closeMobileMenu);
     });
-    drawer.querySelectorAll('.mobile-accordion-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){ btn.parentElement.classList.toggle('open'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { closeMobileMenu(); closeDesktopDropdowns(); }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1100) closeMobileMenu();
     });
 
-    // Desktop dropdown: also works by tap/click (touch devices)
-    var dropItems = document.querySelectorAll('.nav-item.has-dropdown');
-    function closeDropdowns(){
-      dropItems.forEach(function(li){
-        li.classList.remove('active');
-        var b = li.querySelector('.nav-link');
-        if(b) b.setAttribute('aria-expanded', 'false');
-      });
-    }
-    dropItems.forEach(function(li){
-      var b = li.querySelector('.nav-link');
-      if(!b) return;
-      b.addEventListener('click', function(e){
-        e.stopPropagation();
-        var willOpen = !li.classList.contains('active');
-        closeDropdowns();
-        if(willOpen){ li.classList.add('active'); b.setAttribute('aria-expanded', 'true'); }
+    // Mobile accordion ("Our Tours")
+    document.querySelectorAll('.mobile-accordion-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.closest('.mobile-accordion').classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
       });
     });
-    document.addEventListener('click', closeDropdowns);
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape'){ closeDropdowns(); setDrawer(false); }
-    });
+
   })();
 
   document.querySelectorAll('.filter-chip').forEach(function(chip){
@@ -990,102 +1074,222 @@ Tell us your preferred destination or pick-up point, and we’ll be happy to pro
     });
   });
 
-  /* ===== Footer: language switching + policy modal (same behaviour as index.html / tours.html) ===== */
+  /* ===== Footer: language switching + policy modal (same as index.html) ===== */
   (function(){
   'use strict';
   var drawer = document.getElementById('mobileDrawer');
 
-  /* ===== Language switching (same behaviour & storage key as index.html) ===== */
+  /* ===== Language switching (same languages, behaviour & storage key as index.html) ===== */
   var translations = {
-  "en": {
-    "nav_home": "Home",
-    "nav_private_tours": "Our Tours",
-    "nav_transport": "Transport",
-    "nav_activities": "Activities",
-    "nav_gallery": "About Us",
-    "nav_contact": "Contact",
-    "nav_booking_now": "Booking Now",
-    "footer_brand_tag": "TAT License : 24/01226",
-    "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "Contact",
-    "footer_copyright": "© 2026 Northern Orchid Tours. All rights reserved.",
-    "footer_curr_label": "Currency",
-    "footer_email_label": "Email Us",
-    "footer_hours_val": "Daily 08:00 – 09:00 PM",
-    "footer_lang_label": "Language",
-    "footer_legal_header": "Legal & Policy",
-    "footer_loc_label": "Location",
-    "footer_loc_val": "Chiang Mai, Thailand",
-    "footer_motto": "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
-    "footer_pref_header": "Preferences & Policies",
-    "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "Booking & Cancellation Policy",
-    "legal_link_privacy": "Privacy & Data Sanctuary",
-    "legal_link_terms": "Terms & Guest Conditions"
-  },
-  "th": {
-    "nav_home": "หน้าแรก",
-    "nav_private_tours": "ทัวร์ของเรา",
-    "nav_transport": "ยานพาหนะ",
-    "nav_activities": "กิจกรรมพิเศษ",
-    "nav_gallery": "แกลเลอรี",
-    "nav_contact": "ติดต่อเรา",
-    "nav_booking_now": "จองตอนนี้",
-    "footer_brand_tag": "จิตวิญญาณแห่งล้านนา",
-    "footer_call_label": "+6698-819-8385",
-    "footer_contact_header": "ข้อมูลติดต่อ",
-    "footer_copyright": "© 2026 Northern Orchid Tours. สงวนลิขสิทธิ์ทุกประการ",
-    "footer_curr_label": "สกุลเงิน",
-    "footer_email_label": "ส่งอีเมลถึงเรา",
-    "footer_hours_val": "เปิดทุกวัน 08:00 – 21:00 น.",
-    "footer_lang_label": "ภาษา",
-    "footer_legal_header": "ข้อกำหนดทางกฎหมาย",
-    "footer_loc_label": "ที่ตั้ง",
-    "footer_loc_val": "เชียงใหม่, ประเทศไทย",
-    "footer_motto": "เราหวังว่า นอร์ทเทิร์น ออร์คิด ทัวร์ จะเป็นชื่อแรกที่คุณนึกถึงเมื่อวางแผนท่องเที่ยวภาคเหนือ เดินทางอย่างสง่างามผ่านขุนเขา เจดีย์ทอง และมรดกวัฒนธรรมอันมีชีวิต",
-    "footer_pref_header": "การตั้งค่าและนโยบาย",
-    "footer_whatsapp_label": "WhatsApp",
-    "legal_link_booking": "นโยบายการจองและยกเลิก",
-    "legal_link_privacy": "นโยบายความเป็นส่วนตัวและการคุ้มครองข้อมูล",
-    "legal_link_terms": "ข้อตกลงและเงื่อนไขสำหรับผู้เดินทาง"
+    en: {
+      nav_destination: "Destination",
+      nav_private_tours: "OUR TOURS",
+      nav_home: "HOME",
+      nav_multiday_tours: "MULTI-DAY TOURS",
+      nav_transport: "TRANSPORT",
+      nav_activities: "ACTIVITIES",
+      nav_gallery: "ABOUT US",
+      nav_contact: "CONTACT",
+      nav_booking_now: "Booking Now",
+      dest_chiang_mai: "ONE DAY TOURS",
+      dest_chiang_rai: "MULTI-DAY TOUR",
+      chiang_mai: "ONE DAY TOUR",
+      chiang_rai: "MULTI-DAY TOUR",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      footer_brand_tag: "TAT License : 24/01226",
+      footer_motto: "We hope Northern Orchid Tours will be one of the names you think of when you begin planning your journey through Northern Thailand. Travel gracefully through sacred mountains, golden chedis, and living heritage — guided with local intimacy and quiet care.",
+      footer_contact_header: "Contact",
+      footer_loc_label: "Location",
+      footer_loc_val: "Chiang Mai, Thailand",
+      footer_hours_val: "Daily 08:00 – 09:00 PM",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Email Us",
+      footer_pref_header: "Preferences & Policies",
+      footer_lang_label: "Language",
+      footer_curr_label: "Currency",
+      footer_legal_header: "Legal & Policy",
+      legal_link_booking: "Privacy & Data Sanctuary",
+      legal_link_terms: "Terms & Guest Conditions",
+      legal_link_privacy: "Privacy & Data Sanctuary",
+      footer_copyright: "© 2026 Northern Orchid Tours. All rights reserved."
+    },
+    fr: {
+      nav_destination: "Destination",
+      nav_private_tours: "NOS CIRCUITS",
+      nav_home: "ACCUEIL",
+      nav_multiday_tours: "CIRCUITS MULTI-JOURS",
+      nav_transport: "TRANSPORT",
+      nav_activities: "ACTIVITÉS",
+      nav_gallery: "À PROPOS",
+      nav_contact: "CONTACT",
+      nav_booking_now: "Réserver",
+      dest_chiang_mai: "CIRCUITS D'UNE JOURNÉE",
+      dest_chiang_rai: "CIRCUIT MULTI-JOURS",
+      chiang_mai: "CIRCUIT D'UNE JOURNÉE",
+      chiang_rai: "CIRCUIT MULTI-JOURS",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothaï",
+      footer_brand_tag: "Licence TAT : 24/01226",
+      footer_motto: "Nous espérons que Northern Orchid Tours sera l'un des noms qui vous viendront à l'esprit lorsque vous commencerez à préparer votre voyage dans le nord de la Thaïlande. Voyagez avec grâce à travers des montagnes sacrées, des chedis dorés et un patrimoine vivant — guidé avec une proximité toute locale et une attention discrète.",
+      footer_contact_header: "Contact",
+      footer_loc_label: "Lieu",
+      footer_loc_val: "Chiang Mai, Thaïlande",
+      footer_hours_val: "Tous les jours 08h00 – 21h00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Écrivez-nous",
+      footer_pref_header: "Préférences et politiques",
+      footer_lang_label: "Langue",
+      footer_curr_label: "Devise",
+      footer_legal_header: "Mentions légales et politiques",
+      legal_link_booking: "Politique de réservation et d'annulation",
+      legal_link_terms: "Conditions générales et conditions pour les voyageurs",
+      legal_link_privacy: "Confidentialité et protection des données",
+      footer_copyright: "© 2026 Northern Orchid Tours. Tous droits réservés."
+    },
+    it: {
+      nav_destination: "Destinazione",
+      nav_private_tours: "I NOSTRI TOUR",
+      nav_home: "HOME",
+      nav_multiday_tours: "TOUR DI PIÙ GIORNI",
+      nav_transport: "TRASPORTI",
+      nav_activities: "ATTIVITÀ",
+      nav_gallery: "CHI SIAMO",
+      nav_contact: "CONTATTI",
+      nav_booking_now: "Prenota ora",
+      dest_chiang_mai: "TOUR DI UN GIORNO",
+      dest_chiang_rai: "TOUR DI PIÙ GIORNI",
+      chiang_mai: "TOUR DI UN GIORNO",
+      chiang_rai: "TOUR DI PIÙ GIORNI",
+      dest_pai: "Mae Hong Son & Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      footer_brand_tag: "Licenza TAT : 24/01226",
+      footer_motto: "Ci auguriamo che Northern Orchid Tours sia uno dei nomi a cui penserete quando inizierete a pianificare il vostro viaggio nella Thailandia del Nord. Viaggiate con eleganza tra montagne sacre, chedi dorati e un patrimonio vivo — accompagnati con vicinanza locale e discreta cura.",
+      footer_contact_header: "Contatti",
+      footer_loc_label: "Sede",
+      footer_loc_val: "Chiang Mai, Thailandia",
+      footer_hours_val: "Tutti i giorni 08:00 – 21:00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Scrivici",
+      footer_pref_header: "Preferenze e normative",
+      footer_lang_label: "Lingua",
+      footer_curr_label: "Valuta",
+      footer_legal_header: "Note legali e normative",
+      legal_link_booking: "Politica di prenotazione e cancellazione",
+      legal_link_terms: "Termini e condizioni per gli ospiti",
+      legal_link_privacy: "Privacy e protezione dei dati",
+      footer_copyright: "© 2026 Northern Orchid Tours. Tutti i diritti riservati."
+    },
+    es: {
+      nav_destination: "Destino",
+      nav_private_tours: "NUESTROS TOURS",
+      nav_home: "INICIO",
+      nav_multiday_tours: "TOURS DE VARIOS DÍAS",
+      nav_transport: "TRANSPORTE",
+      nav_activities: "ACTIVIDADES",
+      nav_gallery: "SOBRE NOSOTROS",
+      nav_contact: "CONTACTO",
+      nav_booking_now: "Reservar ahora",
+      dest_chiang_mai: "TOURS DE UN DÍA",
+      dest_chiang_rai: "TOUR DE VARIOS DÍAS",
+      chiang_mai: "TOUR DE UN DÍA",
+      chiang_rai: "TOUR DE VARIOS DÍAS",
+      dest_pai: "Mae Hong Son y Pai",
+      dest_nan: "Nan",
+      dest_sukhothai: "Sukhothai",
+      footer_brand_tag: "Licencia TAT : 24/01226",
+      footer_motto: "Esperamos que Northern Orchid Tours sea uno de los nombres que le vengan a la mente cuando empiece a planificar su viaje por el norte de Tailandia. Viaje con elegancia a través de montañas sagradas, chedis dorados y un patrimonio vivo — guiado con cercanía local y un cuidado discreto.",
+      footer_contact_header: "Contacto",
+      footer_loc_label: "Ubicación",
+      footer_loc_val: "Chiang Mai, Tailandia",
+      footer_hours_val: "Todos los días 08:00 – 21:00",
+      footer_whatsapp_label: "WhatsApp",
+      footer_call_label: "+6698-819-8385",
+      footer_email_label: "Escríbanos",
+      footer_pref_header: "Preferencias y políticas",
+      footer_lang_label: "Idioma",
+      footer_curr_label: "Moneda",
+      footer_legal_header: "Legal y políticas",
+      legal_link_booking: "Política de reserva y cancelación",
+      legal_link_terms: "Términos y condiciones para los huéspedes",
+      legal_link_privacy: "Privacidad y protección de datos",
+      footer_copyright: "© 2026 Northern Orchid Tours. Todos los derechos reservados."
+    }
+  };
+
+  function setupI18nAttributes() {
+    const mapping = [
+      // Footer
+      { sel: 'footer .brand + p', key: 'footer_motto' },
+      { sel: 'footer .brand ~ div span:last-child', key: 'footer_brand_tag' },
+      { sel: 'footer .f-grid > div:nth-child(2) > h4', key: 'footer_contact_header' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:first-child', key: 'footer_loc_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:nth-child(2)', key: 'footer_loc_val' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(1) span:nth-child(3)', key: 'footer_hours_val' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(2) span', key: 'footer_whatsapp_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(3) span:first-child', key: 'footer_call_label' },
+      { sel: 'footer .f-grid > div:nth-child(2) > div > div:nth-child(5) span:first-child', key: 'footer_email_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > h4', key: 'footer_pref_header' },
+      { sel: 'footer .f-grid > div:nth-child(3) label:nth-of-type(1)', key: 'footer_lang_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) label', key: 'footer_curr_label' },
+      { sel: 'footer .f-grid > div:nth-child(3) > div:nth-child(3) > div', key: 'footer_legal_header' },
+      { sel: 'a[href="#booking-policy"]', key: 'legal_link_booking' },
+      { sel: 'a[href="#terms"]', key: 'legal_link_terms' },
+      { sel: 'a[href="#privacy"]', key: 'legal_link_privacy' },
+      { sel: '.f-bottom > span:first-child', key: 'footer_copyright' }
+    ];
+    mapping.forEach(m => {
+      document.querySelectorAll(m.sel).forEach(el => {
+        if (!el.getAttribute('data-i18n')) el.setAttribute('data-i18n', m.key);
+      });
+    });
   }
-};
 
-  window.changeLanguage = function(lang){
-    if(!translations[lang]) lang = 'en';
+  window.changeLanguage = function(lang) {
+    if (!translations[lang]) lang = 'en';
     document.documentElement.lang = lang;
-    var t = translations[lang];
+    setupI18nAttributes();
+    const t = translations[lang];
 
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var val = t[el.getAttribute('data-i18n')];
-      if(!val) return;
-      if(el.getAttribute('data-i18n-chevron')){
-        var chevron = el.querySelector('svg');
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const val = t[el.getAttribute('data-i18n')];
+      if (!val) return;
+      if (el.getAttribute('data-i18n-chevron')) {
+        const chevron = el.querySelector('svg');
         el.innerHTML = val + (chevron ? chevron.outerHTML : '');
+      } else if (val.includes('<') && val.includes('>')) {
+        el.innerHTML = val;
       } else {
         el.textContent = val;
       }
     });
 
-    var label = document.getElementById('footerSelectedLang');
-    if(label){
-      label.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (lang === 'th' ? 'ภาษาไทย (Thai)' : 'English');
+    const selectedLangEl = document.getElementById('footerSelectedLang');
+    const langNames = { en: 'English', fr: 'Français (French)', it: 'Italiano (Italian)', es: 'Español (Spanish)' };
+    if (selectedLangEl) {
+      selectedLangEl.innerHTML = '<span style="color: var(--gold);">✦</span> ' + (langNames[lang] || langNames.en);
     }
-    var menu = document.getElementById('footerLangMenu');
-    if(menu) menu.style.display = 'none';
-    try { localStorage.setItem('northern_orchid_lang', lang); } catch(e) {}
+    const menu = document.getElementById('footerLangMenu');
+    if (menu) menu.style.display = 'none';
+    try { localStorage.setItem('northern_orchid_lang', lang); } catch (e) {}
   };
 
-  document.addEventListener('click', function(e){
-    var menu = document.getElementById('footerLangMenu');
-    var btn  = document.getElementById('footerLangBtn');
-    if(menu && menu.style.display === 'block' && !menu.contains(e.target) && !(btn && btn.contains(e.target))){
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('footerLangMenu');
+    const btn = document.getElementById('footerLangBtn');
+    if (menu && menu.style.display === 'block' && !menu.contains(e.target) && !(btn && btn.contains(e.target))) {
       menu.style.display = 'none';
     }
   });
 
-  var savedLang = 'en';
-  try { savedLang = localStorage.getItem('northern_orchid_lang') || 'en'; } catch(e) {}
+  let savedLang = 'en';
+  try { savedLang = localStorage.getItem('northern_orchid_lang') || 'en'; } catch (e) {}
   window.changeLanguage(savedLang);
 
   /* ===== Policy modal ===== */
