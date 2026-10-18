@@ -129,8 +129,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="doiin02.png" media="(max-width:700px)" fetchpriority="high">
-<link rel="preload" as="image" href="doiin02.png" media="(min-width:701px)" fetchpriority="high">
+<link rel="preload" as="image" href="bg-waterfall-m.jpg" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="bg-waterfall.jpg" media="(min-width:701px)" fetchpriority="high">
 <style>
   :root{
     --ink:#141F19;
@@ -746,6 +746,19 @@
   /* desktop: hero fills the whole screen, the 4 photos start below the fold */
   @media (min-width:701px){
     .hero{ min-height:100vh; min-height:100svh; }
+  }
+
+  /* phone: comfortable hero size (not full screen), smaller type */
+  @media (max-width:700px){
+    .hero{
+      min-height:clamp(440px, 64vh, 580px);
+      min-height:clamp(440px, 64svh, 580px);
+      padding:88px 18px 26px;
+      background-position:center 55%;
+    }
+    .hero h1{ font-size:clamp(30px, 9vw, 38px); line-height:1.1; }
+    .hero p.lede{ margin-top:10px; font-size:13.5px; line-height:1.6; }
+    .hero .actions{ margin-top:16px; }
   }
 </style>
 </head>
