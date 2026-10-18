@@ -710,6 +710,43 @@
       background-position:center 58%;
     }
   }
+
+  /* ===== Hero like newelephanthome.com: bright full-bleed photo, big name bottom-left ===== */
+  .hero{
+    align-items:flex-start; justify-content:flex-end; text-align:left;
+    padding:120px 48px 64px;
+    background-image:linear-gradient(180deg, rgba(14,22,18,0.40) 0%, rgba(14,22,18,0.03) 26%, rgba(14,22,18,0.10) 52%, rgba(14,22,18,0.80) 100%), url('bg-waterfall.jpg');
+  }
+  .hero-mist{ opacity:0; }
+  .hero h1{
+    font-size:clamp(42px, 6.4vw, 96px); font-weight:600; line-height:1.05; letter-spacing:-1px;
+    max-width:none; color:var(--paper); text-align:left;
+  }
+  .hero h1 em{ color:inherit; font-weight:inherit; }
+  .hero p.lede{ max-width:560px; margin:18px 0 0; font-size:17px; line-height:1.65; text-align:left; }
+  .hero .actions{ justify-content:flex-start; margin-top:26px; }
+  /* header buttons: solid green "book" button that stays readable on the photo */
+  header.nav .nav-cta-booking{ background:var(--forest); border-color:var(--forest); border-radius:6px; text-shadow:none; }
+  header.nav .nav-cta-booking:hover{ background:var(--gold-soft); border-color:var(--gold-soft); color:var(--ink); }
+  @media (max-width:1100px){
+    .nav > .nav-cta-booking{ display:inline-flex; margin-left:auto; margin-right:12px; padding:8px 16px; min-height:38px; font-size:12.5px; letter-spacing:1px; }
+  }
+  @media (max-width:700px){
+    .hero{
+      padding:96px 20px 34px;
+      background-image:linear-gradient(180deg, rgba(14,22,18,0.40) 0%, rgba(14,22,18,0.03) 26%, rgba(14,22,18,0.10) 52%, rgba(14,22,18,0.80) 100%), url('bg-waterfall-m.jpg');
+      background-position:center 58%;
+    }
+    .hero h1{ font-size:clamp(36px, 11vw, 48px); letter-spacing:-0.5px; }
+    .hero p.lede{ margin-top:12px; font-size:14px; line-height:1.6; }
+    .hero .actions{ flex-direction:row; flex-wrap:wrap; width:auto; margin-top:18px; gap:8px; }
+    .hero .actions .btn, .hero .actions .btn-line{ width:auto; min-width:0; padding:10px 18px !important; font-size:13.5px !important; }
+  }
+
+  /* desktop: hero fills the whole screen, the 4 photos start below the fold */
+  @media (min-width:701px){
+    .hero{ min-height:100vh; min-height:100svh; }
+  }
 </style>
 </head>
 <body>
